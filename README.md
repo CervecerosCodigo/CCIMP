@@ -1,5 +1,5 @@
 # CCIMP
-Cerveceros Codigo Image Manipulation Program - Prosjektoppgave C++ HiOA 2015
+**Cerveceros Codigo Image Manipulation Program** - Prosjektoppgave C++ HiOA 2015
 
 ## Gruppemedlemmer
 * [Espen Zaal](https://github.com/lurer)
