@@ -8,6 +8,7 @@ oppvarming
 #For QT Creator
 build-*
 *.user
+*.user.*
 
 ##Eclipse
 *.pydevproject
@@ -100,25 +101,3 @@ hs_err_pid*
 #Eget
 *.d
 Debug/
-
-#Kate
-.*.kate-swp
-.swp.*
-
-#OSX
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
