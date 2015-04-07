@@ -32,6 +32,13 @@ Ekstra funksjonalitet som går ut på andre filtre som kan vise programmets vers
 
 ##GUI mockup
 
+**Mockup 1**
+![Mockup 1](http://cerveceroscodigo.github.io/CCIMP/img/mockup1.jpg)
+
+**Mockup 2**
+![Mockup 2](http://cerveceroscodigo.github.io/CCIMP/img/mockup2.jpg)
+Mockupen er oprettet direkte i Qt creator.
+
 ##Valgt teknologi
 * C++ og GNU g++
 * Qt5 rammeverk
