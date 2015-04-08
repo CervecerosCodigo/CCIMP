@@ -19,7 +19,13 @@ Flere filtre som kan benyttes i programmet. Filtrene i dette stadiet er begrense
 Ved å gjøre små usynlige endringer i RGB-verdier skal vi kunne lagre krypterte medlinger i programmet (se gjerne avsnitt om brukerhistorer).
 
 ##Avgrensninger
+* Naturlig avgrensning er å ha et fungerende program, med et minimum av funksjonalitet, som definert i suksesskriteriene.
+* Hver påbegynte modul må enten ferdiggjøres, eller ikke leveres.
 
+##Designmål
+* Som nevnt skal det være klare ansvarsområder for hver klasse. 
+* Det legges opp til at programmet skal kunne vokse, med mer funksjonalitet, og flere moduler/plugins.
+* Generelt sett ønskes det å implementere Design Pattern der det føles rett. Der det ikke lar seg gjøre, så vil målet være å trekke ut relevant funksjonalitet i egne klasser.
 
 ##User stories
 ###Implementeres
