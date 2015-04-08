@@ -1,9 +1,12 @@
-#Prosjektbeskrivelse
+# Prosjektarbeid i C++ 2015
+
+* **Tittel**: CCIMP!
+* **Gruppemedlemmer**: s198579, s198569, s198599 
 
 ##Om programmet 
 CCIMP (Cerveceros Codigo Image Manipulation Program) skal gi mulighet å editere pixelgrafikk med hjelp av innstiksfiltre utviklet av CCIMP communityen. Programmet er i grunn og bunn en gui som har støtte for å lese inn og lagre bildefiler. 
-Fokus på god separering av funksjonalitet, og mulighet for "undo/redo"-funksjonalitet er viktig. 
-Programmet er delt opp slik at hvert filter/verktøy finnes i tre versjoner i form av Commands; Execute, Undo og Redo. Commands har en set-metode som setter et bilde inn på det relevantet filteret og behandles, før en returnerer det nye bildet til controller og deretter GUI. Controller har en liste over alle Commands som er tilgjenglig for valg i GUI. Man kan ha flere bilder åpne som "tabs", og hvert av dem har sin egen historikk. Det vil si vectorer med undo og redo-kommandoer.
+Fokus på god separering av funksjonalitet og ansvar, og mulighet for "undo/redo"-funksjonalitet er viktig. 
+Programmet er delt opp slik at hvert filter/verktøy finnes i tre versjoner i form av Commands; Execute, Undo og Redo. Commands har en set-metode som setter et bilde inn på det relevante filteret der det behandles, før en returnerer det nye bildet til controller og deretter GUI. Controller har en liste over alle Commands som er tilgjenglig for valg i GUI. Man kan ha flere bilder åpne som "tabs", og hvert av dem har sin egen historikk. Det vil si vectorer med undo og redo-kommandoer.
 
 Programmet blir i stor utstrekking skalerbart ettersom filtrene som inngår er helt separate fra gui eller logikken i programmet. Dersom filtrene utvikles etter en fordefiniert mal kan disse deretter kompileres til et bilbiotek som skal være mulig å lese inn i CCIMP som et nytt filter. Det er tenkt at hvert filter skal bidra med både algoritme for den bildebehandlig som den skal gjøre og en gui komponent lagt i kopatimbelt qt versjon som skal gi mulighet til å kontrollere filteret. 
 
@@ -12,21 +15,21 @@ Programmet blir i stor utstrekking skalerbart ettersom filtrene som inngår er h
 Programmet starter, alle deler av GUI er implementert. Det er mulig å lese inn og lagre et bilde på samme eller ny plassering. Det implementert minimum tre fristående filtre som er innkludert på forhånd i programmet. 
 ###Ekstra 1
 Flere filtre som kan benyttes i programmet. Filtrene i dette stadiet er begrenset til ren bildebehandling.
-###Esktra 2
-Ekstra funksjonalitet som går ut på andre filtre som kan vise programmets versitalitet som feks filtre som kan benyttes til å lagre krypterte medlinger i programmet (se gjerne avsnitt om brukerhistorer).
+###Ekstra 2
+Ved å gjøre små usynlige endringer i RGB-verdier skal vi kunne lagre krypterte medlinger i programmet (se gjerne avsnitt om brukerhistorer).
 
 ##Avgrensninger
 
 
 ##User stories
-###Implemeteres
+###Implementeres
 * Som bruker ønsker jeg å editere pixelgrafikk. 
 * Som bruker ønsker jeg å åpne å lagre bilder.
 * Som bruker ønsker jeg å benytte meg av eksterne bildefiltre.
 * Som bruker ønsker jeg å angre eller gjøre om endringer i et åpent bilde.
 * Som bruker ønsker jeg å zoome inn og ut av et bilde.
 * Som bruker ønsker jeg å panorere bilde dersom det fyller opp over 100% av tilgjengelig lerett.
-* Som bruker ønsker jeg å ha mulighet å bleddre i filstrukturen på maskinen slik at det filtreres på kund godkjente bildefiler.
+* Som bruker ønsker jeg å ha mulighet å bla i filstrukturen på maskinen slik at det filtreres på kund godkjente bildefiler.
 ###Optional (dersom vi får tid)
 * Som bruker ønsker jeg å bruke filtre på batcher av filer.
 * Som utvikler ønsker jeg å implementere bruke av andre typer av filtre som gir annen type av funksjonalitet enn kun ren bildebehandling, feks. et filter som kan lagre en kryptert melding i et bilde. 
