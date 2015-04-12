@@ -13,12 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+        gui/mainwindow.cpp \
     image_tool.cpp \
-    tool_blur.cpp
+    model/tool_blur.cpp \
+    model/test_klasse.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += gui/mainwindow.h \
     image_tool.h \
-    tool_blur.h
+    model/tool_blur.h \
+    model/test_klasse.h
 
-FORMS    += mainwindow.ui
+FORMS    += gui/mainwindow.ui
