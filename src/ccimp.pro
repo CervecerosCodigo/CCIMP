@@ -24,3 +24,6 @@ HEADERS  += gui/mainwindow.h \
     model/test_klasse.h
 
 FORMS    += gui/mainwindow.ui
+
+RESOURCES += \
+    ../res/resources.qrc
