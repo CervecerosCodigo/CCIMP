@@ -1,7 +1,7 @@
 #ifndef TOOL_BLUR_H
 #define TOOL_BLUR_H
 
-#include "image_tool.h"
+#include "model/image_tool.h"
 
 class tool_blur : public image_tool
 {
