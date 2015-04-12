@@ -8,3 +8,6 @@
 
 ## Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
+
+##Eksterne resurser
+* Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)

@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/ico_22x22">
+        <file>ico/22x22/application-exit.png</file>
+        <file>ico/22x22/document-open.png</file>
+        <file>ico/22x22/document-save-as.png</file>
+        <file>ico/22x22/document-save.png</file>
+        <file>ico/22x22/view-refresh.png</file>
+        <file>ico/22x22/edit-redo.png</file>
+        <file>ico/22x22/edit-undo.png</file>
+        <file>ico/22x22/zoom-fit-best.png</file>
+        <file>ico/22x22/zoom-in.png</file>
+        <file>ico/22x22/zoom-original.png</file>
+        <file>ico/22x22/zoom-out.png</file>
+        <file>ico/22x22/media-skip-forward.png</file>
+        <file>ico/22x22/media-skip-backward.png</file>
+    </qresource>
+</RCC>
