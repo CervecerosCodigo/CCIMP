@@ -14,12 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gui/mainwindow.cpp \
-    image_tool.cpp \
+    model/image_tool.cpp \
     model/tool_blur.cpp \
     model/test_klasse.cpp
 
 HEADERS  += gui/mainwindow.h \
-    image_tool.h \
+    model/image_tool.h \
     model/tool_blur.h \
     model/test_klasse.h
 

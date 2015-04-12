@@ -1,4 +1,4 @@
-#include "tool_blur.h"
+#include "model/tool_blur.h"
 
 //tool_blur::tool_blur() : image_tool(){
 
