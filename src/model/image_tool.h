@@ -6,16 +6,16 @@
 class image_tool
 {
 private:
-    int w;
-    int h;
-    QImage& orig_image;
-    QImage& result_image;
+    const QImage* orig_image;
+    const QImage* result_image;
 
 public:
-    image_tool();
-    virtual ~image_tool();
+    image_tool(){}
+    ~image_tool(){}
 
-    void set_image(QImage& img);
+    void set_image(QImage* img);
+    const QImage* return_result();
+
     virtual void draw() = 0;
     virtual void undo() = 0;
     virtual void update() = 0;

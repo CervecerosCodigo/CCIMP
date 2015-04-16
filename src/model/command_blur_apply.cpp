@@ -1,25 +1,19 @@
-//#include "command_blur_apply.h"
+#include "command_blur_apply.h"
 
 
-//template<typename T>
-//command_blur_apply<T>::command_blur_apply(T t): command(t)
-//{
+command_blur_apply::command_blur_apply(image_tool* t) : command(t)
+{
 
-//}
-
-//template<typename T>
-//command_blur_apply<T>::~command_blur_apply()
-//{
-
-//}
+}
 
 
-//template<typename T>
-//void command_blur_apply<T>::execute(){
+command_blur_apply::~command_blur_apply()
+{
 
-//}
+}
 
 
 
+void command_blur_apply::execute(){
 
-
+}

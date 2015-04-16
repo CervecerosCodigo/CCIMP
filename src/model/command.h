@@ -3,27 +3,21 @@
 
 #include "image_tool.h"
 
-template<typename T>
+
 class command
 {
 
-    image_tool tool;
+    image_tool* tool;
 
 public:
-    command(T t);
-    ~command();
+    command(image_tool* t);
+    virtual ~command();
 
-    void execute() = 0;
+    virtual void execute() = 0;
     void set_image(QImage img);
 };
 
 
-////////////////implementasjon av command////////////////////
 
-template<typename T>
-command<T>::command(T t): tool{t}{}
-
-template<typename T>
-command<T>::~command(){}
 
 #endif // COMMAND_H
