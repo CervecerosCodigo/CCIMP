@@ -10,8 +10,9 @@ public:
     tool_blur();
     ~tool_blur();
 
-    void set_image(QImage& img);
+    //void set_image(QImage& img);
     void draw();
+    void undo();
     void update();
     void clear();
 };
