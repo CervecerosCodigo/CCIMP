@@ -24,6 +24,16 @@
      </rect>
     </property>
    </widget>
+   <widget class="ccimp_img_view" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>0</y>
+      <width>541</width>
+      <height>481</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -31,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -263,6 +273,11 @@
    <class>ccimp_tree_view</class>
    <extends>QTreeView</extends>
    <header>gui/ccimp_tree_view.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ccimp_img_view</class>
+   <extends>QGraphicsView</extends>
+   <header>gui/ccimp_img_view.h</header>
   </customwidget>
  </customwidgets>
  <resources>
