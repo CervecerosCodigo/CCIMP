@@ -19,6 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     void showDebugMsg();
+    void createConnections();
     void loadFile(const QString &fileName);
 
     QString filePath;

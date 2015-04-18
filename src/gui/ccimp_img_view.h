@@ -17,6 +17,7 @@ class ccimp_img_view : public QGraphicsView
 public:
     explicit ccimp_img_view(QWidget *parent = 0);
     void openImage();
+    void set_current_gui_image(const QString&);
     ~ccimp_img_view();
 
 private:
