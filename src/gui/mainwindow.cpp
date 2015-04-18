@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //setCentralWidget(ui->graphicsView); //den respekterer ikke andre windgets
 
+
     createConnections();
     QString path = "../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
     ui->graphicsView->set_current_gui_image(path);
