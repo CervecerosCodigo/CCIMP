@@ -3,9 +3,17 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+//For bildevisning
 #include <QImage>
 #include <QGraphicsView>
+//For TreeView
+#include <QTreeView>
+#include <QModelIndex>
+#include <QDir>
+#include <QDirModel>
+
 #include <QDebug>
+
 
 
 namespace Ui {
@@ -38,9 +46,17 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
+    //Midlertidlig for å sette komponenter i tree view uten arv
+    QDirModel *model;
+    QString path;
+    QModelIndex index;
+    void file_view_on_init();
+
 public slots:
     void open();
     void showDebugMsg();
+private slots:
+    void on_treeView_clicked(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H

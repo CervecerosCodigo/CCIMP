@@ -14,25 +14,40 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>0</y>
-      <width>521</width>
-      <height>511</height>
+      <x>10</x>
+      <y>10</y>
+      <width>951</width>
+      <height>621</height>
      </rect>
     </property>
-   </widget>
-   <widget class="ccimp_tree_view" name="treeView">
-    <property name="geometry">
-     <rect>
-      <x>12</x>
-      <y>2</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QTreeView" name="treeView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QGraphicsView" name="graphicsView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -268,13 +283,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>ccimp_tree_view</class>
-   <extends>QTreeView</extends>
-   <header>gui/ccimp_tree_view.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../res/resources.qrc"/>
  </resources>
