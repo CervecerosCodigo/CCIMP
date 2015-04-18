@@ -17,15 +17,21 @@ SOURCES += main.cpp\
     model/test_klasse.cpp \
     gui/ccimp_tree_view.cpp \
     gui/ccimp_img_view.cpp \
+    model/tool.cpp \
+    model/processing_interface.cpp \
     model/image_processing_unit.cpp \
-    model/processing_interface.cpp
+    model/image_tool.cpp \
+    model/tool_blur.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
     gui/ccimp_tree_view.h \
     gui/ccimp_img_view.h \
+    model/tool.h \
+    model/processing_interface.h \
     model/image_processing_unit.h \
-    model/processing_interface.h
+    model/image_tool.h \
+    model/tool_blur.h
 
 FORMS    += gui/mainwindow.ui \
     gui/ccimp_tree_view.ui \
