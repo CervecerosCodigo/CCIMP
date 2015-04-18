@@ -7,6 +7,7 @@ ccimp_img_view::ccimp_img_view(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
 //    imgPath = "../res/img/bilde1.jpg";
 
 //    imgObject = new QImage();
