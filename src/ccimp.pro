@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     model/command_blur_apply.cpp \
     model/image_tool_blur.cpp \
     model/command.cpp \
-    model/command_blur_undo.cpp
+    model/command_blur_undo.cpp \
+    gui/ccimp_img_view.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/image_tool.h \
@@ -29,10 +30,12 @@ HEADERS  += gui/mainwindow.h \
     model/command.h \
     model/command_blur_apply.h \
     model/command_blur_undo.h \
-    model/image_tool_blur.h
+    model/image_tool_blur.h \
+    gui/ccimp_img_view.h
 
 FORMS    += gui/mainwindow.ui \
-    gui/ccimp_tree_view.ui
+    gui/ccimp_tree_view.ui \
+    gui/ccimp_img_view.ui
 
 RESOURCES += \
     ../res/resources.qrc

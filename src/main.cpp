@@ -1,5 +1,6 @@
 #include "gui/mainwindow.h"
 #include <QApplication>
+#include <QDebug>
 
 #include "model/test_klasse.h"
 
