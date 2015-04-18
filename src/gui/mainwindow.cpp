@@ -27,6 +27,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeView->setModel(model);
     file_view_on_init();
 
+    //Midlertidlig implementasjon av FileSysstemModel
+    fs_model = new QFileSystemModel();
+    fs_model->setRootPath(QDir::homePath());
+    //fs_filter = new QStringList();
+    fs_filter << "*.png" << "*.jpg";
+    fs_model->setNameFilters(fs_filter);
+    fs_model->setNameFilterDisables(false);
+    ui->treeView_2->setSortingEnabled(true);
+    ui->treeView_2->setModel(fs_model);
 }
 
 void MainWindow::createConnections(){

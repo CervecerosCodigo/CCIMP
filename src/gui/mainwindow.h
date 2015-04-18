@@ -11,6 +11,8 @@
 #include <QModelIndex>
 #include <QDir>
 #include <QDirModel>
+//For FileSystem model
+#include <QFileSystemModel>
 
 #include <QDebug>
 
@@ -51,6 +53,10 @@ private:
     QString path;
     QModelIndex index;
     void file_view_on_init();
+
+    //Midlertidlig for å teste filesystem model
+    QFileSystemModel *fs_model;
+    QStringList fs_filter;
 
 public slots:
     void open();
