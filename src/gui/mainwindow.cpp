@@ -12,13 +12,20 @@ MainWindow::MainWindow(QWidget *parent) :
     //setCentralWidget(ui->graphicsView); //den respekterer ikke andre windgets
 
 
+
     createConnections();
+
+    //Setter bilde ved boot
     QString path = "../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
-    ui->graphicsView->set_current_gui_image(path);
+    setImage(path);
 
-    qDebug() << ui->treeView->currentIndex();
-
-
+    //Initiliserer tree view
+    model = new QDirModel(this);
+    model->setReadOnly(true);
+    model->setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+    model->setSorting(QDir::DirsFirst | QDir::IgnoreCase | QDir::Name);
+    ui->treeView->setModel(model);
+    file_view_on_init();
 
 }
 
@@ -40,7 +47,30 @@ void MainWindow::open(){
 }
 
 void MainWindow::loadFile(const QString &fileName){
-    ui->graphicsView->set_current_gui_image(fileName);
+    setImage(fileName);
+}
+
+void MainWindow::setImage(const QString &path)
+{
+    imgObject = new QImage();
+    imgObject->load(path);
+    image = QPixmap::fromImage(*imgObject);
+
+
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
+}
+
+void MainWindow::file_view_on_init()
+{
+    path = QDir::homePath();
+    index = model->index(QDir::homePath());
+    ui->treeView->expand(index);
+    ui->treeView->scrollTo(index);
+    ui->treeView->setCurrentIndex(index);
+    ui->treeView->resizeColumnToContents(0);
 }
 
 void MainWindow::showDebugMsg(){
@@ -54,3 +84,9 @@ MainWindow::~MainWindow()
 }
 
 
+//Midlertidlig for å huske hvrdan man henter ut indeksen da man klikker i treeview
+void MainWindow::on_treeView_clicked(const QModelIndex &index)
+{
+    qDebug() << ui->treeView->currentIndex();
+    qDebug() << model->filePath(ui->treeView->currentIndex());
+}
