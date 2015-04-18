@@ -21,6 +21,11 @@ ccimp_img_view::ccimp_img_view(QWidget *parent) :
 
 }
 
+void ccimp_img_view::openImage()
+{
+    qDebug() << "QDebug: ccimp_img_view: opening an image";
+}
+
 ccimp_img_view::~ccimp_img_view()
 {
     delete ui;

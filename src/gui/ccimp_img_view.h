@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QImage>
 #include <QGraphicsView>
+#include <QDebug>
 
 namespace Ui {
 class ccimp_img_view;
@@ -15,6 +16,7 @@ class ccimp_img_view : public QGraphicsView
 
 public:
     explicit ccimp_img_view(QWidget *parent = 0);
+    void openImage();
     ~ccimp_img_view();
 
 private:
