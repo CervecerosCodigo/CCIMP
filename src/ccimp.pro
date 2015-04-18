@@ -16,12 +16,16 @@ SOURCES += main.cpp\
         gui/mainwindow.cpp \
     model/test_klasse.cpp \
     gui/ccimp_tree_view.cpp \
-    gui/ccimp_img_view.cpp
+    gui/ccimp_img_view.cpp \
+    model/image_processing_unit.cpp \
+    model/processing_interface.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
     gui/ccimp_tree_view.h \
-    gui/ccimp_img_view.h
+    gui/ccimp_img_view.h \
+    model/image_processing_unit.h \
+    model/processing_interface.h
 
 FORMS    += gui/mainwindow.ui \
     gui/ccimp_tree_view.ui \
