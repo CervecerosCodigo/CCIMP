@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
-#include "ccimp_tree_view.h"
+#include <QImage>
+#include <QGraphicsView>
+#include <QDebug>
+
 
 namespace Ui {
 class MainWindow;
@@ -19,11 +22,21 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    ccimp_tree_view *ccimp_t;
+
     void createConnections();
     void loadFile(const QString &fileName);
 
+
     QString filePath;
+
+
+    //Midlertidlig for å sette bilde fra main vindu
+    void setImage(const QString &path);
+    QString imgPath;
+    QImage *imgObject;
+    QPixmap image;
+    QGraphicsScene *scene;
+    QGraphicsView *view;
 
 public slots:
     void open();

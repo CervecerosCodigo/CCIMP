@@ -14,30 +14,25 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>1</y>
-      <width>1011</width>
-      <height>671</height>
+      <x>300</x>
+      <y>0</y>
+      <width>521</width>
+      <height>511</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="ccimp_tree_view" name="treeView"/>
-     </item>
-     <item>
-      <widget class="ccimp_img_view" name="graphicsView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   </widget>
+   <widget class="ccimp_tree_view" name="treeView">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>2</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -278,11 +273,6 @@
    <class>ccimp_tree_view</class>
    <extends>QTreeView</extends>
    <header>gui/ccimp_tree_view.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ccimp_img_view</class>
-   <extends>QGraphicsView</extends>
-   <header>gui/ccimp_img_view.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -14,9 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createConnections();
     QString path = "../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
-    ui->graphicsView->set_current_gui_image(path);
+    setImage(path);
 
-    qDebug() << ui->treeView->currentIndex();
 
 
 
@@ -40,7 +39,20 @@ void MainWindow::open(){
 }
 
 void MainWindow::loadFile(const QString &fileName){
-    ui->graphicsView->set_current_gui_image(fileName);
+    setImage(fileName);
+}
+
+void MainWindow::setImage(const QString &path)
+{
+    imgObject = new QImage();
+    imgObject->load(path);
+    image = QPixmap::fromImage(*imgObject);
+
+
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
 }
 
 void MainWindow::showDebugMsg(){
