@@ -23,6 +23,7 @@ ccimp_tree_view::~ccimp_tree_view()
     delete ui;
 }
 
+
 void ccimp_tree_view::on_init()
 {
     path = QDir::homePath();
@@ -37,4 +38,5 @@ void ccimp_tree_view::on_treeView_clicked(const QModelIndex &index)
 {
     qDebug() << ui->treeView->currentIndex();
     qDebug() << model->filePath(ui->treeView->currentIndex());
+
 }

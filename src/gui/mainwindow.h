@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include "ccimp_tree_view.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,7 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void showDebugMsg();
+    ccimp_tree_view *ccimp_t;
     void createConnections();
     void loadFile(const QString &fileName);
 
@@ -26,6 +27,7 @@ private:
 
 public slots:
     void open();
+    void showDebugMsg();
 };
 
 #endif // MAINWINDOW_H

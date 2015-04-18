@@ -15,11 +15,17 @@ MainWindow::MainWindow(QWidget *parent) :
     createConnections();
     QString path = "../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
     ui->graphicsView->set_current_gui_image(path);
+
+    qDebug() << ui->treeView->currentIndex();
+
+
+
 }
 
 void MainWindow::createConnections(){
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+
 }
 
 
@@ -46,3 +52,5 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
