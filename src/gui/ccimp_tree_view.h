@@ -5,7 +5,6 @@
 #include <QModelIndex>
 #include <QDir>
 #include <QDirModel>
-#include <QSortFilterProxyModel>
 
 namespace Ui {
 class ccimp_tree_view;
@@ -18,6 +17,7 @@ class ccimp_tree_view : public QTreeView
 public:
     explicit ccimp_tree_view(QWidget *parent = 0);
     ~ccimp_tree_view();
+
 
 private slots:
     void on_treeView_clicked(const QModelIndex &index);
