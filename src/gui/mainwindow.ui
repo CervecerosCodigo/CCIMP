@@ -189,10 +189,17 @@
     <addaction name="actionPrevoius"/>
     <addaction name="actionNext"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_CCIMP"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuGo"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -219,6 +226,8 @@
    <addaction name="actionPrevoius"/>
    <addaction name="actionNext"/>
    <addaction name="separator"/>
+   <addaction name="actionRotateLeft"/>
+   <addaction name="actionRotateRight"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
@@ -372,6 +381,41 @@
    </property>
    <property name="shortcut">
     <string>Space</string>
+   </property>
+  </action>
+  <action name="actionAbout_CCIMP">
+   <property name="text">
+    <string>About CCIMP</string>
+   </property>
+  </action>
+  <action name="actionRotateLeft">
+   <property name="icon">
+    <iconset resource="../../res/resources.qrc">
+     <normaloff>:/ico_22x22/ico/22x22/object-rotate-left.png</normaloff>:/ico_22x22/ico/22x22/object-rotate-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate Left</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate 90° left</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionRotateRight">
+   <property name="icon">
+    <iconset resource="../../res/resources.qrc">
+     <normaloff>:/ico_22x22/ico/22x22/object-rotate-right.png</normaloff>:/ico_22x22/ico/22x22/object-rotate-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate Right</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate 90° right</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
  </widget>
