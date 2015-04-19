@@ -6,8 +6,12 @@
 #include "tool_blur.h"
 #include "model/image_tool.h"
 
+#include <QImage>
+#include <QColor>
+
 class test_klasse
 {
+    QImage image;
 public:
     test_klasse();
     ~test_klasse();
