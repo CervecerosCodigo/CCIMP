@@ -37,21 +37,21 @@ void MainWindow::open(){
                 "",
                 tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
                 );
-    loadFile(filePath);
+    load_file(filePath);
 }
 
 /**
  * Laster inn filen
- * @brief MainWindow::loadFile
+ * @brief MainWindow::load_file
  * @param fileName
  */
-void MainWindow::loadFile(const QString &fileName){
+void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
 
 /**
  * Setter bilde i vindu
- * @brief MainWindow::setImage
+ * @brief MainWindow::set_image
  * @param path
  */
 void MainWindow::set_image(const QString &path)
@@ -86,7 +86,7 @@ void MainWindow::set_fs_view()
     ui->treeView->scrollTo(fs_index);
     ui->treeView->setCurrentIndex(fs_index);
 //    ui->treeView->resizeColumnToContents(0);
-    ui->treeView->setColumnWidth(0, 200); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
+    ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
 }
 
 MainWindow::~MainWindow()
@@ -113,8 +113,18 @@ void MainWindow::showDebugMsg(){
  * @brief MainWindow::on_treeView_clicked
  * @param index
  */
-void MainWindow::on_treeView_clicked(const QModelIndex &index)
+void MainWindow::on_treeView_clicked()
 {
-    qDebug() << ui->treeView->currentIndex();
-    qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
+//    qDebug() << new_img;
+//    set_image(new_img);
 }
+
+
+void MainWindow::on_treeView_pressed()
+{
+    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
+    //qDebug() << new_img;
+    set_image(new_img);
+}
+
