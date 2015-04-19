@@ -48,15 +48,15 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
-    //Midlertidlig for å sette komponenter i tree view uten arv
-    QDirModel *model;
-    QString path;
-    QModelIndex index;
-    void file_view_on_init();
 
-    //Midlertidlig for å teste filesystem model
+    /*
+     * TreeView med FileSystem model
+     */
+    QString fs_path;
     QFileSystemModel *fs_model;
     QStringList fs_filter;
+    QModelIndex fs_index;
+    void set_fs_view();
 
 public slots:
     void open();

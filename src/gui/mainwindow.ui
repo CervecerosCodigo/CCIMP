@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>1600</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,15 +18,12 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>771</width>
-      <height>621</height>
+      <y>0</y>
+      <width>1231</width>
+      <height>791</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetNoConstraint</enum>
-     </property>
      <item row="0" column="0">
       <widget class="QTreeView" name="treeView">
        <property name="sizePolicy">
@@ -49,23 +46,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QTreeView" name="treeView_2">
-    <property name="geometry">
-     <rect>
-      <x>785</x>
-      <y>10</y>
-      <width>221</width>
-      <height>621</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
+     <width>1600</width>
      <height>20</height>
     </rect>
    </property>
