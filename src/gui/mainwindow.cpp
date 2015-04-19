@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::createConnections(){
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
+    connect(ui->actionSave_As, SIGNAL(triggered()), this, SLOT(save_as()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 }
 
@@ -38,6 +39,22 @@ void MainWindow::open(){
                 tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
                 );
     load_file(filePath);
+}
+
+void MainWindow::save_as(){
+    filePath = QFileDialog::getSaveFileName(
+                this,
+                tr("Save As"),
+                "",
+                tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
+                );
+
+    QFile outFile(filePath);
+    if (outFile.open(QIODevice::WriteOnly)){
+        imgObject->save(filePath);
+        outFile.close();
+    }
+
 }
 
 /**

@@ -58,6 +58,7 @@ private:
 
 public slots:
     void open();
+    void save_as();
     void showDebugMsg();
 private slots:
     void on_treeView_clicked();
