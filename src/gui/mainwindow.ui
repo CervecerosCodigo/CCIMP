@@ -17,18 +17,28 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>1</y>
-      <width>1011</width>
-      <height>671</height>
+      <x>10</x>
+      <y>10</y>
+      <width>771</width>
+      <height>621</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="ccimp_tree_view" name="treeView"/>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QTreeView" name="treeView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </item>
-     <item>
-      <widget class="ccimp_img_view" name="graphicsView">
+     <item row="0" column="1">
+      <widget class="QGraphicsView" name="graphicsView">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -38,6 +48,16 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QTreeView" name="treeView_2">
+    <property name="geometry">
+     <rect>
+      <x>785</x>
+      <y>10</y>
+      <width>221</width>
+      <height>621</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -273,18 +293,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>ccimp_tree_view</class>
-   <extends>QTreeView</extends>
-   <header>gui/ccimp_tree_view.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ccimp_img_view</class>
-   <extends>QGraphicsView</extends>
-   <header>gui/ccimp_img_view.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../res/resources.qrc"/>
  </resources>
