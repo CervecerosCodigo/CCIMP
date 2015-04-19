@@ -13,5 +13,7 @@
         <file>ico/22x22/zoom-out.png</file>
         <file>ico/22x22/media-skip-forward.png</file>
         <file>ico/22x22/media-skip-backward.png</file>
+        <file>ico/22x22/object-rotate-left.png</file>
+        <file>ico/22x22/object-rotate-right.png</file>
     </qresource>
 </RCC>

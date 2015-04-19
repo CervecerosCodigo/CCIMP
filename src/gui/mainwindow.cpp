@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::createConnections(){
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
+    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(save()));
+    connect(ui->actionSave_As, SIGNAL(triggered()), this, SLOT(save_as()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 }
 
@@ -37,25 +39,59 @@ void MainWindow::open(){
                 "",
                 tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
                 );
-    loadFile(filePath);
+
+    load_file(filePath);
+}
+
+/**
+ * Lagre som
+ * @TODO Her borde vi bruke en eller annen exception.
+ * @brief MainWindow::save_as
+ */
+void MainWindow::save_as(){
+    filePath = QFileDialog::getSaveFileName(
+                this,
+                tr("Save As"),
+                "",
+                tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
+                );
+
+    QFile outFile(filePath);
+    if (outFile.open(QIODevice::WriteOnly)){
+        imgObject->save(filePath);
+        outFile.close();
+    }
+
+}
+
+void MainWindow::save(){
+    QFile outFile(original_filePath);
+    if (outFile.open(QIODevice::WriteOnly)){
+        imgObject->save(original_filePath);
+        outFile.close();
+        QString info = "File saved in\n" + original_filePath;
+        QMessageBox::information(this, "Save", info);
+    }
 }
 
 /**
  * Laster inn filen
- * @brief MainWindow::loadFile
+ * @brief MainWindow::load_file
  * @param fileName
  */
-void MainWindow::loadFile(const QString &fileName){
+void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
 
 /**
  * Setter bilde i vindu
- * @brief MainWindow::setImage
+ * @brief MainWindow::set_image
  * @param path
  */
 void MainWindow::set_image(const QString &path)
 {
+    qDebug() << "set_image: " << path;
+    original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
     image = QPixmap::fromImage(*imgObject);
@@ -86,7 +122,7 @@ void MainWindow::set_fs_view()
     ui->treeView->scrollTo(fs_index);
     ui->treeView->setCurrentIndex(fs_index);
 //    ui->treeView->resizeColumnToContents(0);
-    ui->treeView->setColumnWidth(0, 200); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
+    ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
 }
 
 MainWindow::~MainWindow()
@@ -113,8 +149,18 @@ void MainWindow::showDebugMsg(){
  * @brief MainWindow::on_treeView_clicked
  * @param index
  */
-void MainWindow::on_treeView_clicked(const QModelIndex &index)
+void MainWindow::on_treeView_clicked()
 {
-    qDebug() << ui->treeView->currentIndex();
-    qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
+//    qDebug() << new_img;
+//    set_image(new_img);
 }
+
+
+void MainWindow::on_treeView_pressed()
+{
+    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
+    //qDebug() << new_img;
+    set_image(new_img);
+}
+

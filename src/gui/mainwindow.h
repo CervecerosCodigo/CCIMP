@@ -6,15 +6,13 @@
 //For bildevisning
 #include <QImage>
 #include <QGraphicsView>
-//For TreeView
-#include <QTreeView>
-#include <QModelIndex>
-#include <QDir>
-#include <QDirModel>
 //For FileSystem model
 #include <QFileSystemModel>
-
+#include <QModelIndex>
+#include <QDir>
+#include <QMessageBox>
 #include <QDebug>
+
 
 
 
@@ -34,13 +32,16 @@ private:
     Ui::MainWindow *ui;
 
     void createConnections();
-    void loadFile(const QString &fileName);
+    void load_file(const QString &fileName);
 
 
     QString filePath;
+    QString original_filePath;
 
 
-    //Midlertidlig for å sette bilde fra main vindu
+    /*
+     * Setter opp bildevisning
+     */
     void set_image(const QString &path);
     QString imgPath;
     QImage *imgObject;
@@ -60,9 +61,13 @@ private:
 
 public slots:
     void open();
+    void save();
+    void save_as();
     void showDebugMsg();
 private slots:
-    void on_treeView_clicked(const QModelIndex &index);
+    void on_treeView_clicked();
+    void on_treeView_pressed();
+
 };
 
 #endif // MAINWINDOW_H
