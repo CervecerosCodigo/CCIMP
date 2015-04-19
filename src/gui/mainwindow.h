@@ -41,7 +41,7 @@ private:
 
 
     //Midlertidlig for å sette bilde fra main vindu
-    void setImage(const QString &path);
+    void set_image(const QString &path);
     QString imgPath;
     QImage *imgObject;
     QPixmap image;
