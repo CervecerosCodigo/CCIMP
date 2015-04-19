@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     model/image_processing_unit.cpp \
     model/image_tool.cpp \
     model/tool_blur.cpp \
-    model/image_wrapper.cpp
+    model/image_wrapper.cpp \
+    model/image_statistics.cpp \
+    model/parameter_builder.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -29,7 +31,9 @@ HEADERS  += gui/mainwindow.h \
     model/image_processing_unit.h \
     model/image_tool.h \
     model/tool_blur.h \
-    model/image_wrapper.h
+    model/image_wrapper.h \
+    model/image_statistics.h \
+    model/parameter_builder.h
 
 FORMS    += gui/mainwindow.ui
 
