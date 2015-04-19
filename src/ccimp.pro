@@ -33,7 +33,8 @@ HEADERS  += gui/mainwindow.h \
     model/tool_blur.h \
     model/image_wrapper.h \
     model/image_statistics.h \
-    model/parameter_builder.h
+    model/parameter_builder.h \
+    model/ccimp_vector.h
 
 FORMS    += gui/mainwindow.ui
 
