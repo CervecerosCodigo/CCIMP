@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::createConnections(){
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
+    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui->actionSave_As, SIGNAL(triggered()), this, SLOT(save_as()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 }
@@ -38,9 +39,15 @@ void MainWindow::open(){
                 "",
                 tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
                 );
+
     load_file(filePath);
 }
 
+/**
+ * Lagre som
+ * @TODO Her borde vi bruke en eller annen exception.
+ * @brief MainWindow::save_as
+ */
 void MainWindow::save_as(){
     filePath = QFileDialog::getSaveFileName(
                 this,
@@ -55,6 +62,16 @@ void MainWindow::save_as(){
         outFile.close();
     }
 
+}
+
+void MainWindow::save(){
+    QFile outFile(original_filePath);
+    if (outFile.open(QIODevice::WriteOnly)){
+        imgObject->save(original_filePath);
+        outFile.close();
+        QString info = "File saved in\n" + original_filePath;
+        QMessageBox::information(this, "Save", info);
+    }
 }
 
 /**
@@ -73,6 +90,8 @@ void MainWindow::load_file(const QString &fileName){
  */
 void MainWindow::set_image(const QString &path)
 {
+    qDebug() << "set_image: " << path;
+    original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
     image = QPixmap::fromImage(*imgObject);

@@ -10,7 +10,9 @@
 #include <QFileSystemModel>
 #include <QModelIndex>
 #include <QDir>
+#include <QMessageBox>
 #include <QDebug>
+
 
 
 
@@ -34,6 +36,7 @@ private:
 
 
     QString filePath;
+    QString original_filePath;
 
 
     /*
@@ -58,6 +61,7 @@ private:
 
 public slots:
     void open();
+    void save();
     void save_as();
     void showDebugMsg();
 private slots:
