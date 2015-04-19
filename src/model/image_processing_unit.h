@@ -4,11 +4,13 @@
 #include "processing_interface.h"
 #include <vector>
 #include <iostream>
+#include <QImage>
 
 class image_processing_unit : public processing_interface
 {
 
     std::vector<image_tool*> tools;
+    QImage image;
 
 public:
     image_processing_unit();

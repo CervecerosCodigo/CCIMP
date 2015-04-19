@@ -17,7 +17,8 @@ public:
     tool(processing_interface* p);
     virtual ~tool();
 
-    void execute() override; //image_tool
+
+    void execute(QImage& img) override; //image_tool
 };
 
 #endif // TOOL_H

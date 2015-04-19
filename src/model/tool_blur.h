@@ -11,7 +11,7 @@ public:
     tool_blur(processing_interface* p);
     ~tool_blur();
 
-    void execute() override;
+    void execute(QImage& img) override;
 };
 
 #endif // TOOL_BLUR_H
