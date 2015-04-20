@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     model/tool_blur.cpp \
     model/image_wrapper.cpp \
     model/image_statistics.cpp \
-    model/parameter_builder.cpp
+    model/parameter_builder.cpp \
+    test/test_lab.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \

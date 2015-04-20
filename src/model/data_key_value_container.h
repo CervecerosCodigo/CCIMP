@@ -3,9 +3,14 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
-template<typename K, typename V>
+using namespace std;
 
+template<class K, class V>
+/** This is a cool template class.
+ * @brief The data_key_value_container class
+ */
 class data_key_value_container {
 
 
@@ -15,7 +20,7 @@ private:
 public:
     void push(K const&, V const&);
     void pop();
-    T top() const;
+    pair<K,V>* top() const;
     bool empty() const{
         return data_v.empty();
     }
@@ -23,17 +28,39 @@ public:
 
 };
 
-template<typename K, typename V>
-void data_key_value_container::push(const K &, const V &){
-    data_v.push_back(make_pair(K,V));
+
+template<class K, class V>
+void data_key_value_container<K,V>::push(const K& key_el, const V& val_el){
+    data_v.push_back(make_pair(key_el, val_el));
+}
+
+template<class K, class V>
+void data_key_value_container<K,V>::pop()
+{
+    if(data_v.empty())
+        throw out_of_range("data_key_value_container: stack out of range");
+
+    data_v.pop_back();
+}
+
+template<class K, class V>
+pair<K, V> *data_key_value_container<K,V>::top() const
+{
+    if(data_v.empty())
+        throw out_of_range("data_key_value_container: stack out of range");
+
+    return data_v.back();
 }
 
 
-template<typename K, typename V>
-void data_key_value_container::print_data(){
+template<class K, class V>
+/** Used mainly for local debugging
+ * @brief data_key_value_container<K, V>::print_data
+ */
+void data_key_value_container<K,V>::print_data(){
 
     for(const auto& p : data_v){
-        std::cout << p.first << ", " << p.second << std::endl;
+        cout << p.first << ", " << p.second << endl;
     }
 }
 
