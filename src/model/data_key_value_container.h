@@ -20,12 +20,15 @@ private:
 public:
     void push(K const&, V const&);
     void pop();
-    pair<K,V>* top() const;
+    pair<K,V> top() const;
     bool empty() const{
         return data_v.empty();
     }
     void print_data();
-
+    int& size()
+    {
+        return data_v.size();
+    }
 };
 
 
@@ -44,7 +47,7 @@ void data_key_value_container<K,V>::pop()
 }
 
 template<class K, class V>
-pair<K, V> *data_key_value_container<K,V>::top() const
+pair<K, V> data_key_value_container<K,V>::top() const
 {
     if(data_v.empty())
         throw out_of_range("data_key_value_container: stack out of range");
@@ -63,7 +66,6 @@ void data_key_value_container<K,V>::print_data(){
         cout << p.first << ", " << p.second << endl;
     }
 }
-
 
 #endif // DATA_KEY_VALUE_CONTAINER
 

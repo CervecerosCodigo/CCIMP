@@ -93,15 +93,16 @@ void MainWindow::set_image(const QString &path)
     image = QPixmap::fromImage(*imgObject);
 
     //Tester noen ting med å skrive ut statistikk.
-    qDebug() << image_statistics::get_img_stat(image);
-    ui->textEdit->setText(image_statistics::get_img_stat(image));
+//    qDebug() << image_statistics::get_img_stat(image);
+    image_statistics stat;
+    ui->textEdit->setText(stat.get_img_stat(image));
 
     //Tester med char
-    const char* test1 = "Heisann";
-    std::cout << test1 << '\n';
+//    const char* test1 = "Heisann";
+//    std::cout << test1 << '\n';
 //    qDebug() << *test1;
-    std::cout << image_statistics::get_img_stat2();
-    qDebug() << image_statistics::get_img_stat2();
+//    std::cout << image_statistics::get_img_stat2();
+//    qDebug() << image_statistics::get_img_stat2();
 
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
