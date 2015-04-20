@@ -37,7 +37,7 @@ HEADERS  += gui/mainwindow.h \
     model/parameter_builder.h \
     model/ccimp_vector.h\
     model/data_key_value_container.h
-
+    model/parameters.h
 
 FORMS    += gui/mainwindow.ui
 
