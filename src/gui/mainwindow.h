@@ -12,8 +12,9 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QDebug>
+#include <iostream>
 
-
+#include "model/image_statistics.h"
 
 
 namespace Ui {

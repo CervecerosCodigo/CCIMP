@@ -28,8 +28,7 @@ void MainWindow::createConnections(){
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 }
 
-/**
- * FileOpen dialog
+/** FileOpen dialog
  * @brief MainWindow::open
  */
 void MainWindow::open(){
@@ -43,8 +42,7 @@ void MainWindow::open(){
     load_file(filePath);
 }
 
-/**
- * Lagre som
+/** Lagre som
  * @TODO Her borde vi bruke en eller annen exception.
  * @brief MainWindow::save_as
  */
@@ -74,8 +72,7 @@ void MainWindow::save(){
     }
 }
 
-/**
- * Laster inn filen
+/** Laster inn filen
  * @brief MainWindow::load_file
  * @param fileName
  */
@@ -83,8 +80,7 @@ void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
 
-/**
- * Setter bilde i vindu
+/** Setter bilde i vindu
  * @brief MainWindow::set_image
  * @param path
  */
@@ -95,14 +91,26 @@ void MainWindow::set_image(const QString &path)
     imgObject = new QImage();
     imgObject->load(path);
     image = QPixmap::fromImage(*imgObject);
+
+    //Tester noen ting med å skrive ut statistikk.
+//    qDebug() << image_statistics::get_img_stat(image);
+    image_statistics stat;
+    ui->textEdit->setText(stat.get_img_stat(image));
+
+    //Tester med char
+//    const char* test1 = "Heisann";
+//    std::cout << test1 << '\n';
+//    qDebug() << *test1;
+//    std::cout << image_statistics::get_img_stat2();
+//    qDebug() << image_statistics::get_img_stat2();
+
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
 }
 
-/**
- * Setter opp file system view
+/** Setter opp file system view
  * @brief MainWindow::set_fs_view
  */
 void MainWindow::set_fs_view()
@@ -143,8 +151,7 @@ void MainWindow::showDebugMsg(){
 
 }
 
-/**
- * Skriver ut i terminal path til den mappe eller fil som man klikket på i
+/** Skriver ut i terminal path til den mappe eller fil som man klikket på i
  * filesystemview.
  * @brief MainWindow::on_treeView_clicked
  * @param index

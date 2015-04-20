@@ -1,11 +1,26 @@
 #ifndef IMAGE_STATISTICS_H
 #define IMAGE_STATISTICS_H
 
-#include <QImage>
+#include <QPixmap>
+#include <QString>
+#include <QDebug>
+
+#include "model/data_key_value_container.h"
+
 
 class image_statistics
 {
-    QImage img;
+    data_key_value_container<QString, QString> stats_container;
+    //QImage img; //jeg får ikke ut noen data fra QImage. Bruker QPixmap til videre.
+    QPixmap img;
+
+    /** Private function to be called from a other public
+     * member funtion with return type.
+     *
+     * This function populates the stats_container.
+     * @brief create_img_stats
+     */
+    void create_img_stats();
 
     int width;
     int height;
@@ -17,6 +32,8 @@ class image_statistics
 public:
     image_statistics();
     ~image_statistics();
+    QString get_img_stat(const QPixmap&);
+
 };
 
 #endif // IMAGE_STATISTICS_H
