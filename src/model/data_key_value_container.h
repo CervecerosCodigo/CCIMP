@@ -25,7 +25,7 @@ public:
         return data_v.empty();
     }
     void print_data();
-    int& size()
+    int size()
     {
         return data_v.size();
     }
