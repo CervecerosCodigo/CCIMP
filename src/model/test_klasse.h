@@ -5,7 +5,7 @@
 #include "model/image_processing_unit.h"
 #include "tool_blur.h"
 #include "model/image_tool.h"
-
+#include "parameters.h"
 #include <QImage>
 #include <QColor>
 
