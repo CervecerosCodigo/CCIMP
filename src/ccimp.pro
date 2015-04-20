@@ -22,7 +22,6 @@ SOURCES += main.cpp\
     model/tool_blur.cpp \
     model/image_wrapper.cpp \
     model/image_statistics.cpp \
-    model/parameter_builder.cpp \
     test/test_lab.cpp
 
 HEADERS  += gui/mainwindow.h \
@@ -34,7 +33,6 @@ HEADERS  += gui/mainwindow.h \
     model/tool_blur.h \
     model/image_wrapper.h \
     model/image_statistics.h \
-    model/parameter_builder.h \
     model/ccimp_vector.h\
     model/data_key_value_container.h
     model/parameters.h
