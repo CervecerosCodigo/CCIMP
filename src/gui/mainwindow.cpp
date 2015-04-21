@@ -90,20 +90,11 @@ void MainWindow::set_image(const QString &path)
     original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
+
+    //Viser statistikk
+    show_stats(imgObject);
+
     image = QPixmap::fromImage(*imgObject);
-
-    //Tester noen ting med å skrive ut statistikk.
-//    qDebug() << image_statistics::get_img_stat(image);
-    image_statistics stat;
-    ui->textEdit->setText(stat.get_img_stat(image));
-
-    //Tester med char
-//    const char* test1 = "Heisann";
-//    std::cout << test1 << '\n';
-//    qDebug() << *test1;
-//    std::cout << image_statistics::get_img_stat2();
-//    qDebug() << image_statistics::get_img_stat2();
-
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
@@ -131,6 +122,11 @@ void MainWindow::set_fs_view()
     ui->treeView->setCurrentIndex(fs_index);
 //    ui->treeView->resizeColumnToContents(0);
     ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
+}
+
+void MainWindow::show_stats(QImage *img){
+    image_statistics stat;
+    ui->textEdit->setText(stat.get_img_stat(*img));
 }
 
 MainWindow::~MainWindow()

@@ -2,6 +2,7 @@
 #define IMAGE_STATISTICS_H
 
 #include <QPixmap>
+#include <QImage>
 #include <QString>
 #include <QDebug>
 
@@ -11,8 +12,8 @@
 class image_statistics
 {
     data_key_value_container<QString, QString> stats_container;
-    //QImage img; //jeg får ikke ut noen data fra QImage. Bruker QPixmap til videre.
-    QPixmap img;
+    QImage img; //jeg får ikke ut noen data fra QImage. Bruker QPixmap til videre.
+    //QPixmap img;
 
     /** Private function to be called from a other public
      * member funtion with return type.
@@ -32,7 +33,7 @@ class image_statistics
 public:
     image_statistics();
     ~image_statistics();
-    QString get_img_stat(const QPixmap&);
+    QString get_img_stat(const QImage&);
 
 };
 
