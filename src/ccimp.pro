@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     model/tool_blur.cpp \
     model/image_wrapper.cpp \
     model/image_statistics.cpp \
-    test/test_lab.cpp
+    test/test_lab.cpp \
+    model/parameter_using_colors.cpp \
+    model/parameter_using_coordiantes.cpp \
+    model/parameter_using_slider.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -34,8 +37,11 @@ HEADERS  += gui/mainwindow.h \
     model/image_wrapper.h \
     model/image_statistics.h \
     model/ccimp_vector.h\
-    model/data_key_value_container.h
-    model/parameters.h
+    model/data_key_value_container.h\
+    model/parameters.h \
+    model/parameter_using_colors.h \
+    model/parameter_using_coordiantes.h \
+    model/parameter_using_slider.h
 
 FORMS    += gui/mainwindow.ui
 

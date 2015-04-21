@@ -1,6 +1,6 @@
 #include "tool_blur.h"
 
-tool_blur::tool_blur(processing_interface* p) : tool(p)
+tool_blur::tool_blur(processing_interface* pro, parameters* para) : tool(pro, para)
 {
 
 }
