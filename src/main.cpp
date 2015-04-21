@@ -5,7 +5,7 @@
 #include "model/processing_interface.h"
 #include "model/test_klasse.h"
 #include "test/test_lab.cpp"
-
+#include "model/instantiate_tools.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     image_processing_unit p(w);
-
+    processing_interface* process = &p;
+    instantiate_tools{process};
     w.show();
 
 

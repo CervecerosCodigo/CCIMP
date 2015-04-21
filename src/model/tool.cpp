@@ -12,6 +12,6 @@ tool::~tool()
 
 
 void tool::execute(QImage& img){
-//    std::cout << "Kjører execute" << std::endl;
+    //std::cout << "Kjører execute" << std::endl;
 }
 
