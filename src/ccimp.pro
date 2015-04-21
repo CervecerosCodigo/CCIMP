@@ -26,7 +26,10 @@ SOURCES += main.cpp\
     model/parameter_using_colors.cpp \
     model/parameter_using_coordiantes.cpp \
     model/parameter_using_slider.cpp \
-    model/instantiate_tools.cpp
+    model/instantiate_tools.cpp \
+    test/guitest.cpp \
+    test/controllertest.cpp \
+    test/observertest.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -43,7 +46,10 @@ HEADERS  += gui/mainwindow.h \
     model/parameter_using_colors.h \
     model/parameter_using_coordiantes.h \
     model/parameter_using_slider.h \
-    model/instantiate_tools.h
+    model/instantiate_tools.h \
+    test/guitest.h \
+    test/controllertest.h \
+    test/observertest.h
 
 FORMS    += gui/mainwindow.ui
 
