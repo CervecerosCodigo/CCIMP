@@ -56,4 +56,7 @@ FORMS    += gui/mainwindow.ui
 RESOURCES += \
     ../res/resources.qrc
 
+ICON += \
+    ../res/ico/appico/CCIMP.ico
+
 CONFIG += c++11
