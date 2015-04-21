@@ -60,6 +60,11 @@ private:
     QModelIndex fs_index;
     void set_fs_view();
 
+    /*
+     * For å vise bildestatistikk
+     */
+    void show_stats(QImage*);
+
 public slots:
     void open();
     void save();

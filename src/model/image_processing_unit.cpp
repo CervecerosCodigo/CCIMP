@@ -1,7 +1,7 @@
 #include "image_processing_unit.h"
-#include<QColor>
 
-image_processing_unit::image_processing_unit()
+
+image_processing_unit::image_processing_unit(MainWindow& mw):gui_mw{mw}
 {
 
 
