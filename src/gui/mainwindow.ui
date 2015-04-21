@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>CCIMP</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../res/resources.qrc">
+    <normaloff>:/app_ico/ico/appico/CCIMP.ico</normaloff>:/app_ico/ico/appico/CCIMP.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -71,7 +75,7 @@
          <height>635</height>
         </rect>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -131,14 +135,6 @@
          </item>
         </layout>
        </widget>
-       <zorder>layoutWidget</zorder>
-       <zorder>graphicsView</zorder>
-       <zorder>pushButton</zorder>
-       <zorder>pushButton_2</zorder>
-       <zorder>pushButton_3</zorder>
-       <zorder>pushButton_4</zorder>
-       <zorder>pushButton_5</zorder>
-       <zorder>verticalSpacer</zorder>
       </widget>
      </widget>
     </item>
