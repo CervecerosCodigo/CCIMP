@@ -14,8 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     createConnections();
 
     //Setter bilde ved boot
-    QString path = "../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
+    QString path = QCoreApplication::applicationDirPath()+"/../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
     set_image(path);
+    qDebug() << "Running path " << QCoreApplication::applicationDirPath();
 
     //Setter opp en tree view
     set_fs_view();
