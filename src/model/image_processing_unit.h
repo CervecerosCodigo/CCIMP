@@ -6,18 +6,21 @@
 #include <vector>
 #include <iostream>
 #include <QImage>
+#include <QColor>
 
+#include "gui/mainwindow.h"
 
 class image_processing_unit : public processing_interface
 {
 
+    MainWindow& gui_mw;
     std::vector<image_tool*> tools;         //holds all the tools, set by register_tool(image_tool* t)
     std::vector<image_wrapper> open_images; //holds all images, wrapped in a container
 
     image_tool* selected_tool;              //the selected tool from GUI
 
 public:
-    image_processing_unit();
+    image_processing_unit(MainWindow&);
     ~image_processing_unit();
 
     void register_tool(image_tool* t) override; //from processing_interface

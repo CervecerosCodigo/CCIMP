@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QDebug>
 
+#include "model/processing_interface.h"
 #include "model/test_klasse.h"
 #include "test/test_lab.cpp"
 
@@ -9,7 +10,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     MainWindow w;
+    image_processing_unit p(w);
+
     w.show();
 
 
