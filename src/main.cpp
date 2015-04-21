@@ -1,7 +1,7 @@
 #include "gui/mainwindow.h"
 #include <QApplication>
 #include <QDebug>
-
+#include "test/controllertest.h"
 #include "model/processing_interface.h"
 #include "model/test_klasse.h"
 #include "test/test_lab.cpp"
@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
     processing_interface* process = &p;
     instantiate_tools{process};
     w.show();
+
+    controllertest* cont = new controllertest();    //Starter test-controller for observer-pattern
 
 
 /*
