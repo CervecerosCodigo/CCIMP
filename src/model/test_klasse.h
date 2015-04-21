@@ -6,6 +6,7 @@
 #include "tool_blur.h"
 #include "model/image_tool.h"
 #include "parameters.h"
+#include "parameter_using_slider.h"
 #include <QImage>
 #include <QColor>
 

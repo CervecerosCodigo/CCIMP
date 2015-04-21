@@ -14,11 +14,12 @@ class tool : image_tool
 
 public:
 
-    tool(processing_interface* p);
+    tool(processing_interface* pro, parameters* para);
     virtual ~tool();
 
 
     void execute(QImage& img) override; //image_tool
+
 };
 
 #endif // TOOL_H
