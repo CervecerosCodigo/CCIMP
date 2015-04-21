@@ -44,6 +44,7 @@ private:
      * Setter opp bildevisning
      */
     void set_image(const QString &path);
+    void set_image();
     QString imgPath;
     QImage *imgObject;
     QPixmap image;
@@ -73,6 +74,12 @@ public slots:
 private slots:
     void on_treeView_clicked();
     void on_treeView_pressed();
+    void rotate_left();
+    void rotate_right();
+    void zoomIn();
+    void zoomOut();
+    void actualSize();
+    void zoomToFit();
 
 };
 

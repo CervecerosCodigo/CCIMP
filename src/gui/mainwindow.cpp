@@ -26,6 +26,12 @@ void MainWindow::createConnections(){
     connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui->actionSave_As, SIGNAL(triggered()), this, SLOT(save_as()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui->actionRotateLeft, SIGNAL(triggered()), this, SLOT(rotate_left()));
+    connect(ui->actionRotateRight, SIGNAL(triggered()), this, SLOT(rotate_right()));
+    connect(ui->actionZoom_In, SIGNAL(triggered()), this, SLOT(zoomIn()));
+    connect(ui->actionZoom_Out, SIGNAL(triggered()), this, SLOT(zoomOut()));
+    connect(ui->actionActual_size, SIGNAL(triggered()), this, SLOT(actualSize()));
+    connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
 }
 
 /** FileOpen dialog
@@ -101,6 +107,22 @@ void MainWindow::set_image(const QString &path)
     ui->graphicsView->setScene(scene);
 }
 
+
+void MainWindow::set_image()
+{
+    //Viser statistikk
+    show_stats(imgObject);
+
+    image = QPixmap::fromImage(*imgObject);
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
+}
+
+
+
+
 /** Setter opp file system view
  * @brief MainWindow::set_fs_view
  */
@@ -128,6 +150,49 @@ void MainWindow::show_stats(QImage *img){
     image_statistics stat;
     ui->textEdit->setText(stat.get_img_stat(*img));
 }
+
+
+void MainWindow::rotate_left() {
+    qDebug()<< "Rotate left ran";
+    QTransform rot;
+    rot.rotate(-90);
+    QImage nyttBilde = this->imgObject->transformed(rot);
+    this->imgObject = (QImage*)&nyttBilde;
+    set_image();
+}
+
+
+void MainWindow::rotate_right() {
+    qDebug()<< "Rotate right ran";
+    QTransform rot;
+    rot.rotate(90);
+    QImage nyttBilde = this->imgObject->transformed(rot);
+    this->imgObject = (QImage*)&nyttBilde;
+    set_image();
+}
+
+
+void MainWindow::zoomIn() {
+    qDebug()<< "zoomIn() ran";
+
+}
+
+
+void MainWindow::zoomOut() {
+    qDebug()<< "zoomOut() ran";
+
+}
+
+void MainWindow::actualSize() {
+    qDebug()<< "actualSize() ran";
+
+}
+
+void MainWindow::zoomToFit() {
+    qDebug()<< "zoomToFit() ran";
+    this->view->fitInView(scene->itemsBoundingRect() ,Qt::KeepAspectRatio);
+}
+
 
 MainWindow::~MainWindow()
 {
