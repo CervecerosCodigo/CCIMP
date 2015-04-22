@@ -6,6 +6,7 @@
 #include "model/test_klasse.h"
 #include "test/test_lab.cpp"
 #include "model/instantiate_tools.h"
+#include "test/crop_test.cpp"
 
 int main(int argc, char *argv[])
 {

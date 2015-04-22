@@ -180,7 +180,7 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
-    scene->
+    //scene->
 }
 
 
