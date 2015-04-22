@@ -31,11 +31,8 @@ SOURCES += main.cpp\
     test/controllertest.cpp \
     test/observertest.cpp \
     model/listen_for_image_change.cpp \
-<<<<<<< HEAD
-    test/crop_test.cpp
-=======
+    test/crop_test.cpp \
     gui/slider_dialog.cpp
->>>>>>> Petter
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -57,11 +54,8 @@ HEADERS  += gui/mainwindow.h \
     test/controllertest.h \
     test/observertest.h \
     model/listen_for_image_change.h \
-<<<<<<< HEAD
-    lib.h
-=======
+    lib.h \
     gui/slider_dialog.h
->>>>>>> Petter
 
 FORMS    += gui/mainwindow.ui
 
