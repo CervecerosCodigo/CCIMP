@@ -33,6 +33,8 @@ void MainWindow::createConnections(){
     connect(ui->actionZoom_Out, SIGNAL(triggered()), this, SLOT(zoomOut()));
     connect(ui->actionActual_size, SIGNAL(triggered()), this, SLOT(actualSize()));
     connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
+    connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
+    connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
 }
 
 /** FileOpen dialog
@@ -178,7 +180,7 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
-
+    scene->
 }
 
 
@@ -195,6 +197,15 @@ void MainWindow::actualSize() {
 void MainWindow::zoomToFit() {
     qDebug()<< "zoomToFit() ran";
     this->view->fitInView(scene->itemsBoundingRect() ,Qt::KeepAspectRatio);
+}
+
+
+void MainWindow::undo_command(){
+    img_listener->undo_last_command();
+}
+
+void MainWindow::redo_command(){
+    img_listener->redo_last_command();
 }
 
 

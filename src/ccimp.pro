@@ -52,7 +52,8 @@ HEADERS  += gui/mainwindow.h \
     test/guitest.h \
     test/controllertest.h \
     test/observertest.h \
-    model/listen_for_image_change.h
+    model/listen_for_image_change.h \
+    lib.h
 
 FORMS    += gui/mainwindow.ui
 

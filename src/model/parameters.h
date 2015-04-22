@@ -1,27 +1,17 @@
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
 
-typedef int X_AXIS;
-typedef int Y_AXIS;
-typedef int RED;
-typedef int GREEN;
-typedef int BLUE;
-typedef int ALPHA;
-typedef int SLIDERVAL;
-
-#define MIN_COL_VAL 0
-#define MAX_COL_VAL 255
-
+#include "lib.h"
 
 class parameters{
 
-
+    PARAMTYPE type;
 
 public:
-//    parameters();
-//    virtual ~parameters();
+    parameters(PARAMTYPE t):type{t}{}
+    virtual ~parameters(){}
 
-    //virtual parameters* get_param() = 0;
+    inline virtual PARAMTYPE get_paramtype(){return type;}
 };
 
 
