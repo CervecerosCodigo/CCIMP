@@ -1,4 +1,4 @@
-//#include "Magi
+//#include <ImageMagick/Magick++.h>
 #include <iostream>
 //#include <QDebug>
 

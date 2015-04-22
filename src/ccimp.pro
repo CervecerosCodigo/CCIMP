@@ -66,7 +66,7 @@ ICON += \
 CONFIG += c++11
 
 #For ImageMagick
-unix!mac{
+
 LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
 
 #Dersom den over ikke fungrer og det kommer meldinger i stil med ad finner ikke Magick++ osv da bruk disse under
@@ -76,7 +76,7 @@ LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
 
 INCLUDEPATH +=  /usr/include/ImageMagick-6/
 DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
-}
+
 
 
 QMAKE_CXXFLAGS += `Magick++-config --cxxflags --cppflags` -O2 `Magick++-config --ldflags --libs`
