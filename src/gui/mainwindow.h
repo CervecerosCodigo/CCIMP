@@ -70,7 +70,7 @@ private:
     /**
      * Forskjellige lyttere mellom gui og controllere
      */
-    bool img_listener_set;
+    bool img_listener_set;  //må settes for at img_listener kan brukes
     listen_for_image_change* img_listener;
 
 public slots:

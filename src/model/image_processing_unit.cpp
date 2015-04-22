@@ -14,21 +14,15 @@ image_processing_unit::~image_processing_unit()
 
 
 void image_processing_unit::register_tool(image_tool* t){
-//    QImage img;
-//    t->execute(img);
 
     tools.insert_back(t);
 
 
 }
 
-
-//void image_processing_unit::open_new_image(QImage img){
-//    //open_images.push_back(image_wrapper(img));
-//}
-
 void image_processing_unit::on_image_change(QImage& img){
-    qDebug() << "Skriver nå ut via gui sin set_image-metode";
+    //qDebug() << "Skriver nå ut via gui sin set_image-metode";
+    current_image = new image_wrapper(img);
 }
 
 

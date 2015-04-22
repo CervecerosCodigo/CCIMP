@@ -1,6 +1,6 @@
 #include "image_wrapper.h"
 
-image_wrapper::image_wrapper(QImage img): image{img}
+image_wrapper::image_wrapper(QImage& img): image{&img}
 {
 
 }
@@ -17,7 +17,7 @@ void image_wrapper::update_history(){
 
 void image_wrapper::execute_tool(){
 
-    current_tool->execute(image);
+    current_tool->execute(*image);
 }
 
 

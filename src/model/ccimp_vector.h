@@ -1,7 +1,7 @@
 #ifndef CCIMP_VECTOR
 #define CCIMP_VECTOR
 
-#endif // CCIMP_VECTOR
+
 
 #include <vector>
 
@@ -119,3 +119,4 @@ T ccimp_vector<T>::at_element(int i) {
     return vect.at(i);
 }
 
+#endif // CCIMP_VECTOR
