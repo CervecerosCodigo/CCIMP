@@ -184,7 +184,10 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
+<<<<<<< HEAD
     //scene->
+=======
+>>>>>>> fe077f1b660caa627146178d6a26cd252bd411f0
 }
 
 
