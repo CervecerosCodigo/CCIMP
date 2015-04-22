@@ -2,6 +2,7 @@
 #define IMAGE_WRAPPER_H
 
 #include <QImage>
+#include <QDebug>
 #include <vector>
 #include "ccimp_vector.h"
 #include <model/image_tool.h>

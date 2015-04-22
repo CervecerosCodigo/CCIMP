@@ -28,7 +28,8 @@ public:
 
     void register_tool(image_tool* t) override; //from processing_interface
     void on_image_change(QImage& img) override; //from listen_for_image_change
-
+    void undo_last_command() override;
+    void redo_last_command() override;
 
     void set_image_listener_on_gui();
 };

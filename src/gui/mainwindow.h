@@ -87,6 +87,8 @@ private slots:
     void zoomOut();
     void actualSize();
     void zoomToFit();
+    void undo_command();
+    void redo_command();
 
 
 };

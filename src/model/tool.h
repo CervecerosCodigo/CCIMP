@@ -7,14 +7,16 @@
 
 #include <iostream>
 
+
+
 class tool : image_tool
 {
-
+    std::string type;
     processing_interface* processing;
 
 public:
 
-    tool(processing_interface* pro, parameters* para);
+    tool(processing_interface* pro, parameters* para, std::string tool_type);
     virtual ~tool();
 
 
