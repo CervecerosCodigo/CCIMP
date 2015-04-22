@@ -15,7 +15,7 @@
 #include <iostream>
 
 #include "model/image_statistics.h"
-
+#include "model/listen_for_image_change.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    void set_image_listener(listen_for_image_change* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -66,6 +67,12 @@ private:
      */
     void show_stats(QImage*);
 
+    /**
+     * Forskjellige lyttere mellom gui og controllere
+     */
+    bool img_listener_set;
+    listen_for_image_change* img_listener;
+
 public slots:
     void open();
     void save();
@@ -80,6 +87,7 @@ private slots:
     void zoomOut();
     void actualSize();
     void zoomToFit();
+
 
 };
 

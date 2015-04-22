@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     model/instantiate_tools.cpp \
     test/guitest.cpp \
     test/controllertest.cpp \
-    test/observertest.cpp
+    test/observertest.cpp \
+    model/listen_for_image_change.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -49,7 +50,8 @@ HEADERS  += gui/mainwindow.h \
     model/instantiate_tools.h \
     test/guitest.h \
     test/controllertest.h \
-    test/observertest.h
+    test/observertest.h \
+    model/listen_for_image_change.h
 
 FORMS    += gui/mainwindow.ui
 

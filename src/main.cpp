@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     instantiate_tools{process};
     w.show();
 
-    controllertest* cont = new controllertest();    //Starter test-controller for observer-pattern
+    //controllertest* cont = new controllertest();    //Starter test-controller for observer-pattern
 
 
 /*
