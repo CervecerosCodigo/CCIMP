@@ -17,6 +17,7 @@
 #include "model/image_statistics.h"
 #include "model/listen_for_image_change.h"
 
+
 namespace Ui {
 class MainWindow;
 }

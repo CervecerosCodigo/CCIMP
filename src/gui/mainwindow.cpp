@@ -229,6 +229,14 @@ void MainWindow::on_treeView_clicked()
 }
 
 
+/*
+ * ************************************************************************
+ * Slutt på ting som brukes til debugging
+ *
+ * ************************************************************************
+ */
+
+
 void MainWindow::on_treeView_pressed()
 {
     QString new_img = fs_model->filePath(ui->treeView->currentIndex());
