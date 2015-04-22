@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-    image_processing_unit p(w);
+    image_processing_unit p(w); //controller
     processing_interface* process = &p;
     instantiate_tools{process};
     w.show();
