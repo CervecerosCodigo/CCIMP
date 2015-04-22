@@ -106,6 +106,8 @@ void MainWindow::set_image(const QString &path)
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
+    if(img_listener_set)
+        img_listener->on_image_change(*imgObject);   //notify controller by sending reference of the new image
 }
 
 
@@ -119,6 +121,7 @@ void MainWindow::set_image()
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
+
 }
 
 
@@ -231,5 +234,11 @@ void MainWindow::on_treeView_pressed()
     QString new_img = fs_model->filePath(ui->treeView->currentIndex());
     //qDebug() << new_img;
     set_image(new_img);
+}
+
+void MainWindow::set_image_listener(listen_for_image_change *l){
+    img_listener_set = true;
+    img_listener = l;
+
 }
 
