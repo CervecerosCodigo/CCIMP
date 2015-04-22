@@ -1,6 +1,6 @@
 #include "tool.h"
 
-tool::tool(processing_interface* pro, parameters* para, std::string tool_type) : image_tool(para), processing{pro}, type{tool_type}
+tool::tool(processing_interface* pro, parameters* para, TOOLIDENT tool_ident) : image_tool(para),  tool_identifier{tool_ident}, processing{pro}
 {
     processing->register_tool(this);
 }

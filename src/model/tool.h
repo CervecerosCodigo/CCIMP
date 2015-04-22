@@ -1,6 +1,7 @@
 #ifndef TOOL_H
 #define TOOL_H
 
+#include "lib.h"
 #include "model/image_processing_unit.h"
 #include "model/processing_interface.h"
 #include "model/image_tool.h"
@@ -11,12 +12,12 @@
 
 class tool : image_tool
 {
-    std::string type;
+    TOOLIDENT tool_identifier;
     processing_interface* processing;
 
 public:
 
-    tool(processing_interface* pro, parameters* para, std::string tool_type);
+    tool(processing_interface* pro, parameters* para, TOOLIDENT tool_ident);
     virtual ~tool();
 
 
