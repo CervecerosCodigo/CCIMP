@@ -2,20 +2,22 @@
 #define IMAGE_WRAPPER_H
 
 #include <QImage>
+#include <QDebug>
 #include <vector>
+#include "ccimp_vector.h"
 #include <model/image_tool.h>
 
 class image_wrapper
 {
-    std::vector<QImage> undo_history;   //holds previous version
-    std::vector<QImage> redo_history;   //holds newer versions, in case of previous undo
-    QImage image;
+    ccimp_vector<QImage*> undo_history;   //holds previous version
+    ccimp_vector<QImage*> redo_history;   //holds newer versions, in case of previous undo
+    QImage* image;
     image_tool* current_tool;
 
     void update_history();  //keep history vectors up-to-date
 
 public:
-    image_wrapper(QImage img);
+    image_wrapper(QImage& img);
     ~image_wrapper();
 
     void execute_tool();
@@ -25,7 +27,7 @@ public:
 
 
     inline void set_current_tool(image_tool* t){current_tool = t;}
-    inline QImage& get_image(){return image;}
+    inline QImage& get_image(){return *image;}
 };
 
 #endif // IMAGE_WRAPPER_H

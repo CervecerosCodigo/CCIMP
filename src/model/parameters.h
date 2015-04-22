@@ -12,16 +12,17 @@ typedef int SLIDERVAL;
 #define MIN_COL_VAL 0
 #define MAX_COL_VAL 255
 
+enum PARAMTYPE{SLIDER, COORDINATE, COLOR};
 
 class parameters{
 
-
+    PARAMTYPE type;
 
 public:
-//    parameters();
-//    virtual ~parameters();
+    parameters(PARAMTYPE t):type{t}{}
+    virtual ~parameters(){}
 
-    //virtual parameters* get_param() = 0;
+    inline virtual PARAMTYPE get_paramtype(){return type;}
 };
 
 
