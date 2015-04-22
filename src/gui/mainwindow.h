@@ -16,6 +16,7 @@
 
 #include "model/image_statistics.h"
 #include "model/listen_for_image_change.h"
+#include "slider_dialog.h"
 
 
 namespace Ui {
@@ -37,9 +38,10 @@ private:
     void createConnections();
     void load_file(const QString &fileName);
 
-
     QString filePath;
     QString original_filePath;
+
+    slider_dialog *brightnessDialog;
 
 
     /*
@@ -90,8 +92,7 @@ private slots:
     void zoomToFit();
     void undo_command();
     void redo_command();
-
-
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

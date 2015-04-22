@@ -20,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Setter opp en tree view
     set_fs_view();
+
+    // Oppretter dialogvinduer
+    brightnessDialog = new slider_dialog(3);
+
 }
 
 void MainWindow::createConnections(){
@@ -180,7 +184,6 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
-    scene->
 }
 
 
@@ -261,3 +264,10 @@ void MainWindow::set_image_listener(listen_for_image_change *l){
 
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    if(!brightnessDialog->isVisible())
+        brightnessDialog->show();
+
+    else brightnessDialog->close();
+}
