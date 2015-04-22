@@ -9,11 +9,11 @@ instantiate_tools::~instantiate_tools()
 {
 
     delete blur;
-    //delete process;
+
 }
 
 
 void instantiate_tools::create_tools_to_be_used(){
 
-    blur = new tool_blur(process, new parameter_using_slider());
+    blur = new tool_blur(process, new parameter_using_slider(), TOOLIDENT::BLUR);
 }

@@ -18,8 +18,8 @@ class image_processing_unit : public processing_interface, public listen_for_ima
     MainWindow& gui_mw;
     ccimp_vector<image_tool*> tools;         //holds all the tools, set by register_tool(image_tool* t)
     //ccimp_vector<image_wrapper> open_images; //holds all images, wrapped in a container
-    image_wrapper* current_image;
 
+    image_wrapper* current_image;           //current image
     image_tool* selected_tool;              //the selected tool from GUI
 
 public:
@@ -31,7 +31,7 @@ public:
     void undo_last_command() override;
     void redo_last_command() override;
 
-    void set_image_listener_on_gui();
+
 };
 
 #endif // IMAGE_PROCESSING_UNIT_H

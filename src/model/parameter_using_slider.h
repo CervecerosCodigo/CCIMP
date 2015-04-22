@@ -12,7 +12,7 @@ public:
     parameter_using_slider();
     virtual ~parameter_using_slider();
 
-    inline void set_slider(int s){slider_val = s;}
+    inline void set_slider_val(int s){slider_val = s;}
     inline SLIDERVAL get_slider_val(){return slider_val;}
 
 
