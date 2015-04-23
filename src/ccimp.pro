@@ -101,9 +101,9 @@ unix:!macx: LIBS += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/li
 
 
 #Her kommer versjon for mac, ennå ikke testet
-macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagick++-6.Q16.dylib \
-                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickCore-6.Q16.dylib \
-                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickWand-6.Q16.dylib
+#macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagick++-6.Q16.dylib \
+#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickCore-6.Q16.dylib \
+#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickWand-6.Q16.dylib
 
 
 #Denne viser til h filer for bibliotekt, borde være samme systemuavhengig
