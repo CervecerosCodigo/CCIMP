@@ -31,8 +31,9 @@ SOURCES += main.cpp\
     test/controllertest.cpp \
     test/observertest.cpp \
     model/listen_for_image_change.cpp \
+    gui/slider_dialog.cpp \
     test/crop_test.cpp \
-    gui/slider_dialog.cpp
+    gui/crop_dialog.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -55,9 +56,12 @@ HEADERS  += gui/mainwindow.h \
     test/observertest.h \
     model/listen_for_image_change.h \
     lib.h \
-    gui/slider_dialog.h
+    gui/slider_dialog.h \
+    test/crop_test.h \
+    gui/crop_dialog.h
 
-FORMS    += gui/mainwindow.ui
+FORMS    += gui/mainwindow.ui \
+    gui/crop_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc

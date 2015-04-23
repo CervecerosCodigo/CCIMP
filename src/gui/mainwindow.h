@@ -18,6 +18,7 @@
 #include "model/listen_for_image_change.h"
 #include "slider_dialog.h"
 #include "model/ccimp_vector.h"
+#include "gui/crop_dialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    crop_dialog c_dialog;
 
     void createConnections();
     void load_file(const QString &fileName);
@@ -92,6 +94,7 @@ private slots:
     void undo_command();
     void redo_command();
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 };
 
 #endif // MAINWINDOW_H
