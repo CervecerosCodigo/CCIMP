@@ -90,9 +90,14 @@ CONFIG += c++11
 
 #Her er for Linux x86_64 versjonen
 #unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
-unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
-                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
-                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
+
+#unix:!macx: LIBS += -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
+#                    -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
+#                    -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
+unix:!macx: LIBS += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
+                    ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
+                    ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
+
 
 
 #Her kommer versjon for mac, ennå ikke testet
@@ -102,12 +107,12 @@ macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darw
 
 
 #Denne viser til h filer for bibliotekt, borde være samme systemuavhengig
-INCLUDEPATH += $$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6/
+#INCLUDEPATH += $$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6/
 #Her ligge so filer. Finner ikke samme i mac releasen. Hvis vi ikke får det til å fungere må vi kompielre disse på mac.
-DEPENDPATH += $$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8/
-#INCLUDEPATH += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6
+#DEPENDPATH += $$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8/
+INCLUDEPATH += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6
 #Her ligge so filer. Finner ikke samme i mac releasen. Hvis vi ikke får det til å fungere må vi kompielre disse på mac.
-#DEPENDPATH += ../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8
+DEPENDPATH += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8
 
 
 #Kompilator flagger som sendes videre til g++
