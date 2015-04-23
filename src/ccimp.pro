@@ -69,15 +69,15 @@ CONFIG += c++11
 
 #For ImageMagick
 
-LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
+#LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
 
 #Dersom den over ikke fungrer og det kommer meldinger i stil med ad finner ikke Magick++ osv da bruk disse under
 #LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
 #            /usr/lib64/libMagickCore-6.Q16.so \
 #            /usr/lib64/libMagickWand-6.Q16.so
 
-INCLUDEPATH +=  /usr/include/ImageMagick-6/
-DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
+#INCLUDEPATH +=  /usr/include/ImageMagick-6/
+#DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
 
 
 
