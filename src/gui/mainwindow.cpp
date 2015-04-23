@@ -272,3 +272,12 @@ void MainWindow::on_pushButton_clicked()
 
     else brightnessDialog->close();
 }
+
+/** Denne er til for å teste ImageMagick egentlig
+ * @brief MainWindow::on_pushButton_2_clicked
+ */
+void MainWindow::on_pushButton_2_clicked()
+{
+    c_dialog.setModal(true);
+    c_dialog.exec();
+}
