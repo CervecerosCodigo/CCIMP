@@ -17,7 +17,7 @@
 #include "model/image_statistics.h"
 #include "model/listen_for_image_change.h"
 #include "slider_dialog.h"
-
+#include "model/ccimp_vector.h"
 
 namespace Ui {
 class MainWindow;

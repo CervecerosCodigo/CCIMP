@@ -16,7 +16,7 @@ image_processing_unit::~image_processing_unit()
 void image_processing_unit::register_tool(image_tool* t){
 
     tools.insert_back(t);
-
+    num_tools++;
 }
 
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det

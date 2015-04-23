@@ -82,7 +82,9 @@ CONFIG += c++11
 #Kompilator flagger som sendes videre til g++
 QMAKE_CXXFLAGS += `Magick++-config --cppflags --cxxflags --ldflags --libs`
 
+#####################################################################
 #Her er linkinking av delte .so biblioteker og .h filer for linux
+#####################################################################
 #VIKTIG!!! før kompilering kjør ./configure script med følgende flagger: --enable-shared --with-modules
 #For å kompilere moduler kan det være nødvendig med ldtl bibliotek (jeg hadde den ikke) dersom den eller annen
 #bibliotek mangler kommmer configure til å stoppe.
@@ -90,3 +92,4 @@ QMAKE_CXXFLAGS += `Magick++-config --cppflags --cxxflags --ldflags --libs`
 unix:!macx: LIBS += /usr/local/lib/libMagick++-6.Q16.so
 INCLUDEPATH += /usr/local/include/ImageMagick-6
 DEPENDPATH += /usr/local/lib/ImageMagick-6.9.1/
+#####################################################################
