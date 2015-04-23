@@ -9,6 +9,7 @@
 #include <iostream>
 #include <QImage>
 #include <QColor>
+#include "lib.h"
 
 #include "gui/mainwindow.h"
 
@@ -21,6 +22,8 @@ class image_processing_unit : public processing_interface, public listen_for_ima
 
     image_wrapper* current_image;           //current image
     image_tool* selected_tool;              //the selected tool from GUI
+
+    NUMTOOLS num_tools;
 
 public:
     image_processing_unit(MainWindow&);
