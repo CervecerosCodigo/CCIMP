@@ -67,6 +67,7 @@ ICON += \
 
 CONFIG += c++11
 
+#For ImageMagick
 
 #########################################################################################################################
 #
@@ -75,44 +76,17 @@ CONFIG += c++11
 #
 # Det som er kommentert vekk er kun eksempel kan spares dersom vi får problem seinere
 #########################################################################################################################
-#LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
 
-
-#Dersom den over ikke fungrer og det kommer meldinger i stil med ad finner ikke Magick++ osv da bruk disse under
-#LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
-#            /usr/lib64/libMagickCore-6.Q16.so \
-#            /usr/lib64/libMagickWand-6.Q16.so
-
-#INCLUDEPATH +=  /usr/include/ImageMagick-6/
-#DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
-
-
-#Her er for Linux x86_64 versjonen
-#unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
-#unix:!macx: LIBS += -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
-#                    -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
-#                    -L$$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
-unix:!macx: LIBS += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
-                    ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
-                    ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
-
-
-#Her kommer versjon for mac, ennå ikke testet
-#macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagick++-6.Q16.dylib \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickCore-6.Q16.dylib \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickWand-6.Q16.dylib
-
-
-#Denne viser til h filer for bibliotekt, borde være samme systemuavhengig
-#INCLUDEPATH += $$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6/
-#Her ligge so filer. Finner ikke samme i mac releasen. Hvis vi ikke får det til å fungere må vi kompielre disse på mac.
-#DEPENDPATH += $$PWD/../../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8/
-INCLUDEPATH += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/includepath/ImageMagick-6
-#Her ligge so filer. Finner ikke samme i mac releasen. Hvis vi ikke får det til å fungere må vi kompielre disse på mac.
-DEPENDPATH += ../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ImageMagick-6.8.8
 
 
 #Kompilator flagger som sendes videre til g++
-QMAKE_CXXFLAGS += `Magick++-config --cxxflags --cppflags` -O2 `Magick++-config --ldflags --libs`
+QMAKE_CXXFLAGS += `Magick++-config --cppflags --cxxflags --ldflags --libs`
 
-
+#Her er linkinking av delte .so biblioteker og .h filer for linux
+#VIKTIG!!! før kompilering kjør ./configure script med følgende flagger: --enable-shared --with-modules
+#For å kompilere moduler kan det være nødvendig med ldtl bibliotek (jeg hadde den ikke) dersom den eller annen
+#bibliotek mangler kommmer configure til å stoppe.
+#Jeg installerte følgende pakker (fedora) for å få ldtl til å fungere: libtool-ltdl libtool-ltdl-devel og mingw64-libltdl
+unix:!macx: LIBS += /usr/local/lib/libMagick++-6.Q16.so
+INCLUDEPATH += /usr/local/include/ImageMagick-6
+DEPENDPATH += /usr/local/lib/ImageMagick-6.9.1/

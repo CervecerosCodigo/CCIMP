@@ -8,9 +8,11 @@
 #include "model/instantiate_tools.h"
 #include "test/crop_test.cpp"
 
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
 
     MainWindow w;
     image_processing_unit p(w); //controller
