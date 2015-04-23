@@ -31,5 +31,12 @@ int main(int argc, char *argv[])
 //    test_lab *t_lab;
 //    t_lab->test_data_cont_template();
 
+    /*
+     * Avkommenter for å kjøre test. Denne leser inn bilde girl.gif som skal finnes i build mappen der programmet kompileres.
+     * Dersom ImageMagick fungerer kommer det bilde til å bli beskjært å lagret i samme mappe med x.gif som filformat.
+     */
+    crop_test *c_test = new crop_test();
+
+
     return a.exec();
 }
