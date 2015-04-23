@@ -67,8 +67,10 @@ ICON += \
 
 CONFIG += c++11
 
-#For ImageMagick
 
+<<<<<<< HEAD
+#LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
+=======
 #########################################################################################################################
 #
 # ImageMagick
@@ -78,6 +80,7 @@ CONFIG += c++11
 #########################################################################################################################
 #LIBS += -L/usr/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
 
+>>>>>>> 56cdd96c719663891e5883588157e5cdbaf8e925
 
 #Dersom den over ikke fungrer og det kommer meldinger i stil med ad finner ikke Magick++ osv da bruk disse under
 LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
@@ -87,6 +90,11 @@ LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
 #INCLUDEPATH +=  /usr/include/ImageMagick-6/
 #DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
 
+<<<<<<< HEAD
+#INCLUDEPATH +=  /usr/include/ImageMagick-6/
+#DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
+=======
+>>>>>>> 56cdd96c719663891e5883588157e5cdbaf8e925
 
 #Her er for Linux x86_64 versjonen
 #unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6

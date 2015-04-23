@@ -69,7 +69,6 @@ private:
      * For å vise bildestatistikk
      */
     void show_stats(QImage*);
-
     /**
      * Forskjellige lyttere mellom gui og controllere
      */
