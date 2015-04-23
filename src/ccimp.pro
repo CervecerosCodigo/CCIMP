@@ -80,9 +80,9 @@ CONFIG += c++11
 
 
 #Dersom den over ikke fungrer og det kommer meldinger i stil med ad finner ikke Magick++ osv da bruk disse under
-LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
-            /usr/lib64/libMagickCore-6.Q16.so \
-            /usr/lib64/libMagickWand-6.Q16.so
+#LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
+#            /usr/lib64/libMagickCore-6.Q16.so \
+#            /usr/lib64/libMagickWand-6.Q16.so
 
 #INCLUDEPATH +=  /usr/include/ImageMagick-6/
 #DEPENDPATH +=   /usr/lib64/ImageMagick-6.8.8/
@@ -90,15 +90,15 @@ LIBS +=     /usr/lib64/libMagick++-6.Q16.so \
 
 #Her er for Linux x86_64 versjonen
 #unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/ -lMagick++-6 -lMagickWand-6 -lMagickCore-6
-#unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
+unix:!macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagick++-6.Q16.so \
+                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickCore-6.Q16.so \
+                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/linux_x86_64/lib64/libMagickWand-6.Q16.so
 
 
 #Her kommer versjon for mac, ennå ikke testet
-#macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagick++-6.Q16.dylib \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickCore-6.Q16.dylib \
-#                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickWand-6.Q16.dylib
+macx: LIBS += -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagick++-6.Q16.dylib \
+                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickCore-6.Q16.dylib \
+                    -L$$PWD/../build-ccimp-Desktop-Debug/lib/ImageMagick/mac_os_x_darwin14_x86_64/lib/libMagickWand-6.Q16.dylib
 
 
 #Denne viser til h filer for bibliotekt, borde være samme systemuavhengig
