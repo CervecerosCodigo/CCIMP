@@ -12,6 +12,7 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QDebug>
+#include <Magick++.h>
 #include <iostream>
 
 #include "model/image_statistics.h"
@@ -20,6 +21,8 @@
 #include "gui/crop_dialog.h"
 #include <vector>
 #include "brightness_dialog.h"
+
+using namespace Magick;
 
 namespace Ui {
 class MainWindow;
@@ -44,7 +47,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
-
+    Image* toImage(QImage* qimage);
+    QImage* toQImage(Image* image);
     void createConnections();
     void load_file(const QString &fileName);
 
