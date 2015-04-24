@@ -39,6 +39,7 @@ public slots:
 private slots:
   void on_pushButton_clicked();
   void on_buttonBox_accepted();
+  void on_buttonBox_exec();
 
 private:
     Ui::crop_dialog *ui;
