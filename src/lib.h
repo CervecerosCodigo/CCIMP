@@ -10,6 +10,8 @@ typedef int BLUE;       //blue color
 typedef int ALPHA;      //alpha chanel
 typedef int SLIDERVAL;  //slider value
 typedef int NUMTOOLS;   //number of tools loaded
+typedef int WIDTH;      //width
+typedef int HEIGHT;     //height
 
 #define MIN_COL_VAL 0   //lowest allowed value of a color
 #define MAX_COL_VAL 255 //highest allowed value of a color
