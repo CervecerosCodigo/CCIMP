@@ -72,7 +72,7 @@
          <x>0</x>
          <y>0</y>
          <width>103</width>
-         <height>619</height>
+         <height>607</height>
         </rect>
        </property>
        <widget class="QWidget" name="layoutWidget">
@@ -152,7 +152,7 @@
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
