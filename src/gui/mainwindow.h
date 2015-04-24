@@ -19,6 +19,7 @@
 #include "slider_dialog.h"
 #include "model/ccimp_vector.h"
 #include "gui/crop_dialog.h"
+#include <vector>
 
 namespace Ui {
 class MainWindow;
@@ -28,14 +29,21 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    crop_dialog c_dialog;
+    vector<int> test_vektor;
+
+
 public:
     void set_image_listener(listen_for_image_change* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
+
+
 private:
     Ui::MainWindow *ui;
-    //crop_dialog c_dialog;
+
 
     void createConnections();
     void load_file(const QString &fileName);
@@ -78,10 +86,12 @@ private:
     listen_for_image_change* img_listener;
 
 public slots:
+    void print_vector();
     void open();
     void save();
     void save_as();
     void showDebugMsg();
+
 private slots:
     void on_treeView_clicked();
     void on_treeView_pressed();
@@ -95,6 +105,7 @@ private slots:
     void redo_command();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
 };
 
 #endif // MAINWINDOW_H

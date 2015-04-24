@@ -20,8 +20,9 @@ class crop_dialog : public QDialog
 public:
     explicit crop_dialog(QWidget *parent = 0);
     ~crop_dialog();
-    QString getStringValue();
-    void on_buttonBox_accepted();
+
+    const std::vector<int>& get_crop_values();
+
 
 signals:
   void signalNewString1(QString val);
@@ -37,6 +38,7 @@ public slots:
 
 private slots:
   void on_pushButton_clicked();
+  void on_buttonBox_accepted();
 
 private:
     Ui::crop_dialog *ui;
