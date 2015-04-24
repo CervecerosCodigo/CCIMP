@@ -13,7 +13,7 @@ public:
     ~image_tool();
 
     virtual void execute(QImage& img) = 0;
-    //inline void set_param(parameters* p){param = p;}
+
     inline parameters* get_param(){return param;}
 
 };
