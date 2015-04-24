@@ -217,6 +217,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/** Denne metoden var til bruk for å teste dersom det er enkelt nok til
+ * å ta imot data fra et dialogvindu og skrive ut det i main window.
+ * @brief MainWindow::print_vector
+ */
 void MainWindow::print_vector()
 {
 
@@ -226,6 +230,19 @@ void MainWindow::print_vector()
         qDebug() << *vi;
         vi++;
     }
+}
+
+/** Denne skal beskjære bilde.
+ * Funksjonen skal seinere flyttes til controller.
+ * @brief MainWindow::crop_image
+ */
+void MainWindow::crop_image()
+{
+    Image *bilde = toImage(this->imgObject);
+    bilde->crop(Geometry(200,200,200,200));
+    this->imgObject = toQImage(bilde);
+    set_image();
+
 }
 
 
@@ -287,7 +304,7 @@ void MainWindow::on_pushButton_2_clicked()
 
     c_dialog.setModal(true);
 
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(print_vector()));
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(crop_image()));
 
 
 
