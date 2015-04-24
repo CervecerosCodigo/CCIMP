@@ -35,7 +35,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    crop_dialog c_dialog;
+    //crop_dialog c_dialog;
 
     void createConnections();
     void load_file(const QString &fileName);

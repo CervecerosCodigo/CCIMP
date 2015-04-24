@@ -39,6 +39,8 @@ void MainWindow::createConnections(){
     connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
     connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
     connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
+
+
 }
 
 /** FileOpen dialog
@@ -228,8 +230,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::showDebugMsg(){
     qDebug() << "Debug melding fra main window";
-
 }
+
 
 /** Skriver ut i terminal path til den mappe eller fil som man klikket på i
  * filesystemview.
@@ -278,6 +280,13 @@ void MainWindow::on_pushButton_clicked()
  */
 void MainWindow::on_pushButton_2_clicked()
 {
+
+    crop_dialog c_dialog;
+
     c_dialog.setModal(true);
+
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(showDebugMsg()));
+
+
     c_dialog.exec();
 }
