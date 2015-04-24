@@ -19,6 +19,11 @@ crop_dialog::~crop_dialog()
     delete ui;
 }
 
+const std::vector<int> &crop_dialog::get_crop_values()
+{
+    return crop_values;
+}
+
 
 
 
@@ -39,6 +44,7 @@ void crop_dialog::on_pushButton_clicked()
     crop_values.push_back(height);
     crop_values.push_back(x_offset);
     crop_values.push_back(y_offset);
+
 
     emit slotEditFinished();
 }

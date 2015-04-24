@@ -220,6 +220,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::print_vector()
+{
+
+    test_vektor = c_dialog.get_crop_values();
+    std::vector<int>::iterator vi = test_vektor.begin();
+    while(vi != test_vektor.end()){
+        qDebug() << *vi;
+        vi++;
+    }
+}
+
+
 
 /*
  * ************************************************************************
@@ -281,11 +293,12 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
 
-    crop_dialog c_dialog;
+//    crop_dialog c_dialog;
 
     c_dialog.setModal(true);
 
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(showDebugMsg()));
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(print_vector()));
+
 
 
     c_dialog.exec();
