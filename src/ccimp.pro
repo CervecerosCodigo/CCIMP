@@ -94,6 +94,14 @@ QMAKE_CXXFLAGS += `Magick++-config --cppflags --cxxflags --ldflags --libs`
 #bibliotek mangler kommmer configure til å stoppe.
 #Jeg installerte følgende pakker (fedora) for å få ldtl til å fungere: libtool-ltdl libtool-ltdl-devel og mingw64-libltdl
 unix:!macx: LIBS += /usr/local/lib/libMagick++-6.Q16.so
-INCLUDEPATH += /usr/local/include/ImageMagick-6
-DEPENDPATH += /usr/local/lib/ImageMagick-6.9.1/
+unix:!macx: INCLUDEPATH += /usr/local/include/ImageMagick-6
+unix:!macx: DEPENDPATH += /usr/local/lib/ImageMagick-6.9.1/
 #####################################################################
+
+macx: LIBS += /opt/local/lib/libMagick++-6.Q16.5.dylib
+macx: INCLUDEPATH += /opt/local/include/ImageMagick-6
+macx: DEPENDPATH += /opt/local/lib/ImageMagick-6.9.0
+
+#LIBS += /opt/local/lib/libMagick++-6.Q16.5.dylib
+#INCLUDEPATH += /opt/local/include/ImageMagick-6
+#DEPENDPATH += /opt/local/lib/ImageMagick-6.9.0
