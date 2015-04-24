@@ -21,9 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //Setter opp en tree view
     set_fs_view();
 
-    // Oppretter dialogvinduer
-    brightnessDialog = new slider_dialog(3);
-
 }
 
 void MainWindow::createConnections(){
@@ -279,13 +276,6 @@ void MainWindow::set_image_listener(listen_for_image_change *l){
 
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    if(!brightnessDialog->isVisible())
-        brightnessDialog->show();
-
-    else brightnessDialog->close();
-}
 
 /** Denne er til for å teste ImageMagick egentlig
  * @brief MainWindow::on_pushButton_2_clicked
@@ -302,4 +292,16 @@ void MainWindow::on_pushButton_2_clicked()
 
 
     c_dialog.exec();
+}
+
+void MainWindow::changeBrightness(int i) {
+    qDebug() << i;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    brightness_dialog b_dialog;
+    b_dialog.setModal(true);
+    connect(&b_dialog, SIGNAL(signalBrightnessChanged(int)), this, SLOT(changeBrightness(int)));
+    b_dialog.exec();
 }

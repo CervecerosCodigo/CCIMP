@@ -16,10 +16,10 @@
 
 #include "model/image_statistics.h"
 #include "model/listen_for_image_change.h"
-#include "slider_dialog.h"
 #include "model/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include <vector>
+#include "brightness_dialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -50,8 +50,6 @@ private:
 
     QString filePath;
     QString original_filePath;
-
-    slider_dialog *brightnessDialog;
 
 
     /*
@@ -92,6 +90,9 @@ public slots:
     void save_as();
     void showDebugMsg();
 
+    void changeBrightness(int i);
+
+
 private slots:
     void on_treeView_clicked();
     void on_treeView_pressed();
@@ -103,8 +104,9 @@ private slots:
     void zoomToFit();
     void undo_command();
     void redo_command();
-    void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
 
 };
 
