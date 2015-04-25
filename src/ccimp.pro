@@ -14,51 +14,34 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gui/mainwindow.cpp \
-    model/test_klasse.cpp \
     model/tool.cpp \
-    model/processing_interface.cpp \
-    model/image_processing_unit.cpp \
     model/image_tool.cpp \
     model/tool_blur.cpp \
     model/image_wrapper.cpp \
     model/image_statistics.cpp \
     test/test_lab.cpp \
-    model/parameter_using_colors.cpp \
-    model/parameter_using_coordiantes.cpp \
-    model/parameter_using_slider.cpp \
-    model/instantiate_tools.cpp \
-    test/guitest.cpp \
-    test/controllertest.cpp \
-    test/observertest.cpp \
-    model/listen_for_image_change.cpp \
+    parameters/using_slider.cpp \
     test/crop_test.cpp \
     gui/crop_dialog.cpp \
     gui/brightness_dialog.cpp \
     img_tools/crop_tool.cpp \
     img_tools/img_obj_converter.cpp \
     model/tool_crop.cpp \
-    img_tools/brightness_tool.cpp
+    img_tools/brightness_tool.cpp \
+    model/controller.cpp \
+    model/build_tools.cpp \
+    parameters/using_colors.cpp \
+    parameters/using_coordinates.cpp
 
 HEADERS  += gui/mainwindow.h \
-    model/test_klasse.h \
     model/tool.h \
-    model/processing_interface.h \
-    model/image_processing_unit.h \
     model/image_tool.h \
     model/tool_blur.h \
     model/image_wrapper.h \
     model/image_statistics.h \
     model/ccimp_vector.h\
     model/data_key_value_container.h\
-    model/parameters.h \
-    model/parameter_using_colors.h \
-    model/parameter_using_coordiantes.h \
-    model/parameter_using_slider.h \
-    model/instantiate_tools.h \
-    test/guitest.h \
-    test/controllertest.h \
-    test/observertest.h \
-    model/listen_for_image_change.h \
+    parameters/parameters.h \
     lib.h \
     test/crop_test.h \
     gui/crop_dialog.h \
@@ -66,7 +49,14 @@ HEADERS  += gui/mainwindow.h \
     img_tools/crop_tool.h \
     img_tools/img_obj_converter.h \
     model/tool_crop.h \
-    img_tools/brightness_tool.h
+    img_tools/brightness_tool.h \
+    model/controller.h \
+    model/controller_iface.h \
+    model/build_tools.h \
+    parameters/using_slider.h \
+    parameters/using_colors.h \
+    parameters/using_coordinates.h \
+    model/gui_listener.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

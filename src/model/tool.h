@@ -2,10 +2,9 @@
 #define TOOL_H
 
 #include "lib.h"
-#include "model/image_processing_unit.h"
-#include "model/processing_interface.h"
+#include "model/controller_iface.h"
 #include "model/image_tool.h"
-//#include "Magick++.h"
+
 #include <iostream>
 
 
@@ -13,11 +12,11 @@
 class tool : image_tool
 {
     //TOOLIDENT tool_identifier;
-    processing_interface* processing;
+    controller_iface* control;
 
 public:
 
-    tool(processing_interface* pro, parameters* para, TOOLIDENT tool_ident);
+    tool(controller_iface* cont, parameters* para, TOOLIDENT tool_ident);
     virtual ~tool();
 
 

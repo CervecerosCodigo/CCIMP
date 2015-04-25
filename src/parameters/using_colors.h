@@ -1,9 +1,9 @@
-#ifndef PARAMETER_USING_COLORS_H
-#define PARAMETER_USING_COLORS_H
+#ifndef USING_COLORS_H
+#define USING_COLORS_H
 
 #include "parameters.h"
 
-class parameter_using_colors : public parameters
+class using_colors : public parameters
 {
 
     //colors
@@ -14,8 +14,8 @@ class parameter_using_colors : public parameters
 
 
 public:
-    parameter_using_colors();
-    virtual ~parameter_using_colors();
+    using_colors();
+    virtual ~using_colors();
 
     inline void set_red(int r){red = r;}
     inline void set_green(int g){green = g;}
@@ -29,4 +29,4 @@ public:
     //parameters* get_param() override;
 };
 
-#endif // PARAMETER_USING_COLORS_H
+#endif // using_colors_H

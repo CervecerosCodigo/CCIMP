@@ -1,9 +1,9 @@
-#ifndef PARAMETER_USING_COORDIANTES_H
-#define PARAMETER_USING_COORDIANTES_H
+#ifndef USING_COORDINATES_H
+#define USING_COORDINATES_H
 
 #include "parameters.h"
 
-class parameter_using_coordiantes : public parameters
+class using_coordinates : public parameters
 {
 
     //coordinates
@@ -13,8 +13,8 @@ class parameter_using_coordiantes : public parameters
     WIDTH width;
 
 public:
-    parameter_using_coordiantes();
-    virtual ~parameter_using_coordiantes();
+    using_coordinates();
+    virtual ~using_coordinates();
 
     inline void set_x_axis(int x){x_axis = x;}
     inline void set_y_axis(int y){y_axis = y;}
@@ -28,4 +28,4 @@ public:
    // parameters* get_param() override;
 };
 
-#endif // PARAMETER_USING_COORDIANTES_H
+#endif // USING_COORDINATES_H

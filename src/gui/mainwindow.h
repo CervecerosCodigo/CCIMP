@@ -16,7 +16,7 @@
 #include <iostream>
 
 #include "model/image_statistics.h"
-#include "model/listen_for_image_change.h"
+#include "model/gui_listener.h"
 #include "model/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include <vector>
@@ -47,7 +47,7 @@ class MainWindow : public QMainWindow
     Magick::Image *edit_orig_image;
 
 public:
-    void set_image_listener(listen_for_image_change* l);
+    void set_image_listener(gui_listener* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
@@ -95,7 +95,7 @@ private:
      * Forskjellige lyttere mellom gui og controllere
      */
     bool img_listener_set = false;  //må settes for at img_listener kan brukes
-    listen_for_image_change* img_listener;
+    gui_listener* img_listener;
 
 public slots:
     void open();

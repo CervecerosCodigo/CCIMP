@@ -2,27 +2,21 @@
 #include <QApplication>
 #include <QDebug>
 #include <Magick++.h>
-#include "test/controllertest.h"
-#include "model/processing_interface.h"
-#include "model/test_klasse.h"
+#include "model/controller_iface.h"
 #include "test/test_lab.cpp"
-#include "model/instantiate_tools.h"
-
+#include "model/build_tools.h"
+#include "model/controller.h"
 
 
 int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
-    //InitializeMagick(*argv);
 
     MainWindow w;
-    image_processing_unit p(w); //controller
-    processing_interface* process = &p;
-    instantiate_tools{process};
+    controller p(w); //controller
+    controller_iface* control = &p;
+    build_tools{control};
     w.show();
-
-    //controllertest* cont = new controllertest();    //Starter test-controller for observer-pattern
-
 
 /***********************************************
  * Tester

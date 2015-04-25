@@ -1,11 +1,11 @@
-#include "processing_interface.h"
+#include "controller_iface.h"
 
-processing_interface::processing_interface()
+controller_iface::controller_iface()
 {
 
 }
 
-processing_interface::~processing_interface()
+controller_iface::~controller_iface()
 {
 
 }

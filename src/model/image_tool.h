@@ -3,7 +3,7 @@
 
 //#include<Image>
 #include "Magick++.h"
-#include "parameters.h"
+#include "parameters/parameters.h"
 
 class image_tool
 {
