@@ -16,15 +16,43 @@ image_processing_unit::~image_processing_unit()
 void image_processing_unit::register_tool(image_tool* t){
 
     tools.insert_back(t);
-    num_tools++;
+    TOOLIDENT t_type = t->get_tool_identifier();
+
+    //Call correct GUI-function to set its parameters on the slider tools
+    switch(t_type){
+    case TOOLIDENT::BLUR:
+        //code
+        break;
+    case TOOLIDENT::SHARPEN:
+        //code
+        break;
+    case TOOLIDENT::CROP:
+        //code
+        break;
+    case TOOLIDENT::RESIZE:
+        //code
+        break;
+    case TOOLIDENT::COL:
+        //code
+        break;
+    case TOOLIDENT::BRIGTHEN:
+        //code
+        break;
+    }
+
 }
 
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det
-void image_processing_unit::on_image_change(QImage& img){
+void image_processing_unit::on_new_image(QImage& img){
     //qDebug() << "Skriver nå ut via gui sin set_image-metode";
     current_image = new image_wrapper(img);
+    //TODO:: Må oppdatere undo/redo-vectorene her også
 }
 
+void image_processing_unit::on_clicked_tool(image_tool* t){
+    selected_tool = t;
+
+}
 
 //Lytter på "undo-knappen" i GUI
 void image_processing_unit::undo_last_command(){

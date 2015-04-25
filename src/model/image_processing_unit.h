@@ -30,9 +30,10 @@ public:
     ~image_processing_unit();
 
     void register_tool(image_tool* t) override; //from processing_interface
-    void on_image_change(QImage& img) override; //from listen_for_image_change
+    void on_new_image(QImage& img) override; //from listen_for_image_change
     void undo_last_command() override;
     void redo_last_command() override;
+    void on_clicked_tool(image_tool* t) override;
 
 
 };
