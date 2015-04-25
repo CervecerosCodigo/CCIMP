@@ -16,13 +16,14 @@ class brightness_dialog : public QDialog
 public:
     explicit brightness_dialog(QWidget *parent = 0);
     ~brightness_dialog();
+    const int& get_slider_value();
 
 signals:
-    void signalBrightnessChanged(int i);
+    void signalBrightnessChanged();
 
 public slots:
     void slotEditFinished() {
-        emit signalBrightnessChanged(this->value);
+        emit signalBrightnessChanged();
 }
 
 private slots:
@@ -30,7 +31,7 @@ private slots:
 
 private:
     Ui::brightness_dialog *ui;
-    int value;
+    int value, new_value;
 };
 
 #endif // BRIGHTNESS_DIALOG_H
