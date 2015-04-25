@@ -30,7 +30,7 @@ const std::vector<int> &crop_dialog::get_crop_values()
 void crop_dialog::on_buttonBox_accepted()
 {
 
-    parameter_using_coordiantes* param = (parameter_using_coordiantes*)tool->get_param();
+    using_coordinates* param = (using_coordinates*)tool->get_param();
     param->set_width(ui->lineEdit->text().toInt());
     param->set_height(ui->lineEdit_2->text().toInt());
     param->set_x_axis(ui->lineEdit_3->text().toInt());

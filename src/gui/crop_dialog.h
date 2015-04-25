@@ -6,8 +6,8 @@
 #include <QDebug>
 #include <vector>
 #include "model/image_tool.h"
-#include "model/parameters.h"
-#include "model/parameter_using_coordiantes.h"
+#include "parameters/parameters.h"
+#include "parameters/using_coordinates.h"
 
 namespace Ui {
 class crop_dialog;

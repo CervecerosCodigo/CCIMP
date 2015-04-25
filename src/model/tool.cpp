@@ -1,8 +1,8 @@
 #include "tool.h"
 
-tool::tool(processing_interface* pro, parameters* para, TOOLIDENT tool_ident) : image_tool(para, tool_ident), processing{pro}
+tool::tool(controller_iface* cont, parameters* para, TOOLIDENT tool_ident) : image_tool(para, tool_ident), control{cont}
 {
-    processing->register_tool(this);
+    control->register_tool(this);
 }
 
 tool::~tool()

@@ -1,15 +1,15 @@
-#ifndef LISTEN_FOR_IMAGE_CHANGE_H
-#define LISTEN_FOR_IMAGE_CHANGE_H
+#ifndef GUI_LISTENER_H
+#define GUI_LISTENER_H
 
 #include <QImage>
 #include "image_tool.h"
 
 
-class listen_for_image_change
+class gui_listener
 {
 public:
-    listen_for_image_change();
-    ~listen_for_image_change();
+    gui_listener(){}
+    ~gui_listener(){}
 
     virtual void on_clicked_tool(image_tool* t) = 0; //When clicked to open a tool from GUI
     virtual void execute_tool_on_image() = 0;
@@ -18,4 +18,4 @@ public:
     virtual void redo_last_command() = 0;           //When redo-button was pressed
 };
 
-#endif // LISTEN_FOR_IMAGE_CHANGE_H
+#endif // GUI_LISTENER_H

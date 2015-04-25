@@ -1,8 +1,8 @@
-#ifndef IMAGE_PROCESSING_UNIT_H
-#define IMAGE_PROCESSING_UNIT_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
-#include "model/processing_interface.h"
-#include "model/listen_for_image_change.h"
+#include "model/controller_iface.h"
+#include "model/gui_listener.h"
 #include "image_wrapper.h"
 #include <vector>
 #include "ccimp_vector.h"
@@ -13,7 +13,7 @@
 
 #include "gui/mainwindow.h"
 
-class image_processing_unit : public processing_interface, public listen_for_image_change
+class controller : public controller_iface, public gui_listener
 {
 
     MainWindow& gui_mw;
@@ -23,19 +23,19 @@ class image_processing_unit : public processing_interface, public listen_for_ima
     image_wrapper* current_image;           //current image
     image_tool* selected_tool;              //the selected tool from GUI
 
-    NUMTOOLS num_tools;
 
 public:
-    image_processing_unit(MainWindow&);
-    ~image_processing_unit();
+    controller(MainWindow&);
+    ~controller();
 
-    void register_tool(image_tool* t) override; //from processing_interface
-    void on_new_image(QImage& img) override; //from listen_for_image_change
-    void undo_last_command() override;
-    void redo_last_command() override;
+    void register_tool(image_tool* t) override; //from controller_iface
+
+    void on_new_image(QImage& img) override; //from gui_listener
     void on_clicked_tool(image_tool* t) override;
     void execute_tool_on_image() override;
+    void undo_last_command() override;
+    void redo_last_command() override;
 
 };
 
-#endif // IMAGE_PROCESSING_UNIT_H
+#endif // CONTROLLER_H
