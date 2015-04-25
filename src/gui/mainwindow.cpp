@@ -244,7 +244,7 @@ void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter 
     crop_tool& cp = crop_tool::getInstance();
     Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
 //    this->imgObject = toQImage(bilde2);
-    set_updated_image(toQImage(bilde2));
+    set_updated_image(img_obj_converter::to_QImage(bilde2));
     delete bilde, bilde2;
 }
 
@@ -332,7 +332,7 @@ void MainWindow::changeBrightness(int i) {
     edit_image = img_obj_converter::to_Image(this->imgObject);
     edit_image->gamma();
     this->imgObject = img_obj_converter::to_QImage(edit_image);
-    set_updated_image(toQImage(bilde));
+    set_updated_image(img_obj_converter::to_QImage(edit_image));
 }
 
 void MainWindow::on_pushButton_clicked()
