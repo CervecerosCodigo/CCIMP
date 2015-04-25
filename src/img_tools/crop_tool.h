@@ -4,7 +4,6 @@
 #include <Magick++.h>
 #include <vector>
 
-using namespace Magick;
 
 class crop_tool
 {
@@ -16,15 +15,13 @@ class crop_tool
     void operator=(crop_tool const&) = delete;
 
 public:
-
-
     static crop_tool& getInstance(){
         static crop_tool instance;
         return instance;
     }
 
 
-   Image* crop_image(Image& img, const std::vector<int>& crop_parm);
+   Magick::Image* crop_image(Magick::Image& img, const std::vector<int>& crop_parm);
 
 };
 
