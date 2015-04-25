@@ -24,7 +24,7 @@
 #include "img_tools/crop_tool.h"
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
-
+#include "model/image_tool.h"
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {
@@ -35,7 +35,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    crop_dialog c_dialog;
+    crop_dialog c_dialog;       //crop tool instance
     vector<int> test_vektor;
     Magick::Image *edit_image;
 
@@ -43,7 +43,7 @@ public:
     void set_image_listener(listen_for_image_change* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+    void set_crop_tool(image_tool* t);
 
 
 
@@ -98,6 +98,7 @@ public slots:
     void changeBrightness();
     void print_vector();
     void crop_image();
+    void execute_tool_on_image();
 
 private slots:
     void on_treeView_clicked();

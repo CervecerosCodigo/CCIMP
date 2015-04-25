@@ -12,6 +12,6 @@ tool_blur::~tool_blur()
 
 
 
-void tool_blur::execute(QImage& img){
+void tool_blur::execute(Magick::Image& img){
     std::cout << "Kjører execute" << std::endl;
 }

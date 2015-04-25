@@ -5,7 +5,7 @@
 #include "model/image_processing_unit.h"
 #include "model/processing_interface.h"
 #include "model/image_tool.h"
-
+//#include "Magick++.h"
 #include <iostream>
 
 
@@ -21,7 +21,7 @@ public:
     virtual ~tool();
 
 
-    void execute(QImage& img) override; //image_tool
+    void execute(Magick::Image& img) override; //image_tool
 
 };
 

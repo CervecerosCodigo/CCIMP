@@ -9,12 +9,14 @@
 
 #include "model/tool.h"
 #include "tool_blur.h"
+#include "tool_crop.h"
 
 class instantiate_tools
 {
     processing_interface* process;
 
     tool* blur;
+    tool* crop;
 
     void create_tools_to_be_used();
 

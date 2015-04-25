@@ -27,7 +27,7 @@ void image_processing_unit::register_tool(image_tool* t){
         //code
         break;
     case TOOLIDENT::CROP:
-        //code
+        gui_mw.set_crop_tool(t);
         break;
     case TOOLIDENT::RESIZE:
         //code
@@ -49,8 +49,15 @@ void image_processing_unit::on_new_image(QImage& img){
     //TODO:: Må oppdatere undo/redo-vectorene her også
 }
 
+//Registers the tool that was click in GUI
 void image_processing_unit::on_clicked_tool(image_tool* t){
     selected_tool = t;
+    current_image->set_current_tool(t);
+}
+
+void image_processing_unit::execute_tool_on_image(){
+    qDebug() << "Executing tool in Controller";
+    current_image->execute_tool();
 
 }
 
