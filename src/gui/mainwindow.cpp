@@ -105,6 +105,8 @@ void MainWindow::set_image(const QString &path)
     original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
+    if(img_listener_set)
+        img_listener->on_new_image(*imgObject);   //notify controller by sending reference of the new image
     set_updated_image(imgObject);
 }
 
@@ -125,8 +127,7 @@ void MainWindow::set_updated_image(QImage* updated_image)
     scene->setSceneRect(image.rect());
 
     ui->graphicsView->setScene(scene);
-    if(img_listener_set)
-        img_listener->on_image_change(*imgObject);   //notify controller by sending reference of the new image
+
 
 }
 

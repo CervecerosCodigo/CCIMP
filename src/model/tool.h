@@ -12,7 +12,7 @@
 
 class tool : image_tool
 {
-    TOOLIDENT tool_identifier;
+    //TOOLIDENT tool_identifier;
     processing_interface* processing;
 
 public:
