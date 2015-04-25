@@ -16,4 +16,5 @@ instantiate_tools::~instantiate_tools()
 void instantiate_tools::create_tools_to_be_used(){
 
     blur = new tool_blur(process, new parameter_using_slider(), TOOLIDENT::BLUR);
+    crop = new tool_crop(process, new parameter_using_coordiantes, TOOLIDENT::CROP);
 }

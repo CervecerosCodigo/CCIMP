@@ -5,6 +5,9 @@
 #include <QString>
 #include <QDebug>
 #include <vector>
+#include "model/image_tool.h"
+#include "model/parameters.h"
+#include "model/parameter_using_coordiantes.h"
 
 namespace Ui {
 class crop_dialog;
@@ -16,13 +19,15 @@ class crop_dialog : public QDialog
 
     int width, height, x_offset, y_offset;
     std::vector<int> crop_values;
+    image_tool* tool;
 
 public:
     explicit crop_dialog(QWidget *parent = 0);
     ~crop_dialog();
 
     const std::vector<int>& get_crop_values();
-
+    void set_tool(image_tool* t);
+    image_tool* get_tool();
 
 signals:
   void signalNewString1(QString val);

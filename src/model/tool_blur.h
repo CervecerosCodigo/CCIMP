@@ -11,7 +11,7 @@ public:
     tool_blur(processing_interface* pro, parameters* para, TOOLIDENT tool_ident);
     ~tool_blur();
 
-    void execute(QImage& img) override;
+    void execute(Magick::Image& img) override;
 };
 
 #endif // TOOL_BLUR_H

@@ -318,10 +318,10 @@ void MainWindow::on_pushButton_2_clicked()
 {
 
 //    crop_dialog c_dialog;
-
+    img_listener->on_clicked_tool(c_dialog.get_tool());
     c_dialog.setModal(true);
 
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(crop_image()));
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
 
 
 
@@ -342,4 +342,14 @@ void MainWindow::on_pushButton_clicked()
     b_dialog.setModal(true);
     connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
     b_dialog.exec();
+}
+
+
+void MainWindow::set_crop_tool(image_tool *t){
+    c_dialog.set_tool(t);
+}
+
+void MainWindow::execute_tool_on_image(){
+
+    img_listener->execute_tool_on_image();
 }

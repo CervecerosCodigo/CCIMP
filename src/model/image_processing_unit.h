@@ -34,7 +34,7 @@ public:
     void undo_last_command() override;
     void redo_last_command() override;
     void on_clicked_tool(image_tool* t) override;
-
+    void execute_tool_on_image() override;
 
 };
 

@@ -6,11 +6,12 @@
 #include <vector>
 #include "ccimp_vector.h"
 #include <model/image_tool.h>
-
+#include "Magick++.h"
+#include "img_tools/img_obj_converter.h"
 class image_wrapper
 {
-    ccimp_vector<QImage*> undo_history;   //holds previous version
-    ccimp_vector<QImage*> redo_history;   //holds newer versions, in case of previous undo
+    ccimp_vector<Magick::Image*> undo_history;   //holds previous version
+    ccimp_vector<Magick::Image*> redo_history;   //holds newer versions, in case of previous undo
     QImage* image;
     image_tool* current_tool;
 

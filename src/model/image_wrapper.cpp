@@ -16,8 +16,10 @@ void image_wrapper::update_history(){
 
 //Kommuniserer via interface til rett "tool" og kjører verktøyet
 void image_wrapper::execute_tool(){
+    qDebug() << "Executing tool in Wrapper";
+    Magick::Image* img = img_obj_converter::to_Image(image);
+    current_tool->execute(*img);
 
-    current_tool->execute(*image);
 }
 
 
