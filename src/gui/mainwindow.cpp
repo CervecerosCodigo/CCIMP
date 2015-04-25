@@ -241,26 +241,13 @@ void MainWindow::print_vector()
 void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
 {
 //    Image *bilde = toImage(this->imgObject);
-    Image *bilde = img_obj_converter::to_Image(this->imgObject);
-    crop_tool& cp = crop_tool::getInstance();
-    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
-//    this->imgObject = toQImage(bilde2);
-    set_updated_image(img_obj_converter::to_QImage(bilde2));
-    delete bilde, bilde2;
+//    Image *bilde = img_obj_converter::to_Image(this->imgObject);
+//    crop_tool& cp = crop_tool::getInstance();
+//    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+////    this->imgObject = toQImage(bilde2);
+//    set_updated_image(img_obj_converter::to_QImage(bilde2));
+//    delete bilde, bilde2;
 }
-
-
-
-//void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
-//{
-//    test_vektor = c_dialog.get_crop_values();
-//    Image *bilde = toImage(this->imgObject);
-//    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
-//            test_vektor[2],test_vektor[3]));
-//    this->imgObject = toQImage(bilde);
-//    set_image();
-//    delete bilde;
-//}
 
 
 
@@ -347,11 +334,19 @@ void MainWindow::on_pushButton_clicked()
 }
 
 
+//set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
     c_dialog.set_tool(t);
 }
 
-void MainWindow::execute_tool_on_image(){
+void MainWindow::callback_image_edited(QImage* img){
+    set_updated_image(img);
+}
 
-    img_listener->execute_tool_on_image();
+
+/**
+ * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
+ */
+void MainWindow::execute_tool_on_image(){
+    img_listener->execute_tool_on_image(this);
 }

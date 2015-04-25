@@ -1,6 +1,6 @@
 #include "image_wrapper.h"
 
-image_wrapper::image_wrapper(QImage& img): image{&img}
+image_wrapper::image_wrapper(QImage& img): q_img{img}
 {
 
 }
@@ -15,10 +15,19 @@ void image_wrapper::update_history(){
 }
 
 //Kommuniserer via interface til rett "tool" og kjører verktøyet
-void image_wrapper::execute_tool(){
-    qDebug() << "Executing tool in Wrapper";
-    Magick::Image* img = img_obj_converter::to_Image(image);
-    current_tool->execute(*img);
+void image_wrapper::execute_tool(gui_callback_iface* callback){
+
+    /**
+     * TODO: må ta vare på historikk før man utfører tool.
+     *      Må kunne sende
+     */
+    magic_img = img_obj_converter::to_Image(&q_img);    //convert image from qimage
+
+    current_tool->execute(*magic_img);  //run selected tool on image
+
+    //git beskjed til MainWindow, via callback-inerfacet, at bildet er endret.
+    callback->callback_image_edited( img_obj_converter::to_QImage(magic_img) );
+
 
 }
 

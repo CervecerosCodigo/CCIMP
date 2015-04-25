@@ -4,7 +4,7 @@
 #include "lib.h"
 #include "model/controller_iface.h"
 #include "model/image_tool.h"
-
+#include <QDebug>
 #include <iostream>
 
 
@@ -19,7 +19,7 @@ public:
     tool(controller_iface* cont, parameters* para, TOOLIDENT tool_ident);
     virtual ~tool();
 
-
+    inline parameters* get_para(){return get_param();}
     void execute(Magick::Image& img) override; //image_tool
 
 };
