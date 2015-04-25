@@ -243,15 +243,9 @@ void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter 
     Image *bilde = img_obj_converter::to_Image(this->imgObject);
     crop_tool& cp = crop_tool::getInstance();
     Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
-<<<<<<< HEAD
-    this->imgObject = img_obj_converter::to_QImage(bilde2);
-    set_image();
-    delete bilde, bilde2;
-=======
 //    this->imgObject = toQImage(bilde2);
-    set_updated_image(toQImage(bilde2));
-    delete bilde;
->>>>>>> espen
+    set_updated_image(img_obj_converter::to_QImage(bilde2));
+    delete bilde, bilde2;
 }
 
 
@@ -335,17 +329,14 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::changeBrightness(int i) {
     // Endre brightness
-<<<<<<< HEAD
     edit_image = img_obj_converter::to_Image(this->imgObject);
     edit_image->gamma();
     this->imgObject = img_obj_converter::to_QImage(edit_image);
-    set_image();
+<<<<<<< HEAD
+    set_updated_image(toQImage(edit_image));
 =======
-    Image *bilde = toImage(this->imgObject);
-    bilde->blur();
-//    this->imgObject = toQImage(bilde);
-    set_updated_image(toQImage(bilde));
->>>>>>> espen
+    set_updated_image(img_obj_converter::to_QImage(edit_image));
+>>>>>>> 63c9b1155770490215f3822748292e58546782d1
 }
 
 void MainWindow::on_pushButton_clicked()
