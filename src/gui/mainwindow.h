@@ -23,6 +23,7 @@
 #include "brightness_dialog.h"
 #include "img_tools/crop_tool.h"
 #include "img_tools/img_obj_converter.h"
+#include <QSignalMapper>
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
@@ -37,7 +38,6 @@ class MainWindow : public QMainWindow
     crop_dialog c_dialog;
     vector<int> test_vektor;
     Magick::Image *edit_image;
-
 
 public:
     void set_image_listener(listen_for_image_change* l);
@@ -95,7 +95,7 @@ public slots:
     void save();
     void save_as();
     void showDebugMsg();
-    void changeBrightness(int i);
+    void changeBrightness();
     void print_vector();
     void crop_image();
 

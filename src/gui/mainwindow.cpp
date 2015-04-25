@@ -328,7 +328,7 @@ void MainWindow::on_pushButton_2_clicked()
     c_dialog.exec();
 }
 
-void MainWindow::changeBrightness(int i) {
+void MainWindow::changeBrightness() {
     // Endre brightness
     edit_image = img_obj_converter::to_Image(this->imgObject);
     edit_image->gamma();
@@ -340,6 +340,6 @@ void MainWindow::on_pushButton_clicked()
 {
     brightness_dialog b_dialog;
     b_dialog.setModal(true);
-    connect(&b_dialog, SIGNAL(signalBrightnessChanged(int)), this, SLOT(changeBrightness(int)));
+    connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
     b_dialog.exec();
 }

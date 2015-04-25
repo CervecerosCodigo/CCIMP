@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>176</width>
-    <height>116</height>
+    <width>293</width>
+    <height>129</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,11 +21,40 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QSlider" name="horizontalSlider">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="lcdNumber">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="smallDecimalPoint">
+           <bool>false</bool>
+          </property>
+          <property name="segmentStyle">
+           <enum>QLCDNumber::Flat</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -51,12 +80,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>244</x>
-     <y>236</y>
+     <x>253</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>240</y>
+     <y>113</y>
     </hint>
    </hints>
   </connection>
@@ -67,12 +96,28 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>312</x>
-     <y>236</y>
+     <x>255</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>240</y>
+     <x>264</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>49</y>
     </hint>
    </hints>
   </connection>
