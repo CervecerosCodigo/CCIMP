@@ -332,7 +332,7 @@ void MainWindow::changeBrightness(int i) {
     edit_image = img_obj_converter::to_Image(this->imgObject);
     edit_image->gamma();
     this->imgObject = img_obj_converter::to_QImage(edit_image);
-    set_updated_image(toQImage(bilde));
+    set_updated_image(toQImage(edit_image));
 }
 
 void MainWindow::on_pushButton_clicked()
