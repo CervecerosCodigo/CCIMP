@@ -3,7 +3,7 @@
 
 Magick::Image *img_obj_converter::to_Image(QImage *qimage)
 {
-    qDebug() << "toImage:" << qimage->width() << qimage->height();
+//    qDebug() << "toImage:" << qimage->width() << qimage->height();
 
     Magick::Image *newImage = new Magick::Image(Magick::Geometry(qimage->width(), qimage->height()), Magick::ColorRGB(0.5, 0.2, 0.3));
 
@@ -30,7 +30,7 @@ Magick::Image *img_obj_converter::to_Image(QImage *qimage)
 
 QImage *img_obj_converter::to_QImage(Magick::Image *image)
 {
-    qDebug() << "toQImage:" << image->columns() << image->rows();
+//    qDebug() << "toQImage:" << image->columns() << image->rows();
 
     QImage *newQImage = new QImage(image->columns(), image->rows(), QImage::Format_RGB32);
     const Magick::PixelPacket *pixels;

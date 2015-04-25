@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     gui/brightness_dialog.cpp \
     img_tools/crop_tool.cpp \
     img_tools/img_obj_converter.cpp \
-    model/tool_crop.cpp
+    model/tool_crop.cpp \
+    img_tools/brightness_tool.cpp
 
 HEADERS  += gui/mainwindow.h \
     model/test_klasse.h \
@@ -64,7 +65,8 @@ HEADERS  += gui/mainwindow.h \
     gui/brightness_dialog.h \
     img_tools/crop_tool.h \
     img_tools/img_obj_converter.h \
-    model/tool_crop.h
+    model/tool_crop.h \
+    img_tools/brightness_tool.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

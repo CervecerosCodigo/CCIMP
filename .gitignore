@@ -9,6 +9,7 @@ oppvarming
 build-*
 *.user
 *.user.*
+*.autosave
 
 ##Eclipse
 *.pydevproject

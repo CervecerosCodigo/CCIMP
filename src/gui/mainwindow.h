@@ -35,9 +35,16 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    crop_dialog c_dialog;       //crop tool instance
+    crop_dialog c_dialog;
+    brightness_dialog b_dialog;
     vector<int> test_vektor;
     Magick::Image *edit_image;
+    /*
+     * Denne blir brukt til verktøy som feks brightness der vi i
+     * utgangspunkt trenger å ta vare på original bilde slik
+     * det såg ut før vi begynte å editere det.
+     */
+    Magick::Image *edit_orig_image;
 
 public:
     void set_image_listener(listen_for_image_change* l);
