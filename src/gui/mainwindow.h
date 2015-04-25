@@ -21,6 +21,7 @@
 #include "gui/crop_dialog.h"
 #include <vector>
 #include "brightness_dialog.h"
+#include "img_tools/crop_tool.h"
 
 using namespace Magick;
 

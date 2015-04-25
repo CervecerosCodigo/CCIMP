@@ -24,7 +24,7 @@ public:
     }
 
 
-    Image& crop_image(const Image& image, std::vector<int> crop_parm);
+   Image* crop_image(Image& img, const std::vector<int>& crop_parm);
 
 };
 

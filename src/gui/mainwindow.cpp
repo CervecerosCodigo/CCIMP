@@ -238,14 +238,26 @@ void MainWindow::print_vector()
  */
 void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
 {
-    test_vektor = c_dialog.get_crop_values();
     Image *bilde = toImage(this->imgObject);
-    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
-            test_vektor[2],test_vektor[3]));
-    this->imgObject = toQImage(bilde);
+    crop_tool& cp = crop_tool::getInstance();
+    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+    this->imgObject = toQImage(bilde2);
     set_image();
     delete bilde;
 }
+
+
+
+//void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
+//{
+//    test_vektor = c_dialog.get_crop_values();
+//    Image *bilde = toImage(this->imgObject);
+//    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
+//            test_vektor[2],test_vektor[3]));
+//    this->imgObject = toQImage(bilde);
+//    set_image();
+//    delete bilde;
+//}
 
 
 
