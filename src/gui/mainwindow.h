@@ -63,7 +63,7 @@ private:
      * Setter opp bildevisning
      */
     void set_image(const QString &path);
-    void set_image();
+    void set_updated_image(QImage* updated_image);
     QString imgPath;
     QImage *imgObject;
     QPixmap image;

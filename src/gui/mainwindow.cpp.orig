@@ -95,7 +95,7 @@ void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
 
-/** Setter bilde i vindu
+/** Setter bilde i vindu når åpnes fra TreeView eller Open
  * @brief MainWindow::set_image
  * @param path
  */
@@ -105,6 +105,16 @@ void MainWindow::set_image(const QString &path)
     original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
+    set_updated_image(imgObject);
+}
+
+/** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
+ * @brief MainWindow::set_updated_image
+ * @param updated_image
+ */
+void MainWindow::set_updated_image(QImage* updated_image)
+{
+    imgObject = updated_image;
 
     //Viser statistikk
     show_stats(imgObject);
@@ -113,22 +123,10 @@ void MainWindow::set_image(const QString &path)
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
+
     ui->graphicsView->setScene(scene);
     if(img_listener_set)
         img_listener->on_image_change(*imgObject);   //notify controller by sending reference of the new image
-}
-
-
-void MainWindow::set_image()
-{
-    //Viser statistikk
-    show_stats(imgObject);
-
-    image = QPixmap::fromImage(*imgObject);
-    scene = new QGraphicsScene(this);
-    scene->addPixmap(image);
-    scene->setSceneRect(image.rect());
-    ui->graphicsView->setScene(scene);
 
 }
 
@@ -165,22 +163,22 @@ void MainWindow::show_stats(QImage *img){
 
 
 void MainWindow::rotate_left() {
-    qDebug()<< "Rotate left ran";
-    QTransform rot;
-    rot.rotate(-90);
-    QImage nyttBilde = this->imgObject->transformed(rot);
-    this->imgObject = (QImage*)&nyttBilde;
-    set_image();
+//    qDebug()<< "Rotate left ran";
+//    QTransform rot;
+//    rot.rotate(-90);
+//    QImage nyttBilde = this->imgObject->transformed(rot);
+//    this->imgObject = (QImage*)&nyttBilde;
+//    set_image();
 }
 
 
 void MainWindow::rotate_right() {
-    qDebug()<< "Rotate right ran";
-    QTransform rot;
-    rot.rotate(90);
-    QImage nyttBilde = this->imgObject->transformed(rot);
-    this->imgObject = (QImage*)&nyttBilde;
-    set_image();
+//    qDebug()<< "Rotate right ran";
+//    QTransform rot;
+//    rot.rotate(90);
+//    QImage nyttBilde = this->imgObject->transformed(rot);
+//    this->imgObject = (QImage*)&nyttBilde;
+//    set_image();
 }
 
 
@@ -245,10 +243,30 @@ void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter 
     Image *bilde = img_obj_converter::to_Image(this->imgObject);
     crop_tool& cp = crop_tool::getInstance();
     Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+<<<<<<< HEAD
     this->imgObject = img_obj_converter::to_QImage(bilde2);
     set_image();
     delete bilde, bilde2;
+=======
+//    this->imgObject = toQImage(bilde2);
+    set_updated_image(toQImage(bilde2));
+    delete bilde;
+>>>>>>> espen
 }
+
+
+
+//void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
+//{
+//    test_vektor = c_dialog.get_crop_values();
+//    Image *bilde = toImage(this->imgObject);
+//    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
+//            test_vektor[2],test_vektor[3]));
+//    this->imgObject = toQImage(bilde);
+//    set_image();
+//    delete bilde;
+//}
+
 
 
 /*
@@ -318,15 +336,16 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::changeBrightness(int i) {
     // Endre brightness
 <<<<<<< HEAD
-    Image *bilde = toImage(this->imgObject);
-    bilde->blur();
-    this->imgObject = toQImage(bilde);
-=======
     edit_image = img_obj_converter::to_Image(this->imgObject);
     edit_image->gamma();
     this->imgObject = img_obj_converter::to_QImage(edit_image);
->>>>>>> 348688058dfa1787a2dbeea1ccd715e8228f5853
     set_image();
+=======
+    Image *bilde = toImage(this->imgObject);
+    bilde->blur();
+//    this->imgObject = toQImage(bilde);
+    set_updated_image(toQImage(bilde));
+>>>>>>> espen
 }
 
 void MainWindow::on_pushButton_clicked()
