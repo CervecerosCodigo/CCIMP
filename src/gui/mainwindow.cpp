@@ -297,7 +297,7 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::changeBrightness(int i) {
     // Endre brightness
     Image *bilde = toImage(this->imgObject);
-    bilde->gamma();
+    bilde->blur();
     this->imgObject = toQImage(bilde);
     set_image();
 }
