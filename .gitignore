@@ -5,6 +5,9 @@
 blackjack
 oppvarming
 
+#GIT
+*.orig
+
 #For QT Creator
 build-*
 *.user
