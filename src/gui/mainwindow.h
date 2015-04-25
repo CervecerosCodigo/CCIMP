@@ -21,6 +21,7 @@
 #include "gui/crop_dialog.h"
 #include <vector>
 #include "brightness_dialog.h"
+#include "img_tools/crop_tool.h"
 
 using namespace Magick;
 
@@ -88,14 +89,13 @@ private:
     listen_for_image_change* img_listener;
 
 public slots:
-    void print_vector();
     void open();
     void save();
     void save_as();
     void showDebugMsg();
-
     void changeBrightness(int i);
-
+    void print_vector();
+    void crop_image();
 
 private slots:
     void on_treeView_clicked();
@@ -109,7 +109,6 @@ private slots:
     void undo_command();
     void redo_command();
     void on_pushButton_2_clicked();
-
     void on_pushButton_clicked();
 
 };

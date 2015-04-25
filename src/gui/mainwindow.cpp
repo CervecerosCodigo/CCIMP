@@ -217,16 +217,47 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/** Denne metoden var til bruk for å teste dersom det er enkelt nok til
+ * å ta imot data fra et dialogvindu og skrive ut det i main window.
+ * @brief MainWindow::print_vector
+ */
 void MainWindow::print_vector()
 {
 
-    test_vektor = c_dialog.get_crop_values();
+//    test_vektor = c_dialog.get_crop_values();
     std::vector<int>::iterator vi = test_vektor.begin();
     while(vi != test_vektor.end()){
-        qDebug() << *vi;
+        std::cout << "Cropping: " << *vi;
         vi++;
     }
 }
+
+/** Denne skal beskjære bilde.
+ * Funksjonen skal seinere flyttes til controller.
+ * @brief MainWindow::crop_image
+ */
+void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
+{
+    Image *bilde = toImage(this->imgObject);
+    crop_tool& cp = crop_tool::getInstance();
+    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+    this->imgObject = toQImage(bilde2);
+    set_image();
+    delete bilde;
+}
+
+
+
+//void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
+//{
+//    test_vektor = c_dialog.get_crop_values();
+//    Image *bilde = toImage(this->imgObject);
+//    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
+//            test_vektor[2],test_vektor[3]));
+//    this->imgObject = toQImage(bilde);
+//    set_image();
+//    delete bilde;
+//}
 
 
 
@@ -287,7 +318,7 @@ void MainWindow::on_pushButton_2_clicked()
 
     c_dialog.setModal(true);
 
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(print_vector()));
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(crop_image()));
 
 
 

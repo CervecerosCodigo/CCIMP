@@ -30,11 +30,6 @@ const std::vector<int> &crop_dialog::get_crop_values()
 void crop_dialog::on_buttonBox_accepted()
 {
 
-    slotEditFinished();
-}
-
-void crop_dialog::on_pushButton_clicked()
-{
     width = ui->lineEdit->text().toInt();
     height = ui->lineEdit_2->text().toInt();
     x_offset = ui->lineEdit_3->text().toInt();
@@ -47,4 +42,14 @@ void crop_dialog::on_pushButton_clicked()
 
 
     emit slotEditFinished();
+}
+
+void crop_dialog::on_buttonBox_exec()
+{
+    qDebug () << "Apply button";
+}
+
+void crop_dialog::on_pushButton_clicked()
+{
+
 }
