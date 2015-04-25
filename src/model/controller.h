@@ -3,6 +3,7 @@
 
 #include "model/controller_iface.h"
 #include "model/gui_listener.h"
+#include "gui_callback_iface.h"
 #include "image_wrapper.h"
 #include <vector>
 #include "ccimp_vector.h"
@@ -17,7 +18,7 @@ class controller : public controller_iface, public gui_listener
 {
 
     MainWindow& gui_mw;
-    ccimp_vector<image_tool*> tools;         //holds all the tools, set by register_tool(image_tool* t)
+    //ccimp_vector<image_tool*> tools;         //holds all the tools, set by register_tool(image_tool* t)
     //ccimp_vector<image_wrapper> open_images; //holds all images, wrapped in a container
 
     image_wrapper* current_image;           //current image
@@ -28,11 +29,13 @@ public:
     controller(MainWindow&);
     ~controller();
 
+    void set_updated_image(QImage* updated_image);
+
     void register_tool(image_tool* t) override; //from controller_iface
 
     void on_new_image(QImage& img) override; //from gui_listener
     void on_clicked_tool(image_tool* t) override;
-    void execute_tool_on_image() override;
+    void execute_tool_on_image(gui_callback_iface* callback) override;
     void undo_last_command() override;
     void redo_last_command() override;
 

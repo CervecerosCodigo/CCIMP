@@ -56,7 +56,8 @@ HEADERS  += gui/mainwindow.h \
     parameters/using_slider.h \
     parameters/using_colors.h \
     parameters/using_coordinates.h \
-    model/gui_listener.h
+    model/gui_listener.h \
+    model/gui_callback_iface.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

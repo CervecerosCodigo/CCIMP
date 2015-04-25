@@ -17,6 +17,7 @@
 
 #include "model/image_statistics.h"
 #include "model/gui_listener.h"
+#include "model/gui_callback_iface.h"
 #include "model/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include <vector>
@@ -31,7 +32,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public gui_callback_iface
 {
     Q_OBJECT
 
@@ -51,8 +52,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
-
-
+    void set_updated_image(QImage* updated_image);
+    void callback_image_edited(QImage* img) override;
 
 private:
     Ui::MainWindow *ui;
@@ -70,7 +71,7 @@ private:
      * Setter opp bildevisning
      */
     void set_image(const QString &path);
-    void set_updated_image(QImage* updated_image);
+
     QString imgPath;
     QImage *imgObject;
     QPixmap image;
