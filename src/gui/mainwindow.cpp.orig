@@ -21,8 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //Setter opp en tree view
     set_fs_view();
 
-    // Oppretter dialogvinduer
-    brightnessDialog = new slider_dialog(3);
+    //Opretter imgae objekt som skal brukes til redigering.
+    edit_image = new Magick::Image;
 
 }
 
@@ -39,6 +39,8 @@ void MainWindow::createConnections(){
     connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
     connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
     connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
+
+
 }
 
 /** FileOpen dialog
@@ -184,10 +186,7 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
-<<<<<<< HEAD
     //scene->
-=======
->>>>>>> fe077f1b660caa627146178d6a26cd252bd411f0
 }
 
 
@@ -221,6 +220,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/** Denne metoden var til bruk for å teste dersom det er enkelt nok til
+ * å ta imot data fra et dialogvindu og skrive ut det i main window.
+ * @brief MainWindow::print_vector
+ */
+void MainWindow::print_vector()
+{
+
+//    test_vektor = c_dialog.get_crop_values();
+    std::vector<int>::iterator vi = test_vektor.begin();
+    while(vi != test_vektor.end()){
+        std::cout << "Cropping: " << *vi;
+        vi++;
+    }
+}
+
+/** Denne skal beskjære bilde.
+ * Funksjonen skal seinere flyttes til controller.
+ * @brief MainWindow::crop_image
+ */
+void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
+{
+//    Image *bilde = toImage(this->imgObject);
+    Image *bilde = img_obj_converter::to_Image(this->imgObject);
+    crop_tool& cp = crop_tool::getInstance();
+    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+    this->imgObject = img_obj_converter::to_QImage(bilde2);
+    set_image();
+    delete bilde, bilde2;
+}
+
 
 /*
  * ************************************************************************
@@ -231,8 +260,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::showDebugMsg(){
     qDebug() << "Debug melding fra main window";
-
 }
+
 
 /** Skriver ut i terminal path til den mappe eller fil som man klikket på i
  * filesystemview.
@@ -268,10 +297,42 @@ void MainWindow::set_image_listener(listen_for_image_change *l){
 
 }
 
+
+/** Denne er til for å teste ImageMagick egentlig
+ * @brief MainWindow::on_pushButton_2_clicked
+ */
+void MainWindow::on_pushButton_2_clicked()
+{
+
+//    crop_dialog c_dialog;
+
+    c_dialog.setModal(true);
+
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(crop_image()));
+
+
+
+    c_dialog.exec();
+}
+
+void MainWindow::changeBrightness(int i) {
+    // Endre brightness
+<<<<<<< HEAD
+    Image *bilde = toImage(this->imgObject);
+    bilde->blur();
+    this->imgObject = toQImage(bilde);
+=======
+    edit_image = img_obj_converter::to_Image(this->imgObject);
+    edit_image->gamma();
+    this->imgObject = img_obj_converter::to_QImage(edit_image);
+>>>>>>> 348688058dfa1787a2dbeea1ccd715e8228f5853
+    set_image();
+}
+
 void MainWindow::on_pushButton_clicked()
 {
-    if(!brightnessDialog->isVisible())
-        brightnessDialog->show();
-
-    else brightnessDialog->close();
+    brightness_dialog b_dialog;
+    b_dialog.setModal(true);
+    connect(&b_dialog, SIGNAL(signalBrightnessChanged(int)), this, SLOT(changeBrightness(int)));
+    b_dialog.exec();
 }

@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //Setter opp en tree view
     set_fs_view();
 
+    //Opretter imgae objekt som skal brukes til redigering.
+    edit_image = new Magick::Image;
+
 }
 
 void MainWindow::createConnections(){
@@ -238,12 +241,13 @@ void MainWindow::print_vector()
  */
 void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
 {
-    Image *bilde = toImage(this->imgObject);
+//    Image *bilde = toImage(this->imgObject);
+    Image *bilde = img_obj_converter::to_Image(this->imgObject);
     crop_tool& cp = crop_tool::getInstance();
     Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
-    this->imgObject = toQImage(bilde2);
+    this->imgObject = img_obj_converter::to_QImage(bilde2);
     set_image();
-    delete bilde;
+    delete bilde, bilde2;
 }
 
 
@@ -327,9 +331,9 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::changeBrightness(int i) {
     // Endre brightness
-    Image *bilde = toImage(this->imgObject);
-    bilde->blur();
-    this->imgObject = toQImage(bilde);
+    edit_image = img_obj_converter::to_Image(this->imgObject);
+    edit_image->gamma();
+    this->imgObject = img_obj_converter::to_QImage(edit_image);
     set_image();
 }
 
@@ -339,51 +343,4 @@ void MainWindow::on_pushButton_clicked()
     b_dialog.setModal(true);
     connect(&b_dialog, SIGNAL(signalBrightnessChanged(int)), this, SLOT(changeBrightness(int)));
     b_dialog.exec();
-}
-
-Image* MainWindow::toImage(QImage* qimage)
-{
-    qDebug() << "toImage:" << qimage->width() << qimage->height();
-
-    Image *newImage = new Image(Magick::Geometry(qimage->width(), qimage->height()), Magick::ColorRGB(0.5, 0.2, 0.3));
-
-    double scale = 1 / 256.0;
-    newImage->modifyImage();
-    Magick::PixelPacket *pixels;
-    Magick::ColorRGB mgc;
-    for (int y = 0; y < qimage->height(); y++) {
-        pixels = newImage->setPixels(0, y, newImage->columns(), 1);
-        for (int x = 0; x < qimage->width(); x++) {
-            QColor pix = qimage->pixel(x, y);
-            //      *pixels++ = Magick::ColorRGB(256 * pix.red(), 256 * pix.green(), 256 * pix.blue());
-            mgc.red(scale *pix.red());
-            mgc.green(scale *pix.green());
-            mgc.blue(scale *pix.blue());
-            //      *pixels++ = Magick::ColorRGB(scale *pix.red(), scale * pix.green(), scale * pix.blue());
-            *pixels++ = mgc;
-        }
-        newImage->syncPixels();
-    }
-
-    return newImage;
-}
-
-
-QImage* MainWindow::toQImage(Image *image)
-{
-    qDebug() << "toQImage:" << image->columns() << image->rows();
-
-    QImage *newQImage = new QImage(image->columns(), image->rows(), QImage::Format_RGB32);
-    const Magick::PixelPacket *pixels;
-    Magick::ColorRGB rgb;
-    for (int y = 0; y < newQImage->height(); y++) {
-        pixels = image->getConstPixels(0, y, newQImage->width(), 1);
-        for (int x = 0; x < newQImage->width(); x++) {
-            rgb = (*(pixels + x));
-            newQImage->setPixel(x, y, QColor((int) (255 * rgb.red())
-                                             , (int) (255 * rgb.green())
-                                             , (int) (255 * rgb.blue())).rgb());
-        }
-    }
-    return newQImage;
 }
