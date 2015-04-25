@@ -22,8 +22,9 @@
 #include <vector>
 #include "brightness_dialog.h"
 #include "img_tools/crop_tool.h"
+#include "img_tools/img_obj_converter.h"
 
-using namespace Magick;
+using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,7 @@ class MainWindow : public QMainWindow
 
     crop_dialog c_dialog;
     vector<int> test_vektor;
+    Magick::Image *edit_image;
 
 
 public:
