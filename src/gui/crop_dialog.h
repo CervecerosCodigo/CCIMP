@@ -5,6 +5,7 @@
 #include <QString>
 #include <QDebug>
 #include <vector>
+#include "gui/ccimp_dialog.h"
 #include "model/image_tool.h"
 #include "parameters/parameters.h"
 #include "parameters/using_coordinates.h"
@@ -13,21 +14,18 @@ namespace Ui {
 class crop_dialog;
 }
 
-class crop_dialog : public QDialog
+class crop_dialog : public QDialog, public ccimp_dialog
 {
     Q_OBJECT
 
     int width, height, x_offset, y_offset;
     std::vector<int> crop_values;
-    image_tool* tool;
 
 public:
     explicit crop_dialog(QWidget *parent = 0);
     ~crop_dialog();
 
     const std::vector<int>& get_crop_values();
-    void set_tool(image_tool* t);
-    image_tool* get_tool();
 
 signals:
   void signalNewString1(QString val);
@@ -42,7 +40,6 @@ public slots:
 
 
 private slots:
-  void on_pushButton_clicked();
   void on_buttonBox_accepted();
   void on_buttonBox_exec();
 

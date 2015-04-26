@@ -55,15 +55,3 @@ void crop_dialog::on_buttonBox_exec()
     qDebug () << "Apply button";
 }
 
-void crop_dialog::on_pushButton_clicked()
-{
-
-}
-
-void crop_dialog::set_tool(image_tool *t){
-    tool = t;
-}
-
-image_tool* crop_dialog::get_tool(){
-    return tool;
-}
