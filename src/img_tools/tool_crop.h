@@ -9,8 +9,7 @@
 class tool_crop : public tool
 {
 public:
-    tool_crop(controller_iface* cont, parameters* para, TOOLIDENT tool_ident);
-    ~tool_crop();
+    using tool::tool;
 
     //parameters* get_param();
     void execute(Magick::Image& img) override;

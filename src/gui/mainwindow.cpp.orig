@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     set_fs_view();
 
     //Opretter imgae objekt som skal brukes til redigering.
-    edit_image = new Magick::Image;
+//    edit_image = new Magick::Image;
 
 }
 
@@ -105,6 +105,8 @@ void MainWindow::set_image(const QString &path)
     original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
+    if(event_listener_set)
+        event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
     set_updated_image(imgObject);
 }
 
@@ -123,10 +125,9 @@ void MainWindow::set_updated_image(QImage* updated_image)
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
-
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
-    if(img_listener_set)
-        img_listener->on_image_change(*imgObject);   //notify controller by sending reference of the new image
+
 
 }
 
@@ -205,11 +206,11 @@ void MainWindow::zoomToFit() {
 
 
 void MainWindow::undo_command(){
-    img_listener->undo_last_command();
+    event_listen->undo_last_command();
 }
 
 void MainWindow::redo_command(){
-    img_listener->redo_last_command();
+    event_listen->redo_last_command();
 }
 
 
@@ -240,28 +241,22 @@ void MainWindow::print_vector()
 void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
 {
 //    Image *bilde = toImage(this->imgObject);
-    Image *bilde = img_obj_converter::to_Image(this->imgObject);
-    crop_tool& cp = crop_tool::getInstance();
-    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
-//    this->imgObject = toQImage(bilde2);
-    set_updated_image(img_obj_converter::to_QImage(bilde2));
-    delete bilde, bilde2;
+//    Image *bilde = img_obj_converter::to_Image(this->imgObject);
+//    crop_tool& cp = crop_tool::getInstance();
+//    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
+////    this->imgObject = toQImage(bilde2);
+//    set_updated_image(img_obj_converter::to_QImage(bilde2));
+//    delete bilde, bilde2;
 }
 
+void MainWindow::changeBrightness() {
+    // Endre brightness
 
-
-//void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
-//{
-//    test_vektor = c_dialog.get_crop_values();
-//    Image *bilde = toImage(this->imgObject);
-//    bilde->crop(Geometry(test_vektor[0],test_vektor[1],
-//            test_vektor[2],test_vektor[3]));
-//    this->imgObject = toQImage(bilde);
-//    set_image();
-//    delete bilde;
-//}
-
-
+    edit_image = new Image(*edit_orig_image);
+    edit_image->brightnessContrast((brightnessDialog.get_slider_value())*1.0,0.0);
+    this->imgObject = img_obj_converter::to_QImage(*edit_image);
+    set_updated_image(img_obj_converter::to_QImage(*edit_image));
+}
 
 /*
  * ************************************************************************
@@ -303,46 +298,87 @@ void MainWindow::on_treeView_pressed()
     set_image(new_img);
 }
 
-void MainWindow::set_image_listener(listen_for_image_change *l){
-    img_listener_set = true;
-    img_listener = l;
+void MainWindow::set_event_listener(event_listener *l){
+    event_listener_set = true;
+    event_listen = l;
 
 }
 
 
+<<<<<<< HEAD
 /** Denne er til for å teste ImageMagick egentlig
  * @brief MainWindow::on_pushButton_2_clicked
  */
 void MainWindow::on_pushButton_2_clicked()
 {
-
+    event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
 //    crop_dialog c_dialog;
-
+    event_listen->on_clicked_tool(c_dialog.get_tool());
     c_dialog.setModal(true);
 
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(crop_image()));
+    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
 
 
 
     c_dialog.exec();
 }
-
-void MainWindow::changeBrightness(int i) {
-    // Endre brightness
-    edit_image = img_obj_converter::to_Image(this->imgObject);
-    edit_image->gamma();
-    this->imgObject = img_obj_converter::to_QImage(edit_image);
-<<<<<<< HEAD
-    set_updated_image(toQImage(edit_image));
 =======
-    set_updated_image(img_obj_converter::to_QImage(edit_image));
->>>>>>> 63c9b1155770490215f3822748292e58546782d1
+>>>>>>> 73165e3783cf47e2b5f17d7c22b0726c3ee8e4d7
+
+//set-metode for crop-tool
+void MainWindow::set_crop_tool(image_tool *t){
+    cropDialog.set_tool(t);
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::set_brightness_tool(image_tool *t)
 {
-    brightness_dialog b_dialog;
-    b_dialog.setModal(true);
-    connect(&b_dialog, SIGNAL(signalBrightnessChanged(int)), this, SLOT(changeBrightness(int)));
-    b_dialog.exec();
+    brightnessDialog.set_tool(t);
+}
+
+void MainWindow::callback_image_edited(QImage* img){
+    set_updated_image(img);
+}
+
+
+/**
+ * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
+ */
+void MainWindow::execute_tool_on_image(){
+    event_listen->execute_tool_on_image(this);
+}
+
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    qDebug() << "on_pushButton_3_clicked() kjørt";
+    event_listen->on_clicked_tool(blur_dia.get_tool());
+    blur_dia.setModal(true);
+
+    connect(&blur_dia, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
+
+    blur_dia.exec();
+}
+
+void MainWindow::set_blur_tool(image_tool *t) {
+    qDebug() << "set_blur_tool kjørt";
+    blur_dia.set_tool(t);
+}
+
+void MainWindow::on_brightnessButton_clicked()
+{
+    event_listen->on_clicked_tool(brightnessDialog.get_tool());
+//    edit_orig_image = img_obj_converter::to_Image(*imgObject);
+    brightnessDialog.setModal(true);
+    connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+    brightnessDialog.exec();
+}
+
+void MainWindow::on_cropButton_clicked()
+{
+    event_listen->on_clicked_tool(cropDialog.get_tool());
+    cropDialog.setModal(true);
+    connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
+    cropDialog.exec();
+
 }

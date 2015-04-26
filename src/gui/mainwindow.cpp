@@ -249,7 +249,14 @@ void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter 
 //    delete bilde, bilde2;
 }
 
+void MainWindow::changeBrightness() {
+    // Endre brightness
 
+    edit_image = new Image(*edit_orig_image);
+    edit_image->brightnessContrast((brightnessDialog.get_slider_value())*1.0,0.0);
+    this->imgObject = img_obj_converter::to_QImage(*edit_image);
+    set_updated_image(img_obj_converter::to_QImage(*edit_image));
+}
 
 /*
  * ************************************************************************
@@ -298,45 +305,15 @@ void MainWindow::set_event_listener(event_listener *l){
 }
 
 
-/** Denne er til for å teste ImageMagick egentlig
- * @brief MainWindow::on_pushButton_2_clicked
- */
-void MainWindow::on_pushButton_2_clicked()
-{
-    event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
-//    crop_dialog c_dialog;
-    event_listen->on_clicked_tool(c_dialog.get_tool());
-    c_dialog.setModal(true);
-
-    connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
-
-
-
-    c_dialog.exec();
-}
-
-void MainWindow::changeBrightness() {
-    // Endre brightness
-
-    edit_image = new Image(*edit_orig_image);
-    edit_image->brightnessContrast((b_dialog.get_slider_value())*1.0,0.0);
-    this->imgObject = img_obj_converter::to_QImage(*edit_image);
-    set_updated_image(img_obj_converter::to_QImage(*edit_image));
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-    brightness_dialog b_dialog; //deklarasjon flyttet til prototype
-    edit_orig_image = img_obj_converter::to_Image(*imgObject);
-    b_dialog.setModal(true);
-    connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
-    b_dialog.exec();
-}
-
 
 //set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
-    c_dialog.set_tool(t);
+    cropDialog.set_tool(t);
+}
+
+void MainWindow::set_brightness_tool(image_tool *t)
+{
+    brightnessDialog.set_tool(t);
 }
 
 void MainWindow::callback_image_edited(QImage* img){

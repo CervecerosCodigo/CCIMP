@@ -1,5 +1,7 @@
 #include "brightness_dialog.h"
 #include "ui_brightness_dialog.h"
+#include "parameters/parameters.h"
+#include "parameters/using_slider.h"
 
 brightness_dialog::brightness_dialog(QWidget *parent) : QDialog(parent), ui(new Ui::brightness_dialog)
 {
@@ -26,5 +28,9 @@ const int &brightness_dialog::get_slider_value()
 void brightness_dialog::on_horizontalSlider_valueChanged(int value)
 {
 // qDebug() << "brigtness_slider_actionChanged" << ui->horizontalSlider->value();
-    emit signalBrightnessChanged();
+//    emit signalBrightnessChanged();
+    using_slider* param = (using_slider*) tool->get_param();
+    param->set_slider_val(ui->horizontalSlider->value());
+
+    emit slotEditFinished();
 }
