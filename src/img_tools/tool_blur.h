@@ -1,7 +1,7 @@
 #ifndef TOOL_BLUR_H
 #define TOOL_BLUR_H
 
-#include "model/tool.h"
+#include "img_tools/tool.h"
 
 #include <iostream>
 

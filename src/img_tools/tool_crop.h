@@ -1,8 +1,8 @@
 #ifndef TOOL_CROP_H
 #define TOOL_CROP_H
 
-#include "model/tool.h"
-#include "model/image_tool.h"
+#include "img_tools/tool.h"
+#include "img_tools/image_tool.h"
 #include "parameters/using_coordinates.h"
 #include <QDebug>
 
