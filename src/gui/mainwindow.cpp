@@ -325,6 +325,7 @@ void MainWindow::callback_image_edited(QImage* img){
  * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
  */
 void MainWindow::execute_tool_on_image(){
+    qDebug() << "Executing tool" ;
     event_listen->execute_tool_on_image(this);
 }
 
