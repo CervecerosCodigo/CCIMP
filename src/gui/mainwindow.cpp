@@ -344,3 +344,21 @@ void MainWindow::set_blur_tool(image_tool *t) {
     qDebug() << "set_blur_tool kjørt";
     blur_dia.set_tool(t);
 }
+
+void MainWindow::on_brightnessButton_clicked()
+{
+    event_listen->on_clicked_tool(brightnessDialog.get_tool());
+//    edit_orig_image = img_obj_converter::to_Image(*imgObject);
+    brightnessDialog.setModal(true);
+    connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+    brightnessDialog.exec();
+}
+
+void MainWindow::on_cropButton_clicked()
+{
+    event_listen->on_clicked_tool(cropDialog.get_tool());
+    cropDialog.setModal(true);
+    connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
+    cropDialog.exec();
+
+}
