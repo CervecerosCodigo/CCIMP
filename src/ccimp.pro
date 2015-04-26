@@ -57,7 +57,8 @@ HEADERS  += gui/mainwindow.h \
     parameters/using_colors.h \
     parameters/using_coordinates.h \
     model/event_listener.h \
-    model/callback_iface.h
+    model/callback_iface.h \
+    gui/ccimp_dialog.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

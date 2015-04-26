@@ -21,7 +21,7 @@ public:
     }
 
 
-   Magick::Image* crop_image(Magick::Image& img, const std::vector<int>& crop_parm);
+    Magick::Image* crop_image(Magick::Image& img, const std::vector<int>& crop_parm);
 
 };
 
