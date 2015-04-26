@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     controller/controller.cpp \
     img_tools/build_tools.cpp \
     parameters/using_colors.cpp \
-    parameters/using_coordinates.cpp
+    parameters/using_coordinates.cpp \
+    gui/blur_dialog.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -53,11 +54,13 @@ HEADERS  += gui/mainwindow.h \
     parameters/using_colors.h \
     parameters/using_coordinates.h \
     controller/event_listener.h \
-    controller/callback_iface.h
+    controller/callback_iface.h \
+    gui/blur_dialog.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
-    gui/brightness_dialog.ui
+    gui/brightness_dialog.ui \
+    gui/blur_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc
