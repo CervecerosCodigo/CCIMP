@@ -4,12 +4,13 @@
 #include <QDialog>
 #include <QDebug>
 #include <QMainWindow>
+#include "gui/ccimp_dialog.h"
 
 namespace Ui {
 class brightness_dialog;
 }
 
-class brightness_dialog : public QDialog
+class brightness_dialog : public QDialog, public ccimp_dialog
 {
     Q_OBJECT
 
