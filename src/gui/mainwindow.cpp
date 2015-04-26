@@ -290,6 +290,14 @@ void MainWindow::set_brightness_tool(image_tool *t)
     brightnessDialog.set_tool(t);
 }
 
+void MainWindow::set_contrast_tool(image_tool *t)
+{
+    contrastDialog.set_tool(t);
+}
+
+void MainWindow::set_blur_tool(image_tool *t) {
+    blurDialog.set_tool(t);
+}
 
 /**Er en event-implementasjon som kalles fra image_wrapper
  * etter at et bilde er behandlet, og skal vises i gui igjen.
@@ -312,16 +320,12 @@ void MainWindow::execute_tool_on_image(){
 void MainWindow::on_blurButton_clicked()
 {
     notify_event_image_changed();
-    event_listen->on_clicked_tool(blur_dia.get_tool());
-    blur_dia.setModal(true);
+    event_listen->on_clicked_tool(blurDialog.get_tool());
+    blurDialog.setModal(true);
 
-    connect(&blur_dia, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
+    connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
 
-    blur_dia.exec();
-}
-
-void MainWindow::set_blur_tool(image_tool *t) {
-    blur_dia.set_tool(t);
+    blurDialog.exec();
 }
 
 void MainWindow::on_brightnessButton_clicked()
@@ -341,4 +345,13 @@ void MainWindow::on_cropButton_clicked()
     connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
     cropDialog.exec();
 
+}
+
+void MainWindow::on_contrastButton_clicked()
+{
+    notify_event_image_changed();
+    event_listen->on_clicked_tool(contrastDialog.get_tool());
+    contrastDialog.setModal(true);
+    connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
+    contrastDialog.exec();
 }

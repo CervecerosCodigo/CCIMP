@@ -21,8 +21,9 @@
 #include "controller/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include "gui/blur_dialog.h"
+#include "gui/contrast_dialog.h"
 #include <vector>
-#include "brightness_dialog.h"
+#include "gui/brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
 #include "img_tools/image_tool.h"
@@ -40,7 +41,8 @@ class MainWindow : public QMainWindow, public callback_iface
     //Setter opp dialogvinduer
     crop_dialog cropDialog;
     brightness_dialog brightnessDialog;
-    blur_dialog blur_dia;
+    contrast_dialog contrastDialog;
+    blur_dialog blurDialog;
 
 public:
     void set_event_listener(event_listener* l);
@@ -51,6 +53,7 @@ public:
     void set_blur_tool(image_tool* t);
 
     void set_brightness_tool(image_tool* t);
+    void set_contrast_tool(image_tool* t);
 
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
@@ -117,8 +120,7 @@ private slots:
     void on_blurButton_clicked();
     void on_brightnessButton_clicked();
     void on_cropButton_clicked();
-
-
+    void on_contrastButton_clicked();
 };
 
 #endif // MAINWINDOW_H

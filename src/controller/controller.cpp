@@ -42,6 +42,9 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::BRIGTHEN:
         gui_mw.set_brightness_tool(t);
         break;
+    case TOOLIDENT::CONTRAST:
+        gui_mw.set_contrast_tool(t);
+        break;
     }
 
 }

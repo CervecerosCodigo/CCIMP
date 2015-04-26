@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QMainWindow>
 #include "gui/ccimp_dialog.h"
+#include "parameters/parameters.h"
+#include "parameters/using_slider.h"
 
 namespace Ui {
 class brightness_dialog;
