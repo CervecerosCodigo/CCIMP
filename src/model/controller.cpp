@@ -3,7 +3,7 @@
 
 controller::controller(MainWindow& mw):gui_mw{mw}
 {
-    gui_mw.set_image_listener(this); //setting listener on gui/mainwindow
+    gui_mw.set_event_listener(this); //setting listener on gui/mainwindow
 
 }
 
