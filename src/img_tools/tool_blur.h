@@ -9,8 +9,7 @@
 class tool_blur : public tool
 {
 public:
-    tool_blur(controller_iface* cont, parameters* para, TOOLIDENT tool_ident);
-    ~tool_blur();
+    using tool::tool;
 
     void execute(Magick::Image& img) override;
 };
