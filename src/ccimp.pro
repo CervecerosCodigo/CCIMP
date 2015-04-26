@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     img_tools/build_tools.cpp \
     parameters/using_colors.cpp \
     parameters/using_coordinates.cpp \
-    gui/blur_dialog.cpp
+    gui/blur_dialog.cpp \
+    img_tools/tool_brightness.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -56,7 +57,8 @@ HEADERS  += gui/mainwindow.h \
     controller/event_listener.h \
     controller/callback_iface.h \
     gui/blur_dialog.h \
-    gui/ccimp_dialog.h
+    gui/ccimp_dialog.h \
+    img_tools/tool_brightness.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

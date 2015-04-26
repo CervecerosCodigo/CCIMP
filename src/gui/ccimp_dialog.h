@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "img_tools/image_tool.h"
 
+
 //! A base class for all dialogs
 class ccimp_dialog {
 
@@ -14,13 +15,13 @@ public:
     ccimp_dialog(){}
     virtual ~ccimp_dialog(){}
 
-    virtual void set_tool(image_tool *t)
+    inline virtual void set_tool(image_tool *t)
     {
-        qDebug() << "ccimp_dialog.h sin set_tool metode kjørt";
+        qDebug() << Q_FUNC_INFO << "kjører set_tool";
         tool=t;
     }
 
-    virtual image_tool* get_tool()
+    inline virtual image_tool* get_tool()
     {
         return tool;
     }

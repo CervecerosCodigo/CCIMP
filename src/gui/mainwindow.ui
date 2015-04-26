@@ -72,7 +72,7 @@
          <x>0</x>
          <y>0</y>
          <width>103</width>
-         <height>607</height>
+         <height>619</height>
         </rect>
        </property>
        <widget class="QWidget" name="layoutWidget">
@@ -99,7 +99,7 @@
           </spacer>
          </item>
          <item row="0" column="0" colspan="2">
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="brightnessButton">
            <property name="text">
             <string>Brightness</string>
            </property>
@@ -112,7 +112,7 @@
           </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="cropButton">
            <property name="text">
             <string>Crop</string>
            </property>
@@ -152,7 +152,7 @@
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
