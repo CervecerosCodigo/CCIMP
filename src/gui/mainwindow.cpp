@@ -350,3 +350,20 @@ void MainWindow::callback_image_edited(QImage* img){
 void MainWindow::execute_tool_on_image(){
     event_listen->execute_tool_on_image(this);
 }
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    qDebug() << "on_pushButton_3_clicked() kjørt";
+    event_listen->on_clicked_tool(blur_dia.get_tool());
+    blur_dia.setModal(true);
+
+    connect(&blur_dia, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
+
+    blur_dia.exec();
+}
+
+void MainWindow::set_blur_tool(image_tool *t) {
+    qDebug() << "set_blur_tool kjørt";
+    blur_dia.set_tool(t);
+}

@@ -2,13 +2,16 @@
 #define BLUR_DIALOG_H
 
 #include <QDialog>
+#include <QDebug>
+#include "ccimp_dialog.h"
+#include "parameters/using_slider.h"
 #include "img_tools/image_tool.h"
 
 namespace Ui {
 class blur_dialog;
 }
 
-class blur_dialog : public QDialog
+class blur_dialog : public QDialog, public ccimp_dialog
 {
     Q_OBJECT
 
@@ -18,8 +21,17 @@ public:
     explicit blur_dialog(QWidget *parent = 0);
     ~blur_dialog();
 
-    void set_tool(image_tool* t);
-    image_tool* get_tool();
+signals:
+  void signalBlurChanged();
+
+public slots:
+  void slotEditFinished() {
+    emit signalBlurChanged();
+  }
+
+private slots:
+  void on_buttonBox_accepted();
+  void on_buttonBox_exec();
 
 private:
     Ui::blur_dialog *ui;

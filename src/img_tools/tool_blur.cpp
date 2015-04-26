@@ -13,5 +13,7 @@ tool_blur::~tool_blur()
 
 
 void tool_blur::execute(Magick::Image& img){
-    std::cout << "Kjører execute" << std::endl;
+    qDebug() << "Blur tool sin execute ran";
+    using_slider* param = (using_slider*) get_para();
+    img.blur(param->get_slider_val());
 }
