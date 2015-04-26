@@ -2,6 +2,7 @@
 #define BLUR_DIALOG_H
 
 #include <QDialog>
+#include "img_tools/image_tool.h"
 
 namespace Ui {
 class blur_dialog;

@@ -1,7 +1,7 @@
 #ifndef CCIMP_DIALOG_H
 #define CCIMP_DIALOG_H
 
-#include<model/image_tool.h>
+#include "img_tools/image_tool.h"
 
 //! A base class for all dialogs
 class ccimp_dialog {
