@@ -11,6 +11,7 @@
 #include "tool_blur.h"
 #include "tool_crop.h"
 #include "tool_brightness.h"
+#include "tool_contrast.h"
 
 class build_tools
 {
@@ -19,6 +20,7 @@ class build_tools
     tool* blur;
     tool* crop;
     tool* brightness;
+    tool* contrast;
 
     void create_tools_to_be_used();
 

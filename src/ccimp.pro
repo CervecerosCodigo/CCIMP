@@ -31,7 +31,9 @@ SOURCES += main.cpp\
     parameters/using_colors.cpp \
     parameters/using_coordinates.cpp \
     gui/blur_dialog.cpp \
-    img_tools/tool_brightness.cpp
+    img_tools/tool_brightness.cpp \
+    gui/contrast_dialog.cpp \
+    img_tools/tool_contrast.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -58,12 +60,15 @@ HEADERS  += gui/mainwindow.h \
     controller/callback_iface.h \
     gui/blur_dialog.h \
     gui/ccimp_dialog.h \
-    img_tools/tool_brightness.h
+    img_tools/tool_brightness.h \
+    gui/contrast_dialog.h \
+    img_tools/tool_contrast.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
     gui/brightness_dialog.ui \
-    gui/blur_dialog.ui
+    gui/blur_dialog.ui \
+    gui/contrast_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc
