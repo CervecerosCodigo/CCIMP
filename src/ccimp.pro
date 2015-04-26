@@ -55,7 +55,8 @@ HEADERS  += gui/mainwindow.h \
     parameters/using_coordinates.h \
     controller/event_listener.h \
     controller/callback_iface.h \
-    gui/blur_dialog.h
+    gui/blur_dialog.h \
+    gui/ccimp_dialog.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
