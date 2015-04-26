@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <vector>
 #include "ccimp_vector.h"
-#include <model/image_tool.h>
+#include <img_tools/image_tool.h>
 #include "Magick++.h"
 #include "img_tools/img_obj_converter.h"
 #include "callback_iface.h"

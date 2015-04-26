@@ -15,17 +15,16 @@
 #include <Magick++.h>
 #include <iostream>
 
-#include "model/image_statistics.h"
-#include "model/event_listener.h"
-#include "model/callback_iface.h"
-#include "model/ccimp_vector.h"
+#include "controller/image_statistics.h"
+#include "controller/event_listener.h"
+#include "controller/callback_iface.h"
+#include "controller/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include <vector>
 #include "brightness_dialog.h"
-#include "img_tools/crop_tool.h"
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
-#include "model/image_tool.h"
+#include "img_tools/image_tool.h"
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {

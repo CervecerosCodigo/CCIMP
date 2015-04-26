@@ -18,8 +18,8 @@ public:
     img_obj_converter();
     ~img_obj_converter();
 
-    static Magick::Image* to_Image(QImage*);
-    static QImage* to_QImage(Magick::Image*);
+    static Magick::Image* to_Image(QImage&);
+    static QImage* to_QImage(Magick::Image&);
 
 };
 

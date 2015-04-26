@@ -1,8 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "model/controller_iface.h"
-#include "model/event_listener.h"
+#include "controller/controller_iface.h"
+#include "controller/event_listener.h"
 #include "callback_iface.h"
 #include "image_wrapper.h"
 #include <vector>

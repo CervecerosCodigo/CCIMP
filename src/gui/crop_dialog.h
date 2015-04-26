@@ -5,7 +5,7 @@
 #include <QString>
 #include <QDebug>
 #include <vector>
-#include "model/image_tool.h"
+#include "img_tools/image_tool.h"
 #include "parameters/parameters.h"
 #include "parameters/using_coordinates.h"
 
