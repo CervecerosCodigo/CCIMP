@@ -2,8 +2,10 @@
 #define TOOL_BLUR_H
 
 #include "img_tools/tool.h"
-
-#include <iostream>
+#include "img_tools/tool.h"
+#include "img_tools/image_tool.h"
+#include "parameters/using_slider.h"
+#include <QDebug>
 
 class tool_blur : public tool
 {

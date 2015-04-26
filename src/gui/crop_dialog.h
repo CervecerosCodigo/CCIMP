@@ -5,12 +5,9 @@
 #include <QString>
 #include <QDebug>
 #include <vector>
-<<<<<<< HEAD
 #include "gui/ccimp_dialog.h"
-#include "model/image_tool.h"
-=======
 #include "img_tools/image_tool.h"
->>>>>>> 1a60ab03b38ebbc3bda7354f85774a25407b2f74
+#include "img_tools/image_tool.h"
 #include "parameters/parameters.h"
 #include "parameters/using_coordinates.h"
 

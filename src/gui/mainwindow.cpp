@@ -318,19 +318,19 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::changeBrightness() {
     // Endre brightness
 
-//    edit_image = new Image(*edit_orig_image);
-//    edit_image->brightnessContrast((b_dialog.get_slider_value())*1.0,0.0);
-//    this->imgObject = img_obj_converter::to_QImage(edit_image);
-//    set_updated_image(img_obj_converter::to_QImage(edit_image));
+    edit_image = new Image(*edit_orig_image);
+    edit_image->brightnessContrast((b_dialog.get_slider_value())*1.0,0.0);
+    this->imgObject = img_obj_converter::to_QImage(*edit_image);
+    set_updated_image(img_obj_converter::to_QImage(*edit_image));
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-//    brightness_dialog b_dialog; //deklarasjon flyttet til prototype
-//    edit_orig_image = img_obj_converter::to_Image(this->imgObject);
-//    b_dialog.setModal(true);
-//    connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
-//    b_dialog.exec();
+    brightness_dialog b_dialog; //deklarasjon flyttet til prototype
+    edit_orig_image = img_obj_converter::to_Image(*imgObject);
+    b_dialog.setModal(true);
+    connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
+    b_dialog.exec();
 }
 
 
