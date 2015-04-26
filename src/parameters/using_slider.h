@@ -2,7 +2,7 @@
 #define USING_SLIDER_H
 
 #include "parameters/parameters.h"
-
+#include <QDebug>
 class using_slider : public parameters
 {
 

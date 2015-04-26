@@ -29,7 +29,7 @@ public:
     controller(MainWindow&);
     ~controller();
 
-    void set_updated_image(QImage* updated_image);
+    //void set_updated_image(QImage* updated_image);
 
     void register_tool(image_tool* t) override; //from controller_iface
 

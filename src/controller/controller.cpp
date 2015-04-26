@@ -13,9 +13,9 @@ controller::~controller()
 //    delete current_image;
 }
 
-void controller::set_updated_image(QImage *updated_image){
-    gui_mw.set_updated_image(updated_image);
-}
+//void controller::set_updated_image(QImage *updated_image){
+//    gui_mw.set_updated_image(updated_image);
+//}
 
 void controller::register_tool(image_tool* t){
 

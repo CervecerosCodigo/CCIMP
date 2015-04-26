@@ -15,8 +15,8 @@ blur_dialog::~blur_dialog()
 void blur_dialog::on_buttonBox_accepted() {
 
     using_slider* param = (using_slider*)tool->get_param();
-    qDebug() << "blur sin on_buttonBox_accepted() kjørt";
-    param->set_slider_val(ui->horizontalSlider->value());
+
+    param->set_slider_val(ui->blurSlider->value());
     emit slotEditFinished();
 
 }

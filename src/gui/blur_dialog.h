@@ -15,7 +15,6 @@ class blur_dialog : public QDialog, public ccimp_dialog
 {
     Q_OBJECT
 
-    image_tool* tool;
 
 public:
     explicit blur_dialog(QWidget *parent = 0);
