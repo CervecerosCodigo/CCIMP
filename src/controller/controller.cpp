@@ -40,7 +40,7 @@ void controller::register_tool(image_tool* t){
         //code
         break;
     case TOOLIDENT::BRIGTHEN:
-        //code
+        gui_mw.set_brightness_tool(t);
         break;
     }
 
@@ -62,7 +62,6 @@ void controller::on_clicked_tool(image_tool* t){
 void controller::execute_tool_on_image(callback_iface* callback){
     qDebug() << "Executing tool in Controller";
     current_image->execute_tool(callback);
-
 }
 
 //Lytter på "undo-knappen" i GUI

@@ -249,7 +249,14 @@ void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter 
 //    delete bilde, bilde2;
 }
 
+void MainWindow::changeBrightness() {
+    // Endre brightness
 
+    edit_image = new Image(*edit_orig_image);
+    edit_image->brightnessContrast((brightnessDialog.get_slider_value())*1.0,0.0);
+    this->imgObject = img_obj_converter::to_QImage(*edit_image);
+    set_updated_image(img_obj_converter::to_QImage(*edit_image));
+}
 
 /*
  * ************************************************************************
@@ -299,16 +306,6 @@ void MainWindow::set_event_listener(event_listener *l){
 
 
 
-void MainWindow::changeBrightness() {
-    // Endre brightness
-
-    edit_image = new Image(*edit_orig_image);
-    edit_image->brightnessContrast((brightnessDialog.get_slider_value())*1.0,0.0);
-    this->imgObject = img_obj_converter::to_QImage(*edit_image);
-    set_updated_image(img_obj_converter::to_QImage(*edit_image));
-}
-
-
 //set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
     cropDialog.set_tool(t);
@@ -333,11 +330,11 @@ void MainWindow::execute_tool_on_image(){
 
 void MainWindow::on_brightnessButton_clicked()
 {
-    brightness_dialog b_dialog; //deklarasjon flyttet til prototype
-    edit_orig_image = img_obj_converter::to_Image(*imgObject);
-    b_dialog.setModal(true);
-    connect(&b_dialog, SIGNAL(signalBrightnessChanged()), this, SLOT(changeBrightness()));
-    b_dialog.exec();
+    event_listen->on_clicked_tool(brightnessDialog.get_tool());
+//    edit_orig_image = img_obj_converter::to_Image(*imgObject);
+    brightnessDialog.setModal(true);
+    connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+    brightnessDialog.exec();
 }
 
 void MainWindow::on_cropButton_clicked()
