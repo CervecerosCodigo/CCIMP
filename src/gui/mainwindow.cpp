@@ -125,7 +125,7 @@ void MainWindow::set_updated_image(QImage* updated_image)
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
-
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
 
 
@@ -303,7 +303,7 @@ void MainWindow::set_event_listener(event_listener *l){
  */
 void MainWindow::on_pushButton_2_clicked()
 {
-
+    event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
 //    crop_dialog c_dialog;
     event_listen->on_clicked_tool(c_dialog.get_tool());
     c_dialog.setModal(true);
