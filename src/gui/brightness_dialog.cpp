@@ -27,10 +27,11 @@ const int &brightness_dialog::get_slider_value()
 
 void brightness_dialog::on_horizontalSlider_valueChanged(int value)
 {
-// qDebug() << "brigtness_slider_actionChanged" << ui->horizontalSlider->value();
+
 //    emit signalBrightnessChanged();
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(ui->horizontalSlider->value());
+    qDebug() << Q_FUNC_INFO << param->get_slider_val();
 
     emit slotEditFinished();
 }

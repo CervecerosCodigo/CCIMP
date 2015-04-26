@@ -10,6 +10,7 @@
 #include "img_tools/tool.h"
 #include "tool_blur.h"
 #include "tool_crop.h"
+#include "tool_brightness.h"
 
 class build_tools
 {
@@ -17,6 +18,7 @@ class build_tools
 
     tool* blur;
     tool* crop;
+    tool* brightness;
 
     void create_tools_to_be_used();
 
