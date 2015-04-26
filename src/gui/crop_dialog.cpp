@@ -36,17 +36,6 @@ void crop_dialog::on_buttonBox_accepted()
     param->set_x_axis(ui->lineEdit_3->text().toInt());
     param->set_y_axis(ui->lineEdit_4->text().toInt());
 
-//    width = ui->lineEdit->text().toInt();
-//    height = ui->lineEdit_2->text().toInt();
-//    x_offset = ui->lineEdit_3->text().toInt();
-//    y_offset = ui->lineEdit_4->text().toInt();
-
-//    crop_values.push_back(width);
-//    crop_values.push_back(height);
-//    crop_values.push_back(x_offset);
-//    crop_values.push_back(y_offset);
-
-
     emit slotEditFinished();
 }
 

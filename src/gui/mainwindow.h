@@ -42,15 +42,6 @@ class MainWindow : public QMainWindow, public callback_iface
     brightness_dialog brightnessDialog;
     blur_dialog blur_dia;
 
-    vector<int> test_vektor;
-    Magick::Image *edit_image;
-    /*
-     * Denne blir brukt til verktøy som feks brightness der vi i
-     * utgangspunkt trenger å ta vare på original bilde slik
-     * det såg ut før vi begynte å editere det.
-     */
-    Magick::Image *edit_orig_image;
-
 public:
     void set_event_listener(event_listener* l);
     explicit MainWindow(QWidget *parent = 0);
@@ -67,11 +58,9 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    Image* toImage(QImage* qimage);
-    QImage* toQImage(Image* image);
     void createConnections();
     void load_file(const QString &fileName);
-
+    void notify_event_image_changed();
     QString filePath;
     QString original_filePath;
 
@@ -112,9 +101,6 @@ public slots:
     void save();
     void save_as();
     void showDebugMsg();
-    void changeBrightness();
-    void print_vector();
-    void crop_image();
     void execute_tool_on_image();
 
 private slots:
@@ -128,9 +114,10 @@ private slots:
     void zoomToFit();
     void undo_command();
     void redo_command();
-    void on_pushButton_3_clicked();
+    void on_blurButton_clicked();
     void on_brightnessButton_clicked();
     void on_cropButton_clicked();
+
 
 };
 

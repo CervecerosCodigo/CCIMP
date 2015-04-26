@@ -11,7 +11,6 @@ class tool_crop : public tool
 public:
     using tool::tool;
 
-    //parameters* get_param();
     void execute(Magick::Image& img) override;
 };
 

@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     //QWidget::showMaximized();
 
-    //setCentralWidget(ui->graphicsView); //den respekterer ikke andre windgets
-
     createConnections();
 
     //Setter bilde ved boot
@@ -20,9 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Setter opp en tree view
     set_fs_view();
-
-    //Opretter imgae objekt som skal brukes til redigering.
-//    edit_image = new Magick::Image;
 
 }
 
@@ -57,6 +52,8 @@ void MainWindow::open(){
     load_file(filePath);
 }
 
+
+
 /** Lagre som
  * @TODO Her borde vi bruke en eller annen exception.
  * @brief MainWindow::save_as
@@ -87,6 +84,8 @@ void MainWindow::save(){
     }
 }
 
+
+
 /** Laster inn filen
  * @brief MainWindow::load_file
  * @param fileName
@@ -95,20 +94,29 @@ void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
 
+
+
 /** Setter bilde i vindu når åpnes fra TreeView eller Open
  * @brief MainWindow::set_image
  * @param path
  */
 void MainWindow::set_image(const QString &path)
 {
-    qDebug() << "set_image: " << path;
-    original_filePath = path;
-    imgObject = new QImage();
-    imgObject->load(path);
-    if(event_listener_set)
-        event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
-    set_updated_image(imgObject);
+
+    if(!path.isNull() || !path.isEmpty()){
+
+        original_filePath = path;
+        imgObject = new QImage();
+        imgObject->load(path);
+        notify_event_image_changed();
+        set_updated_image(imgObject);
+
+    }else{
+        qDebug() << "Filstien er tom eller null!";
+    }
 }
+
+
 
 /** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
  * @brief MainWindow::set_updated_image
@@ -130,8 +138,6 @@ void MainWindow::set_updated_image(QImage* updated_image)
 
 
 }
-
-
 
 
 /** Setter opp file system view
@@ -157,6 +163,8 @@ void MainWindow::set_fs_view()
     ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
 }
 
+
+
 void MainWindow::show_stats(QImage *img){
     image_statistics stat;
     ui->textEdit->setText(stat.get_img_stat(*img));
@@ -164,22 +172,12 @@ void MainWindow::show_stats(QImage *img){
 
 
 void MainWindow::rotate_left() {
-//    qDebug()<< "Rotate left ran";
-//    QTransform rot;
-//    rot.rotate(-90);
-//    QImage nyttBilde = this->imgObject->transformed(rot);
-//    this->imgObject = (QImage*)&nyttBilde;
-//    set_image();
+
 }
 
 
 void MainWindow::rotate_right() {
-//    qDebug()<< "Rotate right ran";
-//    QTransform rot;
-//    rot.rotate(90);
-//    QImage nyttBilde = this->imgObject->transformed(rot);
-//    this->imgObject = (QImage*)&nyttBilde;
-//    set_image();
+
 }
 
 
@@ -219,44 +217,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/** Denne metoden var til bruk for å teste dersom det er enkelt nok til
- * å ta imot data fra et dialogvindu og skrive ut det i main window.
- * @brief MainWindow::print_vector
- */
-void MainWindow::print_vector()
-{
-
-//    test_vektor = c_dialog.get_crop_values();
-    std::vector<int>::iterator vi = test_vektor.begin();
-    while(vi != test_vektor.end()){
-        std::cout << "Cropping: " << *vi;
-        vi++;
-    }
-}
-
-/** Denne skal beskjære bilde.
- * Funksjonen skal seinere flyttes til controller.
- * @brief MainWindow::crop_image
- */
-void MainWindow::crop_image() //@TODO: denne skal endres slik at den kun henter vektor og sender vindere til crop_tool singleton
-{
-//    Image *bilde = toImage(this->imgObject);
-//    Image *bilde = img_obj_converter::to_Image(this->imgObject);
-//    crop_tool& cp = crop_tool::getInstance();
-//    Image *bilde2 = cp.crop_image(*bilde, c_dialog.get_crop_values());
-////    this->imgObject = toQImage(bilde2);
-//    set_updated_image(img_obj_converter::to_QImage(bilde2));
-//    delete bilde, bilde2;
-}
-
-void MainWindow::changeBrightness() {
-    // Endre brightness
-
-    edit_image = new Image(*edit_orig_image);
-    edit_image->brightnessContrast((brightnessDialog.get_slider_value())*1.0,0.0);
-    this->imgObject = img_obj_converter::to_QImage(*edit_image);
-    set_updated_image(img_obj_converter::to_QImage(*edit_image));
-}
 
 /*
  * ************************************************************************
@@ -293,29 +253,49 @@ void MainWindow::on_treeView_clicked()
 
 void MainWindow::on_treeView_pressed()
 {
-    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
-    //qDebug() << new_img;
+    const QString new_img = fs_model->filePath(ui->treeView->currentIndex());
     set_image(new_img);
 }
 
+
+/**
+ * @brief MainWindow::set_event_listener
+ * @param l
+ * Setter eventlytteren som skal sende events til controller
+ */
 void MainWindow::set_event_listener(event_listener *l){
     event_listener_set = true;
     event_listen = l;
 
 }
 
-
+/**
+ * @brief MainWindow::notify_event_image_changed
+ * Privat metode som må kalles hver gang et man skal inn på en tool, eller når nytt bilde lastes.
+ */
+void MainWindow::notify_event_image_changed(){
+    if(event_listener_set){
+        event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
+    }
+}
 
 //set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
     cropDialog.set_tool(t);
 }
 
+
 void MainWindow::set_brightness_tool(image_tool *t)
 {
     brightnessDialog.set_tool(t);
 }
 
+
+/**Er en event-implementasjon som kalles fra image_wrapper
+ * etter at et bilde er behandlet, og skal vises i gui igjen.
+ * @brief MainWindow::callback_image_edited
+ * @param img
+ */
 void MainWindow::callback_image_edited(QImage* img){
     set_updated_image(img);
 }
@@ -325,14 +305,13 @@ void MainWindow::callback_image_edited(QImage* img){
  * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
  */
 void MainWindow::execute_tool_on_image(){
-    qDebug() << "Executing tool" ;
     event_listen->execute_tool_on_image(this);
 }
 
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_blurButton_clicked()
 {
-    qDebug() << "on_pushButton_3_clicked() kjørt";
+    notify_event_image_changed();
     event_listen->on_clicked_tool(blur_dia.get_tool());
     blur_dia.setModal(true);
 
@@ -342,14 +321,13 @@ void MainWindow::on_pushButton_3_clicked()
 }
 
 void MainWindow::set_blur_tool(image_tool *t) {
-    qDebug() << "set_blur_tool kjørt";
     blur_dia.set_tool(t);
 }
 
 void MainWindow::on_brightnessButton_clicked()
 {
+    notify_event_image_changed();
     event_listen->on_clicked_tool(brightnessDialog.get_tool());
-//    edit_orig_image = img_obj_converter::to_Image(*imgObject);
     brightnessDialog.setModal(true);
     connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
     brightnessDialog.exec();
@@ -357,6 +335,7 @@ void MainWindow::on_brightnessButton_clicked()
 
 void MainWindow::on_cropButton_clicked()
 {
+    notify_event_image_changed();
     event_listen->on_clicked_tool(cropDialog.get_tool());
     cropDialog.setModal(true);
     connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));

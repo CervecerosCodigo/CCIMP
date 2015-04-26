@@ -17,7 +17,7 @@ blur_dialog::~blur_dialog()
 void blur_dialog::on_horizontalSlider_valueChanged(int value)
 {
     using_slider* param = (using_slider*)tool->get_param();
-    qDebug() << "blur sin verdi endret";
+    //qDebug() << "blur sin verdi endret";
     param->set_slider_val(ui->horizontalSlider->value());
     emit slotEditFinished();
 }

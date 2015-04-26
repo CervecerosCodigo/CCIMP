@@ -17,7 +17,7 @@ public:
 
     inline virtual void set_tool(image_tool *t)
     {
-        qDebug() << Q_FUNC_INFO << "kjører set_tool";
+        //qDebug() << Q_FUNC_INFO << "kjører set_tool";
         tool=t;
     }
 
