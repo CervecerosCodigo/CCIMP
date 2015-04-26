@@ -121,7 +121,7 @@
          <item row="2" column="0" colspan="2">
           <widget class="QPushButton" name="pushButton_3">
            <property name="text">
-            <string>PushButton</string>
+            <string>Blur</string>
            </property>
           </widget>
          </item>

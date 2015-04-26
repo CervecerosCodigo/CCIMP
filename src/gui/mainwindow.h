@@ -20,6 +20,7 @@
 #include "controller/callback_iface.h"
 #include "controller/ccimp_vector.h"
 #include "gui/crop_dialog.h"
+#include "gui/blur_dialog.h"
 #include <vector>
 #include "brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
@@ -35,6 +36,7 @@ class MainWindow : public QMainWindow, public callback_iface
 {
     Q_OBJECT
 
+    blur_dialog blur_dia;
     crop_dialog c_dialog;
     brightness_dialog b_dialog;
     vector<int> test_vektor;
@@ -51,6 +53,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
+    void set_blur_tool(image_tool* t);
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
 
@@ -121,6 +124,7 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
 
+    void on_pushButton_3_clicked();
 };
 
 #endif // MAINWINDOW_H

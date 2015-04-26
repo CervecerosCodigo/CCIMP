@@ -25,7 +25,7 @@ void controller::register_tool(image_tool* t){
     //Call correct GUI-function to set its parameters on the slider tools
     switch(t_type){
     case TOOLIDENT::BLUR:
-        //code
+        gui_mw.set_blur_tool(t);
         break;
     case TOOLIDENT::SHARPEN:
         //code
