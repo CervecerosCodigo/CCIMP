@@ -14,50 +14,46 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gui/mainwindow.cpp \
-    model/tool.cpp \
-    model/image_tool.cpp \
-    model/tool_blur.cpp \
-    model/image_wrapper.cpp \
-    model/image_statistics.cpp \
+    img_tools/tool.cpp \
+    img_tools/image_tool.cpp \
+    img_tools/tool_blur.cpp \
+    controller/image_wrapper.cpp \
+    controller/image_statistics.cpp \
     test/test_lab.cpp \
     parameters/using_slider.cpp \
     test/crop_test.cpp \
     gui/crop_dialog.cpp \
     gui/brightness_dialog.cpp \
-    img_tools/crop_tool.cpp \
     img_tools/img_obj_converter.cpp \
-    model/tool_crop.cpp \
-    img_tools/brightness_tool.cpp \
-    model/controller.cpp \
-    model/build_tools.cpp \
+    img_tools/tool_crop.cpp \
+    controller/controller.cpp \
+    img_tools/build_tools.cpp \
     parameters/using_colors.cpp \
     parameters/using_coordinates.cpp
 
 HEADERS  += gui/mainwindow.h \
-    model/tool.h \
-    model/image_tool.h \
-    model/tool_blur.h \
-    model/image_wrapper.h \
-    model/image_statistics.h \
-    model/ccimp_vector.h\
-    model/data_key_value_container.h\
+    img_tools/tool.h \
+    img_tools/image_tool.h \
+    img_tools/tool_blur.h \
+    controller/image_wrapper.h \
+    controller/image_statistics.h \
+    controller/ccimp_vector.h\
+    controller/data_key_value_container.h\
     parameters/parameters.h \
     lib.h \
     test/crop_test.h \
     gui/crop_dialog.h \
     gui/brightness_dialog.h \
-    img_tools/crop_tool.h \
     img_tools/img_obj_converter.h \
-    model/tool_crop.h \
-    img_tools/brightness_tool.h \
-    model/controller.h \
-    model/controller_iface.h \
-    model/build_tools.h \
+    img_tools/tool_crop.h \
+    controller/controller.h \
+    controller/controller_iface.h \
+    img_tools/build_tools.h \
     parameters/using_slider.h \
     parameters/using_colors.h \
     parameters/using_coordinates.h \
-    model/event_listener.h \
-    model/callback_iface.h
+    controller/event_listener.h \
+    controller/callback_iface.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
