@@ -2,8 +2,8 @@
 #define CONTROLLER_H
 
 #include "model/controller_iface.h"
-#include "model/gui_listener.h"
-#include "gui_callback_iface.h"
+#include "model/event_listener.h"
+#include "callback_iface.h"
 #include "image_wrapper.h"
 #include <vector>
 #include "ccimp_vector.h"
@@ -14,7 +14,7 @@
 
 #include "gui/mainwindow.h"
 
-class controller : public controller_iface, public gui_listener
+class controller : public controller_iface, public event_listener
 {
 
     MainWindow& gui_mw;
@@ -33,9 +33,9 @@ public:
 
     void register_tool(image_tool* t) override; //from controller_iface
 
-    void on_new_image(QImage& img) override; //from gui_listener
+    void on_new_image(QImage& img) override; //from event_listener
     void on_clicked_tool(image_tool* t) override;
-    void execute_tool_on_image(gui_callback_iface* callback) override;
+    void execute_tool_on_image(callback_iface* callback) override;
     void undo_last_command() override;
     void redo_last_command() override;
 

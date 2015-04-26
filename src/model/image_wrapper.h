@@ -8,7 +8,7 @@
 #include <model/image_tool.h>
 #include "Magick++.h"
 #include "img_tools/img_obj_converter.h"
-#include "gui_callback_iface.h"
+#include "callback_iface.h"
 
 class image_wrapper
 {
@@ -24,13 +24,13 @@ public:
     image_wrapper(QImage& img);
     ~image_wrapper();
 
-    void execute_tool(gui_callback_iface* callback);
+    void execute_tool(callback_iface* callback);
     void undo_last_command();
     void redo_last_command();
 
 
     inline void set_current_tool(image_tool* t){current_tool = t;}
-    //inline QImage& get_image(){return *image;}
+
 };
 
 #endif // IMAGE_WRAPPER_H

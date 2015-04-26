@@ -291,7 +291,7 @@ void MainWindow::on_treeView_pressed()
     set_image(new_img);
 }
 
-void MainWindow::set_image_listener(gui_listener *l){
+void MainWindow::set_image_listener(event_listener *l){
     img_listener_set = true;
     img_listener = l;
 

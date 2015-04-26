@@ -15,7 +15,7 @@ void image_wrapper::update_history(){
 }
 
 //Kommuniserer via interface til rett "tool" og kjører verktøyet
-void image_wrapper::execute_tool(gui_callback_iface* callback){
+void image_wrapper::execute_tool(callback_iface* callback){
 
     /**
      * TODO: må ta vare på historikk før man utfører tool.

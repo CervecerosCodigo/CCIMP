@@ -16,8 +16,8 @@
 #include <iostream>
 
 #include "model/image_statistics.h"
-#include "model/gui_listener.h"
-#include "model/gui_callback_iface.h"
+#include "model/event_listener.h"
+#include "model/callback_iface.h"
 #include "model/ccimp_vector.h"
 #include "gui/crop_dialog.h"
 #include <vector>
@@ -32,7 +32,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public gui_callback_iface
+class MainWindow : public QMainWindow, public callback_iface
 {
     Q_OBJECT
 
@@ -48,7 +48,7 @@ class MainWindow : public QMainWindow, public gui_callback_iface
     Magick::Image *edit_orig_image;
 
 public:
-    void set_image_listener(gui_listener* l);
+    void set_image_listener(event_listener* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
@@ -96,7 +96,7 @@ private:
      * Forskjellige lyttere mellom gui og controllere
      */
     bool img_listener_set = false;  //må settes for at img_listener kan brukes
-    gui_listener* img_listener;
+    event_listener* img_listener;
 
 public slots:
     void open();
