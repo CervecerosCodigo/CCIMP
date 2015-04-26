@@ -105,8 +105,8 @@ void MainWindow::set_image(const QString &path)
     original_filePath = path;
     imgObject = new QImage();
     imgObject->load(path);
-    if(img_listener_set)
-        img_listener->on_new_image(*imgObject);   //notify controller by sending reference of the new image
+    if(event_listener_set)
+        event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
     set_updated_image(imgObject);
 }
 
@@ -206,11 +206,11 @@ void MainWindow::zoomToFit() {
 
 
 void MainWindow::undo_command(){
-    img_listener->undo_last_command();
+    event_listen->undo_last_command();
 }
 
 void MainWindow::redo_command(){
-    img_listener->redo_last_command();
+    event_listen->redo_last_command();
 }
 
 
@@ -291,9 +291,9 @@ void MainWindow::on_treeView_pressed()
     set_image(new_img);
 }
 
-void MainWindow::set_image_listener(event_listener *l){
-    img_listener_set = true;
-    img_listener = l;
+void MainWindow::set_event_listener(event_listener *l){
+    event_listener_set = true;
+    event_listen = l;
 
 }
 
@@ -305,7 +305,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
 
 //    crop_dialog c_dialog;
-    img_listener->on_clicked_tool(c_dialog.get_tool());
+    event_listen->on_clicked_tool(c_dialog.get_tool());
     c_dialog.setModal(true);
 
     connect(&c_dialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
@@ -348,5 +348,5 @@ void MainWindow::callback_image_edited(QImage* img){
  * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
  */
 void MainWindow::execute_tool_on_image(){
-    img_listener->execute_tool_on_image(this);
+    event_listen->execute_tool_on_image(this);
 }

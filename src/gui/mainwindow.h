@@ -48,7 +48,7 @@ class MainWindow : public QMainWindow, public callback_iface
     Magick::Image *edit_orig_image;
 
 public:
-    void set_image_listener(event_listener* l);
+    void set_event_listener(event_listener* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
@@ -95,8 +95,8 @@ private:
     /**
      * Forskjellige lyttere mellom gui og controllere
      */
-    bool img_listener_set = false;  //må settes for at img_listener kan brukes
-    event_listener* img_listener;
+    bool event_listener_set = false;  //må settes for at img_listener kan brukes
+    event_listener* event_listen;
 
 public slots:
     void open();
