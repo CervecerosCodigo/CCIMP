@@ -35,8 +35,9 @@ class MainWindow : public QMainWindow, public callback_iface
 {
     Q_OBJECT
 
-    crop_dialog c_dialog;
-    brightness_dialog b_dialog;
+    //Setter opp dialogvinduer
+    crop_dialog cropDialog;
+    brightness_dialog brightnessDialog;
     vector<int> test_vektor;
     Magick::Image *edit_image;
     /*
@@ -51,6 +52,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
+    void set_brightness_tool(image_tool* t);
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
 
@@ -118,9 +120,8 @@ private slots:
     void zoomToFit();
     void undo_command();
     void redo_command();
-    void on_pushButton_2_clicked();
-    void on_pushButton_clicked();
-
+    void on_brightnessButton_clicked();
+    void on_cropButton_clicked();
 };
 
 #endif // MAINWINDOW_H
