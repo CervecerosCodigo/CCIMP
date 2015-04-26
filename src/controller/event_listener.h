@@ -2,7 +2,7 @@
 #define EVENT_LISTENER_H
 
 #include <QImage>
-#include "image_tool.h"
+#include "img_tools/image_tool.h"
 #include "callback_iface.h"
 
 class event_listener

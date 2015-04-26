@@ -2,8 +2,8 @@
 #define TOOL_H
 
 #include "lib.h"
-#include "model/controller_iface.h"
-#include "model/image_tool.h"
+#include "controller/controller_iface.h"
+#include "img_tools/image_tool.h"
 #include <QDebug>
 #include <iostream>
 

@@ -3,7 +3,7 @@
 #include <QDebug>
 
 //Includes for tested classes
-#include "model/data_key_value_container.h"
+#include "controller/data_key_value_container.h"
 
 /** This is our testclass which purpose to avoid messing up the finished
  * classes.

@@ -2,10 +2,10 @@
 #include <QApplication>
 #include <QDebug>
 #include <Magick++.h>
-#include "model/controller_iface.h"
+#include "controller/controller_iface.h"
 #include "test/test_lab.cpp"
-#include "model/build_tools.h"
-#include "model/controller.h"
+#include "img_tools/build_tools.h"
+#include "controller/controller.h"
 
 
 int main(int argc, char **argv)

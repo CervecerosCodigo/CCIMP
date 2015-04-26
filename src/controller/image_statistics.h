@@ -6,7 +6,7 @@
 #include <QString>
 #include <QDebug>
 
-#include "model/data_key_value_container.h"
+#include "controller/data_key_value_container.h"
 
 
 class image_statistics

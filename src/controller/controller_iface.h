@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_IFACE_H
 #define CONTROLLER_IFACE_H
 
-#include "model/image_tool.h"
+#include "img_tools/image_tool.h"
 
 class controller_iface
 {

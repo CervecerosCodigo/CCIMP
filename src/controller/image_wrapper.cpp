@@ -17,12 +17,12 @@ void image_wrapper::update_history(){
 //Kommuniserer via interface til rett "tool" og kjører verktøyet
 void image_wrapper::execute_tool(callback_iface* callback){
 
-    magic_img = img_obj_converter::to_Image(&q_img);    //convert image from qimage
+    magic_img = img_obj_converter::to_Image(q_img);    //convert image from qimage
 
     current_tool->execute(*magic_img);                  //run selected tool on image
 
     //git beskjed til MainWindow, via callback-inerfacet, at bildet er endret.
-    callback->callback_image_edited( img_obj_converter::to_QImage(magic_img) );
+    callback->callback_image_edited( img_obj_converter::to_QImage(*magic_img) );
 
 
 }
