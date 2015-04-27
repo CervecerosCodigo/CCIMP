@@ -2,9 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     //QWidget::showMaximized();
@@ -56,6 +54,7 @@ void MainWindow::open(){
  */
 void MainWindow::resizeEvent(QResizeEvent *e){
     update_gui_resize();
+    //set_boot_image();
 }
 
 
@@ -89,6 +88,17 @@ void MainWindow::save(){
     }
 }
 
+
+/** Laster inn filen
+ * @brief MainWindow::load_file
+ * @param fileName
+ */
+void MainWindow::load_file(const QString &fileName){
+    set_image(fileName);
+}
+
+
+
 void MainWindow::set_boot_image()
 {
     QImage *boot_image = new QImage();
@@ -101,13 +111,7 @@ void MainWindow::set_boot_image()
     ui->graphicsView->setScene(boot_scene);
 }
 
-/** Laster inn filen
- * @brief MainWindow::load_file
- * @param fileName
- */
-void MainWindow::load_file(const QString &fileName){
-    set_image(fileName);
-}
+
 
 
 /** Setter bilde i vindu når åpnes fra TreeView eller Open
@@ -136,10 +140,12 @@ void MainWindow::set_image(const QString &path)
  * @brief MainWindow::update_gui_resize
  */
 void MainWindow::update_gui_resize(){
+
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+
     ui->graphicsView->setScene(scene);
 
 }
@@ -153,18 +159,13 @@ void MainWindow::set_updated_image(QImage* updated_image)
     imgObject = updated_image;
 
     //Viser statistikk
-    show_stats(imgObject);
+    if(!imgObject->isNull()){
+        show_stats(imgObject);
 
-    image = QPixmap::fromImage(*imgObject);
-//    scene = new QGraphicsScene(this);
-//    scene->addPixmap(image);
-//    scene->setSceneRect(image.rect());
-//    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-//    ui->graphicsView->setScene(scene);
-//    scene->setSceneRect(image.rect());
-//    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-//    ui->graphicsView->setScene(scene);
-    update_gui_resize();
+        image = QPixmap::fromImage(*imgObject);
+
+        update_gui_resize();
+    }
 }
 
 
@@ -200,7 +201,7 @@ void MainWindow::show_stats(QImage *img){
 
 
 void MainWindow::rotate_left() {
-    notify_event_image_changed();
+
     event_listen->on_clicked_tool(rotateDialog.get_tool());
     rotateDialog.rotate_left();
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
@@ -208,7 +209,7 @@ void MainWindow::rotate_left() {
 
 
 void MainWindow::rotate_right() {
-    notify_event_image_changed();
+
     event_listen->on_clicked_tool(rotateDialog.get_tool());
     rotateDialog.rotate_right();
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
@@ -232,8 +233,7 @@ void MainWindow::actualSize() {
 }
 
 void MainWindow::zoomToFit() {
-    qDebug()<< "zoomToFit() ran";
-    this->view->fitInView(scene->itemsBoundingRect() ,Qt::KeepAspectRatio);
+    update_gui_resize();
 }
 
 
@@ -264,18 +264,6 @@ void MainWindow::showDebugMsg(){
 }
 
 
-//** Skriver ut i terminal path til den mappe eller fil som man klikket på i
-// * filesystemview.
-// * @brief MainWindow::on_treeView_clicked
-// * @param index
-// */
-//void MainWindow::on_treeView_clicked()
-//{
-//    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
-//    qDebug() << new_img;
-//    set_image(new_img);
-//}
-
 
 /*
  * ************************************************************************
@@ -304,13 +292,6 @@ void MainWindow::set_event_listener(event_listener *l){
 
 }
 
-/**
- * @brief MainWindow::notify_event_image_changed
- * Privat metode som må kalles hver gang et man skal inn på en tool, eller når nytt bilde lastes.
- */
-void MainWindow::notify_event_image_changed(){
-
-}
 
 //set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
@@ -363,48 +344,51 @@ void MainWindow::execute_tool_on_image(){
 
 void MainWindow::on_blurButton_clicked()
 {
-    notify_event_image_changed();
-    event_listen->on_clicked_tool(blurDialog.get_tool());
-    connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
-    blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-    blurDialog.exec();
-}
+    if(!imgObject->isNull()){
+        event_listen->on_clicked_tool(blurDialog.get_tool());
+        connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
+        blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        blurDialog.exec();
+    }}
 
 void MainWindow::on_brightnessButton_clicked()
 {
-    notify_event_image_changed();
-    event_listen->on_clicked_tool(brightnessDialog.get_tool());
-    connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
-    brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-    brightnessDialog.exec();
+    if(!imgObject->isNull()){
+        event_listen->on_clicked_tool(brightnessDialog.get_tool());
+        connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+        brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        brightnessDialog.exec();
+    }
 }
 
 void MainWindow::on_cropButton_clicked()
 {
-    notify_event_image_changed();
-    event_listen->on_clicked_tool(cropDialog.get_tool());
-    connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
-    cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-    cropDialog.exec();
-
+    if(!imgObject->isNull()){
+        event_listen->on_clicked_tool(cropDialog.get_tool());
+        connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
+        cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        cropDialog.exec();
+    }
 }
 
 void MainWindow::on_contrastButton_clicked()
 {
-    notify_event_image_changed();
-    event_listen->on_clicked_tool(contrastDialog.get_tool());
-    connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
-    contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-    contrastDialog.exec();
+    if(!imgObject->isNull()){
+        event_listen->on_clicked_tool(contrastDialog.get_tool());
+        connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
+        contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        contrastDialog.exec();
+    }
 }
 
 void MainWindow::on_rotateButton_clicked()
 {
-    notify_event_image_changed();
-    event_listen->on_clicked_tool(rotateDialog.get_tool());
-    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
-    rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-    rotateDialog.exec();
+    if(!imgObject->isNull()){
+        event_listen->on_clicked_tool(rotateDialog.get_tool());
+        connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+        rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        rotateDialog.exec();
+    }
 }
 
 void MainWindow::on_colorBalanceButton_clicked()

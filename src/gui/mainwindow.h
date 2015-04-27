@@ -53,12 +53,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
+
     void set_blur_tool(image_tool* t);
+
     void set_brightness_tool(image_tool* t);
     void set_contrast_tool(image_tool* t);
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
 
+    void set_rotate_tool(image_tool* t);
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
@@ -68,7 +71,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
-    void notify_event_image_changed();
+
     QString filePath;
     QString original_filePath;
 
