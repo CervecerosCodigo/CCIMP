@@ -14,7 +14,6 @@
 #include <QDebug>
 #include <Magick++.h>
 #include <iostream>
-
 #include "controller/image_statistics.h"
 #include "controller/event_listener.h"
 #include "controller/callback_iface.h"
@@ -22,11 +21,15 @@
 #include "gui/crop_dialog.h"
 #include "gui/blur_dialog.h"
 #include "gui/contrast_dialog.h"
+#include "gui/rotate_dialog.h"
 #include <vector>
 #include "gui/brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
 #include "img_tools/image_tool.h"
+
+
+
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {
@@ -37,12 +40,12 @@ class MainWindow : public QMainWindow, public callback_iface
 {
     Q_OBJECT
 
-
     //Setter opp dialogvinduer
     crop_dialog cropDialog;
     brightness_dialog brightnessDialog;
     contrast_dialog contrastDialog;
     blur_dialog blurDialog;
+    rotate_dialog rotateDialog;
 
 public:
     void set_event_listener(event_listener* l);
@@ -54,6 +57,8 @@ public:
 
     void set_brightness_tool(image_tool* t);
     void set_contrast_tool(image_tool* t);
+
+    void set_rotate_tool(image_tool* t);
 
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;

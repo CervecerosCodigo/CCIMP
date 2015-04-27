@@ -172,12 +172,20 @@ void MainWindow::show_stats(QImage *img){
 
 
 void MainWindow::rotate_left() {
-
+    notify_event_image_changed();
+    event_listen->on_clicked_tool(rotateDialog.get_tool());
+    rotateDialog.setModal(true);
+    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    rotateDialog.exec();
 }
 
 
 void MainWindow::rotate_right() {
-
+    notify_event_image_changed();
+    event_listen->on_clicked_tool(rotateDialog.get_tool());
+    rotateDialog.setModal(true);
+    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    rotateDialog.exec();
 }
 
 
@@ -295,9 +303,16 @@ void MainWindow::set_contrast_tool(image_tool *t)
     contrastDialog.set_tool(t);
 }
 
+void MainWindow::set_rotate_tool(image_tool *t)
+{
+    rotateDialog.set_tool(t);
+}
+
 void MainWindow::set_blur_tool(image_tool *t) {
     blurDialog.set_tool(t);
 }
+
+
 
 /**Er en event-implementasjon som kalles fra image_wrapper
  * etter at et bilde er behandlet, og skal vises i gui igjen.

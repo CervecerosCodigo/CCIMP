@@ -17,4 +17,5 @@ void build_tools::create_tools_to_be_used(){
     contrast = new tool_contrast(control, new using_slider(), TOOLIDENT::CONTRAST);
     blur = new tool_blur(control, new using_slider(), TOOLIDENT::BLUR);
     crop = new tool_crop(control, new using_coordinates(), TOOLIDENT::CROP);
+    rotate = new tool_rotate(control, new using_coordinates(), TOOLIDENT::ROTATE);
 }
