@@ -20,6 +20,9 @@ public:
     void operator=(ccimp_vector& v); // copy assignment
     ccimp_vector(ccimp_vector&& v); // move constructor
     void operator=(ccimp_vector&& v); // move assignment
+
+
+    void operator+(T t);    //insert at the back
     void insert_front(T);
     void insert_back(T);
     T& look_at_last();
@@ -58,6 +61,10 @@ void ccimp_vector<T>::operator=(ccimp_vector& v) {     // copy assignment operat
         vect.push_back(v.at_element(i));
 }
 
+template <class T>
+void ccimp_vector<T>::operator+(T t){
+    vect.push_back(t);
+}
 
 template <class T>
 ccimp_vector<T>::ccimp_vector(ccimp_vector&& v) {   // move constructor

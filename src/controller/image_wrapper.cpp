@@ -27,14 +27,15 @@ void image_wrapper::execute_tool(callback_iface* cb){
 
 
 void image_wrapper::undo_last_command(){
+    //Bare hvis callback != null og det finnes noe i undo-vector
     if(callback != nullptr && undo_history.size() > 0){
 
-        qDebug() << "undo size " << undo_history.size();
+        qDebug() << "undo size før:" << undo_history.size();
         Magick::Image temp = undo_history.get_last_and_remove();    //henter sist endret fra undo
-
+        //magic_img = &temp;
         callback->callback_image_edited(img_obj_converter::to_QImage(temp)); //sender bildet til gui
 
-        qDebug() << "undo size " << undo_history.size();
+        qDebug() << "undo size etter: " << undo_history.size();
 
     }
 }
@@ -48,7 +49,7 @@ void image_wrapper::update_history(){
 
     //Ingen bilder fra før. Legg bildet i vector
     if(undo_history.is_empty()){
-        undo_history.insert_back(Magick::Image(*magic_img));
+        undo_history+(Magick::Image(*magic_img));
         qDebug() << "La inn første bilde. Størrelsen på undo-history" << undo_history.size() ;
 
     //Det finnes noe i vector
@@ -59,7 +60,8 @@ void image_wrapper::update_history(){
 
         //"current" og "last" er ikke like
         }else{
-            undo_history.insert_back(Magick::Image(*magic_img));
+
+            undo_history+(Magick::Image(*magic_img));
             qDebug() << "La inn nytt bilde. Størrelsen på undo-history" << undo_history.size() ;
         }
     }
