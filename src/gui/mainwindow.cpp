@@ -108,6 +108,7 @@ void MainWindow::set_image(const QString &path)
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
+        new_image_loaded = true;
         notify_event_image_changed();
         set_updated_image(imgObject);
 
@@ -284,7 +285,10 @@ void MainWindow::set_event_listener(event_listener *l){
  */
 void MainWindow::notify_event_image_changed(){
     if(event_listener_set){
-        event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
+        if(new_image_loaded){
+            event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
+            new_image_loaded = false;
+        }
     }
 }
 

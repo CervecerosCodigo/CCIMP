@@ -102,6 +102,7 @@ private:
      * Forskjellige lyttere mellom gui og controllere
      */
     bool event_listener_set = false;  //må settes for at img_listener kan brukes
+    bool new_image_loaded = false;
     event_listener* event_listen;
 
 public slots:
