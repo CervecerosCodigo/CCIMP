@@ -233,8 +233,7 @@ void MainWindow::actualSize() {
 }
 
 void MainWindow::zoomToFit() {
-    qDebug()<< "zoomToFit() ran";
-    this->view->fitInView(scene->itemsBoundingRect() ,Qt::KeepAspectRatio);
+    update_gui_resize();
 }
 
 
