@@ -12,8 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     createConnections();
 
     //Setter bilde ved boot
-    QString path = QCoreApplication::applicationDirPath()+"/../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
-    set_image(path);
+    //QString path = QCoreApplication::applicationDirPath()+"/../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
+    QString path = "";
+    //set_image(path);
     qDebug() << "Running path " << QCoreApplication::applicationDirPath();
 
     //Setter opp en tree view
@@ -242,17 +243,17 @@ void MainWindow::showDebugMsg(){
 }
 
 
-/** Skriver ut i terminal path til den mappe eller fil som man klikket på i
- * filesystemview.
- * @brief MainWindow::on_treeView_clicked
- * @param index
- */
-void MainWindow::on_treeView_clicked()
-{
-    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
+//** Skriver ut i terminal path til den mappe eller fil som man klikket på i
+// * filesystemview.
+// * @brief MainWindow::on_treeView_clicked
+// * @param index
+// */
+//void MainWindow::on_treeView_clicked()
+//{
+//    QString new_img = fs_model->filePath(ui->treeView->currentIndex());
 //    qDebug() << new_img;
 //    set_image(new_img);
-}
+//}
 
 
 /*

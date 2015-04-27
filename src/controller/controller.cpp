@@ -54,7 +54,7 @@ void controller::register_tool(image_tool* t){
 
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det
 void controller::on_new_image(QImage& img){
-    //qDebug() << "Skriver nå ut via gui sin set_image-metode";
+    qDebug() << "oppretter new image_wrapper";
     current_image = new image_wrapper(img);
     //TODO:: Må oppdatere undo/redo-vectorene her også
 }

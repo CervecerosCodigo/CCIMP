@@ -113,7 +113,7 @@ public slots:
     void execute_tool_on_image();
 
 private slots:
-    void on_treeView_clicked();
+    //void on_treeView_clicked();
     void on_treeView_pressed();
     void rotate_left();
     void rotate_right();
