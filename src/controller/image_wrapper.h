@@ -12,13 +12,13 @@
 
 class image_wrapper
 {
-    ccimp_vector<Magick::Image*> undo_history;   //holds previous version
-    ccimp_vector<Magick::Image*> redo_history;   //holds newer versions, in case of previous undo
+    ccimp_vector<Magick::Image> undo_history;   //holds previous version
+    ccimp_vector<Magick::Image> redo_history;   //holds newer versions, in case of previous undo
     QImage& q_img;
     Magick::Image* magic_img;
     image_tool* current_tool;
+    callback_iface* callback;
 
-    void update_history();  //keep history vectors up-to-date
 
 public:
     image_wrapper(QImage& img);
@@ -27,7 +27,7 @@ public:
     void execute_tool(callback_iface* callback);
     void undo_last_command();
     void redo_last_command();
-
+    void update_history();  //keep history vectors up-to-date
 
     inline void set_current_tool(image_tool* t){current_tool = t;}
 
