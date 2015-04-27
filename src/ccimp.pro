@@ -35,7 +35,9 @@ SOURCES += main.cpp\
     gui/contrast_dialog.cpp \
     img_tools/tool_contrast.cpp \
     img_tools/tool_rotate.cpp \
-    gui/rotate_dialog.cpp
+    gui/rotate_dialog.cpp \
+    gui/color_balance_dialog.cpp \
+    img_tools/tool_color_balance.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -66,14 +68,17 @@ HEADERS  += gui/mainwindow.h \
     gui/contrast_dialog.h \
     img_tools/tool_contrast.h \
     img_tools/tool_rotate.h \
-    gui/rotate_dialog.h
+    gui/rotate_dialog.h \
+    gui/color_balance_dialog.h \
+    img_tools/tool_color_balance.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
     gui/brightness_dialog.ui \
     gui/blur_dialog.ui \
     gui/contrast_dialog.ui \
-    gui/rotate_dialog.ui
+    gui/rotate_dialog.ui \
+    gui/color_balance_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc
