@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //Setter opp en tree view
     set_fs_view();
 
+    //Setter opp boot image
+    set_boot_image();
+
 }
 
 void MainWindow::createConnections(){
@@ -84,7 +87,17 @@ void MainWindow::save(){
     }
 }
 
-
+void MainWindow::set_boot_image()
+{
+    QImage *boot_image = new QImage();
+    boot_image->load(":/img/img/CCIMP_background.png");
+//    boot_image->load("../res/img/bilde1.jpg");
+    QPixmap boot_pixmap = QPixmap::fromImage(*boot_image);
+    QGraphicsScene *boot_scene = new QGraphicsScene(this);
+    boot_scene->addPixmap(boot_pixmap);
+    boot_scene->setSceneRect(boot_pixmap.rect());
+    ui->graphicsView->setScene(boot_scene);
+}
 
 /** Laster inn filen
  * @brief MainWindow::load_file
@@ -116,6 +129,7 @@ void MainWindow::set_image(const QString &path)
         qDebug() << "Filstien er tom eller null!";
     }
 }
+
 
 
 
@@ -338,10 +352,8 @@ void MainWindow::on_blurButton_clicked()
 {
     notify_event_image_changed();
     event_listen->on_clicked_tool(blurDialog.get_tool());
-    blurDialog.setModal(true);
-
     connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
-
+    blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     blurDialog.exec();
 }
 
@@ -349,8 +361,8 @@ void MainWindow::on_brightnessButton_clicked()
 {
     notify_event_image_changed();
     event_listen->on_clicked_tool(brightnessDialog.get_tool());
-    brightnessDialog.setModal(true);
     connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+    brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     brightnessDialog.exec();
 }
 
@@ -358,8 +370,8 @@ void MainWindow::on_cropButton_clicked()
 {
     notify_event_image_changed();
     event_listen->on_clicked_tool(cropDialog.get_tool());
-    cropDialog.setModal(true);
     connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
+    cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     cropDialog.exec();
 
 }
@@ -368,8 +380,8 @@ void MainWindow::on_contrastButton_clicked()
 {
     notify_event_image_changed();
     event_listen->on_clicked_tool(contrastDialog.get_tool());
-    contrastDialog.setModal(true);
     connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
+    contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     contrastDialog.exec();
 }
 
@@ -377,7 +389,7 @@ void MainWindow::on_rotateButton_clicked()
 {
     notify_event_image_changed();
     event_listen->on_clicked_tool(rotateDialog.get_tool());
-    rotateDialog.setModal(true);
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     rotateDialog.exec();
 }
