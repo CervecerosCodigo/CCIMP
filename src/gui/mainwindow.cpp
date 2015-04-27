@@ -393,7 +393,7 @@ void MainWindow::on_rotateButton_clicked()
 
 void MainWindow::on_colorBalanceButton_clicked()
 {
-    notify_event_image_changed();
+
     event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
     connect(&colorBalanceDialog, SIGNAL(signalColorBalanceChanged()), this, SLOT(execute_tool_on_image()));
     colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
