@@ -37,7 +37,7 @@ void controller::register_tool(image_tool* t){
         //code
         break;
     case TOOLIDENT::COL:
-        //code
+        gui_mw.set_color_balance_tool(t);
         break;
     case TOOLIDENT::BRIGTHEN:
         gui_mw.set_brightness_tool(t);

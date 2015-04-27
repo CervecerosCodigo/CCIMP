@@ -22,6 +22,7 @@
 #include "gui/blur_dialog.h"
 #include "gui/contrast_dialog.h"
 #include "gui/rotate_dialog.h"
+#include "gui/color_balance_dialog.h"
 #include <vector>
 #include "gui/brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
@@ -45,19 +46,19 @@ class MainWindow : public QMainWindow, public callback_iface
     contrast_dialog contrastDialog;
     blur_dialog blurDialog;
     rotate_dialog rotateDialog;
+    color_balance_dialog colorBalanceDialog;
 
 public:
     void set_event_listener(event_listener* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void set_crop_tool(image_tool* t);
-
     void set_blur_tool(image_tool* t);
-
     void set_brightness_tool(image_tool* t);
     void set_contrast_tool(image_tool* t);
-
     void set_rotate_tool(image_tool* t);
+    void set_color_balance_tool(image_tool* t);
+
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
@@ -128,7 +129,8 @@ private slots:
     void on_cropButton_clicked();
     void on_contrastButton_clicked();
     void on_rotateButton_clicked();
-    void window_resize_done();
+//    void window_resize_done();
+    void on_colorBalanceButton_clicked();
 };
 
 #endif // MAINWINDOW_H

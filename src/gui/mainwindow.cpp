@@ -337,6 +337,10 @@ void MainWindow::set_blur_tool(image_tool *t) {
     blurDialog.set_tool(t);
 }
 
+void MainWindow::set_color_balance_tool(image_tool *t)
+{
+    colorBalanceDialog.set_tool(t);
+}
 
 
 /**Er en event-implementasjon som kalles fra image_wrapper
@@ -401,4 +405,13 @@ void MainWindow::on_rotateButton_clicked()
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
     rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     rotateDialog.exec();
+}
+
+void MainWindow::on_colorBalanceButton_clicked()
+{
+    notify_event_image_changed();
+    event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
+    connect(&colorBalanceDialog, SIGNAL(signalColorBalanceChanged()), this, SLOT(execute_tool_on_image()));
+    colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+    colorBalanceDialog.exec();
 }
