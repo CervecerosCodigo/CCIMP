@@ -11,12 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createConnections();
 
-    //Setter bilde ved boot
-    //QString path = QCoreApplication::applicationDirPath()+"/../res/img/bilde1.jpg"; //dette blidet settes da man starter programmet
-    QString path = "";
-    //set_image(path);
-    qDebug() << "Running path " << QCoreApplication::applicationDirPath();
-
     //Setter opp en tree view
     set_fs_view();
 
@@ -39,10 +33,9 @@ void MainWindow::createConnections(){
     connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
     connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
 
-
 }
 
-/** FileOpen dialog
+/**FileOpen dialog
  * @brief MainWindow::open
  */
 void MainWindow::open(){
@@ -57,8 +50,16 @@ void MainWindow::open(){
 }
 
 
+/**Catcher endringer i vindustørrelse og kjører update-metode
+ * @brief MainWindow::resizeEvent
+ * @param e
+ */
+void MainWindow::resizeEvent(QResizeEvent *e){
+    update_gui_resize();
+}
 
-/** Lagre som
+
+/**Lagre som
  * @TODO Her borde vi bruke en eller annen exception.
  * @brief MainWindow::save_as
  */
@@ -109,25 +110,19 @@ void MainWindow::load_file(const QString &fileName){
 }
 
 
-
 /** Setter bilde i vindu når åpnes fra TreeView eller Open
  * @brief MainWindow::set_image
  * @param path
  */
 void MainWindow::set_image(const QString &path)
 {
-
     if(!path.isNull() || !path.isEmpty()){
 
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
-        new_image_loaded = true;
         if(event_listener_set){
-            if(new_image_loaded){
-                event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
-                new_image_loaded = false;
-            }
+             event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
         set_updated_image(imgObject);
 
@@ -136,8 +131,18 @@ void MainWindow::set_image(const QString &path)
     }
 }
 
+/**Fellesmetode som kjøres fra set_updated_image og resize_gui-metoden.
+ * Den en gjør er å updatere hele det grafiske interfacet.
+ * @brief MainWindow::update_gui_resize
+ */
+void MainWindow::update_gui_resize(){
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
 
-
+}
 
 /** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
  * @brief MainWindow::set_updated_image
@@ -151,13 +156,15 @@ void MainWindow::set_updated_image(QImage* updated_image)
     show_stats(imgObject);
 
     image = QPixmap::fromImage(*imgObject);
-    scene = new QGraphicsScene(this);
-    scene->addPixmap(image);
-    scene->setSceneRect(image.rect());
-    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-    ui->graphicsView->setScene(scene);
-
-
+//    scene = new QGraphicsScene(this);
+//    scene->addPixmap(image);
+//    scene->setSceneRect(image.rect());
+//    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+//    ui->graphicsView->setScene(scene);
+//    scene->setSceneRect(image.rect());
+//    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+//    ui->graphicsView->setScene(scene);
+    update_gui_resize();
 }
 
 
@@ -280,8 +287,9 @@ void MainWindow::showDebugMsg(){
 
 void MainWindow::on_treeView_pressed()
 {
-    const QString new_img = fs_model->filePath(ui->treeView->currentIndex());
-    set_image(new_img);
+    if(!fs_model->isDir(ui->treeView->currentIndex())){
+        set_image(fs_model->filePath(ui->treeView->currentIndex()));
+    }
 }
 
 

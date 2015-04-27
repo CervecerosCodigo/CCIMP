@@ -29,7 +29,6 @@
 #include "img_tools/image_tool.h"
 
 
-
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {
@@ -59,7 +58,7 @@ public:
     void set_contrast_tool(image_tool* t);
 
     void set_rotate_tool(image_tool* t);
-
+    void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
 
@@ -78,6 +77,7 @@ private:
      */
     void set_image(const QString &path);
     void set_boot_image(); //seter startbilde fra resource filen
+    void resizeEvent ( QResizeEvent* e );
 
     QString imgPath;
     QImage *imgObject;
@@ -103,7 +103,6 @@ private:
      * Forskjellige lyttere mellom gui og controllere
      */
     bool event_listener_set = false;  //må settes for at img_listener kan brukes
-    bool new_image_loaded = false;
     event_listener* event_listen;
 
 public slots:
@@ -129,6 +128,7 @@ private slots:
     void on_cropButton_clicked();
     void on_contrastButton_clicked();
     void on_rotateButton_clicked();
+    void window_resize_done();
 };
 
 #endif // MAINWINDOW_H
