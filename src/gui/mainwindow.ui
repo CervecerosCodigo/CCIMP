@@ -145,7 +145,7 @@
          <item row="5" column="0" colspan="2">
           <widget class="QPushButton" name="colorBalanceButton">
            <property name="text">
-            <string>Color Balance</string>
+            <string>Colorize</string>
            </property>
           </widget>
          </item>
