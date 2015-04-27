@@ -67,7 +67,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
-    void notify_event_image_changed();
+
     QString filePath;
     QString original_filePath;
 
@@ -128,7 +128,6 @@ private slots:
     void on_cropButton_clicked();
     void on_contrastButton_clicked();
     void on_rotateButton_clicked();
-    void window_resize_done();
 };
 
 #endif // MAINWINDOW_H
