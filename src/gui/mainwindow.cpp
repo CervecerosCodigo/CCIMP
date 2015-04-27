@@ -174,19 +174,16 @@ void MainWindow::show_stats(QImage *img){
 void MainWindow::rotate_left() {
     notify_event_image_changed();
     event_listen->on_clicked_tool(rotateDialog.get_tool());
-//    rotateDialog.setModal(true);
     rotateDialog.rotate_left();
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
-//    rotateDialog.exec();
 }
 
 
 void MainWindow::rotate_right() {
     notify_event_image_changed();
     event_listen->on_clicked_tool(rotateDialog.get_tool());
-    rotateDialog.setModal(true);
+    rotateDialog.rotate_right();
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
-    rotateDialog.exec();
 }
 
 
@@ -370,4 +367,13 @@ void MainWindow::on_contrastButton_clicked()
     contrastDialog.setModal(true);
     connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
     contrastDialog.exec();
+}
+
+void MainWindow::on_rotateButton_clicked()
+{
+    notify_event_image_changed();
+    event_listen->on_clicked_tool(rotateDialog.get_tool());
+    rotateDialog.setModal(true);
+    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    rotateDialog.exec();
 }

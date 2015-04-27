@@ -6,6 +6,7 @@ rotate_dialog::rotate_dialog(QWidget *parent):
     ui(new Ui::rotate_dialog)
 {
     ui->setupUi(this);
+    ui->dial->setTracking(false);
 }
 
 rotate_dialog::~rotate_dialog()
@@ -29,18 +30,10 @@ void rotate_dialog::rotate_right()
     emit slotEditFinished();
 }
 
-void rotate_dialog::on_pushButton_Left_clicked()
+void rotate_dialog::on_dial_valueChanged(int value)
 {
     using_coordinates* param = (using_coordinates*) tool->get_param();
-    param->set_angle(-90.0);
-
-    emit slotEditFinished();
-}
-
-void rotate_dialog::on_pushButton_Right_clicked()
-{
-    using_coordinates* param = (using_coordinates*) tool->get_param();
-    param->set_angle(90.0);
+    param->set_angle(ui->dial->value()*1.0);
 
     emit slotEditFinished();
 }
