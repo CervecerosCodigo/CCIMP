@@ -122,12 +122,8 @@ void MainWindow::set_image(const QString &path)
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
-        new_image_loaded = true;
         if(event_listener_set){
-            if(new_image_loaded){
-                event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
-                new_image_loaded = false;
-            }
+             event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
         set_updated_image(imgObject);
 
@@ -280,8 +276,10 @@ void MainWindow::showDebugMsg(){
 
 void MainWindow::on_treeView_pressed()
 {
-    const QString new_img = fs_model->filePath(ui->treeView->currentIndex());
-    set_image(new_img);
+    bool is_dir = fs_model->isDir(ui->treeView->currentIndex());
+    if(!is_dir){
+        set_image(fs_model->filePath(ui->treeView->currentIndex()));
+    }
 }
 
 
