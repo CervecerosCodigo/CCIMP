@@ -45,6 +45,9 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::CONTRAST:
         gui_mw.set_contrast_tool(t);
         break;
+    case TOOLIDENT::ROTATE:
+        gui_mw.set_rotate_tool(t);
+        break;
     }
 
 }
