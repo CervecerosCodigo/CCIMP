@@ -127,6 +127,7 @@ private slots:
     void on_brightnessButton_clicked();
     void on_cropButton_clicked();
     void on_contrastButton_clicked();
+    void on_rotateButton_clicked();
 };
 
 #endif // MAINWINDOW_H

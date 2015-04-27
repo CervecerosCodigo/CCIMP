@@ -32,9 +32,7 @@ public slots:
 }
 
 private slots:
-
-    void on_pushButton_Left_clicked();
-    void on_pushButton_Right_clicked();
+    void on_dial_valueChanged(int value);
 
 private:
     Ui::rotate_dialog *ui;
