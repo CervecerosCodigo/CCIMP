@@ -22,6 +22,8 @@ public:
     void operator=(ccimp_vector&& v); // move assignment
     void insert_front(T);
     void insert_back(T);
+    T& look_at_last();
+    T get_last_and_remove();
     bool is_empty();
     int size();
     T remove(int i);
@@ -117,6 +119,21 @@ void ccimp_vector<T>::remove_back() {
 template <class T>
 T ccimp_vector<T>::at_element(int i) {
     return vect.at(i);
+}
+
+template <class T>
+T& ccimp_vector<T>::look_at_last(){
+    return vect.at(size()-1);
+}
+
+template <class T>
+T ccimp_vector<T>::get_last_and_remove(){
+    if(!is_empty()){
+        T temp = vect.back();
+        vect.pop_back();
+        return temp;
+    }else
+        return nullptr;
 }
 
 #endif // CCIMP_VECTOR
