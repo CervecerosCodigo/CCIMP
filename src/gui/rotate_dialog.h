@@ -19,6 +19,10 @@ public:
     explicit rotate_dialog(QWidget *parent = 0);
     ~rotate_dialog();
 
+    //Hardkodet rotasjon som brukes fra main panel i main window
+    void rotate_left();
+    void rotate_right();
+
 signals:
     void signalRotationChanged();
 

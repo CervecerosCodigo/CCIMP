@@ -174,9 +174,10 @@ void MainWindow::show_stats(QImage *img){
 void MainWindow::rotate_left() {
     notify_event_image_changed();
     event_listen->on_clicked_tool(rotateDialog.get_tool());
-    rotateDialog.setModal(true);
+//    rotateDialog.setModal(true);
+    rotateDialog.rotate_left();
     connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
-    rotateDialog.exec();
+//    rotateDialog.exec();
 }
 
 
