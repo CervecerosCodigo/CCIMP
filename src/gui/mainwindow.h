@@ -77,6 +77,7 @@ private:
      * Setter opp bildevisning
      */
     void set_image(const QString &path);
+    void set_boot_image(); //seter startbilde fra resource filen
 
     QString imgPath;
     QImage *imgObject;
