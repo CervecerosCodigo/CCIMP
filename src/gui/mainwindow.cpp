@@ -140,7 +140,7 @@ void MainWindow::set_image(const QString &path)
 
 
 /** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
- * @brief MainWindow::set_updated_image
+ * @brief MainWindow::set_updated_imageqt dont update treeview if folder
  * @param updated_image
  */
 void MainWindow::set_updated_image(QImage* updated_image)

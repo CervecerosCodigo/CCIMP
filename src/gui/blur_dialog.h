@@ -28,7 +28,8 @@ public slots:
   }
 
 private slots:
-  void on_horizontalSlider_valueChanged(int value);
+  void on_radiusSlider_valueChanged(int value);
+  void on_intensitySlider_valueChanged(int value);
 
 private:
     Ui::blur_dialog *ui;
