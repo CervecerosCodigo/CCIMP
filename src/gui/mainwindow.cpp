@@ -469,8 +469,8 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
-        connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_tool_on_image()));
-        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_tool_on_image()));
+        connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_acceptbtn_pressed()));
         encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         encipherDialog.exec();
     }
