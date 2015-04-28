@@ -29,13 +29,14 @@ public:
     controller(MainWindow&);
     ~controller();
 
-    //void set_updated_image(QImage* updated_image);
 
     void register_tool(image_tool* t) override; //from controller_iface
 
     void on_new_image(QImage& img) override; //from event_listener
     void on_clicked_tool(image_tool* t) override;
-    QImage* execute_tool_on_image() override;
+    QImage* updating_image() override;
+    void finished() override;
+    void canceled(callback_iface* callback) override;
     void undo_last_command(callback_iface* callback) override;
     void redo_last_command(callback_iface* callback) override;
 
