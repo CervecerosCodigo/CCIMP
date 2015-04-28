@@ -150,6 +150,16 @@ void MainWindow::update_gui_resize(){
 
 }
 
+void MainWindow::update_gui_actual_size() {
+
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    //scene->setSceneRect(image.rect());
+    //ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+
+    ui->graphicsView->setScene(scene);
+}
+
 /** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
  * @brief MainWindow::set_updated_imageqt dont update treeview if folder
  * @param updated_image
@@ -218,7 +228,6 @@ void MainWindow::rotate_right() {
 
 void MainWindow::zoomIn() {
     qDebug()<< "zoomIn() ran";
-    //scene->
 }
 
 
@@ -229,7 +238,7 @@ void MainWindow::zoomOut() {
 
 void MainWindow::actualSize() {
     qDebug()<< "actualSize() ran";
-
+    update_gui_actual_size();
 }
 
 void MainWindow::zoomToFit() {
