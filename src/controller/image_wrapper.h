@@ -18,7 +18,7 @@ class image_wrapper
     Magick::Image img_obj;
     Magick::Image* img_ptr;
     image_tool* current_tool;
-    callback_iface* callback;
+    //callback_iface* callback;
 
     bool image_is_orig;
 
@@ -26,9 +26,9 @@ public:
     image_wrapper(QImage& img);
     ~image_wrapper();
 
-    void execute_tool(callback_iface* callback);
-    void undo_last_command();
-    void redo_last_command();
+    QImage* execute_tool();
+    void undo_last_command(callback_iface* callback);
+    void redo_last_command(callback_iface* callback);
     void update_history();  //keep history vectors up-to-date
 
     inline void set_current_tool(image_tool* t){current_tool = t;}

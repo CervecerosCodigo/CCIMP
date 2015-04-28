@@ -35,9 +35,9 @@ public:
 
     void on_new_image(QImage& img) override; //from event_listener
     void on_clicked_tool(image_tool* t) override;
-    void execute_tool_on_image(callback_iface* callback) override;
-    void undo_last_command() override;
-    void redo_last_command() override;
+    QImage* execute_tool_on_image() override;
+    void undo_last_command(callback_iface* callback) override;
+    void redo_last_command(callback_iface* callback) override;
 
 };
 

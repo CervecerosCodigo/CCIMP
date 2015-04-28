@@ -66,17 +66,17 @@ void controller::on_clicked_tool(image_tool* t){
     current_image->update_history();    //Kaller wrapper sin "historieorganisator"
 }
 
-void controller::execute_tool_on_image(callback_iface* callback){
+QImage* controller::execute_tool_on_image(){
     //qDebug() << "Executing tool in Controller";
-    current_image->execute_tool(callback);
+    return current_image->execute_tool();
 }
 
 //Lytter på "undo-knappen" i GUI
-void controller::undo_last_command(){
-    current_image->undo_last_command();
+void controller::undo_last_command(callback_iface* callback){
+    current_image->undo_last_command(callback);
 }
 
 //Lytter på "redo_knappen" i GUI
-void controller::redo_last_command(){
-    current_image->redo_last_command();
+void controller::redo_last_command(callback_iface* callback){
+    current_image->redo_last_command(callback);
 }
