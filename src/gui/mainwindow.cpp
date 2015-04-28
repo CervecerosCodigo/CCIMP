@@ -402,3 +402,9 @@ void MainWindow::on_colorBalanceButton_clicked()
         colorBalanceDialog.exec();
     }
 }
+
+void MainWindow::on_actionAbout_CCIMP_triggered()
+{
+    aboutDialog.setModal(true);
+    aboutDialog.exec();
+}
