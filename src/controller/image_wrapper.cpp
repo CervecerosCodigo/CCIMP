@@ -14,21 +14,26 @@ image_wrapper::~image_wrapper()
 
 
 //Kommuniserer via interface til rett "tool" og kjører verktøyet
-void image_wrapper::execute_tool(callback_iface* cb){
-    if(callback == nullptr)
-        callback = cb;
+QImage* image_wrapper::execute_tool(){
+//    if(callback == nullptr)
+//        callback = cb;
     if(img_ptr == nullptr)
         qDebug() << "magick_img is null";
+
+
     current_tool->execute(*img_ptr);                  //run selected tool on image
 
     //git beskjed til MainWindow, via callback-inerfacet, at bildet er endret.
-    callback->callback_image_edited( img_obj_converter::to_QImage(*img_ptr) );
-
+    return img_obj_converter::to_QImage(*img_ptr);
+    qDebug() << "Execute av filter i image_wrapper 3";
+//    callback->callback_image_edited( temp );
+    qDebug() << "Execute av filter i image_wrapper 4";
+    //return temp;
 
 }
 
 
-void image_wrapper::undo_last_command(){
+void image_wrapper::undo_last_command(callback_iface* callback){
     //Bare hvis callback != null og det finnes noe i undo-vector
     if(callback == nullptr)
         return;
@@ -56,7 +61,7 @@ void image_wrapper::undo_last_command(){
 }
 
 
-void image_wrapper::redo_last_command(){
+void image_wrapper::redo_last_command(callback_iface* callback){
     if(callback == nullptr)
         return;
 
