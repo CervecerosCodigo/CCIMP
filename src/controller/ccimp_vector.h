@@ -22,7 +22,9 @@ public:
     void operator=(ccimp_vector&& v); // move assignment
 
 
-    void operator+(T t);    //insert at the back
+    void operator+=(T& t);    //insert at the back
+
+
     void insert_front(T);
     void insert_back(T);
     T& look_at_last();
@@ -62,7 +64,7 @@ void ccimp_vector<T>::operator=(ccimp_vector& v) {     // copy assignment operat
 }
 
 template <class T>
-void ccimp_vector<T>::operator+(T t){
+void ccimp_vector<T>::operator+=(T& t){              //overloaded +=
     vect.push_back(t);
 }
 
