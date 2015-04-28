@@ -238,11 +238,11 @@ void MainWindow::zoomToFit() {
 
 
 void MainWindow::undo_command(){
-    event_listen->undo_last_command();
+    event_listen->undo_last_command(this);
 }
 
 void MainWindow::redo_command(){
-    event_listen->redo_last_command();
+    event_listen->redo_last_command(this);
 }
 
 
@@ -330,6 +330,7 @@ void MainWindow::set_color_balance_tool(image_tool *t)
  * @param img
  */
 void MainWindow::callback_image_edited(QImage* img){
+    qDebug() << "Execute av filter i callback-funksjon";
     set_updated_image(img);
 }
 
@@ -338,7 +339,7 @@ void MainWindow::callback_image_edited(QImage* img){
  * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
  */
 void MainWindow::execute_tool_on_image(){
-    event_listen->execute_tool_on_image(this);
+    set_updated_image(event_listen->execute_tool_on_image());
 }
 
 
