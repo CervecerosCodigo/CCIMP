@@ -67,7 +67,7 @@ void controller::on_clicked_tool(image_tool* t){
 }
 
 void controller::execute_tool_on_image(callback_iface* callback){
-    qDebug() << "Executing tool in Controller";
+    //qDebug() << "Executing tool in Controller";
     current_image->execute_tool(callback);
 }
 

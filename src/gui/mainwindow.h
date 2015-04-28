@@ -108,7 +108,7 @@ private:
      */
     bool event_listener_set = false;  //må settes for at img_listener kan brukes
     event_listener* event_listen;
-
+    bool image_is_loaded = false;
 public slots:
     void open();
     void save();
