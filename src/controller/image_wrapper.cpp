@@ -3,6 +3,7 @@
 image_wrapper::image_wrapper(QImage& img): q_img{img}
 {
     magic_img = img_obj_converter::to_Image(q_img);    //convert image from qimage
+    image_is_orig = true;
 }
 
 image_wrapper::~image_wrapper()
@@ -16,7 +17,8 @@ image_wrapper::~image_wrapper()
 void image_wrapper::execute_tool(callback_iface* cb){
     if(callback == nullptr)
         callback = cb;
-
+    if(magic_img == nullptr)
+        qDebug() << "magick_img is null";
     current_tool->execute(*magic_img);                  //run selected tool on image
 
     //git beskjed til MainWindow, via callback-inerfacet, at bildet er endret.
@@ -28,15 +30,23 @@ void image_wrapper::execute_tool(callback_iface* cb){
 
 void image_wrapper::undo_last_command(){
     //Bare hvis callback != null og det finnes noe i undo-vector
-    if(callback != nullptr && undo_history.size() > 0){
+    if(callback != nullptr && !undo_history.is_empty()){
 
         qDebug() << "undo size før:" << undo_history.size();
         Magick::Image temp = undo_history.get_last_and_remove();    //henter sist endret fra undo
-        //magic_img = &temp;
+
         callback->callback_image_edited(img_obj_converter::to_QImage(temp)); //sender bildet til gui
 
         qDebug() << "undo size etter: " << undo_history.size();
+    }else if(undo_history.is_empty()){
+        qDebug() << "Undo is empty";
 
+        //kan ikke være sikker på om rett image er satt. konvertere fra org Qimage og setter image på nytt i gui
+        if(!image_is_orig){
+            magic_img = img_obj_converter::to_Image(q_img);    //convert image from qimage
+            callback->callback_image_edited(img_obj_converter::to_QImage(*magic_img)); //sender bildet til gui
+            image_is_orig = true;
+        }
     }
 }
 
@@ -63,6 +73,8 @@ void image_wrapper::update_history(){
 
             undo_history+(Magick::Image(*magic_img));
             qDebug() << "La inn nytt bilde. Størrelsen på undo-history" << undo_history.size() ;
+            image_is_orig = false;
         }
+
     }
 }

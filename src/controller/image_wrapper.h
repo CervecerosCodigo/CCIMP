@@ -19,6 +19,7 @@ class image_wrapper
     image_tool* current_tool;
     callback_iface* callback;
 
+    bool image_is_orig;
 
 public:
     image_wrapper(QImage& img);
