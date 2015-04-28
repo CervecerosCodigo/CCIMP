@@ -13,9 +13,7 @@ controller::~controller()
 //    delete current_image;
 }
 
-//void controller::set_updated_image(QImage *updated_image){
-//    gui_mw.set_updated_image(updated_image);
-//}
+
 
 void controller::register_tool(image_tool* t){
 
@@ -66,10 +64,19 @@ void controller::on_clicked_tool(image_tool* t){
     current_image->update_history();    //Kaller wrapper sin "historieorganisator"
 }
 
-QImage* controller::execute_tool_on_image(){
+QImage* controller::updating_image(){
     //qDebug() << "Executing tool in Controller";
-    return current_image->execute_tool();
+    return current_image->image_update();
 }
+
+void controller::finished(){
+    current_image->image_finished();
+}
+
+void controller::canceled(callback_iface *callback){
+    current_image->image_canceled(callback);
+}
+
 
 //Lytter på "undo-knappen" i GUI
 void controller::undo_last_command(callback_iface* callback){

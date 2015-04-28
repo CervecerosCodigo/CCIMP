@@ -127,6 +127,7 @@ void MainWindow::set_image(const QString &path)
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
+
         if(event_listener_set){
              event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
@@ -153,7 +154,7 @@ void MainWindow::update_gui_resize(){
 }
 
 
-/** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
+/**Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
  * @brief MainWindow::set_updated_imageqt dont update treeview if folder
  * @param updated_image
  */
@@ -211,7 +212,7 @@ void MainWindow::rotate_left() {
 
     event_listen->on_clicked_tool(rotateDialog.get_tool());
     rotateDialog.rotate_left();
-    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
 }
 
 
@@ -219,7 +220,7 @@ void MainWindow::rotate_right() {
 
     event_listen->on_clicked_tool(rotateDialog.get_tool());
     rotateDialog.rotate_right();
-    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
 }
 
 
@@ -346,22 +347,40 @@ void MainWindow::set_color_balance_tool(image_tool *t)
 }
 
 
-/**Er en event-implementasjon som kalles fra image_wrapper
- * etter at et bilde er behandlet, og skal vises i gui igjen.
+/**Dette er en callback-funksjon for undo/redo-knappene.
+ * Når man velger undo/redo sendes kommandoene "ned" og returen kommer hit
+ * med rett bilde hentet fra "historie"
  * @brief MainWindow::callback_image_edited
  * @param img
  */
 void MainWindow::callback_image_edited(QImage* img){
-    qDebug() << "Execute av filter i callback-funksjon";
     set_updated_image(img);
 }
 
 
-/**
- * Felles SLOT som utføres uansett hvilket verktøy som er brukt.
+/**Felles SLOT som utføres uansett hvilket verktøy som er brukt,
+ * og kjøres "live" på bilderedigeringsverktøyene
  */
-void MainWindow::execute_tool_on_image(){
-    set_updated_image(event_listen->execute_tool_on_image());
+void MainWindow::execute_value_changed(){
+
+    set_updated_image(event_listen->updating_image());
+}
+
+
+
+/**Felles slot som utføres uansett hvilket verktøy som er brukt,
+ * men bare når man trykker OK-knappen.
+ */
+void MainWindow::execute_acceptbtn_pressed(){
+    event_listen->finished();
+}
+
+
+/**Felles slot som utføres uansett hvilket verktøy som er brukt,
+ * men bare når man trykker Cancel-knappen.
+ */
+void MainWindow::execute_cancelbtn_pressed(){
+    event_listen->canceled(this);
 }
 
 
@@ -369,17 +388,21 @@ void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(blurDialog.get_tool());
-        connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_tool_on_image()));
+        connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_value_changed()));
         blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         blurDialog.exec();
     }
 }
 
+
 void MainWindow::on_brightnessButton_clicked()
 {
     if(image_is_loaded){
+
         event_listen->on_clicked_tool(brightnessDialog.get_tool());
-        connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_tool_on_image()));
+        connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_value_changed()));
+        connect(&brightnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&brightnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         brightnessDialog.exec();
     }
@@ -389,7 +412,7 @@ void MainWindow::on_cropButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(cropDialog.get_tool());
-        connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_tool_on_image()));
+        connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_value_changed()));
         cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         cropDialog.exec();
     }
@@ -399,7 +422,7 @@ void MainWindow::on_contrastButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(contrastDialog.get_tool());
-        connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_tool_on_image()));
+        connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_value_changed()));
         contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         contrastDialog.exec();
     }
@@ -410,7 +433,7 @@ void MainWindow::on_rotateButton_clicked()
     if(image_is_loaded){
         qDebug() << "Trykket på Rotate";
         event_listen->on_clicked_tool(rotateDialog.get_tool());
-        connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_tool_on_image()));
+        connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
         rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         rotateDialog.exec();
     }
@@ -420,7 +443,7 @@ void MainWindow::on_colorBalanceButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
-        connect(&colorBalanceDialog, SIGNAL(signalColorBalanceChanged()), this, SLOT(execute_tool_on_image()));
+        connect(&colorBalanceDialog, SIGNAL(signalColorBalanceChanged()), this, SLOT(execute_value_changed()));
         colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         colorBalanceDialog.exec();
     }
