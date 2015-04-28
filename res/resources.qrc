@@ -21,5 +21,6 @@
     </qresource>
     <qresource prefix="/img">
         <file>img/CCIMP_background.png</file>
+        <file>img/CCIMP_about.png</file>
     </qresource>
 </RCC>

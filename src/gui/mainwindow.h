@@ -18,6 +18,7 @@
 #include "controller/event_listener.h"
 #include "controller/callback_iface.h"
 #include "controller/ccimp_vector.h"
+#include "gui/about_dialog.h"
 #include "gui/crop_dialog.h"
 #include "gui/blur_dialog.h"
 #include "gui/contrast_dialog.h"
@@ -41,6 +42,7 @@ class MainWindow : public QMainWindow, public callback_iface
     Q_OBJECT
 
     //Setter opp dialogvinduer
+    about_dialog aboutDialog;
     crop_dialog cropDialog;
     brightness_dialog brightnessDialog;
     contrast_dialog contrastDialog;
@@ -135,6 +137,7 @@ private slots:
     void on_rotateButton_clicked();
 //    void window_resize_done();
     void on_colorBalanceButton_clicked();
+    void on_actionAbout_CCIMP_triggered();
 };
 
 #endif // MAINWINDOW_H
