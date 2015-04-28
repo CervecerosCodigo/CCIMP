@@ -14,6 +14,8 @@
 #include "tool_contrast.h"
 #include "tool_rotate.h"
 #include "tool_color_balance.h"
+#include "tool_encrypt.h"
+#include "tool_decrypt.h"
 
 class build_tools
 {
@@ -25,6 +27,8 @@ class build_tools
     tool* contrast;
     tool* rotate;
     tool* color_balance;
+    tool* encrypt_tool;
+    tool* decrypt_tool;
 
     void create_tools_to_be_used();
 

@@ -48,6 +48,12 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::ROTATE:
         gui_mw.set_rotate_tool(t);
         break;
+    case TOOLIDENT::ENCRYPT:
+        gui_mw.set_encipher_tool(t);
+        break;
+    case TOOLIDENT::DECRYPT:
+        gui_mw.set_decipher_tool(t);
+        break;
     }
 
 }

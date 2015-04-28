@@ -24,6 +24,7 @@
 #include "gui/contrast_dialog.h"
 #include "gui/rotate_dialog.h"
 #include "gui/color_balance_dialog.h"
+#include "gui/encipher_dialaog.h"
 #include <vector>
 #include "gui/brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
@@ -49,6 +50,7 @@ class MainWindow : public QMainWindow, public callback_iface
     blur_dialog blurDialog;
     rotate_dialog rotateDialog;
     color_balance_dialog colorBalanceDialog;
+    encipher_dialaog encipherDialog;
 
 public:
     void set_event_listener(event_listener* l);
@@ -62,6 +64,8 @@ public:
     void set_contrast_tool(image_tool* t);
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
+    void set_encipher_tool(image_tool* t);
+    void set_decipher_tool(image_tool* t);
 
 //    void set_rotate_tool(image_tool* t);
     void update_gui_resize();
@@ -139,6 +143,7 @@ private slots:
 //    void window_resize_done();
     void on_colorBalanceButton_clicked();
     void on_actionAbout_CCIMP_triggered();
+    void on_encipherButton_clicked();
 };
 
 #endif // MAINWINDOW_H
