@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //Setter opp boot image
     set_boot_image();
 
+    zoomVerdi = 1;
+
 }
 
 void MainWindow::createConnections(){
@@ -150,15 +152,6 @@ void MainWindow::update_gui_resize(){
 
 }
 
-void MainWindow::update_gui_actual_size() {
-
-    scene = new QGraphicsScene(this);
-    scene->addPixmap(image);
-    //scene->setSceneRect(image.rect());
-    //ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-
-    ui->graphicsView->setScene(scene);
-}
 
 /** Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
  * @brief MainWindow::set_updated_imageqt dont update treeview if folder
@@ -166,6 +159,8 @@ void MainWindow::update_gui_actual_size() {
  */
 void MainWindow::set_updated_image(QImage* updated_image)
 {
+    zoomVerdi = 1;
+
     imgObject = updated_image;
 
     //Viser statistikk
@@ -176,6 +171,8 @@ void MainWindow::set_updated_image(QImage* updated_image)
 
         update_gui_resize();
     }
+
+    qDebug() << zoomVerdi;
 }
 
 
@@ -227,18 +224,34 @@ void MainWindow::rotate_right() {
 
 
 void MainWindow::zoomIn() {
-    qDebug()<< "zoomIn() ran";
+
+    scene = new QGraphicsScene(this);
+    zoomVerdi += 0.25;
+    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
+    qDebug() << zoomVerdi;
 }
 
 
 void MainWindow::zoomOut() {
-    qDebug()<< "zoomOut() ran";
+    scene = new QGraphicsScene(this);
+    zoomVerdi -= 0.25;
+    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
+    qDebug() << zoomVerdi;
 
 }
 
 void MainWindow::actualSize() {
-    qDebug()<< "actualSize() ran";
-    update_gui_actual_size();
+    scene = new QGraphicsScene(this);
+    QSize size(image.width(), image.height());
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->setScene(scene);
 }
 
 void MainWindow::zoomToFit() {

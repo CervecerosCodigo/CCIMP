@@ -63,7 +63,6 @@ public:
 
 //    void set_rotate_tool(image_tool* t);
     void update_gui_resize();
-    void update_gui_actual_size();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
 
@@ -75,6 +74,8 @@ private:
 
     QString filePath;
     QString original_filePath;
+
+    double zoomVerdi;
 
 
     /*
