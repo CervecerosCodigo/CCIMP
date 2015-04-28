@@ -14,11 +14,13 @@ class image_wrapper
 {
     ccimp_vector<Magick::Image> undo_history;   //holds previous version
     ccimp_vector<Magick::Image> redo_history;   //holds newer versions, in case of previous undo
-    QImage& q_img;
-    Magick::Image* magic_img;
+    QImage& qimg_org;
+    Magick::Image img_obj;
+    Magick::Image* img_ptr;
     image_tool* current_tool;
     callback_iface* callback;
 
+    bool image_is_orig;
 
 public:
     image_wrapper(QImage& img);
