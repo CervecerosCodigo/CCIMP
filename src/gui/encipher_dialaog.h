@@ -33,11 +33,15 @@ private slots:
 
 signals:
     void signalImageEncrypted();
+    void signalImageDecrypted();
 
 public slots:
-    void slotEditFinished() {
+    void slotEncryptionFinished() {
         emit signalImageEncrypted();
 }
+    void slotDecryptionFinished() {
+        emit signalImageDecrypted();
+    }
 
 private:
     Ui::encipher_dialaog *ui;

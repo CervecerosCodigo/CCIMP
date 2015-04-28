@@ -32,7 +32,7 @@ enum PARAMTYPE{SLIDER, COORDINATE, COLOR};
  * image_tools are passed by pointer up to controller and we need to make sure
  * that a butten called "blur_button" is connected to the right tool in the back end.
  */
-enum TOOLIDENT{BLUR, SHARPEN, RESIZE, COL, CROP, BRIGTHEN, CONTRAST, ROTATE, ENCRYPT};
+enum TOOLIDENT{BLUR, SHARPEN, RESIZE, COL, CROP, BRIGTHEN, CONTRAST, ROTATE, ENCRYPT, DECRYPT};
 
 #endif // LIB_H
 

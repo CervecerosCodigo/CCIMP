@@ -206,7 +206,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Encipher</string>
+               <string>Secure</string>
               </property>
              </widget>
             </item>

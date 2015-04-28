@@ -65,6 +65,7 @@ public:
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
     void set_encipher_tool(image_tool* t);
+    void set_decipher_tool(image_tool* t);
 
 //    void set_rotate_tool(image_tool* t);
     void update_gui_resize();

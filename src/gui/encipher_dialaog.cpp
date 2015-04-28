@@ -15,7 +15,7 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
     p_white.setColor(QPalette::Base, Qt::white);
 
     ui->radioEncipher->toggle();
-//    this->on_radioEncipher_toggled(true);
+    //    this->on_radioEncipher_toggled(true);
 }
 
 encipher_dialaog::~encipher_dialaog()
@@ -32,6 +32,7 @@ void encipher_dialaog::on_radioEncipher_toggled(bool checked)
     ui->decPass->setPalette(p_gray);
     ui->encPass1->setPalette(p_white);
     ui->encPass2->setPalette(p_white);
+    ui->decPass->setText("");
 }
 
 void encipher_dialaog::on_radioDecipher_toggled(bool checked)
@@ -42,15 +43,21 @@ void encipher_dialaog::on_radioDecipher_toggled(bool checked)
     ui->encPass1->setPalette(p_gray);
     ui->encPass2->setPalette(p_gray);
     ui->decPass->setPalette(p_white);
+    ui->encPass1->setText("");
+    ui->encPass2->setText("");
 }
 
 void encipher_dialaog::on_buttonBox_accepted()
 {
 
-    if(ui->radioEncipher->isChecked())
+    if(ui->radioEncipher->isChecked()){
         if(ui->encPass1->text().compare(ui->encPass2->text())){
             QMessageBox::warning(this, "Password error", "Passwords doesn't match");
         }
-    emit slotEditFinished();
-
+        qDebug() << "emit signalImageDecrypted()";
+        emit slotEncryptionFinished();
+    }else if(ui->radioDecipher->isChecked()){
+        qDebug() << "emit signalImageDecrypted()";
+        emit signalImageDecrypted();
+    }
 }

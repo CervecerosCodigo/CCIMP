@@ -337,6 +337,11 @@ void MainWindow::set_encipher_tool(image_tool *t)
     encipherDialog.set_tool(t);
 }
 
+void MainWindow::set_decipher_tool(image_tool *t)
+{
+    encipherDialog.set_tool(t);
+}
+
 
 /**Er en event-implementasjon som kalles fra image_wrapper
  * etter at et bilde er behandlet, og skal vises i gui igjen.
@@ -429,6 +434,7 @@ void MainWindow::on_encipherButton_clicked()
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
         connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_tool_on_image()));
+        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_tool_on_image()));
         encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         encipherDialog.exec();
     }
