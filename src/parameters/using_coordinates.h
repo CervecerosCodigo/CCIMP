@@ -12,6 +12,7 @@ class using_coordinates : public parameters
     HEIGHT height;
     WIDTH width;
     ANGLE angle;
+    PASSPHRASE passphrase;
 
 public:
     using_coordinates();
@@ -22,11 +23,13 @@ public:
     inline void set_width(int w){width = w;}
     inline void set_height(int h){height = h;}
     inline void set_angle(double a){angle = a;}
+    inline void set_passphrase(std::string p){passphrase = p;}
     inline X_AXIS get_x_axis(){return x_axis;}
     inline Y_AXIS get_y_axis(){return y_axis;}
     inline WIDTH get_width(){return width;}
     inline HEIGHT get_height(){return height;}
     inline ANGLE get_angle(){return angle;}
+    inline PASSPHRASE get_passphrase(){return passphrase;}
 
    // parameters* get_param() override;
 };

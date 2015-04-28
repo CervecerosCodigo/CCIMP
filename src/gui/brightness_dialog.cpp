@@ -10,6 +10,7 @@ brightness_dialog::brightness_dialog(QWidget *parent) : QDialog(parent), ui(new 
     ui->horizontalSlider->setSingleStep(5);
     ui->horizontalSlider->setTickInterval(10);
     ui->horizontalSlider->setSliderPosition(0);
+    ui->horizontalSlider->setValue(0);
     ui->horizontalSlider->setTracking(false);
 
 }
