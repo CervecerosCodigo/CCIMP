@@ -2,6 +2,7 @@
 #define CALLBACK_IFACE
 
 #include <QImage>
+#include <QString>
 
 class callback_iface{
 

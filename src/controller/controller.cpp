@@ -17,6 +17,9 @@ controller::~controller()
 
 void controller::register_tool(image_tool* t){
 
+    //setter en error listener på valgt vektøy
+    t->set_error_listener(this);
+
     //tools.insert_back(t);
     TOOLIDENT t_type = t->get_tool_identifier();
 
@@ -92,4 +95,42 @@ void controller::undo_last_command(callback_iface* callback){
 //Lytter på "redo_knappen" i GUI
 void controller::redo_last_command(callback_iface* callback){
     current_image->redo_last_command(callback);
+}
+
+//Lytter på en exception fra gui
+void controller::on_exception_occured(TOOLIDENT t_type)
+{
+//    qDebug() << "Exception er fanget opp i controller";
+    switch(t_type){
+    case TOOLIDENT::BLUR:
+        gui_mw.exception_in_image_processing(err_strings::blur_title, err_strings::blur_msg);
+        break;
+    case TOOLIDENT::SHARPEN:
+        //gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
+        break;
+    case TOOLIDENT::CROP:
+        gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
+        break;
+    case TOOLIDENT::RESIZE:
+//        gui_mw.exception_in_image_processing(err_strings::resize_title, err_strings::crop_msg);
+        break;
+    case TOOLIDENT::COL:
+        gui_mw.exception_in_image_processing(err_strings::col_title, err_strings::col_msg);
+        break;
+    case TOOLIDENT::BRIGTHEN:
+        gui_mw.exception_in_image_processing(err_strings::bright_title, err_strings::bright_msg);
+        break;
+    case TOOLIDENT::CONTRAST:
+        gui_mw.exception_in_image_processing(err_strings::contr_title, err_strings::contr_msg);
+        break;
+    case TOOLIDENT::ROTATE:
+        gui_mw.exception_in_image_processing(err_strings::rotate_title, err_strings::rotate_msg);
+        break;
+    case TOOLIDENT::ENCRYPT:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
+        break;
+    case TOOLIDENT::DECRYPT:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
+        break;
+    }
 }

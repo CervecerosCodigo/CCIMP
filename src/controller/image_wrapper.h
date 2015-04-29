@@ -38,6 +38,7 @@ public:
 
     inline void set_current_tool(image_tool* t){current_tool = t;}
 
+
 };
 
 #endif // IMAGE_WRAPPER_H

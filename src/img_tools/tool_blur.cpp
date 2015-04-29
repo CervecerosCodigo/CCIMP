@@ -3,9 +3,18 @@
 
 void tool_blur::execute(Magick::Image& img){
     using_slider* param = (using_slider*) get_para();
-    qDebug() << "Slider 1:" << param->get_slider_val(0)
-             << "Slider 2:" << param->get_slider_val(1);
+//    qDebug() << "Slider 1:" << param->get_slider_val(0)
+//             << "Slider 2:" << param->get_slider_val(1);
+    try{
     img.blur(
                 param->get_slider_val(0)*0.1,
                 param->get_slider_val(1)*0.1);
+    }catch(Magick::Warning){
+        //Det er denne exception som normalt blir eksekvert hved feil i ImageMagick
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
+    }catch(Magick::Error &error){
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
+    }catch(std::exception &error){
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
+    }
 }

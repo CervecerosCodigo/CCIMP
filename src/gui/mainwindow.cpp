@@ -394,6 +394,30 @@ void MainWindow::execute_cancelbtn_pressed(){
     event_listen->canceled(this);
 }
 
+
+
+/************************
+ * Exception handling
+ *
+ * *********************
+ */
+
+/*! Viser en QMessageBox dersom det videresendes en exception fra controller.
+ *  Exception som blir sendt hit oppstår direkte i tool klassen som behandler bilde.
+ * \brief MainWindow::exception_in_image_processing
+ * \param err_title
+ * \param err_msg
+ */
+void MainWindow::exception_in_image_processing(QString err_title, QString err_msg)
+{
+    QMessageBox::information(this, err_title, err_msg);
+}
+
+//End of exception handling
+
+
+
+
 void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
