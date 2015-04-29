@@ -20,19 +20,23 @@ brightness_dialog::~brightness_dialog()
     delete ui;
 }
 
-const int &brightness_dialog::get_slider_value()
-{
-    return ui->horizontalSlider->value();
-}
-
 
 void brightness_dialog::on_horizontalSlider_valueChanged(int value)
 {
 
-//    emit signalBrightnessChanged();
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(ui->horizontalSlider->value());
-    //qDebug() << Q_FUNC_INFO << param->get_slider_val();
 
-    emit slotEditFinished();
+
+    emit slotValueChanged();
+}
+
+void brightness_dialog::on_buttonBox_accepted()
+{
+    emit slotAcceptPressed();
+}
+
+void brightness_dialog::on_buttonBox_rejected()
+{
+    emit slotCancelPressed();
 }

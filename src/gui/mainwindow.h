@@ -93,6 +93,7 @@ private:
 
     QString imgPath;
     QImage *imgObject;
+    QImage *imgObjectEdit;
     QPixmap image;
     QGraphicsScene *scene;
     QGraphicsView *view;
@@ -122,7 +123,9 @@ public slots:
     void save();
     void save_as();
     void showDebugMsg();
-    void execute_tool_on_image();
+    void execute_value_changed();
+    void execute_acceptbtn_pressed();
+    void execute_cancelbtn_pressed();
 
 private slots:
     //void on_treeView_clicked();
