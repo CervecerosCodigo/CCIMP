@@ -13,6 +13,7 @@
 #include "lib.h"
 #include "error_listener.h"
 #include "gui/mainwindow.h"
+#include "lib/err_strings.h"
 
 class controller : public controller_iface, public event_listener, public error_listener
 {

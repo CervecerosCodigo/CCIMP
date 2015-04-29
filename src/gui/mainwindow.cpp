@@ -413,6 +413,8 @@ void MainWindow::exception_in_image_processing(QString err_title, QString err_ms
 
 //End of exception handling
 
+
+
 void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){

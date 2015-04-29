@@ -9,11 +9,12 @@ void tool_blur::execute(Magick::Image& img){
     img.blur(
                 param->get_slider_val(0)*0.1,
                 param->get_slider_val(1)*0.1);
-    }catch(Magick::Warning &warning){
-        qDebug() << "Exception i blur " << &warning;
+    }catch(Magick::Warning){
+        //Det er denne exception som normalt blir eksekvert hved feil i ImageMagick
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
     }catch(Magick::Error &error){
-        qDebug() << "Exception i blur " << &error;
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
     }catch(std::exception &error){
-        qDebug() << "Exception i blur " << &error;
+        err_listener->on_exception_occured(TOOLIDENT::BLUR);
     }
 }

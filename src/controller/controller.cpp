@@ -103,35 +103,34 @@ void controller::on_exception_occured(TOOLIDENT t_type)
 //    qDebug() << "Exception er fanget opp i controller";
     switch(t_type){
     case TOOLIDENT::BLUR:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::blur_title, err_strings::blur_msg);
         break;
     case TOOLIDENT::SHARPEN:
-        //code
+        //gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::CROP:
-        qDebug() << "Crop tool exception";
-        gui_mw.exception_in_image_processing("Test", "TestMelding");
+        gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::RESIZE:
-        //code
+//        gui_mw.exception_in_image_processing(err_strings::resize_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::COL:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::col_title, err_strings::col_msg);
         break;
     case TOOLIDENT::BRIGTHEN:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::bright_title, err_strings::bright_msg);
         break;
     case TOOLIDENT::CONTRAST:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::contr_title, err_strings::contr_msg);
         break;
     case TOOLIDENT::ROTATE:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::rotate_title, err_strings::rotate_msg);
         break;
     case TOOLIDENT::ENCRYPT:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
         break;
     case TOOLIDENT::DECRYPT:
-        //code
+        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
         break;
     }
 }
