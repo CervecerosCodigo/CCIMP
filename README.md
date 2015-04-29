@@ -16,8 +16,9 @@
 ##Kompilering
 CCIMP krever følgende bilbiotek for å kompileres.
 
-1. [**Qt5**](https://www.qt.io/download-open-source/)
-2. **ImageMagick++**
+1. **gnu gcc-c++**  Sørg for at gnu `libtool-ltdl-devel` (eller en liknende versjon av pakken) er tilgjengelig, den er nødvendig for å kompilere ImageMagick++.
+2. [**Qt5**](https://www.qt.io/download-open-source/)
+3. **ImageMagick++**
   * Linux
     * Det anbefales at biblioteket kompileres fra kilde hvilket vil gjøre den kompatibel med `CCIMP.pro` konfigurasjonen for qmake uavhengig av distribusjon. 
     * Seineste versjon av ImageMagick++ er tilgjengelig [her.](http://www.imagemagick.org/download/ImageMagick.tar.gz)
