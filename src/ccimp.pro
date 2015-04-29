@@ -78,7 +78,8 @@ HEADERS  += gui/mainwindow.h \
     gui/about_dialog.h \
     gui/encipher_dialaog.h \
     img_tools/tool_encrypt.h \
-    img_tools/tool_decrypt.h
+    img_tools/tool_decrypt.h \
+    controller/error_listener.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

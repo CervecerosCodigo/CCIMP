@@ -17,6 +17,9 @@ controller::~controller()
 
 void controller::register_tool(image_tool* t){
 
+    //setter en error listener på valgt vektøy
+    t->set_error_listener(this);
+
     //tools.insert_back(t);
     TOOLIDENT t_type = t->get_tool_identifier();
 
@@ -92,4 +95,9 @@ void controller::undo_last_command(callback_iface* callback){
 //Lytter på "redo_knappen" i GUI
 void controller::redo_last_command(callback_iface* callback){
     current_image->redo_last_command(callback);
+}
+
+void controller::on_exception_occured(TOOLIDENT)
+{
+    qDebug() << "Exception er fanget opp i controller";
 }

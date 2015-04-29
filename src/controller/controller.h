@@ -11,10 +11,10 @@
 #include <QImage>
 #include <QColor>
 #include "lib.h"
-
+#include "error_listener.h"
 #include "gui/mainwindow.h"
 
-class controller : public controller_iface, public event_listener
+class controller : public controller_iface, public event_listener, public error_listener
 {
 
     MainWindow& gui_mw;
@@ -40,6 +40,8 @@ public:
     void undo_last_command(callback_iface* callback) override;
     void redo_last_command(callback_iface* callback) override;
 
+    //error_listener overrides
+    void on_exception_occured(TOOLIDENT) override;
 };
 
 #endif // CONTROLLER_H

@@ -8,7 +8,6 @@
 #include <iostream>
 
 
-
 class tool : image_tool
 {
     //TOOLIDENT tool_identifier;
@@ -21,6 +20,14 @@ public:
 
     inline parameters* get_para(){return get_param();}
     void execute(Magick::Image& img) override; //image_tool
+
+    error_listener* err_listener;
+    bool is_error_listener_set = false;
+
+    inline void set_error_listener(error_listener *e) override{
+        is_error_listener_set = true;
+        err_listener = e;
+    }
 
 };
 
