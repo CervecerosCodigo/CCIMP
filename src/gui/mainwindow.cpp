@@ -405,7 +405,7 @@ void MainWindow::on_blurButton_clicked()
 }
 
 
-void MainWindow::on_brightnessButton_clicked()
+void MainWindow::   on_brightnessButton_clicked()
 {
     if(image_is_loaded){
 
