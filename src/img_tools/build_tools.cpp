@@ -7,7 +7,15 @@ build_tools::build_tools(controller_iface* p): control{p}
 
 build_tools::~build_tools()
 {
-    //delete brightness, contrast, blur, crop;
+    delete blur;
+    delete crop;
+    delete brightness;
+    delete contrast;
+    delete rotate;
+    delete color_balance;
+    delete encrypt_tool;
+    delete decrypt_tool;
+    delete control;
 }
 
 

@@ -7,7 +7,7 @@ class controller_iface
 {
 public:
     controller_iface(){}
-    ~controller_iface(){}
+    virtual ~controller_iface(){}
     virtual void register_tool(image_tool* t) = 0;
 };
 
