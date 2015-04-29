@@ -97,7 +97,41 @@ void controller::redo_last_command(callback_iface* callback){
     current_image->redo_last_command(callback);
 }
 
-void controller::on_exception_occured(TOOLIDENT)
+//Lytter på en exception fra gui
+void controller::on_exception_occured(TOOLIDENT t_type)
 {
-    qDebug() << "Exception er fanget opp i controller";
+//    qDebug() << "Exception er fanget opp i controller";
+    switch(t_type){
+    case TOOLIDENT::BLUR:
+        //code
+        break;
+    case TOOLIDENT::SHARPEN:
+        //code
+        break;
+    case TOOLIDENT::CROP:
+        qDebug() << "Crop tool exception";
+        gui_mw.exception_in_image_processing("Test", "TestMelding");
+        break;
+    case TOOLIDENT::RESIZE:
+        //code
+        break;
+    case TOOLIDENT::COL:
+        //code
+        break;
+    case TOOLIDENT::BRIGTHEN:
+        //code
+        break;
+    case TOOLIDENT::CONTRAST:
+        //code
+        break;
+    case TOOLIDENT::ROTATE:
+        //code
+        break;
+    case TOOLIDENT::ENCRYPT:
+        //code
+        break;
+    case TOOLIDENT::DECRYPT:
+        //code
+        break;
+    }
 }

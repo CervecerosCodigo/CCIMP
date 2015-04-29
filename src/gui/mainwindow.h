@@ -30,6 +30,7 @@
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
 #include "img_tools/image_tool.h"
+#include "controller/callback_error_iface.h"
 
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
@@ -38,7 +39,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public callback_iface
+class MainWindow : public QMainWindow, public callback_iface, public callback_error_iface
 {
     Q_OBJECT
 
@@ -71,6 +72,7 @@ public:
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
+    void exception_in_image_processing(QString err_title, QString err_msg) override;
 
 private:
     Ui::MainWindow *ui;
