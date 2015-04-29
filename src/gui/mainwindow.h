@@ -56,10 +56,10 @@ public:
     void set_event_listener(event_listener* l);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    //set-metoder for tools
     void set_crop_tool(image_tool* t);
-
     void set_blur_tool(image_tool* t);
-
     void set_brightness_tool(image_tool* t);
     void set_contrast_tool(image_tool* t);
     void set_rotate_tool(image_tool* t);
@@ -67,7 +67,7 @@ public:
     void set_encipher_tool(image_tool* t);
     void set_decipher_tool(image_tool* t);
 
-//    void set_rotate_tool(image_tool* t);
+
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
@@ -87,13 +87,13 @@ private:
     /*
      * Setter opp bildevisning
      */
+    void set_graphics_environment();
     void set_image(const QString &path);
-    void set_boot_image(); //seter startbilde fra resource filen
     void resizeEvent ( QResizeEvent* e );
 
     QString imgPath;
     QImage *imgObject;
-    QImage *imgObjectEdit;
+    QImage *imgBackground;
     QPixmap image;
     QGraphicsScene *scene;
     QGraphicsView *view;
@@ -118,6 +118,8 @@ private:
     bool event_listener_set = false;  //må settes for at img_listener kan brukes
     event_listener* event_listen;
     bool image_is_loaded = false;
+
+
 public slots:
     void open();
     void save();
