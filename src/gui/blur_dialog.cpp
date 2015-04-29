@@ -11,6 +11,7 @@ blur_dialog::blur_dialog(QWidget *parent) : QDialog(parent), ui(new Ui::blur_dia
     ui->radiusSlider->setMaximum(100);
     ui->intensitySlider->setMinimum(0);
     ui->intensitySlider->setMaximum(100);
+    this->setFixedSize(this->size());
 }
 
 blur_dialog::~blur_dialog()

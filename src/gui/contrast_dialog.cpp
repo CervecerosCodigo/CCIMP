@@ -12,6 +12,7 @@ contrast_dialog::contrast_dialog(QWidget *parent) :
     ui->horizontalSlider->setTickInterval(10);
     ui->horizontalSlider->setSliderPosition(0);
     ui->horizontalSlider->setTracking(false);
+    this->setFixedSize(this->size());
 }
 
 contrast_dialog::~contrast_dialog()

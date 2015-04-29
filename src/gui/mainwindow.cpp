@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     set_graphics_environment();
 
 
-
     zoomVerdi = 1;
 
 }
@@ -439,6 +438,7 @@ void MainWindow::on_brightnessButton_clicked()
         connect(&brightnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
         connect(&brightnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        //brightnessDialog.setFixedSize(brightnessDialog.size());
         brightnessDialog.exec();
     }
 }

@@ -12,7 +12,7 @@ brightness_dialog::brightness_dialog(QWidget *parent) : QDialog(parent), ui(new 
     ui->horizontalSlider->setSliderPosition(0);
     ui->horizontalSlider->setValue(0);
     ui->horizontalSlider->setTracking(false);
-
+    this->setFixedSize(this->size());
 }
 
 brightness_dialog::~brightness_dialog()

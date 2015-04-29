@@ -7,6 +7,7 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setFixedSize(this->size());
 
 
     p_gray = ui->decPass->palette();
