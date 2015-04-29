@@ -20,22 +20,31 @@ public:
 
 
 signals:
-    void signalColorBalanceChanged();
+    void signalValueChanged();
+    void signalAccepted();
+    void signalCanceled();
 
 public slots:
-    void slotEditFinished() {
-        emit signalColorBalanceChanged();
+    void slotChanged() {
+        emit signalValueChanged();
+}
+void slotAcceptPressed(){
+    emit signalAccepted();               //Pressed OK
+}
+void slotCancelPressed(){
+    emit signalCanceled();               //Pressed Cancel
 }
 
 private slots:
     void on_redSlider_valueChanged(int value);
-
     void on_greenSlider_valueChanged(int value);
-
     void on_blueSlider_valueChanged(int value);
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
 
 private:
     Ui::color_balance_dialog *ui;
+    void reset_slider_positions();
 };
 
 #endif // COLOR_BALANCE_DIALOG_H

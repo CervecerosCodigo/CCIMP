@@ -209,18 +209,20 @@ void MainWindow::show_stats(QImage *img){
 
 
 void MainWindow::rotate_left() {
-
-    event_listen->on_clicked_tool(rotateDialog.get_tool());
-    rotateDialog.rotate_left();
-    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(rotateDialog.get_tool());
+        connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        rotateDialog.rotate_left();
+    }
 }
 
 
 void MainWindow::rotate_right() {
-
-    event_listen->on_clicked_tool(rotateDialog.get_tool());
-    rotateDialog.rotate_right();
-    connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(rotateDialog.get_tool());
+        connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        rotateDialog.rotate_right();
+    }
 }
 
 
@@ -393,24 +395,24 @@ void MainWindow::execute_cancelbtn_pressed(){
     event_listen->canceled(this);
 }
 
-
 void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(blurDialog.get_tool());
-        connect(&blurDialog, SIGNAL(signalBlurChanged()), this, SLOT(execute_value_changed()));
+        connect(&blurDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        connect(&blurDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&blurDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         blurDialog.exec();
     }
 }
 
 
-void MainWindow::   on_brightnessButton_clicked()
+void MainWindow::on_brightnessButton_clicked()
 {
     if(image_is_loaded){
-
         event_listen->on_clicked_tool(brightnessDialog.get_tool());
-        connect(&brightnessDialog, SIGNAL(signalBrightnessChanged()), this, SLOT(execute_value_changed()));
+        connect(&brightnessDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
         connect(&brightnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
         connect(&brightnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
@@ -422,7 +424,7 @@ void MainWindow::on_cropButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(cropDialog.get_tool());
-        connect(&cropDialog, SIGNAL(signalNewString1(QString)), this, SLOT(execute_value_changed()));
+        connect(&cropDialog, SIGNAL(signalAccepted()), this, SLOT(execute_value_changed()));
         cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         cropDialog.exec();
     }
@@ -432,7 +434,8 @@ void MainWindow::on_contrastButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(contrastDialog.get_tool());
-        connect(&contrastDialog, SIGNAL(signalContrastChanged()), this, SLOT(execute_value_changed()));
+        connect(&contrastDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        connect(&contrastDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
         contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         contrastDialog.exec();
     }
@@ -441,9 +444,10 @@ void MainWindow::on_contrastButton_clicked()
 void MainWindow::on_rotateButton_clicked()
 {
     if(image_is_loaded){
-        qDebug() << "Trykket på Rotate";
         event_listen->on_clicked_tool(rotateDialog.get_tool());
-        connect(&rotateDialog, SIGNAL(signalRotationChanged()), this, SLOT(execute_value_changed()));
+        connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        connect(&rotateDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&rotateDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         rotateDialog.exec();
     }
@@ -453,7 +457,9 @@ void MainWindow::on_colorBalanceButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
-        connect(&colorBalanceDialog, SIGNAL(signalColorBalanceChanged()), this, SLOT(execute_value_changed()));
+        connect(&colorBalanceDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+        connect(&colorBalanceDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&colorBalanceDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         colorBalanceDialog.exec();
     }

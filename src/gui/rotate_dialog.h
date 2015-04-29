@@ -24,18 +24,32 @@ public:
     void rotate_right();
 
 signals:
-    void signalRotationChanged();
+    void signalValueChanged();
+    void signalAccepted();
+    void signalCanceled();
 
 public slots:
-    void slotEditFinished() {
-        emit signalRotationChanged();
-}
+
+    void slotChanged() {
+            emit signalValueChanged();
+    }
+    void slotAcceptPressed(){
+        signalAccepted();               //Pressed OK
+    }
+    void slotCancelPressed(){
+        signalCanceled();               //Pressed Cancel
+    }
 
 private slots:
     void on_dial_valueChanged(int value);
 
+    void on_buttonBox_accepted();
+
+    void on_buttonBox_rejected();
+
 private:
     Ui::rotate_dialog *ui;
+    double current_angle;
 };
 
 #endif // ROTATE_DIALOG_H

@@ -20,19 +20,30 @@ public:
     ~blur_dialog();
 
 signals:
-  void signalBlurChanged();
+  void signalValueChanged();
+  void signalAccepted();
+  void signalCanceled();
 
 public slots:
-  void slotEditFinished() {
-    emit signalBlurChanged();
+  void slotChanged() {
+    emit signalValueChanged();
+  }
+  void slotAcceptPressed(){
+      signalAccepted();               //Pressed OK
+  }
+  void slotCancelPressed(){
+      signalCanceled();               //Pressed Cancel
   }
 
 private slots:
   void on_radiusSlider_valueChanged(int value);
   void on_intensitySlider_valueChanged(int value);
+  void on_buttonBox_accepted();
+  void on_buttonBox_rejected();
 
 private:
     Ui::blur_dialog *ui;
+    void reset_slider_positions();
 };
 
 #endif // BLUR_DIALOG_H
