@@ -12,8 +12,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //Setter opp en tree view
     set_fs_view();
 
-    //Setter opp boot image
-    set_boot_image();
+    //setter opp grafiske komponenter.
+    set_graphics_environment();
+
+
 
     zoomVerdi = 1;
 
@@ -91,7 +93,7 @@ void MainWindow::save(){
 }
 
 
-/** Laster inn filen
+/**Laster inn filen via open file dialogen
  * @brief MainWindow::load_file
  * @param fileName
  */
@@ -100,17 +102,17 @@ void MainWindow::load_file(const QString &fileName){
 }
 
 
+void MainWindow::set_graphics_environment(){
+    scene = new QGraphicsScene(this);
 
-void MainWindow::set_boot_image()
-{
-    QImage *boot_image = new QImage();
-    boot_image->load(":/img/img/CCIMP_background.png");
-//    boot_image->load("../res/img/bilde1.jpg");
-    QPixmap boot_pixmap = QPixmap::fromImage(*boot_image);
-    QGraphicsScene *boot_scene = new QGraphicsScene(this);
-    boot_scene->addPixmap(boot_pixmap);
-    boot_scene->setSceneRect(boot_pixmap.rect());
-    ui->graphicsView->setScene(boot_scene);
+//    imgBackground = new QImage();
+//    imgBackground->load(":/img/img/CCIMP_background.png");
+//    ui->graphicsView->setStyleSheet("QWidget {"
+//                                    "background-image: url(:/img/img/CCIMP_background.png); "
+//                                    "background-repeat: no-repeat; "
+//                                    "background-position: center; "
+//                                    "background-color: white;  }");
+
 }
 
 
@@ -133,8 +135,6 @@ void MainWindow::set_image(const QString &path)
         }
         set_updated_image(imgObject);
 
-    }else{
-        qDebug() << "Filstien er tom eller null!";
     }
 }
 
@@ -144,11 +144,9 @@ void MainWindow::set_image(const QString &path)
  */
 void MainWindow::update_gui_resize(){
 
-    scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-
     ui->graphicsView->setScene(scene);
 
 }
@@ -160,20 +158,14 @@ void MainWindow::update_gui_resize(){
  */
 void MainWindow::set_updated_image(QImage* updated_image)
 {
-    zoomVerdi = 1;
-
     imgObject = updated_image;
 
     //Viser statistikk
-    if(!imgObject->isNull()){
+    if(image_is_loaded){
         show_stats(imgObject);
-
         image = QPixmap::fromImage(*imgObject);
-
         update_gui_resize();
     }
-
-    qDebug() << zoomVerdi;
 }
 
 
