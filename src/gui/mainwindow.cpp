@@ -456,12 +456,13 @@ void MainWindow::on_rotateButton_clicked()
 void MainWindow::on_colorBalanceButton_clicked()
 {
     if(image_is_loaded){
-        event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
+        colorBalanceDialog.reset_slider_positions();
         connect(&colorBalanceDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
         connect(&colorBalanceDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
         connect(&colorBalanceDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
         colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         colorBalanceDialog.exec();
+        colorBalanceDialog.reset_slider_positions();
     }
 }
 

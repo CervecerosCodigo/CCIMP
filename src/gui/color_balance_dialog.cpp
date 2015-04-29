@@ -11,13 +11,13 @@ color_balance_dialog::color_balance_dialog(QWidget *parent) :
     ui->greenSlider->setTracking(false);
     ui->blueSlider->setTracking(false);
 
-    ui->redSlider->setMinimum(-100);
+    ui->redSlider->setMinimum(0);
     ui->redSlider->setMaximum(100);
 
-    ui->greenSlider->setMinimum(-100);
+    ui->greenSlider->setMinimum(0);
     ui->greenSlider->setMaximum(100);
 
-    ui->blueSlider->setMinimum(-100);
+    ui->blueSlider->setMinimum(0);
     ui->blueSlider->setMaximum(100);
 
     reset_slider_positions();
@@ -54,12 +54,13 @@ void color_balance_dialog::on_blueSlider_valueChanged(int value)
 
 void color_balance_dialog::on_buttonBox_accepted(){
     emit slotAcceptPressed();
-    reset_slider_positions();
+
 }
 
 void color_balance_dialog::on_buttonBox_rejected(){
-    emit slotCancelPressed();
     reset_slider_positions();
+    emit slotCancelPressed();
+
 }
 
 void color_balance_dialog::reset_slider_positions(){
