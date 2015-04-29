@@ -22,13 +22,13 @@ public:
 
 
 signals:
-    void signalBrightnessChanged();
+    void signalValueChanged();
     void signalAccepted();
     void signalCanceled();
 
 public slots:
-    void slotValueChanged() {
-        emit signalBrightnessChanged(); //Slider value changed
+    void slotChanged() {
+        emit signalValueChanged(); //Slider value changed
     }
     void slotAcceptPressed(){
         signalAccepted();               //Pressed OK
@@ -39,14 +39,12 @@ public slots:
 
 private slots:
     void on_horizontalSlider_valueChanged(int value);
-
     void on_buttonBox_accepted();
-
     void on_buttonBox_rejected();
 
 private:
     Ui::brightness_dialog *ui;
-    int value, new_value;
+    //int value, new_value;
 };
 
 #endif // BRIGHTNESS_DIALOG_H

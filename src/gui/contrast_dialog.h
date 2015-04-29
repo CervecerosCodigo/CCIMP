@@ -20,15 +20,25 @@ public:
     ~contrast_dialog();
 
 signals:
-    void signalContrastChanged();
+    void signalValueChanged();
+    void signalAccepted();
+    void signalCanceled();
 
 public slots:
-    void slotEditFinished() {
-        emit signalContrastChanged();
-}
+    void slotChanged() {
+        emit signalValueChanged(); //Slider value changed
+    }
+    void slotAcceptPressed(){
+        signalAccepted();               //Pressed OK
+    }
+    void slotCancelPressed(){
+        signalCanceled();               //Pressed Cancel
+    }
 
 private slots:
     void on_horizontalSlider_valueChanged(int value);
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
 
 private:
     Ui::contrast_dialog *ui;

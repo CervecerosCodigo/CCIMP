@@ -13,19 +13,14 @@ color_balance_dialog::color_balance_dialog(QWidget *parent) :
 
     ui->redSlider->setMinimum(-100);
     ui->redSlider->setMaximum(100);
-    ui->redSlider->setSliderPosition(0);
-    ui->redSlider->setValue(0);
 
     ui->greenSlider->setMinimum(-100);
     ui->greenSlider->setMaximum(100);
-    ui->greenSlider->setSliderPosition(0);
-    ui->greenSlider->setValue(0);
 
     ui->blueSlider->setMinimum(-100);
     ui->blueSlider->setMaximum(100);
-    ui->blueSlider->setSliderPosition(0);
-    ui->blueSlider->setValue(0);
 
+    reset_slider_positions();
 }
 
 color_balance_dialog::~color_balance_dialog()
@@ -38,7 +33,7 @@ void color_balance_dialog::on_redSlider_valueChanged(int value)
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(0, ui->redSlider->value());
 
-    emit slotEditFinished();
+    emit slotChanged();
 }
 
 void color_balance_dialog::on_greenSlider_valueChanged(int value)
@@ -46,7 +41,7 @@ void color_balance_dialog::on_greenSlider_valueChanged(int value)
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(1, ui->greenSlider->value());
 
-    emit slotEditFinished();
+    emit slotChanged();
 }
 
 void color_balance_dialog::on_blueSlider_valueChanged(int value)
@@ -54,5 +49,24 @@ void color_balance_dialog::on_blueSlider_valueChanged(int value)
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(2, ui->blueSlider->value());
 
-    emit slotEditFinished();
+    emit slotChanged();
+}
+
+void color_balance_dialog::on_buttonBox_accepted(){
+    emit slotAcceptPressed();
+    reset_slider_positions();
+}
+
+void color_balance_dialog::on_buttonBox_rejected(){
+    emit slotCancelPressed();
+    reset_slider_positions();
+}
+
+void color_balance_dialog::reset_slider_positions(){
+    ui->redSlider->setValue(0);
+    ui->greenSlider->setValue(0);
+    ui->blueSlider->setValue(0);
+    ui->redSlider->setSliderPosition(0);
+    ui->greenSlider->setSliderPosition(0);
+    ui->blueSlider->setSliderPosition(0);
 }

@@ -25,5 +25,15 @@ void contrast_dialog::on_horizontalSlider_valueChanged(int value)
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(ui->horizontalSlider->value());
 
-    emit slotEditFinished();
+    emit slotChanged();
+}
+
+void contrast_dialog::on_buttonBox_accepted(){
+    emit slotAcceptPressed();
+    ui->horizontalSlider->setValue(0);
+}
+
+void contrast_dialog::on_buttonBox_rejected(){
+    emit slotCancelPressed();
+    ui->horizontalSlider->setValue(0);
 }
