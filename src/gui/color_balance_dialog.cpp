@@ -20,6 +20,8 @@ color_balance_dialog::color_balance_dialog(QWidget *parent) :
     ui->blueSlider->setMinimum(0);
     ui->blueSlider->setMaximum(100);
 
+    this->setFixedSize(this->size());
+
     reset_slider_positions();
 }
 
