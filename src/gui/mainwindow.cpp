@@ -265,7 +265,14 @@ void MainWindow::redo_command(){
 
 MainWindow::~MainWindow()
 {
+
     delete ui;
+    delete imgObject;
+    delete imgBackground;
+    delete scene;
+    delete view;
+    delete fs_model;
+    delete event_listen;
 }
 
 

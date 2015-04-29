@@ -65,7 +65,7 @@ void controller::on_new_image(QImage& img){
 
 //Registers the tool that was click in GUI
 void controller::on_clicked_tool(image_tool* t){
-    selected_tool = t;
+    //selected_tool = t;
     current_image->set_current_tool(t);
     current_image->update_history();    //Kaller wrapper sin "historieorganisator"
 }

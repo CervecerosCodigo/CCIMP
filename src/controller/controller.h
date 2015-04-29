@@ -22,7 +22,7 @@ class controller : public controller_iface, public event_listener
     //ccimp_vector<image_wrapper> open_images; //holds all images, wrapped in a container
 
     image_wrapper* current_image;           //current image
-    image_tool* selected_tool;              //the selected tool from GUI
+    //image_tool* selected_tool;              //the selected tool from GUI
 
 
 public:
