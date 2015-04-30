@@ -67,6 +67,7 @@ public:
     void set_color_balance_tool(image_tool* t);
     void set_encipher_tool(image_tool* t);
     void set_decipher_tool(image_tool* t);
+    void set_secure_tool(image_tool* t);
 
 
     void update_gui_resize();
@@ -130,6 +131,7 @@ public slots:
     void execute_value_changed();
     void execute_acceptbtn_pressed();
     void execute_cancelbtn_pressed();
+    void execute_change_and_accept();
 
 private slots:
     //void on_treeView_clicked();

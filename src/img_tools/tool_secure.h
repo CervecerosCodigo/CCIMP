@@ -1,18 +1,17 @@
-#ifndef TOOL_ENCRYPT_H
-#define TOOL_ENCRYPT_H
+#ifndef TOOL_SECURE_H
+#define TOOL_SECURE_H
 
 #include "img_tools/tool.h"
 #include "img_tools/image_tool.h"
-#include "parameters/using_coordinates.h"
+#include "parameters/using_text.h"
 #include <QDebug>
 
-class tool_encrypt : public tool
+class tool_secure : public tool
 {
 public:
     using tool::tool;
 
     void execute(Magick::Image& img) override;
-
 };
 
-#endif // TOOL_ENCRYPT_H
+#endif // TOOL_SECURE_H

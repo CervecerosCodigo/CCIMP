@@ -359,6 +359,11 @@ void MainWindow::set_decipher_tool(image_tool *t)
     encipherDialog.set_tool(t);
 }
 
+void MainWindow::set_secure_tool(image_tool *t)
+{
+    encipherDialog.set_tool(t);
+}
+
 
 /**Dette er en callback-funksjon for undo/redo-knappene.
  * Når man velger undo/redo sendes kommandoene "ned" og returen kommer hit
@@ -394,6 +399,12 @@ void MainWindow::execute_acceptbtn_pressed(){
  */
 void MainWindow::execute_cancelbtn_pressed(){
     event_listen->canceled();
+}
+
+void MainWindow::execute_change_and_accept()
+{
+    set_updated_image(event_listen->updating_image());
+    event_listen->finished();
 }
 
 
@@ -502,9 +513,10 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
-        connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_acceptbtn_pressed()));
-        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_acceptbtn_pressed()));
+        connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_change_and_accept()));
+        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
         encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+        encipherDialog.set_encipher_toggle_on();
         encipherDialog.exec();
     }
 }

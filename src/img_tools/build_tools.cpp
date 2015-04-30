@@ -13,8 +13,7 @@ build_tools::~build_tools()
     delete contrast;
     delete rotate;
     delete color_balance;
-    delete encrypt_tool;
-    delete decrypt_tool;
+    delete secure_tool;
     delete control;
 }
 
@@ -27,6 +26,5 @@ void build_tools::create_tools_to_be_used(){
     crop = new tool_crop(control, new using_coordinates(), TOOLIDENT::CROP);
     rotate = new tool_rotate(control, new using_coordinates(), TOOLIDENT::ROTATE);
     color_balance = new tool_color_balance(control, new using_slider(3), TOOLIDENT::COL);
-    encrypt_tool = new  tool_encrypt(control, new using_coordinates(), TOOLIDENT::ENCRYPT);
-    decrypt_tool = new  tool_decrypt(control, new using_coordinates(), TOOLIDENT::DECRYPT);
+    secure_tool = new tool_secure(control, new using_text(), TOOLIDENT::SECURE);
 }
