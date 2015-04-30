@@ -9,14 +9,18 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
 
     this->setFixedSize(this->size());
 
+    QButtonGroup *group = new QButtonGroup(this);
+    group->addButton(ui->radioEncipher);
+    group->addButton(ui->radioDecipher);
+
 
     p_gray = ui->decPass->palette();
     p_gray.setColor(QPalette::Base, Qt::gray);
     p_white = ui->encPass1->palette();
     p_white.setColor(QPalette::Base, Qt::white);
 
-//    ui->radioEncipher->toggle(); //må vente til alt har startet før denne settes, lager en setter.
-//    this->on_radioEncipher_toggled(true);
+    //    ui->radioEncipher->toggle(); //må vente til alt har startet før denne settes, lager en setter.
+    //    this->on_radioEncipher_toggled(true);
 
 }
 
@@ -27,7 +31,7 @@ encipher_dialaog::~encipher_dialaog()
 
 void encipher_dialaog::set_encipher_toggle_on()
 {
-        ui->radioEncipher->toggle();
+    ui->radioEncipher->toggle();
 }
 
 
@@ -66,13 +70,13 @@ void encipher_dialaog::on_buttonBox_accepted()
 {
 
     if(ui->radioEncipher->isChecked()){
-//        if(ui->encPass1->text().compare(ui->encPass2->text())){
-//            QMessageBox::warning(this, "Password error", "Passwords doesn't match"); //her bør det intreffe en exception
-//        }
-        qDebug() << "emit signalImageEncrypted()";
+        if(ui->encPass1->text().compare(ui->encPass2->text())){
+            QMessageBox::warning(this, "Password error", "Passwords doesn't match");
+        }else{
+            qDebug() << "emit signalImageEncrypted()";
 
-        emit slotEncryptionFinished();
-
+            emit slotEncryptionFinished();
+        }
 
     }else if(ui->radioDecipher->isChecked()){
         qDebug() << "emit signalImageDecrypted()";
