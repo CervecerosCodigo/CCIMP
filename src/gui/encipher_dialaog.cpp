@@ -15,13 +15,19 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
     p_white = ui->encPass1->palette();
     p_white.setColor(QPalette::Base, Qt::white);
 
-    ui->radioEncipher->toggle();
-    //    this->on_radioEncipher_toggled(true);
+//    ui->radioEncipher->toggle(); //må vente til alt har startet før denne settes, lager en setter.
+//    this->on_radioEncipher_toggled(true);
+
 }
 
 encipher_dialaog::~encipher_dialaog()
 {
     delete ui;
+}
+
+void encipher_dialaog::set_encipher_toggle_on()
+{
+        ui->radioEncipher->toggle();
 }
 
 
@@ -34,6 +40,10 @@ void encipher_dialaog::on_radioEncipher_toggled(bool checked)
     ui->encPass1->setPalette(p_white);
     ui->encPass2->setPalette(p_white);
     ui->decPass->setText("");
+    //Henter tool value for å se dersom den skal krypteres eller dekrypteres
+    param = (using_text*) tool->get_param();
+    //setter krypteringsparameter
+    param->set_is_encryption(true);
 }
 
 void encipher_dialaog::on_radioDecipher_toggled(bool checked)
@@ -46,19 +56,27 @@ void encipher_dialaog::on_radioDecipher_toggled(bool checked)
     ui->decPass->setPalette(p_white);
     ui->encPass1->setText("");
     ui->encPass2->setText("");
+    //Henter tool value for å se dersom den skal krypteres eller dekrypteres
+    param = (using_text*) tool->get_param();
+    //setter dekrypteringsparameter
+    param->set_is_encryption(false);
 }
 
 void encipher_dialaog::on_buttonBox_accepted()
 {
 
     if(ui->radioEncipher->isChecked()){
-        if(ui->encPass1->text().compare(ui->encPass2->text())){
-            QMessageBox::warning(this, "Password error", "Passwords doesn't match");
-        }
-        qDebug() << "emit signalImageDecrypted()";
+//        if(ui->encPass1->text().compare(ui->encPass2->text())){
+//            QMessageBox::warning(this, "Password error", "Passwords doesn't match"); //her bør det intreffe en exception
+//        }
+        qDebug() << "emit signalImageEncrypted()";
+
         emit slotEncryptionFinished();
+
+
     }else if(ui->radioDecipher->isChecked()){
         qDebug() << "emit signalImageDecrypted()";
-        emit signalImageDecrypted();
+
+        emit slotDecryptionFinished();
     }
 }

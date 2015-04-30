@@ -40,9 +40,9 @@ SOURCES += main.cpp\
     img_tools/tool_color_balance.cpp \
     gui/about_dialog.cpp \
     gui/encipher_dialaog.cpp \
-    img_tools/tool_encrypt.cpp \
-    img_tools/tool_decrypt.cpp \
-    lib/err_strings.cpp
+    lib/err_strings.cpp \
+    parameters/using_text.cpp \
+    img_tools/tool_secure.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -78,11 +78,11 @@ HEADERS  += gui/mainwindow.h \
     img_tools/tool_color_balance.h \
     gui/about_dialog.h \
     gui/encipher_dialaog.h \
-    img_tools/tool_encrypt.h \
-    img_tools/tool_decrypt.h \
     controller/error_listener.h \
     controller/callback_error_iface.h \
-    lib/err_strings.h
+    lib/err_strings.h \
+    parameters/using_text.h \
+    img_tools/tool_secure.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

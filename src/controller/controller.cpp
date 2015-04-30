@@ -49,11 +49,8 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::ROTATE:
         gui_mw.set_rotate_tool(t);
         break;
-    case TOOLIDENT::ENCRYPT:
-        gui_mw.set_encipher_tool(t);
-        break;
-    case TOOLIDENT::DECRYPT:
-        gui_mw.set_decipher_tool(t);
+    case TOOLIDENT::SECURE:
+        gui_mw.set_secure_tool(t);
         break;
     }
 
@@ -125,12 +122,6 @@ void controller::on_exception_occured(TOOLIDENT t_type)
         break;
     case TOOLIDENT::ROTATE:
         gui_mw.exception_in_image_processing(err_strings::rotate_title, err_strings::rotate_msg);
-        break;
-    case TOOLIDENT::ENCRYPT:
-        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
-        break;
-    case TOOLIDENT::DECRYPT:
-        gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
         break;
     }
 }
