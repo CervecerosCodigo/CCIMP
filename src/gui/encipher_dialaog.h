@@ -48,6 +48,7 @@ public slots:
 
 private:
     Ui::encipher_dialaog *ui;
+    void resetting_values() override;
 };
 
 #endif // ENCIPHER_DIALAOG_H

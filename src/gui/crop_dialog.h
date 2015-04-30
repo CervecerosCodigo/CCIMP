@@ -40,7 +40,7 @@ private slots:
 
 private:
     Ui::crop_dialog *ui;
-    void reset_input_fields();
+    void resetting_values() override;
 };
 
 #endif // CROP_DIALOG_H

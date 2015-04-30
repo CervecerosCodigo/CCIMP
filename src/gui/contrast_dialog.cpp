@@ -23,18 +23,24 @@ contrast_dialog::~contrast_dialog()
 
 void contrast_dialog::on_horizontalSlider_valueChanged(int value)
 {
-    using_slider* param = (using_slider*) tool->get_param();
-    param->set_slider_val(ui->horizontalSlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*) tool->get_param();
+        param->set_slider_val(ui->horizontalSlider->value());
+        emit slotChanged();
+    }
 }
 
 void contrast_dialog::on_buttonBox_accepted(){
     emit slotAcceptPressed();
-    ui->horizontalSlider->setValue(0);
+    prepare_and_run_reset_on_values();
 }
 
 void contrast_dialog::on_buttonBox_rejected(){
     emit slotCancelPressed();
+    prepare_and_run_reset_on_values();
+
+}
+
+void contrast_dialog::resetting_values(){
     ui->horizontalSlider->setValue(0);
 }

@@ -44,7 +44,7 @@ private slots:
 
 private:
     Ui::brightness_dialog *ui;
-    //int value, new_value;
+    void resetting_values() override;
 };
 
 #endif // BRIGHTNESS_DIALOG_H

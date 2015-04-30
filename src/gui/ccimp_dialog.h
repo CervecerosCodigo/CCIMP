@@ -10,6 +10,7 @@ class ccimp_dialog {
 
 protected:
     image_tool* tool;
+    bool protecting_value_changed = false;
 
 public:
     ccimp_dialog(){}
@@ -17,7 +18,6 @@ public:
 
     inline virtual void set_tool(image_tool *t)
     {
-        //qDebug() << Q_FUNC_INFO << "kjører set_tool";
         tool=t;
     }
 
@@ -25,6 +25,15 @@ public:
     {
         return tool;
     }
+
+    inline virtual void prepare_and_run_reset_on_values(){
+        protecting_value_changed = true;
+        resetting_values();
+        protecting_value_changed = false;
+    }
+
+    virtual void resetting_values() = 0;
+
 };
 
 #endif // CCIMP_DIALOG_H

@@ -43,7 +43,7 @@ private slots:
 
 private:
     Ui::blur_dialog *ui;
-    void reset_slider_positions();
+    void resetting_values() override;
 };
 
 #endif // BLUR_DIALOG_H

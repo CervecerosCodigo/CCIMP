@@ -80,3 +80,7 @@ void encipher_dialaog::on_buttonBox_accepted()
         emit slotDecryptionFinished();
     }
 }
+
+void encipher_dialaog::resetting_values(){
+
+}

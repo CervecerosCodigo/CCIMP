@@ -36,24 +36,34 @@ void rotate_dialog::rotate_right()
 
 void rotate_dialog::on_dial_valueChanged(int value)
 {
-    using_coordinates* param = (using_coordinates*) tool->get_param();
-    param->set_angle(ui->dial->value()*1.0);
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_coordinates* param = (using_coordinates*) tool->get_param();
+        param->set_angle(ui->dial->value()*1.0);
+        emit slotChanged();
+    }
 }
 
 void rotate_dialog::on_buttonBox_accepted()
 {
     emit slotAcceptPressed();
-    ui->dial->setValue(0.0);
-    current_angle = 0.0;
+    protecting_value_changed = true;
+    resetting_values();
+    protecting_value_changed = false;
 }
 
 
 
 void rotate_dialog::on_buttonBox_rejected()
 {
+
     emit slotCancelPressed();
+    protecting_value_changed = true;
+    resetting_values();
+    protecting_value_changed = false;
+
+}
+
+void rotate_dialog::resetting_values(){
     ui->dial->setValue(0.0);
     current_angle = 0.0;
 }
