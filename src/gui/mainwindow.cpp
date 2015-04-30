@@ -102,7 +102,7 @@ void MainWindow::load_file(const QString &fileName){
 
 
 void MainWindow::set_graphics_environment(){
-    scene = new QGraphicsScene(this);
+    //scene = new QGraphicsScene(this);
 
 //    imgBackground = new QImage();
 //    imgBackground->load(":/img/img/CCIMP_background.png");
@@ -142,7 +142,7 @@ void MainWindow::set_image(const QString &path)
  * @brief MainWindow::update_gui_resize
  */
 void MainWindow::update_gui_resize(){
-
+    scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
