@@ -23,17 +23,18 @@ class image_wrapper
     image_tool* current_tool;
 
     bool image_is_orig;
+    callback_iface* callback;
 
 public:
-    image_wrapper(QImage& img);
+    image_wrapper(QImage& img, callback_iface* c);
     ~image_wrapper();
 
     QImage* image_update();
     void image_finished();
-    void image_canceled(callback_iface* callback);
+    void image_canceled();
 
-    void undo_last_command(callback_iface* callback);
-    void redo_last_command(callback_iface* callback);
+    void undo_last_command();
+    void redo_last_command();
     void update_history();  //keep history vectors up-to-date
 
     inline void set_current_tool(image_tool* t){current_tool = t;}

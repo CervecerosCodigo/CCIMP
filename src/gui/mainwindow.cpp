@@ -254,11 +254,11 @@ void MainWindow::zoomToFit() {
 
 
 void MainWindow::undo_command(){
-    event_listen->undo_last_command(this);
+    event_listen->undo_last_command();
 }
 
 void MainWindow::redo_command(){
-    event_listen->redo_last_command(this);
+    event_listen->redo_last_command();
 }
 
 
@@ -321,6 +321,9 @@ void MainWindow::set_crop_tool(image_tool *t){
     cropDialog.set_tool(t);
 }
 
+callback_iface* MainWindow::get_callback_listener(){
+    return this;
+}
 
 void MainWindow::set_brightness_tool(image_tool *t)
 {
@@ -390,7 +393,7 @@ void MainWindow::execute_acceptbtn_pressed(){
  * men bare når man trykker Cancel-knappen.
  */
 void MainWindow::execute_cancelbtn_pressed(){
-    event_listen->canceled(this);
+    event_listen->canceled();
 }
 
 
