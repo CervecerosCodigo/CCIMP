@@ -71,7 +71,6 @@ void controller::on_clicked_tool(image_tool* t){
 }
 
 QImage* controller::updating_image(){
-    //qDebug() << "Executing tool in Controller";
     return current_image->image_update();
 }
 
