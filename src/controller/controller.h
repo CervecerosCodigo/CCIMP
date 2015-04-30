@@ -24,7 +24,7 @@ class controller : public controller_iface, public event_listener, public error_
 
     image_wrapper* current_image;           //current image
     //image_tool* selected_tool;              //the selected tool from GUI
-
+    callback_iface* callback;
 
 public:
     controller(MainWindow&);
@@ -37,9 +37,9 @@ public:
     void on_clicked_tool(image_tool* t) override;
     QImage* updating_image() override;
     void finished() override;
-    void canceled(callback_iface* callback) override;
-    void undo_last_command(callback_iface* callback) override;
-    void redo_last_command(callback_iface* callback) override;
+    void canceled() override;
+    void undo_last_command() override;
+    void redo_last_command() override;
 
     //error_listener overrides
     void on_exception_occured(TOOLIDENT) override;

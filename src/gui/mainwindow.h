@@ -73,7 +73,7 @@ public:
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
-
+    callback_iface* get_callback_listener() override;
 private:
     Ui::MainWindow *ui;
 

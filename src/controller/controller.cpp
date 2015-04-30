@@ -4,7 +4,7 @@
 controller::controller(MainWindow& mw):gui_mw{mw}
 {
     gui_mw.set_event_listener(this); //setting listener on gui/mainwindow
-
+    callback = gui_mw.get_callback_listener();  //callback to update image later on using this interface
 }
 
 controller::~controller()
@@ -62,7 +62,7 @@ void controller::register_tool(image_tool* t){
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det
 void controller::on_new_image(QImage& img){
     qDebug() << "oppretter new image_wrapper";
-    current_image = new image_wrapper(img);
+    current_image = new image_wrapper(img, callback);
     //TODO:: Må oppdatere undo/redo-vectorene her også
 }
 
@@ -82,25 +82,26 @@ void controller::finished(){
     current_image->image_finished();
 }
 
-void controller::canceled(callback_iface *callback){
-    current_image->image_canceled(callback);
+void controller::canceled(){
+    current_image->image_canceled();
 }
 
 
 //Lytter på "undo-knappen" i GUI
-void controller::undo_last_command(callback_iface* callback){
-    current_image->undo_last_command(callback);
+void controller::undo_last_command(){
+    current_image->undo_last_command();
 }
 
 //Lytter på "redo_knappen" i GUI
-void controller::redo_last_command(callback_iface* callback){
-    current_image->redo_last_command(callback);
+void controller::redo_last_command(){
+    current_image->redo_last_command();
 }
 
 //Lytter på en exception fra gui
 void controller::on_exception_occured(TOOLIDENT t_type)
 {
-//    qDebug() << "Exception er fanget opp i controller";
+
+    qDebug() << "Exception er fanget opp i controller";
     switch(t_type){
     case TOOLIDENT::BLUR:
         gui_mw.exception_in_image_processing(err_strings::blur_title, err_strings::blur_msg);
@@ -133,4 +134,6 @@ void controller::on_exception_occured(TOOLIDENT t_type)
         gui_mw.exception_in_image_processing(err_strings::encrypt_title, err_strings::encrypt_msg);
         break;
     }
+
+    canceled(); //Exception message displayed, so we cancel last try to edit
 }

@@ -1,6 +1,6 @@
 #include "image_wrapper.h"
 
-image_wrapper::image_wrapper(QImage& img): qimg_org{img}
+image_wrapper::image_wrapper(QImage& img, callback_iface* c): qimg_org{img}, callback{c}
 {
     img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
     image_is_orig = true;
@@ -28,7 +28,7 @@ void image_wrapper::image_finished(){
 
 
 //Trykket Cancel i tool dialog.
-void image_wrapper::image_canceled(callback_iface *callback){
+void image_wrapper::image_canceled(){
 
     //Hvis edit er forskjellig fra current skal man bare "undo" forskjellen, ikke ta ut fra vektor
     if(!img_ptr_edit->compare(*img_ptr_current)){
@@ -40,7 +40,7 @@ void image_wrapper::image_canceled(callback_iface *callback){
 }
 
 
-void image_wrapper::undo_last_command(callback_iface* callback){
+void image_wrapper::undo_last_command(){
     //Bare hvis callback != null og det finnes noe i undo-vector
     if(callback == nullptr)
         return;
@@ -68,7 +68,7 @@ void image_wrapper::undo_last_command(callback_iface* callback){
 }
 
 
-void image_wrapper::redo_last_command(callback_iface* callback){
+void image_wrapper::redo_last_command(){
     if(callback == nullptr)
         return;
 
