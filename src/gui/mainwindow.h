@@ -101,7 +101,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
-
+    bool dialog_is_set = false;
     /*
      * TreeView med FileSystem model
      */

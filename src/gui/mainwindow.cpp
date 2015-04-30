@@ -319,6 +319,8 @@ void MainWindow::set_event_listener(event_listener *l){
 //set-metode for crop-tool
 void MainWindow::set_crop_tool(image_tool *t){
     cropDialog.set_tool(t);
+    connect(&cropDialog, SIGNAL(signalAccepted()), this, SLOT(execute_value_changed()));
+    cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 callback_iface* MainWindow::get_callback_listener(){
@@ -328,11 +330,18 @@ callback_iface* MainWindow::get_callback_listener(){
 void MainWindow::set_brightness_tool(image_tool *t)
 {
     brightnessDialog.set_tool(t);
+    connect(&brightnessDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&brightnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&brightnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
+    brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_contrast_tool(image_tool *t)
 {
     contrastDialog.set_tool(t);
+    connect(&contrastDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&contrastDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_rotate_tool(image_tool *t)
@@ -342,16 +351,28 @@ void MainWindow::set_rotate_tool(image_tool *t)
 
 void MainWindow::set_blur_tool(image_tool *t) {
     blurDialog.set_tool(t);
+    connect(&blurDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&blurDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&blurDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
+    blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_color_balance_tool(image_tool *t)
 {
     colorBalanceDialog.set_tool(t);
+    connect(&colorBalanceDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&colorBalanceDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&colorBalanceDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
+    colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_encipher_tool(image_tool *t)
 {
     encipherDialog.set_tool(t);
+    connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_change_and_accept()));
+    connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
+    encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+    encipherDialog.set_encipher_toggle_on();
 }
 
 void MainWindow::set_decipher_tool(image_tool *t)
@@ -372,6 +393,7 @@ void MainWindow::set_secure_tool(image_tool *t)
  * @param img
  */
 void MainWindow::callback_image_edited(QImage* img){
+
     set_updated_image(img);
 }
 
@@ -380,8 +402,9 @@ void MainWindow::callback_image_edited(QImage* img){
  * og kjøres "live" på bilderedigeringsverktøyene
  */
 void MainWindow::execute_value_changed(){
-
+    qDebug() << "RUNNING VALUE CHANGED";
     set_updated_image(event_listen->updating_image());
+
 }
 
 
@@ -390,6 +413,7 @@ void MainWindow::execute_value_changed(){
  * men bare når man trykker OK-knappen.
  */
 void MainWindow::execute_acceptbtn_pressed(){
+    qDebug() << "RUNNING ACCEPT";
     event_listen->finished();
 }
 
@@ -435,10 +459,6 @@ void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(blurDialog.get_tool());
-        connect(&blurDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
-        connect(&blurDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
-        connect(&blurDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
-        blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         blurDialog.exec();
     }
 }
@@ -448,12 +468,10 @@ void MainWindow::on_brightnessButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(brightnessDialog.get_tool());
-        connect(&brightnessDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
-        connect(&brightnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
-        connect(&brightnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
-        brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+
         //brightnessDialog.setFixedSize(brightnessDialog.size());
         brightnessDialog.exec();
+
     }
 }
 
@@ -461,8 +479,6 @@ void MainWindow::on_cropButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(cropDialog.get_tool());
-        connect(&cropDialog, SIGNAL(signalAccepted()), this, SLOT(execute_value_changed()));
-        cropDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         cropDialog.exec();
     }
 }
@@ -471,9 +487,6 @@ void MainWindow::on_contrastButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(contrastDialog.get_tool());
-        connect(&contrastDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
-        connect(&contrastDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
-        contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         contrastDialog.exec();
     }
 }
@@ -482,10 +495,6 @@ void MainWindow::on_rotateButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(rotateDialog.get_tool());
-        connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
-        connect(&rotateDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
-        connect(&rotateDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
-        rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         rotateDialog.exec();
     }
 }
@@ -495,10 +504,6 @@ void MainWindow::on_colorBalanceButton_clicked()
     if(image_is_loaded){
         colorBalanceDialog.reset_slider_positions();
         event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
-        connect(&colorBalanceDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
-        connect(&colorBalanceDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
-        connect(&colorBalanceDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
-        colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
         colorBalanceDialog.exec();
         colorBalanceDialog.reset_slider_positions();
     }
@@ -514,10 +519,6 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
-        connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_change_and_accept()));
-        connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
-        encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
-        encipherDialog.set_encipher_toggle_on();
         encipherDialog.exec();
     }
 }
