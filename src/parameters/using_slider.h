@@ -17,17 +17,16 @@ public:
     using_slider(int);
     virtual ~using_slider();
 
-    inline void set_slider_val(int s){
+    inline void set_slider_val(int s){      //When using one slider
         slider_val[0] = s;
         qDebug() << Q_FUNC_INFO << s;
     }
 
+    //when using multiple sliders
+    inline void set_slider_val(int sliderIdx, int val){slider_val[sliderIdx] = val;}
+
     inline SLIDERVAL get_slider_val(){return slider_val[0];}
 
-    inline void set_slider_val(int sliderIdx, int s){
-        slider_val[sliderIdx] = s;
-        qDebug() << Q_FUNC_INFO << s;
-    }
 
     inline SLIDERVAL get_slider_val(int sliderIdx){return slider_val[sliderIdx];}
 

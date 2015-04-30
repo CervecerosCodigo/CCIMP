@@ -9,8 +9,8 @@ controller::controller(MainWindow& mw):gui_mw{mw}
 
 controller::~controller()
 {
-//    delete selected_tool;
-//    delete current_image;
+    //if(current_image != nullptr)
+        //delete current_image;
 }
 
 
@@ -60,12 +60,12 @@ void controller::register_tool(image_tool* t){
 void controller::on_new_image(QImage& img){
     qDebug() << "oppretter new image_wrapper";
     current_image = new image_wrapper(img, callback);
-    //TODO:: Må oppdatere undo/redo-vectorene her også
+
 }
 
 //Registers the tool that was click in GUI
 void controller::on_clicked_tool(image_tool* t){
-    //selected_tool = t;
+
     current_image->set_current_tool(t);
     current_image->update_history();    //Kaller wrapper sin "historieorganisator"
 }

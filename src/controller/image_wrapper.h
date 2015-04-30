@@ -9,7 +9,7 @@
 #include "Magick++.h"
 #include "img_tools/img_obj_converter.h"
 #include "callback_iface.h"
-
+#include "parameters/using_slider.h"
 class image_wrapper
 {
     ccimp_vector<Magick::Image> undo_history;   //holds previous version

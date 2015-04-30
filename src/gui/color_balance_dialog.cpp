@@ -32,6 +32,7 @@ color_balance_dialog::~color_balance_dialog()
 
 void color_balance_dialog::on_redSlider_valueChanged(int value)
 {
+
     using_slider* param = (using_slider*) tool->get_param();
     param->set_slider_val(0, ui->redSlider->value());
 
