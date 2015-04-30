@@ -23,23 +23,27 @@ brightness_dialog::~brightness_dialog()
 
 void brightness_dialog::on_horizontalSlider_valueChanged(int value)
 {
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*) tool->get_param();
+        param->set_slider_val(ui->horizontalSlider->value());
+        emit slotChanged();
+    }
 
-    using_slider* param = (using_slider*) tool->get_param();
-    param->set_slider_val(ui->horizontalSlider->value());
 
-    emit slotChanged();
 }
 
 void brightness_dialog::on_buttonBox_accepted()
 {
-
+    prepare_and_run_reset_on_values();
     emit slotAcceptPressed();
-    ui->horizontalSlider->setValue(0);
-
 }
 
 void brightness_dialog::on_buttonBox_rejected()
 {
     emit slotCancelPressed();
+
+}
+
+void brightness_dialog::resetting_values(){
     ui->horizontalSlider->setValue(0);
 }

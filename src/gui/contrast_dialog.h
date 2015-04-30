@@ -42,6 +42,7 @@ private slots:
 
 private:
     Ui::contrast_dialog *ui;
+    void resetting_values() override;
 };
 
 #endif // CONTRAST_DIALOG_H

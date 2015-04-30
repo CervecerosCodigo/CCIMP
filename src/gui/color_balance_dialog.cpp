@@ -22,7 +22,7 @@ color_balance_dialog::color_balance_dialog(QWidget *parent) :
 
     this->setFixedSize(this->size());
 
-    reset_slider_positions();
+    prepare_and_run_reset_on_values();
 }
 
 color_balance_dialog::~color_balance_dialog()
@@ -32,27 +32,29 @@ color_balance_dialog::~color_balance_dialog()
 
 void color_balance_dialog::on_redSlider_valueChanged(int value)
 {
-
-    using_slider* param = (using_slider*) tool->get_param();
-    param->set_slider_val(0, ui->redSlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*) tool->get_param();
+        param->set_slider_val(0, ui->redSlider->value());
+        emit slotChanged();
+    }
 }
 
 void color_balance_dialog::on_greenSlider_valueChanged(int value)
 {
-    using_slider* param = (using_slider*) tool->get_param();
-    param->set_slider_val(1, ui->greenSlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*) tool->get_param();
+        param->set_slider_val(1, ui->greenSlider->value());
+        emit slotChanged();
+    }
 }
 
 void color_balance_dialog::on_blueSlider_valueChanged(int value)
 {
-    using_slider* param = (using_slider*) tool->get_param();
-    param->set_slider_val(2, ui->blueSlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*) tool->get_param();
+        param->set_slider_val(2, ui->blueSlider->value());
+        emit slotChanged();
+    }
 }
 
 void color_balance_dialog::on_buttonBox_accepted(){
@@ -61,12 +63,12 @@ void color_balance_dialog::on_buttonBox_accepted(){
 }
 
 void color_balance_dialog::on_buttonBox_rejected(){
-    reset_slider_positions();
+    prepare_and_run_reset_on_values();
     emit slotCancelPressed();
 
 }
 
-void color_balance_dialog::reset_slider_positions(){
+void color_balance_dialog::resetting_values(){
     ui->redSlider->setValue(0);
     ui->greenSlider->setValue(0);
     ui->blueSlider->setValue(0);

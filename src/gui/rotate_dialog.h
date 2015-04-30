@@ -50,6 +50,7 @@ private slots:
 private:
     Ui::rotate_dialog *ui;
     double current_angle;
+    void resetting_values() override;
 };
 
 #endif // ROTATE_DIALOG_H

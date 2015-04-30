@@ -275,27 +275,6 @@ MainWindow::~MainWindow()
 }
 
 
-/*
- * ************************************************************************
- * Her kommer kule ting til debuggin som skal slettes etter at vi er ferdig
- *
- * ************************************************************************
- */
-
-void MainWindow::showDebugMsg(){
-    qDebug() << "Debug melding fra main window";
-}
-
-
-
-/*
- * ************************************************************************
- * Slutt på ting som brukes til debugging
- *
- * ************************************************************************
- */
-
-
 void MainWindow::on_treeView_pressed()
 {
     if(!fs_model->isDir(ui->treeView->currentIndex())){
@@ -402,9 +381,7 @@ void MainWindow::callback_image_edited(QImage* img){
  * og kjøres "live" på bilderedigeringsverktøyene
  */
 void MainWindow::execute_value_changed(){
-    qDebug() << "RUNNING VALUE CHANGED";
     set_updated_image(event_listen->updating_image());
-
 }
 
 
@@ -413,7 +390,6 @@ void MainWindow::execute_value_changed(){
  * men bare når man trykker OK-knappen.
  */
 void MainWindow::execute_acceptbtn_pressed(){
-    qDebug() << "RUNNING ACCEPT";
     event_listen->finished();
 }
 
@@ -502,10 +478,10 @@ void MainWindow::on_rotateButton_clicked()
 void MainWindow::on_colorBalanceButton_clicked()
 {
     if(image_is_loaded){
-        colorBalanceDialog.reset_slider_positions();
+        colorBalanceDialog.prepare_and_run_reset_on_values();
         event_listen->on_clicked_tool(colorBalanceDialog.get_tool());
         colorBalanceDialog.exec();
-        colorBalanceDialog.reset_slider_positions();
+        colorBalanceDialog.prepare_and_run_reset_on_values();
     }
 }
 

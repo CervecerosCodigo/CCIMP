@@ -17,7 +17,7 @@ class color_balance_dialog : public QDialog, public ccimp_dialog
 public:
     explicit color_balance_dialog(QWidget *parent = 0);
     ~color_balance_dialog();
-    void reset_slider_positions();
+
 
 signals:
     void signalValueChanged();
@@ -44,7 +44,7 @@ private slots:
 
 private:
     Ui::color_balance_dialog *ui;
-
+    void resetting_values() override;
 };
 
 #endif // COLOR_BALANCE_DIALOG_H

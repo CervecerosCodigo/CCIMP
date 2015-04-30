@@ -7,7 +7,7 @@ crop_dialog::crop_dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setFixedSize(this->size());
-    reset_input_fields();
+    resetting_values();
 }
 
 crop_dialog::~crop_dialog()
@@ -26,11 +26,11 @@ void crop_dialog::on_buttonBox_accepted()
     param->set_y_axis(ui->lineEdit_4->text().toInt());
 
     emit slotAcceptPressed();
-    reset_input_fields();
+    resetting_values();
 }
 
 
-void crop_dialog::reset_input_fields(){
+void crop_dialog::resetting_values(){
     ui->lineEdit->setText("0");
     ui->lineEdit_2->setText("0");
     ui->lineEdit_3->setText("0");

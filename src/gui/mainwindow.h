@@ -101,7 +101,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
-    bool dialog_is_set = false;
+
     /*
      * TreeView med FileSystem model
      */
@@ -127,7 +127,7 @@ public slots:
     void open();
     void save();
     void save_as();
-    void showDebugMsg();
+
     void execute_value_changed();
     void execute_acceptbtn_pressed();
     void execute_cancelbtn_pressed();

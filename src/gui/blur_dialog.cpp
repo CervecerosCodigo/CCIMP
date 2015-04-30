@@ -21,32 +21,33 @@ blur_dialog::~blur_dialog()
 
 void blur_dialog::on_radiusSlider_valueChanged(int value)
 {
-    using_slider* param = (using_slider*)tool->get_param();
-    param->set_slider_val(0, ui->radiusSlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*)tool->get_param();
+        param->set_slider_val(0, ui->radiusSlider->value());
+        emit slotChanged();
+    }
 }
 
 void blur_dialog::on_intensitySlider_valueChanged(int value)
 {
-    using_slider* param = (using_slider*)tool->get_param();
-    param->set_slider_val(1, ui->intensitySlider->value());
-
-    emit slotChanged();
+    if(!protecting_value_changed){
+        using_slider* param = (using_slider*)tool->get_param();
+        param->set_slider_val(1, ui->intensitySlider->value());
+        emit slotChanged();
+    }
 }
 
 void blur_dialog::on_buttonBox_accepted(){
     emit slotAcceptPressed();
-    reset_slider_positions();
+    prepare_and_run_reset_on_values();
 }
 
 void blur_dialog::on_buttonBox_rejected(){
     emit slotCancelPressed();
-    reset_slider_positions();
+    prepare_and_run_reset_on_values();
 }
 
-
-void blur_dialog::reset_slider_positions(){
+void blur_dialog::resetting_values(){
     ui->radiusSlider->setValue(0);
     ui->intensitySlider->setValue(0);
 }
