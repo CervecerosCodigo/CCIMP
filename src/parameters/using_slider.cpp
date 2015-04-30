@@ -8,7 +8,7 @@ using_slider::using_slider() : parameters(PARAMTYPE::SLIDER)
 
 using_slider::using_slider(int n) : slidercount{n}, parameters(PARAMTYPE::SLIDER)
 {
-    for(int i = 0; i < slidercount; i++)
+    for(int i = 0; i < n; i++)
         slider_val.push_back(0);
 }
 

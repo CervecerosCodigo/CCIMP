@@ -15,6 +15,7 @@ image_wrapper::~image_wrapper()
 
 //Kjører oppdateringer på midlertidig bilde, med img_ptr_current som referanse for hver gang.
 QImage* image_wrapper::image_update(){
+
     img_ptr_edit = new Magick::Image(*img_ptr_current);
     current_tool->execute(*img_ptr_edit);                  //run selected tool on image
     return img_obj_converter::to_QImage(*img_ptr_edit);
@@ -29,11 +30,11 @@ void image_wrapper::image_finished(){
 
 //Trykket Cancel i tool dialog.
 void image_wrapper::image_canceled(){
-
+    if(img_ptr_edit == nullptr)
+        return;
     //Hvis edit er forskjellig fra current skal man bare "undo" forskjellen, ikke ta ut fra vektor
     if(!img_ptr_edit->compare(*img_ptr_current)){
         callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_current)); //sender bildet til gui
-        qDebug() << "Inne i callback...";
         img_ptr_edit = new Magick::Image(*img_ptr_current);
 
     }

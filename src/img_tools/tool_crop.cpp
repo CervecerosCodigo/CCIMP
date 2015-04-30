@@ -3,7 +3,6 @@
 void tool_crop::execute(Magick::Image& img){
 
     using_coordinates* param = (using_coordinates*) get_para();
-    qDebug() << "Using Crop";
     try{
         img.crop(Magick::Geometry(
                      param->get_width(),
