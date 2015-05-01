@@ -21,18 +21,23 @@ int main(int argc, char **argv)
     build_tools* build = new build_tools{control};
     w->show();
 
-    QApplication::setStyle(QStyleFactory::create("plastique"));
+    //Skriver ut hvilke qt themes som er tilgjengelige på brukerens system.
+    //Vi kan beholde denne foreløpig slik at vi finner ut hvilken theme som man har til felles
+    qDebug() << QStyleFactory::keys();
+
+
+    QApplication::setStyle(QStyleFactory::create("Fusion"));
     QPalette darkPalette;
     darkPalette.setColor(QPalette::Window, QColor(153, 147, 142));
-    darkPalette.setColor(QPalette::WindowText, Qt::white);
+    darkPalette.setColor(QPalette::WindowText, QColor(255, 250, 246));
     darkPalette.setColor(QPalette::Base, QColor(137, 129, 122));
     darkPalette.setColor(QPalette::AlternateBase, QColor(137, 129, 122));
-    darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
-    darkPalette.setColor(QPalette::ToolTipText, Qt::white);
-    darkPalette.setColor(QPalette::Text, Qt::white);
+    darkPalette.setColor(QPalette::ToolTipBase, Qt::black);
+    darkPalette.setColor(QPalette::ToolTipText, Qt::black);
+    darkPalette.setColor(QPalette::Text, QColor(255, 250, 246));
     darkPalette.setColor(QPalette::Button, QColor(137, 129, 122));
-    darkPalette.setColor(QPalette::ButtonText, Qt::white);
-    darkPalette.setColor(QPalette::BrightText, Qt::red);
+    darkPalette.setColor(QPalette::ButtonText, QColor(255, 250, 246));
+//    darkPalette.setColor(QPalette::BrightText, Qt::red);
     darkPalette.setColor(QPalette::Link, QColor(175, 160, 147));
 
     darkPalette.setColor(QPalette::Highlight, QColor(189, 169, 152));
@@ -41,7 +46,7 @@ int main(int argc, char **argv)
     qApp->setPalette(darkPalette);
 
     //qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
-
+    //Fargetema: http://paletton.com/#uid=7000u0k2ljc6hnI3vhb50fr6wdx
 
 
     return a.exec();

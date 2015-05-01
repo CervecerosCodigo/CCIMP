@@ -338,6 +338,7 @@ void MainWindow::on_treeView_pressed()
      */
     while(fs_model->filePath(fs_index.child(pic_i,0)).compare(fs_model->filePath(ui->treeView->currentIndex()))){
         pic_i++;
+        qDebug() << "pic_i" << pic_i;
     }
 }
 
