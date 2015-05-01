@@ -165,6 +165,8 @@ private slots:
     void on_encipherButton_clicked();
     void on_actionNext_triggered();
     void on_actionPrevoius_triggered();
+    void closeEvent(QCloseEvent *);
+
 };
 
 #endif // MAINWINDOW_H

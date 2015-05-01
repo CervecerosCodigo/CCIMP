@@ -565,3 +565,8 @@ void MainWindow::on_actionPrevoius_triggered()
         ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
     }
 }
+
+void MainWindow::closeEvent(QCloseEvent *){
+    do_user_want_to_save();
+    qDebug() << "VALGTE AVSLUTT";
+}
