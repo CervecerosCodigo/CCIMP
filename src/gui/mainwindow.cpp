@@ -620,3 +620,8 @@ void MainWindow::closeEvent(QCloseEvent *){
     user_want_to_save();
     qDebug() << "VALGTE AVSLUTT";
 }
+
+void MainWindow::on_actionReload_triggered()
+{
+    on_treeView_pressed();
+}
