@@ -610,6 +610,8 @@ void MainWindow::on_actionNext_triggered()
     if(pic_i < pic_count_in_dir-1){
         set_image(pics_in_folder[++pic_i]);
         ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
+        qDebug() << "pic_count_in_dir" << pic_count_in_dir;
+        qDebug() << "pic_i" << pic_i;
     }
 }
 
@@ -618,6 +620,7 @@ void MainWindow::on_actionPrevoius_triggered()
     if(pic_i > 0){
         set_image(pics_in_folder[--pic_i]);
         ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
+        qDebug() << "pic_i" << pic_i;
     }
 }
 

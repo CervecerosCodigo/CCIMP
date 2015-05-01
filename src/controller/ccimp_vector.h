@@ -141,7 +141,8 @@ T ccimp_vector<T>::get_last_and_remove(){
         T temp = vect.back();
         vect.pop_back();
         return temp;
-    }else
+    }
+    else
         return nullptr;
 }
 

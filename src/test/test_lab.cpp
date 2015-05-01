@@ -38,8 +38,8 @@ void test_lab::test_data_cont_template(){
     dat.print_data();
 
     //Tester å hente siste verdi
-    std::cout << "Henter siste verdi" << std::endl;
-    pair<const char*, const char*> temp_p = dat.top();
-    dat.top();
-    std::cout << temp_p.first << ", " << temp_p.second << std::endl;
+//    std::cout << "Henter siste verdi" << std::endl;
+//    pair<const char*, const char*> temp_p = dat.top();
+//    dat.top();
+//    std::cout << temp_p.first << ", " << temp_p.second << std::endl;
 }

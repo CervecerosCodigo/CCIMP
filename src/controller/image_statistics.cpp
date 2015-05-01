@@ -27,15 +27,19 @@ void image_statistics::create_img_stats()
  */
 QString image_statistics::get_img_stat(const QImage &img)
 {
+    using namespace std;
+
     this->img = img;
 
     create_img_stats();
     QString img_stat;
-    img_stat = "<html><table><tr><td><b><u>Metadata</b></u></td><td></td></tr>";
+    img_stat = "<html><table><tr><td><b><u>Metadata<br></b></u></td><td></td></tr>";
 
     while(stats_container.size()>0){
-        pair<QString, QString> tmp_par = stats_container.top();
-        stats_container.pop();
+//        pair<QString, QString> tmp_par = stats_container.last();
+        pair<QString, QString> tmp_par = stats_container.first();
+//        stats_container.pop();
+        stats_container.pop_first();
         img_stat += "<tr><td><b>"+
                 tmp_par.first +
                 ": </b></td><td>" +

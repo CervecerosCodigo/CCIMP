@@ -4,8 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <deque>
 
-using namespace std;
+//using namespace std;
 
 template<class K, class V>
 /** This is a cool template class.
@@ -15,44 +16,67 @@ class data_key_value_container {
 
 
 private:
-    vector<pair<K,V>> data_v;
+    //Får ikke ccimp_vector til å fungere me med alle generiske ting. Bruker en vanlig vektor foreløpig.
+//    std::vector<std::pair<K,V>> data_v;
+    std::deque<std::pair<K,V>> data_d;
 
 public:
     void push(K const&, V const&);
     void pop();
-    pair<K,V> top() const;
+    void pop_first();
+    std::pair<K,V> first() const;
+    std::pair<K,V> last() const;
     bool empty() const{
-        return data_v.empty();
+        return data_d.empty();
     }
     void print_data();
     int size()
     {
-        return data_v.size();
+        return data_d.size();
     }
 };
 
 
 template<class K, class V>
 void data_key_value_container<K,V>::push(const K& key_el, const V& val_el){
-    data_v.push_back(make_pair(key_el, val_el));
+//    data_v.push_back(std::make_pair(key_el, val_el));
+    data_d.push_back(std::make_pair(key_el, val_el));
 }
 
 template<class K, class V>
 void data_key_value_container<K,V>::pop()
 {
-    if(data_v.empty())
-        throw out_of_range("data_key_value_container: stack out of range");
+    if(data_d.empty())
+        throw std::out_of_range("data_key_value_container: stack out of range");
 
-    data_v.pop_back();
+    data_d.pop_back();
 }
 
 template<class K, class V>
-pair<K, V> data_key_value_container<K,V>::top() const
+void data_key_value_container<K,V>::pop_first()
 {
-    if(data_v.empty())
-        throw out_of_range("data_key_value_container: stack out of range");
+    if(data_d.empty())
+        throw std::out_of_range("data_key_value_container: stack out of range");
 
-    return data_v.back();
+    data_d.pop_front();
+}
+
+template<class K, class V>
+std::pair<K,V> data_key_value_container<K,V>::first() const
+{
+    if(data_d.empty())
+        throw std::out_of_range("data_key_value_container: stack out of range");
+
+    return data_d.front();
+}
+
+template<class K, class V>
+std::pair<K, V> data_key_value_container<K,V>::last() const
+{
+    if(data_d.empty())
+        throw std::out_of_range("data_key_value_container: stack out of range");
+
+    return data_d.back();
 }
 
 
@@ -62,8 +86,8 @@ template<class K, class V>
  */
 void data_key_value_container<K,V>::print_data(){
 
-    for(const auto& p : data_v){
-        cout << p.first << ", " << p.second << endl;
+    for(const auto& p : data_d){
+        std::cout << p.first << ", " << p.second << std::endl;
     }
 }
 
