@@ -33,6 +33,7 @@
 #include <QSignalMapper>
 #include "img_tools/image_tool.h"
 #include "controller/callback_error_iface.h"
+#include <QDirIterator>
 
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
