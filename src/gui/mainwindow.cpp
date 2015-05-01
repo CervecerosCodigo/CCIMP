@@ -154,11 +154,11 @@ void MainWindow::set_image(const QString &path)
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
-        //qDebug() << "SET_IMAGE" << fs_model->filePath(ui->treeView->currentIndex());
+
         if(event_listener_set){
              event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
-        set_image(imgObject);
+        set_image();
 
     }
 }
@@ -193,8 +193,8 @@ void MainWindow::update_gui() {
  * @brief MainWindow::update_imageqt dont update treeview if folder
  * @param updated_image
  */
-void MainWindow::set_image(QImage *img) {
-    imgObject = img;
+void MainWindow::set_image() {
+    //imgObject = img;
 
     //Viser statistikk
     if(image_is_loaded){

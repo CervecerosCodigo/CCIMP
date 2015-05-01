@@ -28,6 +28,7 @@ class image_wrapper
 public:
     image_wrapper(QImage& img, callback_iface* c);
     ~image_wrapper();
+    void set_Qimage(QImage& img, callback_iface* c);
 
     QImage* image_update();
     void image_finished();

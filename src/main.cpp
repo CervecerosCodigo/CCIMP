@@ -27,5 +27,5 @@ int main(int argc, char **argv)
     delete control;
     delete w;
     delete build;
-
+    a.quit();
 }

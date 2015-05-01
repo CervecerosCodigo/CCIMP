@@ -73,7 +73,7 @@ public:
     void update_gui_resize();
     void update_gui();
     void set_updated_image(QImage* updated_image);
-    void set_image(QImage* img);
+    void set_image();
     void callback_image_edited(QImage* img) override;
     void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;

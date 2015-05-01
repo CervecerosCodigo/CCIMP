@@ -11,6 +11,7 @@ controller::~controller()
 {
     //if(current_image != nullptr)
         //delete current_image;
+    //delete callback;
 }
 
 
@@ -58,9 +59,14 @@ void controller::register_tool(image_tool* t){
 
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det
 void controller::on_new_image(QImage& img){
-    qDebug() << "oppretter new image_wrapper";
-    current_image = new image_wrapper(img, callback);
 
+    if(!wrapper_initialized){
+        qDebug() << "oppretter new image_wrapper";
+        current_image = new image_wrapper(img, callback);
+        wrapper_initialized = true;
+    }else{
+        current_image->set_Qimage(img, callback);
+    }
 }
 
 //Registers the tool that was click in GUI
