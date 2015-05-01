@@ -4,7 +4,10 @@ image_wrapper::image_wrapper(QImage& img, callback_iface* c): qimg_org{img}, cal
 {
     img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
     image_is_orig = true;
+    undo_history.empty_vector();
+    redo_history.empty_vector();
 }
+
 
 image_wrapper::~image_wrapper()
 {
@@ -12,9 +15,17 @@ image_wrapper::~image_wrapper()
     delete img_ptr_edit;
     delete current_tool;
     delete callback;
+
 }
 
-
+void image_wrapper::set_Qimage(QImage &img, callback_iface *c){
+    qimg_org = img;
+    callback = c;
+    img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
+    image_is_orig = true;
+    undo_history.empty_vector();
+    redo_history.empty_vector();
+}
 
 //Kjører oppdateringer på midlertidig bilde, med img_ptr_current som referanse for hver gang.
 QImage* image_wrapper::image_update(){

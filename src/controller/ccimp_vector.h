@@ -35,6 +35,7 @@ public:
     void remove_front();
     void remove_back();
     T at_element(int i);
+    void empty_vector();
 };
 
 
@@ -143,6 +144,11 @@ T ccimp_vector<T>::get_last_and_remove(){
         return temp;
     }else
         return nullptr;
+}
+
+template <class T>
+void ccimp_vector<T>::empty_vector(){
+    vect.clear();
 }
 
 #endif // CCIMP_VECTOR
