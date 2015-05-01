@@ -116,7 +116,7 @@ void MainWindow::set_graphics_environment(){
 
 
 
-/** Setter bilde i vindu når åpnes fra TreeView eller Open
+/** Setter bilde i vindu når åpnes fra View eller Open
  * @brief MainWindow::set_image
  * @param path
  */
