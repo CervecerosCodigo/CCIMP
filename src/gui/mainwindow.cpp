@@ -40,14 +40,16 @@ void MainWindow::createConnections(){
  * @brief MainWindow::open
  */
 void MainWindow::open(){
-    filePath = QFileDialog::getOpenFileName(
-                this,
-                tr("Open File"),
-                "",
-                tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
-                );
+    if(!do_user_want_to_save()){
+        filePath = QFileDialog::getOpenFileName(
+                    this,
+                    tr("Open File"),
+                    "",
+                    tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
+                    );
 
-    load_file(filePath);
+        load_file(filePath);
+    }
 }
 
 
@@ -77,6 +79,7 @@ void MainWindow::save_as(){
     if (outFile.open(QIODevice::WriteOnly)){
         imgObject->save(filePath);
         outFile.close();
+        image_edited_not_saved = false;
     }
 
 }
@@ -88,9 +91,32 @@ void MainWindow::save(){
         outFile.close();
         QString info = "File saved in\n" + original_filePath;
         QMessageBox::information(this, "Save", info);
+        image_edited_not_saved = false;
+    }
+
+}
+
+bool MainWindow::do_user_want_to_save(){
+    if(image_edited_not_saved){
+        QMessageBox::StandardButton show_save_option;
+        show_save_option = QMessageBox::question(this, "Save?", "The image is not saved, do you want to save?", QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel);
+        if(show_save_option == QMessageBox::Yes){
+            qDebug() << "Yes selected";
+            save_as();
+            return false;
+        }else if(show_save_option == QMessageBox::No){
+            qDebug() << "No selected";
+            image_edited_not_saved = false;
+            return false;
+        }
+        qDebug() << "Cancel selected";
+        return true;
     }
 }
 
+void MainWindow::callback_report_image_is_original(){
+    image_edited_not_saved = false;
+}
 
 /**Laster inn filen via open file dialogen
  * @brief MainWindow::load_file
@@ -276,8 +302,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_treeView_pressed()
 {
-    if(!fs_model->isDir(ui->treeView->currentIndex())){
-        set_image(fs_model->filePath(ui->treeView->currentIndex()));
+    if(!do_user_want_to_save()){
+        if(!fs_model->isDir(ui->treeView->currentIndex())){
+            set_image(fs_model->filePath(ui->treeView->currentIndex()));
+        }
     }
 
   /*
@@ -376,23 +404,13 @@ void MainWindow::set_color_balance_tool(image_tool *t)
     colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
-void MainWindow::set_encipher_tool(image_tool *t)
+void MainWindow::set_secure_tool(image_tool *t)
 {
     encipherDialog.set_tool(t);
     connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_change_and_accept()));
     connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
     encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     encipherDialog.set_encipher_toggle_on();
-}
-
-void MainWindow::set_decipher_tool(image_tool *t)
-{
-    encipherDialog.set_tool(t);
-}
-
-void MainWindow::set_secure_tool(image_tool *t)
-{
-    encipherDialog.set_tool(t);
 }
 
 
@@ -412,6 +430,7 @@ void MainWindow::callback_image_edited(QImage* img){
  * og kjøres "live" på bilderedigeringsverktøyene
  */
 void MainWindow::execute_value_changed(){
+    image_edited_not_saved = true;
     set_updated_image(event_listen->updating_image());
 }
 
