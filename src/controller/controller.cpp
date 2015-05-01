@@ -94,7 +94,7 @@ void controller::redo_last_command(){
 }
 
 //Lytter på en exception fra gui
-void controller::on_exception_occured(TOOLIDENT t_type)
+void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
 {
 
     qDebug() << "Exception er fanget opp i controller";
@@ -112,7 +112,12 @@ void controller::on_exception_occured(TOOLIDENT t_type)
 //        gui_mw.exception_in_image_processing(err_strings::resize_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::COL:
-        gui_mw.exception_in_image_processing(err_strings::col_title, err_strings::col_msg);
+        if(err_type == ERRORTYPE::IDENTICAL_IMAGES){
+            canceled();
+            return;
+        }else{
+            gui_mw.exception_in_image_processing(err_strings::col_title, err_strings::col_msg);
+        }
         break;
     case TOOLIDENT::BRIGTHEN:
         gui_mw.exception_in_image_processing(err_strings::bright_title, err_strings::bright_msg);
