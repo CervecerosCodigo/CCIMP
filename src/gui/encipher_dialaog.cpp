@@ -15,9 +15,9 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
 
 
     p_gray = ui->decPass->palette();
-    p_gray.setColor(QPalette::Base, Qt::gray);
+    p_gray.setColor(QPalette::Base, QColor(153, 147, 142));
     p_white = ui->encPass1->palette();
-    p_white.setColor(QPalette::Base, Qt::white);
+//    p_white.setColor(QPalette::Base, Qt::white); //vi bruker custom tema, da trenger vi den ikke lengre
 
 }
 

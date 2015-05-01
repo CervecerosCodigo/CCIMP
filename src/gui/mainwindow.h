@@ -71,7 +71,9 @@ public:
 
     bool user_want_to_save();
     void update_gui_resize();
+    void update_gui();
     void set_updated_image(QImage* updated_image);
+    void set_image(QImage* img);
     void callback_image_edited(QImage* img) override;
     void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
@@ -81,7 +83,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
-    void wheelEvent(QWheelEvent* event);
+    //void wheelEvent(QWheelEvent* event);
 
     QString filePath;
     QString original_filePath;
@@ -153,7 +155,6 @@ private slots:
     void rotate_right();
     void zoomIn();
     void zoomOut();
-    void actualSize();
     void zoomToFit();
     void undo_command();
     void redo_command();
@@ -170,6 +171,7 @@ private slots:
     void on_actionPrevoius_triggered();
     void closeEvent(QCloseEvent *);
 
+    void on_actionActual_size_triggered();
 };
 
 #endif // MAINWINDOW_H

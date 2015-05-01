@@ -158,7 +158,7 @@ void MainWindow::set_image(const QString &path)
         if(event_listener_set){
              event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
-        set_updated_image(imgObject);
+        set_image(imgObject);
 
     }
 }
@@ -169,15 +169,43 @@ void MainWindow::set_image(const QString &path)
  */
 void MainWindow::update_gui_resize(){
     scene = new QGraphicsScene(this);
-    scene->addPixmap(image);
-    scene->setSceneRect(image.rect());
-    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     ui->graphicsView->setScene(scene);
 
 }
 
 
+/**Benyttes av set_image() når et bilde åpnes for første gang.
+ * Den en gjør er å updatere hele det grafiske interfacet.
+ * @brief MainWindow::update_gui
+ */
+void MainWindow::update_gui() {
+    scene = new QGraphicsScene(this);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+}
+
+
 /**Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
+ * @brief MainWindow::update_imageqt dont update treeview if folder
+ * @param updated_image
+ */
+void MainWindow::set_image(QImage *img) {
+    imgObject = img;
+
+    //Viser statistikk
+    if(image_is_loaded){
+        show_stats(imgObject);
+        image = QPixmap::fromImage(*imgObject);
+        update_gui();
+    }
+}
+
+
+/**Denne metoden for å updatere og vise i GUI et bilde ved endring
  * @brief MainWindow::set_updated_imageqt dont update treeview if folder
  * @param updated_image
  */
@@ -242,7 +270,7 @@ void MainWindow::rotate_right() {
     }
 }
 
-
+/*
 void MainWindow::wheelEvent(QWheelEvent* event) {
 
     if (event->orientation() == Qt::Vertical) {
@@ -254,7 +282,7 @@ void MainWindow::wheelEvent(QWheelEvent* event) {
 
     //event->accept();
 }
-
+*/
 
 void MainWindow::zoomIn() {
 
@@ -277,15 +305,20 @@ void MainWindow::zoomOut() {
     qDebug() << zoomVerdi;
 }
 
-void MainWindow::actualSize() {
+void MainWindow::on_actionActual_size_triggered()
+{
+    qDebug() << "actualSize() kjørt";
+    zoomVerdi = 1;
     scene = new QGraphicsScene(this);
-    QSize size(image.width(), image.height());
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    image = QPixmap::fromImage(*imgObject);
+    scene->addPixmap(image);
     ui->graphicsView->setScene(scene);
 }
 
 void MainWindow::zoomToFit() {
-    update_gui_resize();
+    qDebug() << "zoomToFit() kjørt";
+    zoomVerdi = 1;
+    update_gui();
 }
 
 
@@ -338,6 +371,7 @@ void MainWindow::on_treeView_pressed()
             }
         }
 
+
         /*
          * Vi vi må også nullstille teller variablene her slik
          * at for hver gang vi klikker i view bli disse oppdatert.
@@ -354,6 +388,7 @@ void MainWindow::on_treeView_pressed()
          }
 
     }//if
+
 }
 
 

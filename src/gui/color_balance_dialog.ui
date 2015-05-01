@@ -6,25 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>312</width>
-    <height>180</height>
+    <width>300</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_6">
+  <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_5">
+    <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
         <string>Color Balance</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_4">
+       <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>13</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
            <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="0">
              <widget class="QSlider" name="redSlider">
@@ -485,11 +498,7 @@
               </property>
              </widget>
             </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="0" column="0">
+            <item row="1" column="0">
              <widget class="QSlider" name="greenSlider">
               <property name="palette">
                <palette>
@@ -917,7 +926,7 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="1" column="1">
              <widget class="QLCDNumber" name="lcdNumber_2">
               <property name="font">
                <font>
@@ -942,11 +951,7 @@
               </property>
              </widget>
             </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
+            <item row="2" column="0">
              <widget class="QSlider" name="blueSlider">
               <property name="palette">
                <palette>
@@ -1374,7 +1379,7 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="2" column="1">
              <widget class="QLCDNumber" name="lcdNumber_3">
               <property name="font">
                <font>
@@ -1400,6 +1405,19 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>13</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
