@@ -359,53 +359,53 @@ void MainWindow::on_treeView_pressed()
        * vi klikker i filstrukturen.
        */
 
-        pics_in_folder.clear(); //renser vektor fra forrige bruk
+//        pics_in_folder.clear(); //renser vektor fra forrige bruk
 
-        int f_count = fs_model->rowCount(fs_index);
-        QDirIterator it(QDir::homePath(), QStringList() << "*.png" << "*.jpg", QDir::Files,QDirIterator::Subdirectories);
-        while (it.hasNext()) {
-            pics_in_folder.push_back(it.next());
-            ++pic_count_in_dir;
-            //            qDebug() << it.next();
-        }
+//        int f_count = fs_model->rowCount(fs_index);
+//        QDirIterator it(QDir::homePath(), QStringList() << "*.png" << "*.jpg", QDir::Files,QDirIterator::Subdirectories);
+//        while (it.hasNext()) {
+//            pics_in_folder.push_back(it.next());
+//            ++pic_count_in_dir;
+//            //            qDebug() << it.next();
+//        }
 
-        //        for(int i = 0; i < f_count; i++){
-        //Her må man legge til sjekk for at man ikke legger til en mappe
-        //            if(!fs_model->isDir(fs_index.child(i,0))){
-        //                ++pic_count_in_dir;
-        //                pics_in_folder.push_back(
-        //                        fs_model->filePath(fs_index.child(i,0)));
-        //            }
-        //        }
+//        //        for(int i = 0; i < f_count; i++){
+//        //Her må man legge til sjekk for at man ikke legger til en mappe
+//        //            if(!fs_model->isDir(fs_index.child(i,0))){
+//        //                ++pic_count_in_dir;
+//        //                pics_in_folder.push_back(
+//        //                        fs_model->filePath(fs_index.child(i,0)));
+//        //            }
+//        //        }
 
-        //Debugg av vektor
-//                for(auto n : pics_in_folder){
-//                    qDebug() << "pics_in_folder" << n;
-//                }
+//        //Debugg av vektor
+////                for(auto n : pics_in_folder){
+////                    qDebug() << "pics_in_folder" << n;
+////                }
 
 
-        /*
-         * Vi vi må også nullstille teller variablene her slik
-         * at for hver gang vi klikker i view bli disse oppdatert.
-         */
-        pic_i=0;
+//        /*
+//         * Vi vi må også nullstille teller variablene her slik
+//         * at for hver gang vi klikker i view bli disse oppdatert.
+//         */
+//        pic_i=0;
 
-        /*
-         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
-         * pic_i til den verdi som samsvarer med det markerte bilde
-         */
+//        /*
+//         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
+//         * pic_i til den verdi som samsvarer med det markerte bilde
+//         */
 
-        //        QString first_element = fs_model->filePath(fs_index.child(0,0));
-        QString tmp_element = pics_in_folder[0]; //starter med første bilde
-        QString selected_element = fs_model->filePath(ui->treeView->currentIndex()); //referanse til klikket bilde i filsystemet
+//        //        QString first_element = fs_model->filePath(fs_index.child(0,0));
+//        QString tmp_element = pics_in_folder[0]; //starter med første bilde
+//        QString selected_element = fs_model->filePath(ui->treeView->currentIndex()); //referanse til klikket bilde i filsystemet
 
-        while(tmp_element != selected_element){
-            tmp_element = pics_in_folder[pic_i++]; //da har vi funner indeksen
-            if(tmp_element == selected_element)
-                qDebug() << "tmp_element" << tmp_element << "==" << "selected_element" << selected_element;
-        }
-        //        qDebug() << "ONTREEVIEW";
-        //        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+//        while(tmp_element != selected_element){
+//            tmp_element = pics_in_folder[pic_i++]; //da har vi funner indeksen
+//            if(tmp_element == selected_element)
+//                qDebug() << "tmp_element" << tmp_element << "==" << "selected_element" << selected_element;
+//        }
+//        //        qDebug() << "ONTREEVIEW";
+//        //        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
 
     }//if
 
