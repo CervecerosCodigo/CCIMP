@@ -11,6 +11,7 @@ public:
     virtual ~callback_iface(){}
 
     virtual void callback_image_edited(QImage* img) = 0;
+    virtual void callback_report_image_is_original() = 0;
     virtual callback_iface* get_callback_listener() = 0;
 };
 
