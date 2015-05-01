@@ -155,7 +155,6 @@ private slots:
     void rotate_right();
     void zoomIn();
     void zoomOut();
-    void actualSize();
     void zoomToFit();
     void undo_command();
     void redo_command();
@@ -172,6 +171,7 @@ private slots:
     void on_actionPrevoius_triggered();
     void closeEvent(QCloseEvent *);
 
+    void on_actionActual_size_triggered();
 };
 
 #endif // MAINWINDOW_H
