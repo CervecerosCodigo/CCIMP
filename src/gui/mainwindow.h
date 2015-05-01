@@ -172,6 +172,7 @@ private slots:
     void closeEvent(QCloseEvent *);
 
     void on_actionActual_size_triggered();
+    void on_actionReload_triggered();
 };
 
 #endif // MAINWINDOW_H
