@@ -14,3 +14,4 @@ void tool_rotate::execute(Magick::Image &img)
         err_listener->on_exception_occured(TOOLIDENT::ROTATE, ERRORTYPE::STDEXCEPTION);
     }
 }
+

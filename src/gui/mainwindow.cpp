@@ -29,7 +29,7 @@ void MainWindow::createConnections(){
     connect(ui->actionRotateRight, SIGNAL(triggered()), this, SLOT(rotate_right()));
     connect(ui->actionZoom_In, SIGNAL(triggered()), this, SLOT(zoomIn()));
     connect(ui->actionZoom_Out, SIGNAL(triggered()), this, SLOT(zoomOut()));
-    connect(ui->actionActual_size, SIGNAL(triggered()), this, SLOT(actualSize()));
+    //connect(ui->actionActual_size, SIGNAL(triggered()), this, SLOT(actualSize()));
     connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
     connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
     connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
@@ -333,7 +333,7 @@ void MainWindow::redo_command(){
 
 MainWindow::~MainWindow()
 {
-
+    qDebug() << "Destructing Window";
     delete ui;
     delete imgObject;
     delete imgBackground;
@@ -641,7 +641,6 @@ void MainWindow::on_actionPrevoius_triggered()
 
 void MainWindow::closeEvent(QCloseEvent *){
     user_want_to_save();
-    qDebug() << "VALGTE AVSLUTT";
 }
 
 void MainWindow::on_actionReload_triggered()

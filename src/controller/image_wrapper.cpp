@@ -104,20 +104,17 @@ void image_wrapper::update_history(){
     if(undo_history.is_empty()){
         Magick::Image* t = new Magick::Image(*img_ptr_current);
         undo_history+=*t;
-        qDebug() << "La inn første bilde. Størrelsen på undo-history" << undo_history.size() ;
 
     //Det finnes noe i vector
     }else{
         //Sammenlign current med siste bilde i vector. Hvis like, gjør ingenting
         if(img_ptr_current->compare(undo_history.look_at_last())){
-            qDebug() << "Bildene er like" ;
 
         //"current" og "last" er ikke like
         }else{
 
             Magick::Image* t = new Magick::Image(*img_ptr_current);
             undo_history+=*t;
-            qDebug() << "La inn nytt bilde. Størrelsen på undo-history" << undo_history.size() ;
             image_is_orig = false;
         }
 

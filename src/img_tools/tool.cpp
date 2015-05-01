@@ -7,7 +7,7 @@ tool::tool(controller_iface* cont, parameters* para, TOOLIDENT tool_ident) : ima
 
 tool::~tool()
 {
-
+    delete control;
 }
 
 
