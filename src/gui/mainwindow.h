@@ -71,7 +71,9 @@ public:
 
     bool user_want_to_save();
     void update_gui_resize();
+    void update_gui();
     void set_updated_image(QImage* updated_image);
+    void set_image(QImage* img);
     void callback_image_edited(QImage* img) override;
     void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
@@ -81,7 +83,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
-    void wheelEvent(QWheelEvent* event);
+    //void wheelEvent(QWheelEvent* event);
 
     QString filePath;
     QString original_filePath;
