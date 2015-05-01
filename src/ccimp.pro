@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     gui/encipher_dialaog.cpp \
     lib/err_strings.cpp \
     parameters/using_text.cpp \
-    img_tools/tool_secure.cpp
+    img_tools/tool_secure.cpp \
+    lib/set_look_and_feel.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -81,7 +82,8 @@ HEADERS  += gui/mainwindow.h \
     controller/callback_error_iface.h \
     lib/err_strings.h \
     parameters/using_text.h \
-    img_tools/tool_secure.h
+    img_tools/tool_secure.h \
+    lib/set_look_and_feel.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

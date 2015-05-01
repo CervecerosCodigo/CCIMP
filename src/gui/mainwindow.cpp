@@ -382,10 +382,15 @@ void MainWindow::on_treeView_pressed()
          * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
          * pic_i til den verdi som samsvarer med det markerte bilde
          */
-//        while(fs_model->filePath(fs_index.child(pic_i,0)).compare(fs_model->filePath(ui->treeView->currentIndex()))){
-//            pic_i++;
-//            qDebug() << "pic_i" << pic_i;
-//         }
+
+        QString first_element = fs_model->filePath(fs_index.child(pic_i,0));
+        QString selected_element = fs_model->filePath(ui->treeView->currentIndex());
+        while(first_element != selected_element){
+            pic_i++;
+            first_element = fs_model->filePath(fs_index.child(pic_i,0));
+        }
+//        qDebug() << "ONTREEVIEW";
+//        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
 
     }//if
 
