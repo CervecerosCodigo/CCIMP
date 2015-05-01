@@ -171,13 +171,15 @@ void MainWindow::update_gui_resize(){
     scene = new QGraphicsScene(this);
     QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    //scene->setSceneRect(image.rect());
-    //ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
 
 }
 
 
+/**Benyttes av set_image() når et bilde åpnes for første gang.
+ * Den en gjør er å updatere hele det grafiske interfacet.
+ * @brief MainWindow::update_gui
+ */
 void MainWindow::update_gui() {
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
@@ -187,6 +189,10 @@ void MainWindow::update_gui() {
 }
 
 
+/**Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
+ * @brief MainWindow::update_imageqt dont update treeview if folder
+ * @param updated_image
+ */
 void MainWindow::set_image(QImage *img) {
     imgObject = img;
 
@@ -199,7 +205,7 @@ void MainWindow::set_image(QImage *img) {
 }
 
 
-/**Etter et bilde er åpnet, så brukes denne metoden for å updatere og vise i GUI
+/**Denne metoden for å updatere og vise i GUI et bilde ved endring
  * @brief MainWindow::set_updated_imageqt dont update treeview if folder
  * @param updated_image
  */
@@ -299,15 +305,20 @@ void MainWindow::zoomOut() {
     qDebug() << zoomVerdi;
 }
 
-void MainWindow::actualSize() {
+void MainWindow::on_actionActual_size_triggered()
+{
+    qDebug() << "actualSize() kjørt";
+    zoomVerdi = 1;
     scene = new QGraphicsScene(this);
-    QSize size(image.width(), image.height());
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    image = QPixmap::fromImage(*imgObject);
+    scene->addPixmap(image);
     ui->graphicsView->setScene(scene);
 }
 
 void MainWindow::zoomToFit() {
-    update_gui_resize();
+    qDebug() << "zoomToFit() kjørt";
+    zoomVerdi = 1;
+    update_gui();
 }
 
 
