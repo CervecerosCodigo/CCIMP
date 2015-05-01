@@ -158,7 +158,7 @@ void MainWindow::set_image(const QString &path)
         if(event_listener_set){
              event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
-        set_updated_image(imgObject);
+        set_image(imgObject);
 
     }
 }
@@ -169,11 +169,33 @@ void MainWindow::set_image(const QString &path)
  */
 void MainWindow::update_gui_resize(){
     scene = new QGraphicsScene(this);
+    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    //scene->setSceneRect(image.rect());
+    //ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+
+}
+
+
+void MainWindow::update_gui() {
+    scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
+}
 
+
+void MainWindow::set_image(QImage *img) {
+    imgObject = img;
+
+    //Viser statistikk
+    if(image_is_loaded){
+        show_stats(imgObject);
+        image = QPixmap::fromImage(*imgObject);
+        update_gui();
+    }
 }
 
 
@@ -242,7 +264,7 @@ void MainWindow::rotate_right() {
     }
 }
 
-
+/*
 void MainWindow::wheelEvent(QWheelEvent* event) {
 
     if (event->orientation() == Qt::Vertical) {
@@ -254,7 +276,7 @@ void MainWindow::wheelEvent(QWheelEvent* event) {
 
     //event->accept();
 }
-
+*/
 
 void MainWindow::zoomIn() {
 
