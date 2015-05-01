@@ -2,7 +2,7 @@
 
 void tool_secure::execute(Magick::Image &img)
 {
-
+    qDebug() << "IN ENCRYPTION";
     using_text* param = (using_text*) get_para();
 
     try{

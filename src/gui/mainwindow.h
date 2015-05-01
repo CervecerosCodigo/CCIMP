@@ -65,8 +65,6 @@ public:
     void set_contrast_tool(image_tool* t);
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
-    void set_encipher_tool(image_tool* t);
-    void set_decipher_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
 
 

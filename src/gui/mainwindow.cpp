@@ -345,23 +345,13 @@ void MainWindow::set_color_balance_tool(image_tool *t)
     colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
-void MainWindow::set_encipher_tool(image_tool *t)
+void MainWindow::set_secure_tool(image_tool *t)
 {
     encipherDialog.set_tool(t);
     connect(&encipherDialog, SIGNAL(signalImageEncrypted()), this, SLOT(execute_change_and_accept()));
     connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
     encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     encipherDialog.set_encipher_toggle_on();
-}
-
-void MainWindow::set_decipher_tool(image_tool *t)
-{
-    encipherDialog.set_tool(t);
-}
-
-void MainWindow::set_secure_tool(image_tool *t)
-{
-    encipherDialog.set_tool(t);
 }
 
 
