@@ -67,7 +67,7 @@ public:
     void set_color_balance_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
 
-    bool do_user_want_to_save();
+    bool user_want_to_save();
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
@@ -165,6 +165,8 @@ private slots:
     void on_encipherButton_clicked();
     void on_actionNext_triggered();
     void on_actionPrevoius_triggered();
+    void closeEvent(QCloseEvent *);
+
 };
 
 #endif // MAINWINDOW_H
