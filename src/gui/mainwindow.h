@@ -6,6 +6,8 @@
 //For bildevisning
 #include <QImage>
 #include <QGraphicsView>
+#include <QGraphicsPixmapItem>
+#include <QWheelEvent>
 //For FileSystem model
 #include <QFileSystemModel>
 #include <QModelIndex>
@@ -67,9 +69,11 @@ public:
     void set_color_balance_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
 
-    bool do_user_want_to_save();
+    bool user_want_to_save();
     void update_gui_resize();
+    void update_gui();
     void set_updated_image(QImage* updated_image);
+    void set_image(QImage* img);
     void callback_image_edited(QImage* img) override;
     void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
@@ -79,6 +83,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
+    //void wheelEvent(QWheelEvent* event);
 
     QString filePath;
     QString original_filePath;
@@ -165,6 +170,8 @@ private slots:
     void on_encipherButton_clicked();
     void on_actionNext_triggered();
     void on_actionPrevoius_triggered();
+    void closeEvent(QCloseEvent *);
+
 };
 
 #endif // MAINWINDOW_H

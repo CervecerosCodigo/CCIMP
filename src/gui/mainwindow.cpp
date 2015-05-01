@@ -40,7 +40,7 @@ void MainWindow::createConnections(){
  * @brief MainWindow::open
  */
 void MainWindow::open(){
-    if(!do_user_want_to_save()){
+    if(!user_want_to_save()){
         filePath = QFileDialog::getOpenFileName(
                     this,
                     tr("Open File"),
@@ -96,7 +96,7 @@ void MainWindow::save(){
 
 }
 
-bool MainWindow::do_user_want_to_save(){
+bool MainWindow::user_want_to_save(){
     if(image_edited_not_saved){
         QMessageBox::StandardButton show_save_option;
         show_save_option = QMessageBox::question(this, "Save?", "The image is not saved, do you want to save?", QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel);
@@ -112,6 +112,7 @@ bool MainWindow::do_user_want_to_save(){
         qDebug() << "Cancel selected";
         return true;
     }
+    return false;
 }
 
 void MainWindow::callback_report_image_is_original(){
@@ -153,11 +154,11 @@ void MainWindow::set_image(const QString &path)
         original_filePath = path;
         imgObject = new QImage();
         imgObject->load(path);
-
+        //qDebug() << "SET_IMAGE" << fs_model->filePath(ui->treeView->currentIndex());
         if(event_listener_set){
              event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
-        set_updated_image(imgObject);
+        set_image(imgObject);
 
     }
 }
@@ -168,11 +169,33 @@ void MainWindow::set_image(const QString &path)
  */
 void MainWindow::update_gui_resize(){
     scene = new QGraphicsScene(this);
+    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    //scene->setSceneRect(image.rect());
+    //ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+
+}
+
+
+void MainWindow::update_gui() {
+    scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
+}
 
+
+void MainWindow::set_image(QImage *img) {
+    imgObject = img;
+
+    //Viser statistikk
+    if(image_is_loaded){
+        show_stats(imgObject);
+        image = QPixmap::fromImage(*imgObject);
+        update_gui();
+    }
 }
 
 
@@ -241,6 +264,19 @@ void MainWindow::rotate_right() {
     }
 }
 
+/*
+void MainWindow::wheelEvent(QWheelEvent* event) {
+
+    if (event->orientation() == Qt::Vertical) {
+        if( (event->delta() * 220) > 0)
+            zoomIn();
+
+        else zoomOut();
+    }
+
+    //event->accept();
+}
+*/
 
 void MainWindow::zoomIn() {
 
@@ -248,28 +284,25 @@ void MainWindow::zoomIn() {
     zoomVerdi += 0.25;
     QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
     qDebug() << zoomVerdi;
 }
 
 
 void MainWindow::zoomOut() {
+
     scene = new QGraphicsScene(this);
     zoomVerdi -= 0.25;
     QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
     qDebug() << zoomVerdi;
-
 }
 
 void MainWindow::actualSize() {
     scene = new QGraphicsScene(this);
     QSize size(image.width(), image.height());
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
 }
 
@@ -302,44 +335,49 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_treeView_pressed()
 {
-    if(!do_user_want_to_save()){
+    if(!user_want_to_save()){
+
         if(!fs_model->isDir(ui->treeView->currentIndex())){
             set_image(fs_model->filePath(ui->treeView->currentIndex()));
+
         }
-    }
 
-  /*
-   * Det eneste som skal gjøres her at vi oppdasterer indeksen
-   * som skal brukes til å gå til neste fil hver gang som
-   * vi klikker i filstrukturen.
-   */
+      /*
+       * Det eneste som skal gjøres her at vi oppdasterer indeksen
+       * som skal brukes til å gå til neste fil hver gang som
+       * vi klikker i filstrukturen.
+       */
 
-    pics_in_folder.clear(); //renser vektor fra forrige bruk
+        pics_in_folder.clear(); //renser vektor fra forrige bruk
 
-    int f_count = fs_model->rowCount(fs_index);
-    for(int i = 0; i < f_count; i++){
-        //Her må man legge til sjekk for at man ikke legger til en mappe
-        if(!fs_model->isDir(fs_index.child(i,0))){
-            ++pic_count_in_dir;
-            pics_in_folder.push_back(
-                    fs_model->filePath(fs_index.child(i,0)));
+        int f_count = fs_model->rowCount(fs_index);
+        for(int i = 0; i < f_count; i++){
+            //Her må man legge til sjekk for at man ikke legger til en mappe
+            if(!fs_model->isDir(fs_index.child(i,0))){
+                ++pic_count_in_dir;
+                pics_in_folder.push_back(
+                        fs_model->filePath(fs_index.child(i,0)));
+            }
         }
-    }
 
-    /*
-     * Vi vi må også nullstille teller variablene her slik
-     * at for hver gang vi klikker i view bli disse oppdatert.
-     */
-    pic_i=0;
 
-    /*
-     * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
-     * pic_i til den verdi som samsvarer med det markerte bilde
-     */
-    while(fs_model->filePath(fs_index.child(pic_i,0)).compare(fs_model->filePath(ui->treeView->currentIndex()))){
-        pic_i++;
-        qDebug() << "pic_i" << pic_i;
-    }
+        /*
+         * Vi vi må også nullstille teller variablene her slik
+         * at for hver gang vi klikker i view bli disse oppdatert.
+         */
+        pic_i=0;
+
+        /*
+         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
+         * pic_i til den verdi som samsvarer med det markerte bilde
+         */
+        //while(fs_model->filePath(fs_index.child(pic_i,0)).compare(fs_model->filePath(ui->treeView->currentIndex()))){
+          //  pic_i++;
+        //}
+        qDebug() << "ONTREEVIEW";
+        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+    }//if
+
 }
 
 
@@ -565,4 +603,9 @@ void MainWindow::on_actionPrevoius_triggered()
         set_image(pics_in_folder[--pic_i]);
         ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
     }
+}
+
+void MainWindow::closeEvent(QCloseEvent *){
+    user_want_to_save();
+    qDebug() << "VALGTE AVSLUTT";
 }
