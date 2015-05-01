@@ -8,7 +8,10 @@ image_wrapper::image_wrapper(QImage& img, callback_iface* c): qimg_org{img}, cal
 
 image_wrapper::~image_wrapper()
 {
-
+    delete img_ptr_current;
+    delete img_ptr_edit;
+    delete current_tool;
+    delete callback;
 }
 
 

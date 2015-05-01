@@ -13,7 +13,7 @@ class image_tool
 
 public:
     image_tool(parameters* p, TOOLIDENT identifier);
-    ~image_tool();
+    virtual ~image_tool();
 
     virtual void execute(Magick::Image& img) = 0;
 
