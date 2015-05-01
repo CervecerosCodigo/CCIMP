@@ -217,34 +217,44 @@ void MainWindow::rotate_right() {
 }
 
 
+void MainWindow::wheelEvent(QWheelEvent* event) {
+
+    if (event->orientation() == Qt::Vertical) {
+        if( (event->delta() * 220) > 0)
+            zoomIn();
+
+        else zoomOut();
+    }
+
+    //event->accept();
+}
+
+
 void MainWindow::zoomIn() {
 
     scene = new QGraphicsScene(this);
     zoomVerdi += 0.25;
     QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
     qDebug() << zoomVerdi;
 }
 
 
 void MainWindow::zoomOut() {
+
     scene = new QGraphicsScene(this);
     zoomVerdi -= 0.25;
     QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
     qDebug() << zoomVerdi;
-
 }
 
 void MainWindow::actualSize() {
     scene = new QGraphicsScene(this);
     QSize size(image.width(), image.height());
     scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    scene->setSceneRect(image.rect());
     ui->graphicsView->setScene(scene);
 }
 

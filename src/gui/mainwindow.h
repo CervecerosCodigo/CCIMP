@@ -6,6 +6,8 @@
 //For bildevisning
 #include <QImage>
 #include <QGraphicsView>
+#include <QGraphicsPixmapItem>
+#include <QWheelEvent>
 //For FileSystem model
 #include <QFileSystemModel>
 #include <QModelIndex>
@@ -80,6 +82,7 @@ private:
 
     void createConnections();
     void load_file(const QString &fileName);
+    void wheelEvent(QWheelEvent* event);
 
     QString filePath;
     QString original_filePath;
