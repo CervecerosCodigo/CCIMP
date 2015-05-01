@@ -19,9 +19,6 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
     p_white = ui->encPass1->palette();
     p_white.setColor(QPalette::Base, Qt::white);
 
-    //    ui->radioEncipher->toggle(); //må vente til alt har startet før denne settes, lager en setter.
-    //    this->on_radioEncipher_toggled(true);
-
 }
 
 encipher_dialaog::~encipher_dialaog()

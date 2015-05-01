@@ -111,7 +111,6 @@ void MainWindow::set_graphics_environment(){
 //                                    "background-repeat: no-repeat; "
 //                                    "background-position: center; "
 //                                    "background-color: white;  }");
-
 }
 
 
@@ -279,6 +278,38 @@ void MainWindow::on_treeView_pressed()
 {
     if(!fs_model->isDir(ui->treeView->currentIndex())){
         set_image(fs_model->filePath(ui->treeView->currentIndex()));
+    }
+
+  /*
+   * Det eneste som skal gjøres her at vi oppdasterer indeksen
+   * som skal brukes til å gå til neste fil hver gang som
+   * vi klikker i filstrukturen.
+   */
+
+    pics_in_folder.clear(); //renser vektor fra forrige bruk
+
+    int f_count = fs_model->rowCount(fs_index);
+    for(int i = 0; i < f_count; i++){
+        //Her må man legge til sjekk for at man ikke legger til en mappe
+        if(!fs_model->isDir(fs_index.child(i,0))){
+            ++pic_count_in_dir;
+            pics_in_folder.push_back(
+                    fs_model->filePath(fs_index.child(i,0)));
+        }
+    }
+
+    /*
+     * Vi vi må også nullstille teller variablene her slik
+     * at for hver gang vi klikker i view bli disse oppdatert.
+     */
+    pic_i=0;
+
+    /*
+     * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
+     * pic_i til den verdi som samsvarer med det markerte bilde
+     */
+    while(fs_model->filePath(fs_index.child(pic_i,0)).compare(fs_model->filePath(ui->treeView->currentIndex()))){
+        pic_i++;
     }
 }
 
@@ -495,6 +526,23 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
+//        encipherDialog.set_encipher_toggle_on();
         encipherDialog.exec();
+    }
+}
+
+void MainWindow::on_actionNext_triggered()
+{
+    if(pic_i < pic_count_in_dir-1){
+        set_image(pics_in_folder[++pic_i]);
+        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
+    }
+}
+
+void MainWindow::on_actionPrevoius_triggered()
+{
+    if(pic_i > 0){
+        set_image(pics_in_folder[--pic_i]);
+        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
     }
 }

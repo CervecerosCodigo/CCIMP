@@ -111,6 +111,14 @@ private:
     QModelIndex fs_index;
     void set_fs_view();
 
+
+    /*
+     * Dette er til for å frem og tilbake knapper skal fungere
+     */
+    int pic_count_in_dir=0;
+    int pic_i;
+    std::vector<QString> pics_in_folder;
+
     /*
      * For å vise bildestatistikk
      */
@@ -153,6 +161,8 @@ private slots:
     void on_colorBalanceButton_clicked();
     void on_actionAbout_CCIMP_triggered();
     void on_encipherButton_clicked();
+    void on_actionNext_triggered();
+    void on_actionPrevoius_triggered();
 };
 
 #endif // MAINWINDOW_H
