@@ -16,16 +16,18 @@ int main(int argc, char **argv)
     controller p(*w); //controller
     controller_iface* control = &p;
     build_tools* build = new build_tools{control};
-    w->show();
-
     set_look_and_feel laf;
     laf.execute_fabulous_style();
+    w->show();
+
+
 
     return a.exec();
 
 
-    delete control;
+
     delete w;
+    delete control;
     delete build;
     a.quit();
 }

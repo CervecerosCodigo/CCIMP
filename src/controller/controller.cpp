@@ -61,7 +61,6 @@ void controller::register_tool(image_tool* t){
 void controller::on_new_image(QImage& img){
 
     if(!wrapper_initialized){
-        qDebug() << "oppretter new image_wrapper";
         current_image = new image_wrapper(img, callback);
         wrapper_initialized = true;
     }else{
