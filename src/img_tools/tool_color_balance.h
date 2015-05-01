@@ -11,6 +11,7 @@ public:
     using tool::tool;
 
     void execute(Magick::Image& img) override;
+    bool all_values_are_zero(using_slider* param);
 };
 
 #endif // TOOL_COLOR_BALANCE_H

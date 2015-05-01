@@ -67,14 +67,13 @@ public:
     void set_contrast_tool(image_tool* t);
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
-    void set_encipher_tool(image_tool* t);
-    void set_decipher_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
 
-
+    bool user_want_to_save();
     void update_gui_resize();
     void set_updated_image(QImage* updated_image);
     void callback_image_edited(QImage* img) override;
+    void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
     callback_iface* get_callback_listener() override;
 private:
@@ -114,6 +113,14 @@ private:
     QModelIndex fs_index;
     void set_fs_view();
 
+
+    /*
+     * Dette er til for å frem og tilbake knapper skal fungere
+     */
+    int pic_count_in_dir=0;
+    int pic_i;
+    std::vector<QString> pics_in_folder;
+
     /*
      * For å vise bildestatistikk
      */
@@ -123,7 +130,10 @@ private:
      */
     bool event_listener_set = false;  //må settes for at img_listener kan brukes
     event_listener* event_listen;
+
+    //Forskjellige booleans som brukes for å sjekke status og beskytte knapper
     bool image_is_loaded = false;
+    bool image_edited_not_saved = false;
 
 
 public slots:
@@ -156,6 +166,10 @@ private slots:
     void on_colorBalanceButton_clicked();
     void on_actionAbout_CCIMP_triggered();
     void on_encipherButton_clicked();
+    void on_actionNext_triggered();
+    void on_actionPrevoius_triggered();
+    void closeEvent(QCloseEvent *);
+
 };
 
 #endif // MAINWINDOW_H

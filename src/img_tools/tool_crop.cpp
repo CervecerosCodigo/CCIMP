@@ -13,11 +13,11 @@ void tool_crop::execute(Magick::Image& img){
         //img.crop(Magick::Geometry(10000,10000,10000,10000));
     }catch(Magick::Warning){
         //Det er denne exception som normalt blir eksekvert hved feil i ImageMagick
-        err_listener->on_exception_occured(TOOLIDENT::CROP);
+        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::WARNING);
     }catch(Magick::Error &error){
-        err_listener->on_exception_occured(TOOLIDENT::CROP);
+        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::MAGICK_EXCEPTION);
     }catch(std::exception &error){
-        err_listener->on_exception_occured(TOOLIDENT::CROP);
+        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::STDEXCEPTION);
     }
 }
 

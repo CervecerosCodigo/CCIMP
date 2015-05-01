@@ -63,6 +63,7 @@ void image_wrapper::undo_last_command(){
         if(!image_is_orig){
             img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
             callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_current)); //sender bildet til gui
+            callback->callback_report_image_is_original();
             image_is_orig = true;
         }
     }

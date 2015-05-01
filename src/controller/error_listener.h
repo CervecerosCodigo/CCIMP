@@ -9,7 +9,7 @@ public:
     error_listener(){}
     ~error_listener(){}
 
-    virtual void on_exception_occured(TOOLIDENT)=0; //skal ta med seg definisjon av hvilket verktøy som ble brukt når error intruffet
+    virtual void on_exception_occured(TOOLIDENT, ERRORTYPE)=0; //skal ta med seg definisjon av hvilket verktøy som ble brukt når error intruffet
 
 };
 

@@ -9,10 +9,10 @@ void tool_contrast::execute(Magick::Image &img)
         img.brightnessContrast(0.0, param->get_slider_val()*1.0);
     }catch(Magick::Warning){
         //Det er denne exception som normalt blir eksekvert hved feil i ImageMagick
-        err_listener->on_exception_occured(TOOLIDENT::CONTRAST);
+        err_listener->on_exception_occured(TOOLIDENT::CONTRAST, ERRORTYPE::WARNING);
     }catch(Magick::Error &error){
-        err_listener->on_exception_occured(TOOLIDENT::CONTRAST);
+        err_listener->on_exception_occured(TOOLIDENT::CONTRAST, ERRORTYPE::MAGICK_EXCEPTION);
     }catch(std::exception &error){
-        err_listener->on_exception_occured(TOOLIDENT::CONTRAST);
+        err_listener->on_exception_occured(TOOLIDENT::CONTRAST, ERRORTYPE::STDEXCEPTION);
     }
 }

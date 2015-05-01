@@ -42,7 +42,7 @@ public:
     void redo_last_command() override;
 
     //error_listener overrides
-    void on_exception_occured(TOOLIDENT) override;
+    void on_exception_occured(TOOLIDENT, ERRORTYPE) override;
 };
 
 #endif // CONTROLLER_H
