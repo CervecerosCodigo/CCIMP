@@ -33,7 +33,12 @@ QString image_statistics::get_img_stat(const QImage &img)
 
     create_img_stats();
     QString img_stat;
-    img_stat = "<html><table><tr><td><b><u>Metadata<br></b></u></td><td></td></tr>";
+    img_stat = "<html cellspacing='0'>"
+               "<table style='border-spacing:0; border-collapse: collapse;'>"
+               "<tr>"
+               "<td style='padding:0px;'>"
+               "<b><u>Metadata<br></b></u>"
+               "</td><td></td></tr>";
 
     while(stats_container.size()>0){
 //        pair<QString, QString> tmp_par = stats_container.last();
