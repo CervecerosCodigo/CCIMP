@@ -131,13 +131,13 @@ void MainWindow::load_file(const QString &fileName){
 void MainWindow::set_graphics_environment(){
     //scene = new QGraphicsScene(this);
 
-//    imgBackground = new QImage();
-//    imgBackground->load(":/img/img/CCIMP_background.png");
-//    ui->graphicsView->setStyleSheet("QWidget {"
-//                                    "background-image: url(:/img/img/CCIMP_background.png); "
-//                                    "background-repeat: no-repeat; "
-//                                    "background-position: center; "
-//                                    "background-color: white;  }");
+    //    imgBackground = new QImage();
+    //    imgBackground->load(":/img/img/CCIMP_background.png");
+    //    ui->graphicsView->setStyleSheet("QWidget {"
+    //                                    "background-image: url(:/img/img/CCIMP_background.png); "
+    //                                    "background-repeat: no-repeat; "
+    //                                    "background-position: center; "
+    //                                    "background-color: white;  }");
 }
 
 
@@ -156,7 +156,7 @@ void MainWindow::set_image(const QString &path)
         imgObject->load(path);
         //qDebug() << "SET_IMAGE" << fs_model->filePath(ui->treeView->currentIndex());
         if(event_listener_set){
-             event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
+            event_listen->on_new_image(*imgObject);   //notify controller by sending reference of the new image
         }
         set_image(imgObject);
 
@@ -241,7 +241,7 @@ void MainWindow::set_fs_view()
     ui->treeView->expand(fs_index);
     ui->treeView->scrollTo(fs_index);
     ui->treeView->setCurrentIndex(fs_index);
-//    ui->treeView->resizeColumnToContents(0);
+    //    ui->treeView->resizeColumnToContents(0);
     ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
 }
 
@@ -353,7 +353,7 @@ void MainWindow::on_treeView_pressed()
 
         }
 
-      /*
+        /*
        * Det eneste som skal gjøres her at vi oppdasterer indeksen
        * som skal brukes til å gå til neste fil hver gang som
        * vi klikker i filstrukturen.
@@ -362,14 +362,26 @@ void MainWindow::on_treeView_pressed()
         pics_in_folder.clear(); //renser vektor fra forrige bruk
 
         int f_count = fs_model->rowCount(fs_index);
-        for(int i = 0; i < f_count; i++){
-            //Her må man legge til sjekk for at man ikke legger til en mappe
-            if(!fs_model->isDir(fs_index.child(i,0))){
-                ++pic_count_in_dir;
-                pics_in_folder.push_back(
-                        fs_model->filePath(fs_index.child(i,0)));
-            }
+        QDirIterator it(QDir::homePath(), QStringList() << "*.png" << "*.jpg", QDir::Files,QDirIterator::Subdirectories);
+        while (it.hasNext()) {
+            pics_in_folder.push_back(it.next());
+            ++pic_count_in_dir;
+            //            qDebug() << it.next();
         }
+
+        //        for(int i = 0; i < f_count; i++){
+        //Her må man legge til sjekk for at man ikke legger til en mappe
+        //            if(!fs_model->isDir(fs_index.child(i,0))){
+        //                ++pic_count_in_dir;
+        //                pics_in_folder.push_back(
+        //                        fs_model->filePath(fs_index.child(i,0)));
+        //            }
+        //        }
+
+        //Debugg av vektor
+//                for(auto n : pics_in_folder){
+//                    qDebug() << "pics_in_folder" << n;
+//                }
 
 
         /*
@@ -383,15 +395,17 @@ void MainWindow::on_treeView_pressed()
          * pic_i til den verdi som samsvarer med det markerte bilde
          */
 
-        QString first_element = fs_model->filePath(fs_index.child(pic_i,0));
-        QString selected_element = fs_model->filePath(ui->treeView->currentIndex());
-//        while(first_element != selected_element){
-//            pic_i++;
-//            first_element = fs_model->filePath(fs_index.child(pic_i,0));
-//            qDebug() << fs_model->filePath(ui->treeView->currentIndex()) << ;
-//        }
-//        qDebug() << "ONTREEVIEW";
-//        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+        //        QString first_element = fs_model->filePath(fs_index.child(0,0));
+        QString tmp_element = pics_in_folder[0]; //starter med første bilde
+        QString selected_element = fs_model->filePath(ui->treeView->currentIndex()); //referanse til klikket bilde i filsystemet
+
+        while(tmp_element != selected_element){
+            tmp_element = pics_in_folder[pic_i++]; //da har vi funner indeksen
+            if(tmp_element == selected_element)
+                qDebug() << "tmp_element" << tmp_element << "==" << "selected_element" << selected_element;
+        }
+        //        qDebug() << "ONTREEVIEW";
+        //        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
 
     }//if
 
@@ -601,7 +615,7 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
-//        encipherDialog.set_encipher_toggle_on();
+        //        encipherDialog.set_encipher_toggle_on();
         encipherDialog.exec();
     }
 }
@@ -609,8 +623,8 @@ void MainWindow::on_encipherButton_clicked()
 void MainWindow::on_actionNext_triggered()
 {
     if(pic_i < pic_count_in_dir-1){
-        set_image(pics_in_folder[++pic_i]);
-        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
+        set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
+        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0)); //setter riktig markering
         qDebug() << "pic_count_in_dir" << pic_count_in_dir;
         qDebug() << "pic_i" << pic_i;
     }
