@@ -184,7 +184,11 @@ void MainWindow::update_gui() {
     scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
-    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+
+    if(image.width() > ui->graphicsView->width() || image.height() > ui->graphicsView->height()) {
+        ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    }
+
     ui->graphicsView->setScene(scene);
 }
 
