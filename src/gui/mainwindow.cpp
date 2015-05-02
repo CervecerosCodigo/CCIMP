@@ -573,6 +573,7 @@ void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(blurDialog.get_tool());
+        event_listen->updating_image();
         blurDialog.exec();
     }
 }
