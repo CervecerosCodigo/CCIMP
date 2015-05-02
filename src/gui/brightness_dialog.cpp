@@ -5,6 +5,7 @@
 brightness_dialog::brightness_dialog(QWidget *parent) : QDialog(parent), ui(new Ui::brightness_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Brightness");
     ui->horizontalSlider->setMinimum(-100);
     ui->horizontalSlider->setMaximum(100);
     ui->horizontalSlider->setSingleStep(5);

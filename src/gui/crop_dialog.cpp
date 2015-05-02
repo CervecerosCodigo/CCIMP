@@ -6,6 +6,7 @@ crop_dialog::crop_dialog(QWidget *parent) :
     ui(new Ui::crop_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Crop");
     this->setFixedSize(this->size());
     resetting_values();
 }

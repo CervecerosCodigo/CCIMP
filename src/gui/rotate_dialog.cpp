@@ -6,6 +6,7 @@ rotate_dialog::rotate_dialog(QWidget *parent):
     ui(new Ui::rotate_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Rotate");
     this->setFixedSize(this->size());
     ui->dial->setTracking(false);
     current_angle = 0.0;

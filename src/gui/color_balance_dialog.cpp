@@ -6,7 +6,7 @@ color_balance_dialog::color_balance_dialog(QWidget *parent) :
     ui(new Ui::color_balance_dialog)
 {
     ui->setupUi(this);
-
+    this->setWindowTitle("Colorize");
     ui->redSlider->setTracking(false);
     ui->greenSlider->setTracking(false);
     ui->blueSlider->setTracking(false);

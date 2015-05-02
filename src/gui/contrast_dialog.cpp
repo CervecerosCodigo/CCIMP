@@ -6,6 +6,7 @@ contrast_dialog::contrast_dialog(QWidget *parent) :
     ui(new Ui::contrast_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Contrast");
     ui->horizontalSlider->setMinimum(-100);
     ui->horizontalSlider->setMaximum(100);
     ui->horizontalSlider->setSingleStep(5);
