@@ -501,7 +501,7 @@ void MainWindow::callback_image_edited(QImage* img){
  */
 void MainWindow::execute_value_changed(){
     image_edited_not_saved = true;
-    set_updated_image(event_listen->updating_image());
+    event_listen->updating_image();
 }
 
 
@@ -523,7 +523,7 @@ void MainWindow::execute_cancelbtn_pressed(){
 
 void MainWindow::execute_change_and_accept()
 {
-    set_updated_image(event_listen->updating_image());
+    event_listen->updating_image();
     event_listen->finished();
 }
 

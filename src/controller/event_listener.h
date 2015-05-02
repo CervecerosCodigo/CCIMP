@@ -12,7 +12,7 @@ public:
     virtual ~event_listener(){}
 
     virtual void on_clicked_tool(image_tool* t) = 0; //When clicked to open a tool from GUI
-    virtual QImage* updating_image() = 0;   //one of three functions called when editing.
+    virtual void updating_image() = 0;   //one of three functions called when editing.
     virtual void finished() = 0;    //one of three functions called when editing.
     virtual void canceled() = 0;    //one of three functions called when editing.
     virtual void on_new_image(QImage& img) = 0;     //When new image is opened

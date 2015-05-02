@@ -8,10 +8,10 @@ void tool_color_balance::execute(Magick::Image &img)
                  << "Slider 3:" << param->get_slider_val(2);
 
     try{
-    if(!all_values_are_zero(param)){
+//    if(!all_values_are_zero(param)){
 
-        err_listener->on_exception_occured(TOOLIDENT::COL, ERRORTYPE::IDENTICAL_IMAGES);
-    }
+//        err_listener->on_exception_occured(TOOLIDENT::COL, ERRORTYPE::IDENTICAL_IMAGES);
+//    }
         img.gamma(
                     param->get_slider_val(0)*0.1,
                     param->get_slider_val(1)*0.1,

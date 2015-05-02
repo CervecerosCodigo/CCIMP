@@ -75,8 +75,8 @@ void controller::on_clicked_tool(image_tool* t){
     current_image->update_history();    //Kaller wrapper sin "historieorganisator"
 }
 
-QImage* controller::updating_image(){
-    return current_image->image_update();
+void controller::updating_image(){
+    current_image->image_update();
 }
 
 void controller::finished(){
