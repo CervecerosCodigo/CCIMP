@@ -42,7 +42,10 @@ SOURCES += main.cpp\
     lib/err_strings.cpp \
     parameters/using_text.cpp \
     img_tools/tool_secure.cpp \
-    lib/set_look_and_feel.cpp
+    lib/set_look_and_feel.cpp \
+    parameters/using_no_parameters.cpp \
+    img_tools/tool_auto_gamma.cpp \
+    gui/auto_gamma_dialog.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -83,7 +86,10 @@ HEADERS  += gui/mainwindow.h \
     lib/err_strings.h \
     parameters/using_text.h \
     img_tools/tool_secure.h \
-    lib/set_look_and_feel.h
+    lib/set_look_and_feel.h \
+    parameters/using_no_parameters.h \
+    img_tools/tool_auto_gamma.h \
+    gui/auto_gamma_dialog.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
@@ -93,7 +99,8 @@ FORMS    += gui/mainwindow.ui \
     gui/rotate_dialog.ui \
     gui/color_balance_dialog.ui \
     gui/about_dialog.ui \
-    gui/encipher_dialaog.ui
+    gui/encipher_dialaog.ui \
+    gui/auto_gamma_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc
