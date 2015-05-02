@@ -30,7 +30,7 @@ public:
     ~image_wrapper();
     void set_Qimage(QImage& img, callback_iface* c);
 
-    QImage* image_update();
+    void image_update();
     void image_finished();
     void image_canceled();
 

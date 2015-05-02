@@ -21,9 +21,6 @@ public:
     inline TOOLIDENT get_tool_identifier(){return tool_identifier;}
 
 public:
-    //Trot ikke at disse behøvs, de er definiert i subklassen også.
-//    error_listener* err_listener;
-//    bool is_error_listener_set = false;
 
     virtual void set_error_listener(error_listener *e)=0;
 };

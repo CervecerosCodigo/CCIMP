@@ -28,11 +28,11 @@ void image_wrapper::set_Qimage(QImage &img, callback_iface *c){
 }
 
 //Kjører oppdateringer på midlertidig bilde, med img_ptr_current som referanse for hver gang.
-QImage* image_wrapper::image_update(){
+void image_wrapper::image_update(){
 
     img_ptr_edit = new Magick::Image(*img_ptr_current);
     current_tool->execute(*img_ptr_edit);                  //run selected tool on image
-    return img_obj_converter::to_QImage(*img_ptr_edit);
+    callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_edit));
 }
 
 

@@ -337,7 +337,7 @@ void MainWindow::redo_command(){
 
 MainWindow::~MainWindow()
 {
-    qDebug() << "Destructing Window";
+
     delete ui;
     delete imgObject;
     delete imgBackground;
@@ -363,53 +363,48 @@ void MainWindow::on_treeView_pressed()
        * vi klikker i filstrukturen.
        */
 
-//        pics_in_folder.clear(); //renser vektor fra forrige bruk
+        pics_in_folder.clear(); //renser vektor fra forrige bruk
 
-//        int f_count = fs_model->rowCount(fs_index);
-//        QDirIterator it(QDir::homePath(), QStringList() << "*.png" << "*.jpg", QDir::Files,QDirIterator::Subdirectories);
-//        while (it.hasNext()) {
-//            pics_in_folder.push_back(it.next());
-//            ++pic_count_in_dir;
-//            //            qDebug() << it.next();
-//        }
+        //Først trenge vi få frem hvilken mappe som filen man har klikke på ligger i
+        if(!fs_model->isDir(ui->treeView->currentIndex())){
+            pic_count_in_dir = 0;
+            selected_file = fs_model->filePath(ui->treeView->currentIndex());
+            dir_of_selected_file = QFileInfo(selected_file).absoluteDir();
 
-//        //        for(int i = 0; i < f_count; i++){
-//        //Her må man legge til sjekk for at man ikke legger til en mappe
-//        //            if(!fs_model->isDir(fs_index.child(i,0))){
-//        //                ++pic_count_in_dir;
-//        //                pics_in_folder.push_back(
-//        //                        fs_model->filePath(fs_index.child(i,0)));
-//        //            }
-//        //        }
+            //Nå kan vi scanne inn alle filer som matcher vår pattern i samme mappe
+            dir_of_selected_file.setNameFilters(QStringList() << "*.jpg" << "*.png");
+            dir_of_selected_file.setSorting(QDir::IgnoreCase | QDir::Name | QDir::Reversed); //gir samme sorteringsrekkefølge som QFileSystemModel
+            dir_of_selected_file.setFilter(QDir::Files | QDir::NoSymLinks | QDir::NoDotAndDotDot);
 
-//        //Debugg av vektor
-////                for(auto n : pics_in_folder){
-////                    qDebug() << "pics_in_folder" << n;
-////                }
+            QStringList scanned_content = dir_of_selected_file.entryList();
+            for(int i=0; i < scanned_content.count(); i++){
+                pics_in_folder.push_back(dir_of_selected_file.absoluteFilePath(scanned_content[i]));
+                pic_count_in_dir = i+1;
+            }
 
+            //        //Debugg av vektor
+            //                for(auto n : pics_in_folder){
+            //                    qDebug() << "pics_in_folder" << n;
+            //                }
 
-//        /*
-//         * Vi vi må også nullstille teller variablene her slik
-//         * at for hver gang vi klikker i view bli disse oppdatert.
-//         */
-//        pic_i=0;
+            //        /*
+            //         * Vi vi må også nullstille teller variablene her slik
+            //         * at for hver gang vi klikker i view bli disse oppdatert.
+            //         */
+            pic_i=0;
 
-//        /*
-//         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
-//         * pic_i til den verdi som samsvarer med det markerte bilde
-//         */
+            //        /*
+            //         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
+            //         * pic_i til den verdi som samsvarer med det markerte bilde
+            //         */
 
-//        //        QString first_element = fs_model->filePath(fs_index.child(0,0));
-//        QString tmp_element = pics_in_folder[0]; //starter med første bilde
-//        QString selected_element = fs_model->filePath(ui->treeView->currentIndex()); //referanse til klikket bilde i filsystemet
+            QString tmp_element = QFileInfo(pics_in_folder[0]).absoluteFilePath(); //starter med første bilde
+            QString selected_element = selected_file; //referanse til klikket bilde i filsystemet
 
-//        while(tmp_element != selected_element){
-//            tmp_element = pics_in_folder[pic_i++]; //da har vi funner indeksen
-//            if(tmp_element == selected_element)
-//                qDebug() << "tmp_element" << tmp_element << "==" << "selected_element" << selected_element;
-//        }
-//        //        qDebug() << "ONTREEVIEW";
-//        //        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
+            while(tmp_element != selected_element){
+                tmp_element = pics_in_folder[pic_i++]; //da har vi funner indeksen
+            }
+        }
 
     }//if
 
@@ -505,7 +500,7 @@ void MainWindow::callback_image_edited(QImage* img){
  */
 void MainWindow::execute_value_changed(){
     image_edited_not_saved = true;
-    set_updated_image(event_listen->updating_image());
+    event_listen->updating_image();
 }
 
 
@@ -527,7 +522,7 @@ void MainWindow::execute_cancelbtn_pressed(){
 
 void MainWindow::execute_change_and_accept()
 {
-    set_updated_image(event_listen->updating_image());
+    event_listen->updating_image();
     event_listen->finished();
 }
 
@@ -626,20 +621,18 @@ void MainWindow::on_encipherButton_clicked()
 
 void MainWindow::on_actionNext_triggered()
 {
-    if(pic_i < pic_count_in_dir-1){
+    if(pic_i < pic_count_in_dir){
         set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
-        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0)); //setter riktig markering
-        qDebug() << "pic_count_in_dir" << pic_count_in_dir;
-        qDebug() << "pic_i" << pic_i;
+//        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0)); //setter riktig markering
     }
 }
 
 void MainWindow::on_actionPrevoius_triggered()
 {
     if(pic_i > 0){
+        if(pic_i == pic_count_in_dir) pic_i--;
         set_image(pics_in_folder[--pic_i]);
-        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
-        qDebug() << "pic_i" << pic_i;
+//        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
     }
 }
 

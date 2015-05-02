@@ -38,7 +38,8 @@ public:
 
     void on_new_image(QImage& img) override; //from event_listener
     void on_clicked_tool(image_tool* t) override;
-    QImage* updating_image() override;
+//    QImage* updating_image() override;
+    void updating_image() override;
     void finished() override;
     void canceled() override;
     void undo_last_command() override;
