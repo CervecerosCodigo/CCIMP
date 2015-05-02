@@ -385,10 +385,10 @@ void MainWindow::on_treeView_pressed()
 
         QString first_element = fs_model->filePath(fs_index.child(pic_i,0));
         QString selected_element = fs_model->filePath(ui->treeView->currentIndex());
-        while(first_element != selected_element){
+        /*while(first_element != selected_element){
             pic_i++;
             first_element = fs_model->filePath(fs_index.child(pic_i,0));
-        }
+        }*/
 //        qDebug() << "ONTREEVIEW";
 //        qDebug() << fs_model->filePath(ui->treeView->currentIndex());
 
