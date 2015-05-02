@@ -17,6 +17,7 @@ build_tools::~build_tools()
     delete sharpen_tool;
     delete control;
     delete auto_gamma;
+    delete auto_level;
 
 }
 
@@ -32,5 +33,6 @@ void build_tools::create_tools_to_be_used(){
     secure_tool = new tool_secure(control, new using_text(), TOOLIDENT::SECURE);
     auto_gamma = new tool_auto_gamma(control, new using_no_parameters(), TOOLIDENT::AUTOGAMMA);
     sharpen_tool = new tool_sharpness(control, new using_slider(2), TOOLIDENT::SHARPEN);
+    auto_level = new tool_auto_level(control, new using_no_parameters(), TOOLIDENT::AUTOLEVEL);
 
 }

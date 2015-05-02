@@ -16,6 +16,7 @@
 #include "tool_color_balance.h"
 #include "tool_secure.h"
 #include "tool_auto_gamma.h"
+#include "tool_auto_level.h"
 #include "tool_sharpness.h"
 
 class build_tools
@@ -31,6 +32,7 @@ class build_tools
     tool* secure_tool;
     tool* auto_gamma;
     tool* sharpen_tool;
+    tool* auto_level;
 
     void create_tools_to_be_used();
 

@@ -505,6 +505,12 @@ void MainWindow::set_auto_gamma_tool(image_tool *t)
 }
 
 
+void MainWindow::set_auto_level_tool(image_tool*t)
+{
+    autoLevelDialog.set_tool(t);
+}
+
+
 void MainWindow::set_sharpen_tool(image_tool *t)
 {
     sharpnessDialog.set_tool(t);
@@ -670,6 +676,17 @@ void MainWindow::on_autoGammaButton_clicked()
     }
 }
 
+
+void MainWindow::on_autoLevelButton_clicked()
+{
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(autoLevelDialog.get_tool());
+        event_listen->updating_image();
+        event_listen->finished();
+    }
+}
+
+
 void MainWindow::on_actionNext_triggered()
 {
     if(pic_i < pic_count_in_dir -1){
@@ -695,7 +712,3 @@ void MainWindow::on_actionReload_triggered()
 {
     on_treeView_pressed();
 }
-
-
-
-
