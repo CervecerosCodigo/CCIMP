@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     lib/err_strings.cpp \
     parameters/using_text.cpp \
     img_tools/tool_secure.cpp \
-    lib/set_look_and_feel.cpp
+    lib/set_look_and_feel.cpp \
+    gui/sharpness_dialog.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -83,7 +84,8 @@ HEADERS  += gui/mainwindow.h \
     lib/err_strings.h \
     parameters/using_text.h \
     img_tools/tool_secure.h \
-    lib/set_look_and_feel.h
+    lib/set_look_and_feel.h \
+    gui/sharpness_dialog.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \
@@ -93,7 +95,8 @@ FORMS    += gui/mainwindow.ui \
     gui/rotate_dialog.ui \
     gui/color_balance_dialog.ui \
     gui/about_dialog.ui \
-    gui/encipher_dialaog.ui
+    gui/encipher_dialaog.ui \
+    gui/sharpness_dialog.ui
 
 RESOURCES += \
     ../res/resources.qrc

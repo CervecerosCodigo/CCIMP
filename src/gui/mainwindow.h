@@ -27,6 +27,7 @@
 #include "gui/rotate_dialog.h"
 #include "gui/color_balance_dialog.h"
 #include "gui/encipher_dialaog.h"
+#include "gui/sharpness_dialog.h"
 #include <vector>
 #include "gui/brightness_dialog.h"
 #include "img_tools/img_obj_converter.h"
@@ -55,6 +56,7 @@ class MainWindow : public QMainWindow, public callback_iface, public callback_er
     rotate_dialog rotateDialog;
     color_balance_dialog colorBalanceDialog;
     encipher_dialaog encipherDialog;
+    sharpness_dialog sharpnessDialog;
 
 public:
     void set_event_listener(event_listener* l);
