@@ -36,7 +36,7 @@ void controller::register_tool(image_tool* t){
         gui_mw.set_crop_tool(t);
         break;
     case TOOLIDENT::RESIZE:
-        //code
+        gui_mw.set_scale_tool(t);
         break;
     case TOOLIDENT::COL:
         gui_mw.set_color_balance_tool(t);
@@ -120,7 +120,7 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
         gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::RESIZE:
-//        gui_mw.exception_in_image_processing(err_strings::resize_title, err_strings::crop_msg);
+        gui_mw.exception_in_image_processing(err_strings::scale_title, err_strings::scale_msg);
         break;
     case TOOLIDENT::COL:
         if(err_type == ERRORTYPE::IDENTICAL_IMAGES){

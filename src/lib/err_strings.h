@@ -23,6 +23,8 @@ namespace err_strings {
     extern QString rotate_msg;
     extern QString sharpen_title;
     extern QString sharpen_msg;
+    extern QString scale_title;
+    extern QString scale_msg;
 }
 
 #endif // ERR_STRINGS_H

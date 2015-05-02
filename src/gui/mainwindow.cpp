@@ -521,6 +521,13 @@ void MainWindow::set_sharpen_tool(image_tool *t)
 
 }
 
+void MainWindow::set_scale_tool(image_tool *t)
+{
+    scaleDialog.set_tool(t);
+    connect(&scaleDialog, SIGNAL(signalAccepted()), this, SLOT(execute_value_changed()));
+    scaleDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
+}
+
 
 /**Dette er en callback-funksjon for undo/redo-knappene.
  * Når man velger undo/redo sendes kommandoene "ned" og returen kommer hit
@@ -686,6 +693,14 @@ void MainWindow::on_autoLevelButton_clicked()
     }
 }
 
+void MainWindow::on_scaleButton_clicked()
+{
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(scaleDialog.get_tool());
+        scaleDialog.exec();
+    }
+}
+
 
 void MainWindow::on_actionNext_triggered()
 {
@@ -712,3 +727,5 @@ void MainWindow::on_actionReload_triggered()
 {
     on_treeView_pressed();
 }
+
+
