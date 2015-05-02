@@ -77,10 +77,33 @@ Dette diagrammet tar for seg prosessen som utføres hver gang man endrer et bild
 4. `image_wrapper` utfører oppdateringen av bildet ved å kjøre `current_tool->execute(Image* omg)`. `current_tool` ble satt i det verktøyet ble åpnet i `MainWindow` og i det selve utførelsen av det rette verktøyet blir gjort så benyttes parameter-verdiene som ble satt i `slideren`.
 5. Resulatet av editeringen sendes så opp til `MainWindow` via `callback->callback_image_edited(QImage*)`. 
 
-
 ![Oppdatering av bilde](http://cerveceroscodigo.github.io/CCIMP/img/diagram_update_image.png)
 
 
 ### Hvordan historikk og angremulighet fungerer
+
+Èn av hovedgrunnene til at arkitekturen er så omfattende som den er, er fordi alle moduler og klasser skal være så løst koblet som mulig, og gi fleksibilitet og dermed en bedre håndtering av historikk og angremulighet. 
+Avhengig av hvilke verktøy man velger å bruke i `MainWindow` så vil det være opp til tre mulige konsekvenser som blir utført. Diagrammet bruker `blur_dialog` som eksempel.
+Man har i det eksempelet tre utfall:
+
+* Change
+* OK
+* Cancel
+
+
+**Change -`image_update()`**
+Dette er utfallet av midlertidige endringer. Altså i det man arbeider med et verktøy, før man velger å enten bekrefte eller avbryte. Alle `image_update()` tar utgangspunktet i at `img_ptr_current*` som ligger i `image_wrapper`er den rette versjonen av bildet som vises på skjermen. Arbeidet skjer på en kopi av denne versjonen, i en variabel kalt `img_ptr_edit*`. 
+
+**OK - `image_finished()`**
+I det man trykker OK for å bekrefter at man er ferdig med editeringen, i det verktøyet i alle fall, så sendes en forespørsel til `image_wrapper` at den nå skal sette `img_ptr_current` lik `img_ptr_edit`. Dette vil gjøre status klart for neste verktøy, om det skulle være aktuelt.
+
+**Cancel - `image_canceled()`**
+I det man jobber med et verktøy, men ønsker å avbryte så kan man gjøre det ved å trykke på Cancel. Dette medfører et kall til `image_wrapper` som vil sette `img_ptr_edit` lik `img_ptr_current`. Det vil si at mange angrer endringene gjort i `img_ptr_edit`, altså i det verktøyet man jobber med for øyeblikket. Dette er ikke det samme som "undo".
+
+**Undo og Redo**
+I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `image_tool` til `image_wrapper` så legges også en kopi av det aktuelle bildet som vises på skjermen inn i `undo_vector`. Algoritmene for undo, redo er lettere å inspisere i koden i `image_wrapper` enn å forklare, men kommunikasjonen mellom `MainWindow` og `image_wrapper` er som ved de andre punktene.
+
+
+
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
     
