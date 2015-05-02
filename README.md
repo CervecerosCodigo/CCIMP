@@ -48,8 +48,19 @@ CCIMP krever følgende bilbiotek for å kompileres.
 
     
     
+## Arkitektur og design 
+
+### Hvorfor er designet som det er
+Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
+Det er laget tre diagrammer som hver for seg skal illustrere hvordan den ulike kommunikasjonen skjer. 
+
+**Instansiering og registrering av verktøy**
 
 ![Bygging og instansiering](http://cerveceroscodigo.github.io/CCIMP/img/diagram_build_tools.png)
+
+**Prosessen som utføres ved endring av et bilde**
 ![Oppdatering av bilde](http://cerveceroscodigo.github.io/CCIMP/img/diagram_update_image.png)
+
+**Hvordan historikk og angremulighet fungerer**
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
     
