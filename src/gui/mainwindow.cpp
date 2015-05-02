@@ -185,7 +185,7 @@ void MainWindow::update_gui() {
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
 
-    if(image.width() > scene->width()) {
+    if(image.width() > ui->graphicsView->width() || image.height() > ui->graphicsView->height()) {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
