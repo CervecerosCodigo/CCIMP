@@ -505,7 +505,7 @@ void MainWindow::set_auto_gamma_tool(image_tool *t)
 }
 
 
-void MainWindow::set_auto_level_tool(image_tool*t)
+void MainWindow::set_auto_level_tool(image_tool *t)
 {
     autoLevelDialog.set_tool(t);
 }

@@ -36,6 +36,7 @@
 #include "controller/callback_error_iface.h"
 #include <QDirIterator>
 #include "img_tools/tool_auto_gamma.h"
+#include "img_tools/tool_auto_level.h"
 #include "gui/auto_gamma_dialog.h"
 #include "gui/auto_level_dialog.h"
 
