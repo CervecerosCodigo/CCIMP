@@ -15,8 +15,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //setter opp grafiske komponenter.
     set_graphics_environment();
 
-
+    //Zoom verdier
     zoomVerdi = 1;
+    zoomFloorValue = 0.5;
+    zoomRoofValue = 5.0;
 
 }
 
@@ -292,22 +294,32 @@ void MainWindow::wheelEvent(QWheelEvent* event) {
 void MainWindow::zoomIn() {
 
     scene = new QGraphicsScene(this);
-    zoomVerdi += 0.25;
-    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    ui->graphicsView->setScene(scene);
-    qDebug() << zoomVerdi;
+    ui->actionZoom_Out->setEnabled(true);
+    if(zoomVerdi <= zoomRoofValue){
+        zoomVerdi += 0.25;
+        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui->graphicsView->setScene(scene);
+//        qDebug() << zoomVerdi;
+    }else{
+        ui->actionZoom_In->setDisabled(true);
+    }
 }
 
 
 void MainWindow::zoomOut() {
 
     scene = new QGraphicsScene(this);
-    zoomVerdi -= 0.25;
-    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    ui->graphicsView->setScene(scene);
-    qDebug() << zoomVerdi;
+    ui->actionZoom_In->setEnabled(true);
+    if(zoomVerdi >= zoomFloorValue){
+        zoomVerdi -= 0.25;
+        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui->graphicsView->setScene(scene);
+//        qDebug() << zoomVerdi;
+    }else{
+        ui->actionZoom_Out->setDisabled(true);
+    }
 }
 
 void MainWindow::on_actionActual_size_triggered()
@@ -493,6 +505,12 @@ void MainWindow::set_auto_gamma_tool(image_tool *t)
 }
 
 
+void MainWindow::set_auto_level_tool(image_tool *t)
+{
+    autoLevelDialog.set_tool(t);
+}
+
+
 void MainWindow::set_sharpen_tool(image_tool *t)
 {
     sharpnessDialog.set_tool(t);
@@ -658,6 +676,17 @@ void MainWindow::on_autoGammaButton_clicked()
     }
 }
 
+
+void MainWindow::on_autoLevelButton_clicked()
+{
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(autoLevelDialog.get_tool());
+        event_listen->updating_image();
+        event_listen->finished();
+    }
+}
+
+
 void MainWindow::on_actionNext_triggered()
 {
     if(pic_i < pic_count_in_dir -1){
@@ -683,7 +712,3 @@ void MainWindow::on_actionReload_triggered()
 {
     on_treeView_pressed();
 }
-
-
-
-
