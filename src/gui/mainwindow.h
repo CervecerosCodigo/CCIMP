@@ -122,6 +122,8 @@ private:
      */
     int pic_count_in_dir=0;
     int pic_i;
+    QString selected_file;
+    QDir dir_of_selected_file;
     std::vector<QString> pics_in_folder;
 
     /*
