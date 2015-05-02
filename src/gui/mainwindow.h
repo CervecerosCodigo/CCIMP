@@ -36,6 +36,7 @@
 #include "controller/callback_error_iface.h"
 #include <QDirIterator>
 #include "img_tools/tool_auto_gamma.h"
+#include "gui/auto_gamma_dialog.h"
 
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
@@ -58,6 +59,7 @@ class MainWindow : public QMainWindow, public callback_iface, public callback_er
     color_balance_dialog colorBalanceDialog;
     encipher_dialaog encipherDialog;
     sharpness_dialog sharpnessDialog;
+    auto_gamma_dialog autoGammaDialog;
 
 public:
     void set_event_listener(event_listener* l);
@@ -74,7 +76,6 @@ public:
     void set_secure_tool(image_tool* t);
     void set_auto_gamma_tool(image_tool* t);
     void set_sharpen_tool(image_tool* t);
-
 
     bool user_want_to_save();
     void update_gui_resize();
@@ -183,6 +184,7 @@ private slots:
     void on_actionActual_size_triggered();
     void on_actionReload_triggered();
     void on_sharpnessButton_clicked();
+    void on_autoGammaButton_clicked();
 };
 
 #endif // MAINWINDOW_H
