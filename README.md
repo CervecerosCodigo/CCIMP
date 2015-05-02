@@ -54,12 +54,20 @@ CCIMP krever følgende bilbiotek for å kompileres.
 Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
 Det er laget tre diagrammer som hver for seg skal illustrere hvordan den ulike kommunikasjonen skjer. 
 
-**Instansiering og registrering av verktøy**
 
+**Instansiering og registrering av verktøy**
+Dette diagrammet skisserer hvordan programmet starter opp, og hvordan man instansierer verktøyene og hvordan de blir registrert. 
+Forklaring:
+1. Klassen `build_tools` oppretter alle verktøyene, og i det verktøyet blir instansiert så registreres det automatisk via `controller_iface`. Dette skjer i klassen `tool` sin konstruktør. `tool`-instansen har nå gjennom å arve `image_tool` en parameter-instans som sier noe om hvilke type parametere verktøyet vil benytte seg av i brukergrensesnittet. Feks så vil Contrast-verktøyet ha behov for en `slider` som man kan justere dynamisk.
+2. Klassen `controller` er et bindeledd i programmet, men brukes aldri i sin konkrete form. Den implementerer interfacet `controller_iface` som har en `registrer_tool(image_tool* t)`-metode. Denne bruker switch-case for å finne rett set-metode i `MainWindow`. Hver `image_tool` har en enum-variabel (`TOOLIDENT`), som leses av og som det testes på i switch-case.
+3. `Controller` registrerer som sagt `image_tool` i `MainWindow` ved å kalle på rett set-metode.
+4. Hvert verktøy i `MainWindow` er implementert i form av egen klasse, som arver den abstrakte klassen `ccimp_dialog`. Det er denne superklassen som lagrer `image_tool` og som brukes i det man velger å utføre endring på et bilde.
 ![Bygging og instansiering](http://cerveceroscodigo.github.io/CCIMP/img/diagram_build_tools.png)
+
 
 **Prosessen som utføres ved endring av et bilde**
 ![Oppdatering av bilde](http://cerveceroscodigo.github.io/CCIMP/img/diagram_update_image.png)
+
 
 **Hvordan historikk og angremulighet fungerer**
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
