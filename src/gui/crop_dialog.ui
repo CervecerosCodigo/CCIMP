@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>259</width>
-    <height>227</height>
+    <height>230</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
        <property name="title">
         <string>Crop Image</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>7</x>
@@ -126,8 +126,6 @@
          </item>
         </layout>
        </widget>
-       <zorder></zorder>
-       <zorder>verticalSpacer</zorder>
       </widget>
      </item>
      <item row="1" column="0">
@@ -153,12 +151,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>253</x>
+     <y>224</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>274</y>
+     <y>229</y>
     </hint>
    </hints>
   </connection>
@@ -169,12 +167,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>253</x>
+     <y>224</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
+     <x>258</x>
+     <y>229</y>
     </hint>
    </hints>
   </connection>

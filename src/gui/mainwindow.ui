@@ -127,7 +127,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="blurButton">
+              <widget class="QPushButton" name="scaleButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -135,7 +135,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Blur</string>
+                <string>Scale</string>
                </property>
               </widget>
              </item>
@@ -153,32 +153,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="colorBalanceButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Colorize</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="encipherButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Secure</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="sharpnessButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -188,6 +162,32 @@
                </property>
                <property name="text">
                 <string>Sharpness</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="blurButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Blur</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="colorBalanceButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Colorize</string>
                </property>
               </widget>
              </item>
@@ -205,7 +205,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="encipherButton_6">
+              <widget class="QPushButton" name="autoLevelButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -213,7 +213,20 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Tool</string>
+                <string>Auto-Level</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="encipherButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Secure</string>
                </property>
               </widget>
              </item>
@@ -253,19 +266,6 @@
                </property>
                <property name="text">
                 <string>Tool</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="autoLevelButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Auto-Level</string>
                </property>
               </widget>
              </item>
@@ -325,7 +325,7 @@
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
