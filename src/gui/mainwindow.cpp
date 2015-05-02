@@ -15,8 +15,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //setter opp grafiske komponenter.
     set_graphics_environment();
 
-
+    //Zoom verdier
     zoomVerdi = 1;
+    zoomFloorValue = 0.5;
+    zoomRoofValue = 5.0;
 
 }
 
@@ -292,22 +294,32 @@ void MainWindow::wheelEvent(QWheelEvent* event) {
 void MainWindow::zoomIn() {
 
     scene = new QGraphicsScene(this);
-    zoomVerdi += 0.25;
-    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    ui->graphicsView->setScene(scene);
-    qDebug() << zoomVerdi;
+    ui->actionZoom_Out->setEnabled(true);
+    if(zoomVerdi <= zoomRoofValue){
+        zoomVerdi += 0.25;
+        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui->graphicsView->setScene(scene);
+//        qDebug() << zoomVerdi;
+    }else{
+        ui->actionZoom_In->setDisabled(true);
+    }
 }
 
 
 void MainWindow::zoomOut() {
 
     scene = new QGraphicsScene(this);
-    zoomVerdi -= 0.25;
-    QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-    scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    ui->graphicsView->setScene(scene);
-    qDebug() << zoomVerdi;
+    ui->actionZoom_In->setEnabled(true);
+    if(zoomVerdi >= zoomFloorValue){
+        zoomVerdi -= 0.25;
+        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui->graphicsView->setScene(scene);
+//        qDebug() << zoomVerdi;
+    }else{
+        ui->actionZoom_Out->setDisabled(true);
+    }
 }
 
 void MainWindow::on_actionActual_size_triggered()

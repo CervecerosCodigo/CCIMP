@@ -96,7 +96,7 @@ private:
     QString filePath;
     QString original_filePath;
 
-    double zoomVerdi;
+    double zoomVerdi, zoomFloorValue, zoomRoofValue;
 
 
     /*
