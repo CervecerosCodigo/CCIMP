@@ -22,8 +22,8 @@ void set_look_and_feel::execute_fabulous_style()
     darkPalette.setColor(QPalette::WindowText, QColor(255, 250, 246));
     darkPalette.setColor(QPalette::Base, QColor(137, 129, 122));
     darkPalette.setColor(QPalette::AlternateBase, QColor(137, 129, 122));
-    darkPalette.setColor(QPalette::ToolTipBase, Qt::black);
-    darkPalette.setColor(QPalette::ToolTipText, Qt::black);
+    darkPalette.setColor(QPalette::ToolTipBase, QColor(255, 250, 246));
+    darkPalette.setColor(QPalette::ToolTipText, QColor(137, 129, 122));
     darkPalette.setColor(QPalette::Text, QColor(255, 250, 246));
     darkPalette.setColor(QPalette::Button, QColor(137, 129, 122));
     darkPalette.setColor(QPalette::ButtonText, QColor(255, 250, 246));
