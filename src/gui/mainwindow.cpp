@@ -554,6 +554,7 @@ void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(blurDialog.get_tool());
+        event_listen->updating_image();
         blurDialog.exec();
     }
 }
@@ -621,7 +622,7 @@ void MainWindow::on_encipherButton_clicked()
 
 void MainWindow::on_actionNext_triggered()
 {
-    if(pic_i < pic_count_in_dir){
+    if(pic_i < pic_count_in_dir -1){
         set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
 //        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0)); //setter riktig markering
     }
