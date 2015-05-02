@@ -189,6 +189,7 @@ void MainWindow::update_gui() {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
+    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->setScene(scene);
 }
 
