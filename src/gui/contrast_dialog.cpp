@@ -32,8 +32,8 @@ void contrast_dialog::on_horizontalSlider_valueChanged(int value)
 }
 
 void contrast_dialog::on_buttonBox_accepted(){
-    emit slotAcceptPressed();
     prepare_and_run_reset_on_values();
+    emit slotAcceptPressed();
 }
 
 void contrast_dialog::on_buttonBox_rejected(){

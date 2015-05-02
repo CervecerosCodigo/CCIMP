@@ -42,7 +42,7 @@ void brightness_dialog::on_buttonBox_accepted()
 void brightness_dialog::on_buttonBox_rejected()
 {
     emit slotCancelPressed();
-
+    prepare_and_run_reset_on_values();
 }
 
 void brightness_dialog::resetting_values(){
