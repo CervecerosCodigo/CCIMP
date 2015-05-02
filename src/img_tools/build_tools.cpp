@@ -15,6 +15,7 @@ build_tools::~build_tools()
     delete color_balance;
     delete secure_tool;
     delete control;
+    delete auto_gamma;
 }
 
 
@@ -27,4 +28,5 @@ void build_tools::create_tools_to_be_used(){
     rotate = new tool_rotate(control, new using_coordinates(), TOOLIDENT::ROTATE);
     color_balance = new tool_color_balance(control, new using_slider(3), TOOLIDENT::COL);
     secure_tool = new tool_secure(control, new using_text(), TOOLIDENT::SECURE);
+    auto_gamma = new tool_auto_gamma(control, new using_no_parameters(), TOOLIDENT::AUTOGAMMA);
 }

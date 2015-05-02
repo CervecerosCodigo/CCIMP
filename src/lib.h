@@ -25,7 +25,7 @@ typedef std::string TEXT;
  * This Enum is used as a member parameter in parameter-objects.
  * It identifies the kind of parameters the respective parameter-object has
  */
-enum PARAMTYPE{SLIDER, COORDINATE, COLOR, PHRASE};
+enum PARAMTYPE{SLIDER, COORDINATE, COLOR, PHRASE, NOPARAM};
 
 
 /**
@@ -33,7 +33,7 @@ enum PARAMTYPE{SLIDER, COORDINATE, COLOR, PHRASE};
  * image_tools are passed by pointer up to controller and we need to make sure
  * that a butten called "blur_button" is connected to the right tool in the back end.
  */
-enum TOOLIDENT{BLUR, SHARPEN, RESIZE, COL, CROP, BRIGTHEN, CONTRAST, ROTATE, SECURE};
+enum TOOLIDENT{BLUR, SHARPEN, RESIZE, COL, CROP, BRIGTHEN, CONTRAST, ROTATE, SECURE, AUTOGAMMA, AUTOLEVEL};
 
 
 enum ERRORTYPE{IDENTICAL_IMAGES, WARNING, MAGICK_EXCEPTION, STDEXCEPTION};

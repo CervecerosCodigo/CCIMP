@@ -483,6 +483,11 @@ void MainWindow::set_secure_tool(image_tool *t)
     encipherDialog.set_encipher_toggle_on();
 }
 
+void MainWindow::set_auto_gamma_tool(image_tool *t)
+{
+
+}
+
 
 /**Dette er en callback-funksjon for undo/redo-knappene.
  * Når man velger undo/redo sendes kommandoene "ned" og returen kommer hit
