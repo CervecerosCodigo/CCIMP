@@ -18,6 +18,7 @@
 #include "tool_auto_gamma.h"
 #include "tool_auto_level.h"
 #include "tool_sharpness.h"
+#include "tool_scale.h"
 
 class build_tools
 {
@@ -33,6 +34,7 @@ class build_tools
     tool* auto_gamma;
     tool* sharpen_tool;
     tool* auto_level;
+    tool* scale_tool;
 
     void create_tools_to_be_used();
 

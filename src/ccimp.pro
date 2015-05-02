@@ -49,7 +49,9 @@ SOURCES += main.cpp\
     gui/auto_gamma_dialog.cpp \
     img_tools/tool_sharpness.cpp \
     gui/auto_level_dialog.cpp \
-    img_tools/tool_auto_level.cpp
+    img_tools/tool_auto_level.cpp \
+    gui/scale_dialog.cpp \
+    img_tools/tool_scale.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -98,7 +100,9 @@ HEADERS  += gui/mainwindow.h \
     gui/auto_gamma_dialog.h \
     img_tools/tool_sharpness.h \
     gui/auto_level_dialog.h \
-    img_tools/tool_auto_level.h
+    img_tools/tool_auto_level.h \
+    gui/scale_dialog.h \
+    img_tools/tool_scale.h
 
 
 FORMS    += gui/mainwindow.ui \
@@ -112,7 +116,8 @@ FORMS    += gui/mainwindow.ui \
     gui/encipher_dialaog.ui \
     gui/sharpness_dialog.ui \
     gui/auto_gamma_dialog.ui \
-    gui/auto_level_dialog.ui
+    gui/auto_level_dialog.ui \
+    gui/scale_dialog.ui
 
 
 RESOURCES += \
