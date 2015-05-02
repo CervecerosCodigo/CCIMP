@@ -6,6 +6,7 @@ contrast_dialog::contrast_dialog(QWidget *parent) :
     ui(new Ui::contrast_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Contrast");
     ui->horizontalSlider->setMinimum(-100);
     ui->horizontalSlider->setMaximum(100);
     ui->horizontalSlider->setSingleStep(5);
@@ -31,8 +32,8 @@ void contrast_dialog::on_horizontalSlider_valueChanged(int value)
 }
 
 void contrast_dialog::on_buttonBox_accepted(){
-    emit slotAcceptPressed();
     prepare_and_run_reset_on_values();
+    emit slotAcceptPressed();
 }
 
 void contrast_dialog::on_buttonBox_rejected(){

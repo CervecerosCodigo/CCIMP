@@ -455,6 +455,9 @@ void MainWindow::set_contrast_tool(image_tool *t)
 void MainWindow::set_rotate_tool(image_tool *t)
 {
     rotateDialog.set_tool(t);
+    connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&rotateDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_blur_tool(image_tool *t) {
@@ -483,8 +486,18 @@ void MainWindow::set_secure_tool(image_tool *t)
     encipherDialog.set_encipher_toggle_on();
 }
 
+
 void MainWindow::set_auto_gamma_tool(image_tool *t)
 {
+
+}
+void MainWindow::set_sharpen_tool(image_tool *t)
+{
+    sharpnessDialog.set_tool(t);
+    connect(&sharpnessDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&sharpnessDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&sharpnessDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
+    sharpnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 
 }
 
@@ -625,6 +638,14 @@ void MainWindow::on_encipherButton_clicked()
     }
 }
 
+void MainWindow::on_sharpnessButton_clicked()
+{
+    if(image_is_loaded){
+        event_listen->on_clicked_tool(sharpnessDialog.get_tool());
+        sharpnessDialog.exec();
+    }
+}
+
 void MainWindow::on_actionNext_triggered()
 {
     if(pic_i < pic_count_in_dir -1){
@@ -650,3 +671,5 @@ void MainWindow::on_actionReload_triggered()
 {
     on_treeView_pressed();
 }
+
+

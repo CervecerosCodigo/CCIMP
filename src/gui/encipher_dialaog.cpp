@@ -6,7 +6,7 @@ encipher_dialaog::encipher_dialaog(QWidget *parent) :
     ui(new Ui::encipher_dialaog)
 {
     ui->setupUi(this);
-
+    this->setWindowTitle("Secure");
     this->setFixedSize(this->size());
 
     QButtonGroup *group = new QButtonGroup(this);

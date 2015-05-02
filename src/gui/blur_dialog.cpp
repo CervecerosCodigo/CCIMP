@@ -5,6 +5,7 @@
 blur_dialog::blur_dialog(QWidget *parent) : QDialog(parent), ui(new Ui::blur_dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Blur");
     ui->radiusSlider->setTracking(false);
     ui->intensitySlider->setTracking(false);
     ui->radiusSlider->setMinimum(0);

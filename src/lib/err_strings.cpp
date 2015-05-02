@@ -16,3 +16,5 @@ QString err_strings::encrypt_title= "Encryption error";
 QString err_strings::encrypt_msg= "Something went wrong, NSA can still see this image";
 QString err_strings::rotate_title= "Rotation error";
 QString err_strings::rotate_msg= "Error while rotating, perhaps this image in not rotatable?";
+QString err_strings::sharpen_title= "Sharpness error";
+QString err_strings::sharpen_msg= "Maybe this image is as sharp as it can be?";

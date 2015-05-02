@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     gui/sharpness_dialog.cpp \
     parameters/using_no_parameters.cpp \
     img_tools/tool_auto_gamma.cpp \
-    gui/auto_gamma_dialog.cpp
+    gui/auto_gamma_dialog.cpp \
+    img_tools/tool_sharpness.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -92,7 +93,8 @@ HEADERS  += gui/mainwindow.h \
     gui/sharpness_dialog.h \
     parameters/using_no_parameters.h \
     img_tools/tool_auto_gamma.h \
-    gui/auto_gamma_dialog.h
+    gui/auto_gamma_dialog.h \
+    img_tools/tool_sharpness.h
 
 
 FORMS    += gui/mainwindow.ui \
