@@ -55,7 +55,7 @@ Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi u
 Det er laget tre diagrammer som hver for seg skal illustrere hvordan den ulike kommunikasjonen skjer. 
 
 
-**Instansiering og registrering av verktøy**
+### Instansiering og registrering av verktøy
 Dette diagrammet skisserer hvordan programmet starter opp, og hvordan man instansierer verktøyene og hvordan de blir registrert. 
 Forklaring:
 
@@ -66,10 +66,10 @@ Forklaring:
 ![Bygging og instansiering](http://cerveceroscodigo.github.io/CCIMP/img/diagram_build_tools.png)
 
 
-**Prosessen som utføres ved endring av et bilde**
+### Prosessen som utføres ved endring av et bilde
 ![Oppdatering av bilde](http://cerveceroscodigo.github.io/CCIMP/img/diagram_update_image.png)
 
 
-**Hvordan historikk og angremulighet fungerer**
+### Hvordan historikk og angremulighet fungerer
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
     
