@@ -53,6 +53,9 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::SECURE:
         gui_mw.set_secure_tool(t);
         break;
+    case TOOLIDENT::AUTOGAMMA:
+        gui_mw.set_auto_gamma_tool(t);
+        break;
     }
 
 }

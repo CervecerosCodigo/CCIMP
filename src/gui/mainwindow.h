@@ -35,6 +35,7 @@
 #include "img_tools/image_tool.h"
 #include "controller/callback_error_iface.h"
 #include <QDirIterator>
+#include "img_tools/tool_auto_gamma.h"
 
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
@@ -47,7 +48,7 @@ class MainWindow : public QMainWindow, public callback_iface, public callback_er
 {
     Q_OBJECT
 
-    //Setter opp dialogvinduer
+    //Setter opp dialogvinduer og evnt. selvstendige tools
     about_dialog aboutDialog;
     crop_dialog cropDialog;
     brightness_dialog brightnessDialog;
@@ -71,6 +72,7 @@ public:
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
+    void set_auto_gamma_tool(image_tool* t);
 
     bool user_want_to_save();
     void update_gui_resize();

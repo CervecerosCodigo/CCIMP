@@ -189,6 +189,7 @@ void MainWindow::update_gui() {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
+    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->setScene(scene);
 }
 
@@ -480,6 +481,11 @@ void MainWindow::set_secure_tool(image_tool *t)
     connect(&encipherDialog, SIGNAL(signalImageDecrypted()), this, SLOT(execute_change_and_accept()));
     encipherDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
     encipherDialog.set_encipher_toggle_on();
+}
+
+void MainWindow::set_auto_gamma_tool(image_tool *t)
+{
+
 }
 
 

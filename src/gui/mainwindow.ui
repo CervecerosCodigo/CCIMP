@@ -192,7 +192,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="encipherButton_3">
+              <widget class="QPushButton" name="autoGammaButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -200,7 +200,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Tool</string>
+                <string>Auto-gamma</string>
                </property>
               </widget>
              </item>
@@ -325,7 +325,7 @@
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
