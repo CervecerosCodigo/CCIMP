@@ -56,6 +56,9 @@ void controller::register_tool(image_tool* t){
     case TOOLIDENT::AUTOGAMMA:
         gui_mw.set_auto_gamma_tool(t);
         break;
+    case TOOLIDENT::AUTOLEVEL:
+        gui_mw.set_auto_level_tool(t);
+        break;
     }
 
 }
