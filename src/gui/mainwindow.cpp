@@ -454,6 +454,9 @@ void MainWindow::set_contrast_tool(image_tool *t)
 void MainWindow::set_rotate_tool(image_tool *t)
 {
     rotateDialog.set_tool(t);
+    connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&rotateDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
 void MainWindow::set_blur_tool(image_tool *t) {
