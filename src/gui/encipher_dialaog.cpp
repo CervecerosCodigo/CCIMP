@@ -70,13 +70,11 @@ void encipher_dialaog::on_buttonBox_accepted()
         if(ui->encPass1->text().compare(ui->encPass2->text())){
             QMessageBox::warning(this, "Password error", "Passwords doesn't match");
         }else{
-            qDebug() << "emit signalImageEncrypted()";
 
             emit slotEncryptionFinished();
         }
 
     }else if(ui->radioDecipher->isChecked()){
-        qDebug() << "emit signalImageDecrypted()";
 
         emit slotDecryptionFinished();
     }

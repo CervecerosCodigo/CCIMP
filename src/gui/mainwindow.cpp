@@ -333,7 +333,7 @@ void MainWindow::redo_command(){
 
 MainWindow::~MainWindow()
 {
-    qDebug() << "Destructing Window";
+
     delete ui;
     delete imgObject;
     delete imgBackground;
