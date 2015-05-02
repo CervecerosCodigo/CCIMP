@@ -21,6 +21,8 @@ namespace err_strings {
     extern QString encrypt_msg;
     extern QString rotate_title;
     extern QString rotate_msg;
+    extern QString sharpen_title;
+    extern QString sharpen_msg;
 }
 
 #endif // ERR_STRINGS_H

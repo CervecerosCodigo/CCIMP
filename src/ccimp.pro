@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     parameters/using_text.cpp \
     img_tools/tool_secure.cpp \
     lib/set_look_and_feel.cpp \
-    gui/sharpness_dialog.cpp
+    gui/sharpness_dialog.cpp \
+    img_tools/tool_sharpness.cpp
 
 HEADERS  += gui/mainwindow.h \
     img_tools/tool.h \
@@ -85,7 +86,8 @@ HEADERS  += gui/mainwindow.h \
     parameters/using_text.h \
     img_tools/tool_secure.h \
     lib/set_look_and_feel.h \
-    gui/sharpness_dialog.h
+    gui/sharpness_dialog.h \
+    img_tools/tool_sharpness.h
 
 FORMS    += gui/mainwindow.ui \
     gui/crop_dialog.ui \

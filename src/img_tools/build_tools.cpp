@@ -14,7 +14,9 @@ build_tools::~build_tools()
     delete rotate;
     delete color_balance;
     delete secure_tool;
+    delete sharpen_tool;
     delete control;
+
 }
 
 
@@ -27,4 +29,5 @@ void build_tools::create_tools_to_be_used(){
     rotate = new tool_rotate(control, new using_coordinates(), TOOLIDENT::ROTATE);
     color_balance = new tool_color_balance(control, new using_slider(3), TOOLIDENT::COL);
     secure_tool = new tool_secure(control, new using_text(), TOOLIDENT::SECURE);
+    sharpen_tool = new tool_sharpness(control, new using_slider(2), TOOLIDENT::SHARPEN);
 }

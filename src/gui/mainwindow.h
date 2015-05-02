@@ -71,6 +71,7 @@ public:
     void set_rotate_tool(image_tool* t);
     void set_color_balance_tool(image_tool* t);
     void set_secure_tool(image_tool* t);
+    void set_sharpen_tool(image_tool* t);
 
     bool user_want_to_save();
     void update_gui_resize();
@@ -178,6 +179,7 @@ private slots:
 
     void on_actionActual_size_triggered();
     void on_actionReload_triggered();
+    void on_sharpnessButton_clicked();
 };
 
 #endif // MAINWINDOW_H

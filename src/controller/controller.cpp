@@ -30,7 +30,7 @@ void controller::register_tool(image_tool* t){
         gui_mw.set_blur_tool(t);
         break;
     case TOOLIDENT::SHARPEN:
-        //code
+        gui_mw.set_sharpen_tool(t);
         break;
     case TOOLIDENT::CROP:
         gui_mw.set_crop_tool(t);
@@ -108,7 +108,7 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
         gui_mw.exception_in_image_processing(err_strings::blur_title, err_strings::blur_msg);
         break;
     case TOOLIDENT::SHARPEN:
-        //gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
+        gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
         break;
     case TOOLIDENT::CROP:
         gui_mw.exception_in_image_processing(err_strings::crop_title, err_strings::crop_msg);
