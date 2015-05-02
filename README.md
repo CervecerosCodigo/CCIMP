@@ -72,7 +72,11 @@ Det finnes altså ingen direkte kontakt mellom `tools` i helt "nede" i programme
 Dette diagrammet tar for seg prosessen som utføres hver gang man endrer et bilde ved å bruke et av verktøyene i `MainWindow`. I det man åpner et bilde via utforskeren på i venstre del av programmet, eller via Open-funksjonen så sendes `QImage`-referansen ned til `image_wrapper` via interfacet `event_listener`. Det er altså `image_wrapper` som holder utfører alle operasjoner på bildet, og som returnerer det endrede bildet til `MainWindow`. 
 
 1. Hvert dialog-vindu eller implementasjon av verktøy som man kan klikke på og bruke i `MainWindow` har via arv fra `ccimp_dialog` en `image_tool` og en parameter-instans. Ved editering vil innholdet i den aktuelle parameter-instansen endres, og den rette metoden kjøres i `MainWindow`.
-2. 
+2. `MainWindow` bruker sin instans av `event_listener`-interface til å kommunisere nedover i systemet, og bruker `event_listen->update_image()` for å utføre jobben med å editere bildet.
+3. `Controller` som implementerer `event_listener`-interfacet har bare ""pass-through"-metoder ned til `image_wrapper`.
+4. `image_wrapper` utfører oppdateringen av bildet ved å kjøre `current_tool->execute(Image* omg)`. `current_tool` ble satt i det verktøyet ble åpnet i `MainWindow` og i det selve utførelsen av det rette verktøyet blir gjort så benyttes parameter-verdiene som ble satt i `slideren`.
+5. Resulatet av editeringen sendes så opp til `MainWindow` via `callback->callback_image_edited(QImage*)`. 
+
 
 ![Oppdatering av bilde](http://cerveceroscodigo.github.io/CCIMP/img/diagram_update_image.png)
 
