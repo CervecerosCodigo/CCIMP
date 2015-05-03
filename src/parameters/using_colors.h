@@ -25,8 +25,6 @@ public:
     inline GREEN get_green(){return green;}
     inline BLUE get_blue(){return blue;}
     inline ALPHA get_alpha(){return alpha;}
-
-    //parameters* get_param() override;
 };
 
 #endif // using_colors_H

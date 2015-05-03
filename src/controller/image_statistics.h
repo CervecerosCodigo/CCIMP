@@ -12,7 +12,7 @@
 class image_statistics
 {
     data_key_value_container<QString, QString> stats_container;
-    QImage img; //jeg får ikke ut noen data fra QImage. Bruker QPixmap til videre.
+    QImage img;
 
 
     /** Private function to be called from a other public

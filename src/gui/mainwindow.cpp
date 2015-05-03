@@ -59,7 +59,6 @@ void MainWindow::open(){
  */
 void MainWindow::resizeEvent(QResizeEvent *e){
     update_gui_resize();
-    //set_boot_image();
 }
 
 
@@ -129,15 +128,7 @@ void MainWindow::load_file(const QString &fileName){
 
 
 void MainWindow::set_graphics_environment(){
-    //scene = new QGraphicsScene(this);
 
-    //    imgBackground = new QImage();
-    //    imgBackground->load(":/img/img/CCIMP_background.png");
-    //    ui->graphicsView->setStyleSheet("QWidget {"
-    //                                    "background-image: url(:/img/img/CCIMP_background.png); "
-    //                                    "background-repeat: no-repeat; "
-    //                                    "background-position: center; "
-    //                                    "background-color: white;  }");
 }
 
 
@@ -189,8 +180,6 @@ void MainWindow::update_gui() {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
-
-//    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->setScene(scene);
 }
 
@@ -200,7 +189,6 @@ void MainWindow::update_gui() {
  * @param updated_image
  */
 void MainWindow::set_image() {
-    //imgObject = img;
 
     //Viser statistikk
     if(image_is_loaded){
@@ -308,7 +296,6 @@ void MainWindow::zoomOut() {
 
 void MainWindow::on_actionActual_size_triggered()
 {
-    qDebug() << "actualSize() kjørt";
     zoomVerdi = 1;
     scene = new QGraphicsScene(this);
     image = QPixmap::fromImage(*imgObject);
@@ -325,7 +312,6 @@ void MainWindow::zoomToFit() {
     scene->setSceneRect(image.rect());
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
-    qDebug() << "zoomToFit() kjørt";
 }
 
 
@@ -385,21 +371,7 @@ void MainWindow::on_treeView_pressed()
                 pic_count_in_dir = i+1;
             }
 
-            //        //Debugg av vektor
-            //                for(auto n : pics_in_folder){
-            //                    qDebug() << "pics_in_folder" << n;
-            //                }
-
-            //        /*
-            //         * Vi vi må også nullstille teller variablene her slik
-            //         * at for hver gang vi klikker i view bli disse oppdatert.
-            //         */
             pic_i=0;
-
-            //        /*
-            //         * Dersom vi klikker i et bilde midt i filstreet må vi oppdater
-            //         * pic_i til den verdi som samsvarer med det markerte bilde
-            //         */
 
             QString tmp_element = QFileInfo(pics_in_folder[0]).absoluteFilePath(); //starter med første bilde
             QString selected_element = selected_file; //referanse til klikket bilde i filsystemet
@@ -541,6 +513,30 @@ void MainWindow::callback_image_edited(QImage* img){
 }
 
 
+
+/************************
+ * Exception handling
+ *
+ * *********************
+ */
+
+/*! Viser en QMessageBox dersom det videresendes en exception fra controller.
+ *  Exception som blir sendt hit oppstår direkte i tool klassen som behandler bilde.
+ * \brief MainWindow::exception_in_image_processing
+ * \param err_title
+ * \param err_msg
+ */
+void MainWindow::exception_in_image_processing(QString err_title, QString err_msg)
+{
+    QMessageBox::information(this, err_title, err_msg);
+}
+
+//End of exception handling
+
+
+// Slot metoder
+
+
 /**Felles SLOT som utføres uansett hvilket verktøy som er brukt,
  * og kjøres "live" på bilderedigeringsverktøyene
  */
@@ -573,31 +569,6 @@ void MainWindow::execute_change_and_accept()
 }
 
 
-
-/************************
- * Exception handling
- *
- * *********************
- */
-
-/*! Viser en QMessageBox dersom det videresendes en exception fra controller.
- *  Exception som blir sendt hit oppstår direkte i tool klassen som behandler bilde.
- * \brief MainWindow::exception_in_image_processing
- * \param err_title
- * \param err_msg
- */
-void MainWindow::exception_in_image_processing(QString err_title, QString err_msg)
-{
-    QMessageBox::information(this, err_title, err_msg);
-}
-
-//End of exception handling
-
-
-/*
- * Slot metoder
- */
-
 void MainWindow::on_blurButton_clicked()
 {
     if(image_is_loaded){
@@ -612,8 +583,6 @@ void MainWindow::on_brightnessButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(brightnessDialog.get_tool());
-
-        //brightnessDialog.setFixedSize(brightnessDialog.size());
         brightnessDialog.exec();
 
     }
@@ -663,7 +632,6 @@ void MainWindow::on_encipherButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(encipherDialog.get_tool());
-        //        encipherDialog.set_encipher_toggle_on();
         encipherDialog.exec();
     }
 }
@@ -710,7 +678,6 @@ void MainWindow::on_actionNext_triggered()
 {
     if(pic_i < pic_count_in_dir -1){
         set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
-//        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0)); //setter riktig markering
     }
 }
 
@@ -719,17 +686,20 @@ void MainWindow::on_actionPrevoius_triggered()
     if(pic_i > 0){
         if(pic_i == pic_count_in_dir) pic_i--;
         set_image(pics_in_folder[--pic_i]);
-//        ui->treeView->setCurrentIndex(fs_index.child(pic_i,0));
     }
 }
 
-void MainWindow::closeEvent(QCloseEvent *){
-    user_want_to_save();
-}
 
 void MainWindow::on_actionReload_triggered()
 {
     on_treeView_pressed();
+}
+
+// End og slot metoder
+
+
+void MainWindow::closeEvent(QCloseEvent *){
+    user_want_to_save();
 }
 
 
