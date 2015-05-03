@@ -12,9 +12,9 @@
 
 * [Introduksjon](#introduksjon)
 * [Installasjon](#installasjon)
-* [Arkitektur og design](#arkitektur og design)
-* [Om arbeidet, og utfordringene](#'om arbeidet, og utfordringene')
-* [Mangler](#\mangler, bugs og svakheter i design)
+* [Arkitektur og design](#{arkitektur og design})
+* [Om arbeidet, og utfordringene](#(om arbeidet, og utfordringene))
+* [Mangler](#[mangler, bugs og svakheter i design])
 
 
 
