@@ -31,7 +31,7 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 ### Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
 * [Klassediagram](http://cerveceroscodigo.github.io/CCIMP/img/diagram_class.png)
-* [Dokumentasjon for kode (Doxygen)](http://cerveceroscodigo.github.io/CCIMP/doc/)
+* [Dokumentasjon for kildekode](http://cerveceroscodigo.github.io/CCIMP/doc/)
 
 ### Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
@@ -51,7 +51,7 @@ Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Lin
 For å kompilere CCIMP fra kildekoder trenger du følgende verktøy. 
 
 1. **GNU GCC C++** kompilator.
-2. [**Qt5 utviklingsmiljø**](https://www.qt.io/download-open-source/)
+2. [**Qt 5** utviklingsmiljø](https://www.qt.io/download-open-source/) med Qt Creator.
 3. **ImageMagick++** bilbiotek.
 
 
@@ -62,23 +62,41 @@ Ettersom CCIMP er dynamisk linket med ImageMagick++ må den være installert på
 Hvis ImageMagick installeres via repo til din distrubisjon kan søkvei til bibliotekene være annerledes. Dersom du ønsker å bruke development pakker for ditt system (Fedora: `ImageMagick-c++-devel`, Ubuntu: `libmagick++-dev`) må du konfigurere om [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) slik at den overensstemmer med søkveien til bilbiotekene på ditt system. 
 
 Vi **anbefaler sterkt** at ImageMagick kompileres fra kildekode ettersom søkveien for installasjonen blir densamme for alle Linux system.
-**Viktig** Sørg for at [GNU libtool](http://www.gnu.org/software/libtool/) er tilgjengelig på ditt system før du kompilerer (Fedora: `libtool-ltdl-devel`, Ubuntu: `libltdl-dev`).
 
-Følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt system:
+__Før kompilering__
+
+I tillegg til `GNU GCC C++` kommer du også å behøve [`GNU libtool`](http://www.gnu.org/software/libtool/), den installerer du enklest gjennom repository for din distribusjon. Dette gjør enklest på følgende måte:
+
+Ubuntu/Debian
+```
+$ sudo apt-get update
+$ sudo apt-get install libltdl-dev
+```
+
+Fedora
+```
+# yum install libtool-ltdl-devel
+```
+
+Deretter følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt system:
 
 ```
 1. wget http://www.imagemagick.org/download/ImageMagick.tar.gz
 2. tar xfvz ./ImageMagick.tar.gz
-3. ./configure --enable-shared --with-modules
-4. make 
-5. sudo make install 
-6. sudo ldconfig /usr/local/lib
+3. cd ImageMagick/
+4. ./configure --enable-shared --with-modules
+5. make 
+6. sudo make install 
+7. sudo ldconfig /usr/local/lib
 ```
 
 Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bilbiotek.
 
 ##### MAC OSX
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
+
+
+Etter at alt er installert, start Qt Creator og åpne prosjektet gjennom at åpne `CCIMP.pro` filen.
     
     
 <a id="kap3"></a>
