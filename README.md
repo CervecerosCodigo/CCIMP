@@ -64,7 +64,9 @@ Hvis ImageMagick installeres via repo til din distrubisjon kan søkvei til bibli
 
 Vi **anbefaler sterkt** at ImageMagick kompileres fra kildekode ettersom søkveien for installasjonen blir densamme for alle Linux system.
 
+
 Før kompilering
+
 I tillegg til `GNU GCC C++` kommer du også å behøve [`GNU libtool`](http://www.gnu.org/software/libtool/), den installerer du enklest gjennom repository for din distribusjon. Dette gjør enklest på følgende måte:
 
 Ubuntu/Debian
@@ -90,7 +92,7 @@ Deretter følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt
 7. sudo ldconfig /usr/local/lib
 ```
 
-Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bilbiotek.
+Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bibliotek.
 
 ##### MAC OSX
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
