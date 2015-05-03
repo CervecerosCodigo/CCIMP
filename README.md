@@ -10,12 +10,13 @@
 
 ## Innholdsfortegnelse
 
-[Introduksjon] (Introduksjon)
-[Mangler] (Mangler, bugs og svakheter i design)
+[Introduksjon](Introduksjon)
+
+[Mangler](Mangler, bugs og svakheter i design)
 
 
 
-## Introduksjon
+##Introduksjon
 
 ### Om sluttrapporten
 Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en type flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
