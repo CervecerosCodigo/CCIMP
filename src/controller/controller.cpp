@@ -141,6 +141,12 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
     case TOOLIDENT::SECURE:
         gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
         break;
+    case TOOLIDENT::AUTOGAMMA:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
+        break;
+    case TOOLIDENT::AUTOLEVEL:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
+        break;
     }
 
     canceled(); //Exception message displayed, so we cancel last try to edit
