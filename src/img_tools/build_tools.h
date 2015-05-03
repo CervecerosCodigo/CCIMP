@@ -24,17 +24,6 @@ class build_tools
 {
     controller_iface* control;
 
-    tool* blur;
-    tool* crop;
-    tool* brightness;
-    tool* contrast;
-    tool* rotate;
-    tool* color_balance;
-    tool* secure_tool;
-    tool* auto_gamma;
-    tool* sharpen_tool;
-    tool* auto_level;
-    tool* scale_tool;
 
     void create_tools_to_be_used();
 

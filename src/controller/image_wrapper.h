@@ -25,6 +25,9 @@ class image_wrapper
     bool image_is_orig;
     callback_iface* callback;
 
+    QImage* to_QImage(Magick::Image& img);  //konverterer til QImage
+    void to_Image(QImage& qimage);          //konverterer til Image
+
 public:
     image_wrapper(QImage& img, callback_iface* c);
     ~image_wrapper();
