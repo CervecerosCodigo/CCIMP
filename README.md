@@ -10,7 +10,7 @@
 
 ## Innholdsfortegnelse
 
-* [Introduksjon](#introduksjon)
+* [Introduksjon](#kap1)
 * [Installasjon](#installasjon)
 * [Arkitektur og design](#arkitektur)
 * [Om arbeidet, og utfordringene](#(om arbeidet, og utfordringene))
@@ -18,7 +18,7 @@
 
 
 
-## Introduksjon
+## Introduksjon <a id="kap1"></a>
 
 ### Om sluttrapporten
 Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en type flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
