@@ -1,25 +1,27 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <iostream>
+#include <vector>
 #include <QMainWindow>
 #include <QFileDialog>
-//For bildevisning
 #include <QImage>
 #include <QGraphicsView>
 #include <QGraphicsPixmapItem>
 #include <QWheelEvent>
-//For FileSystem model
 #include <QFileSystemModel>
 #include <QModelIndex>
 #include <QDir>
 #include <QMessageBox>
 #include <QDebug>
+#include <QSignalMapper>
+#include <QDirIterator>
 #include <Magick++.h>
-#include <iostream>
 #include "controller/image_statistics.h"
 #include "controller/event_listener.h"
 #include "controller/callback_iface.h"
 #include "controller/ccimp_vector.h"
+#include "controller/callback_error_iface.h"
 #include "gui/about_dialog.h"
 #include "gui/crop_dialog.h"
 #include "gui/blur_dialog.h"
@@ -28,19 +30,15 @@
 #include "gui/color_balance_dialog.h"
 #include "gui/encipher_dialaog.h"
 #include "gui/sharpness_dialog.h"
-#include <vector>
 #include "gui/brightness_dialog.h"
-#include "img_tools/img_obj_converter.h"
-#include <QSignalMapper>
-#include "img_tools/image_tool.h"
-#include "controller/callback_error_iface.h"
-#include <QDirIterator>
-#include "img_tools/tool_auto_gamma.h"
-#include "img_tools/tool_auto_level.h"
 #include "gui/auto_gamma_dialog.h"
 #include "gui/auto_level_dialog.h"
-#include "img_tools/tool_scale.h"
 #include "gui/scale_dialog.h"
+#include "img_tools/img_obj_converter.h"
+#include "img_tools/image_tool.h"
+#include "img_tools/tool_auto_gamma.h"
+#include "img_tools/tool_auto_level.h"
+#include "img_tools/tool_scale.h"
 
 
 using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
@@ -53,7 +51,7 @@ class MainWindow : public QMainWindow, public callback_iface, public callback_er
 {
     Q_OBJECT
 
-    //Setter opp dialogvinduer og evnt. selvstendige tools
+    //Setter opp dialogvinduer
     about_dialog aboutDialog;
     crop_dialog cropDialog;
     brightness_dialog brightnessDialog;
@@ -95,41 +93,34 @@ public:
     void callback_report_image_is_original() override;
     void exception_in_image_processing(QString err_title, QString err_msg) override;
     callback_iface* get_callback_listener() override;
+
 private:
     Ui::MainWindow *ui;
-
-    void createConnections();
-    void load_file(const QString &fileName);
-    //void wheelEvent(QWheelEvent* event);
-
     QString filePath;
     QString original_filePath;
-
-    double zoomVerdi, zoomFloorValue, zoomRoofValue;
-
-
-    /*
-     * Setter opp bildevisning
-     */
-    void set_graphics_environment();
-    void set_image(const QString &path);
-    void resizeEvent ( QResizeEvent* e );
-
     QString imgPath;
     QImage *imgObject;
     QImage *imgBackground;
     QPixmap image;
     QGraphicsScene *scene;
     QGraphicsView *view;
-
-
-    /*
-     * TreeView med FileSystem model
-     */
     QString fs_path;
     QFileSystemModel *fs_model;
     QStringList fs_filter;
     QModelIndex fs_index;
+    double zoomVerdi, zoomFloorValue, zoomRoofValue;
+
+    void createConnections();
+    void load_file(const QString &fileName);
+
+
+    //Setter opp bildevisning
+    void set_graphics_environment();
+    void set_image(const QString &path);
+    void resizeEvent ( QResizeEvent* e );
+
+
+    //TreeView med FileSystem model
     void set_fs_view();
 
 
@@ -146,6 +137,7 @@ private:
      * For å vise bildestatistikk
      */
     void show_stats(QImage*);
+
     /**
      * Forskjellige lyttere mellom gui og controllere
      */
@@ -168,7 +160,6 @@ public slots:
     void execute_change_and_accept();
 
 private slots:
-    //void on_treeView_clicked();
     void on_treeView_pressed();
     void rotate_left();
     void rotate_right();
@@ -182,7 +173,6 @@ private slots:
     void on_cropButton_clicked();
     void on_contrastButton_clicked();
     void on_rotateButton_clicked();
-//    void window_resize_done();
     void on_colorBalanceButton_clicked();
     void on_actionAbout_CCIMP_triggered();
     void on_encipherButton_clicked();
