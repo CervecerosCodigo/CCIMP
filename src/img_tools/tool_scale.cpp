@@ -3,22 +3,25 @@
 
 void tool_scale::execute(Magick::Image &img)
 {
-    using_coordinates* param = (using_coordinates*) get_para();
+    using_slider* param = (using_slider*) get_para();
+
+    width_initial = img.columns();
+    height_initial = img.rows();
+
+    width_new = (param->get_slider_val()*0.01)*width_initial;
+    //qDebug() << "width_initial" << width_initial;
+    //qDebug() << "width_new" << width_new;
 
     try{
-        img.scale(Magick::Geometry(
-                     param->get_width(),
-                     param->get_height(),
-                     param->get_x_axis(),
-                     param->get_y_axis()));
-        //Denne raden kan brukes for testing hvis man ønsker å tvinge frem en exception
-        //img.crop(Magick::Geometry(10000,10000,10000,10000));
+
+        img.adaptiveResize(Magick::Geometry(width_new,0, 0, 0));
+
     }catch(Magick::Warning){
         //Det er denne exception som normalt blir eksekvert hved feil i ImageMagick
-        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::WARNING);
+        err_listener->on_exception_occured(TOOLIDENT::RESIZE, ERRORTYPE::WARNING);
     }catch(Magick::Error &error){
-        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::MAGICK_EXCEPTION);
+        err_listener->on_exception_occured(TOOLIDENT::RESIZE, ERRORTYPE::MAGICK_EXCEPTION);
     }catch(std::exception &error){
-        err_listener->on_exception_occured(TOOLIDENT::CROP, ERRORTYPE::STDEXCEPTION);
+        err_listener->on_exception_occured(TOOLIDENT::RESIZE, ERRORTYPE::STDEXCEPTION);
     }
 }

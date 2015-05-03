@@ -35,6 +35,6 @@ void build_tools::create_tools_to_be_used(){
     auto_gamma = new tool_auto_gamma(control, new using_no_parameters(), TOOLIDENT::AUTOGAMMA);
     sharpen_tool = new tool_sharpness(control, new using_slider(2), TOOLIDENT::SHARPEN);
     auto_level = new tool_auto_level(control, new using_no_parameters(), TOOLIDENT::AUTOLEVEL);
-    scale_tool = new tool_scale(control, new using_coordinates(), TOOLIDENT::RESIZE);
+    scale_tool = new tool_scale(control, new using_slider(), TOOLIDENT::RESIZE);
 
 }
