@@ -67,32 +67,34 @@ void MainWindow::resizeEvent(QResizeEvent *e){
  * @brief MainWindow::save_as
  */
 void MainWindow::save_as(){
-    filePath = QFileDialog::getSaveFileName(
-                this,
-                tr("Save As"),
-                "",
-                tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
-                );
+    if(image_is_loaded){
+        filePath = QFileDialog::getSaveFileName(
+                    this,
+                    tr("Save As"),
+                    "",
+                    tr("JPEG (*.jpg *.jpeg);;PNG (*.png)")
+                    );
 
-    QFile outFile(filePath);
-    if (outFile.open(QIODevice::WriteOnly)){
-        imgObject->save(filePath);
-        outFile.close();
-        image_edited_not_saved = false;
+        QFile outFile(filePath);
+        if (outFile.open(QIODevice::WriteOnly)){
+            imgObject->save(filePath);
+            outFile.close();
+            image_edited_not_saved = false;
+        }
     }
-
 }
 
 void MainWindow::save(){
-    QFile outFile(original_filePath);
-    if (outFile.open(QIODevice::WriteOnly)){
-        imgObject->save(original_filePath);
-        outFile.close();
-        QString info = "File saved in\n" + original_filePath;
-        QMessageBox::information(this, "Save", info);
-        image_edited_not_saved = false;
+    if(image_is_loaded){
+        QFile outFile(original_filePath);
+        if (outFile.open(QIODevice::WriteOnly)){
+            imgObject->save(original_filePath);
+            outFile.close();
+            QString info = "File saved in\n" + original_filePath;
+            QMessageBox::information(this, "Save", info);
+            image_edited_not_saved = false;
+        }
     }
-
 }
 
 //Hvis bildet er endret skal spørsmål om å lagre dukke opp
@@ -258,62 +260,71 @@ void MainWindow::rotate_right() {
 
 // Zoomer inn
 void MainWindow::zoomIn() {
-
-    scene = new QGraphicsScene(this);
-    ui->actionZoom_Out->setEnabled(true);
-    if(zoomVerdi <= zoomRoofValue){
-        zoomVerdi += 0.25;
-        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-        ui->graphicsView->setScene(scene);
-    }else{
-        ui->actionZoom_In->setDisabled(true);
+    if(image_is_loaded){
+        scene = new QGraphicsScene(this);
+        ui->actionZoom_Out->setEnabled(true);
+        if(zoomVerdi <= zoomRoofValue){
+            zoomVerdi += 0.25;
+            QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+            scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            ui->graphicsView->setScene(scene);
+        }else{
+            ui->actionZoom_In->setDisabled(true);
+        }
     }
 }
 
 // Zoomer ut
 void MainWindow::zoomOut() {
-
-    scene = new QGraphicsScene(this);
-    ui->actionZoom_In->setEnabled(true);
-    if(zoomVerdi >= zoomFloorValue){
-        zoomVerdi -= 0.25;
-        QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
-        scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-        ui->graphicsView->setScene(scene);
-    }else{
-        ui->actionZoom_Out->setDisabled(true);
+    if(image_is_loaded){
+        scene = new QGraphicsScene(this);
+        ui->actionZoom_In->setEnabled(true);
+        if(zoomVerdi >= zoomFloorValue){
+            zoomVerdi -= 0.25;
+            QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
+            scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            ui->graphicsView->setScene(scene);
+        }else{
+            ui->actionZoom_Out->setDisabled(true);
+        }
     }
 }
 
 
 void MainWindow::on_actionActual_size_triggered()
 {
-    zoomVerdi = 1;
-    scene = new QGraphicsScene(this);
-    image = QPixmap::fromImage(*imgObject);
-    scene->addPixmap(image);
-    ui->graphicsView->setScene(scene);
+    if(image_is_loaded){
+        zoomVerdi = 1;
+        scene = new QGraphicsScene(this);
+        image = QPixmap::fromImage(*imgObject);
+        scene->addPixmap(image);
+        ui->graphicsView->setScene(scene);
+    }
 }
 
 void MainWindow::zoomToFit() {
-
-    zoomVerdi = 1;
-    scene = new QGraphicsScene(this);
-    image = QPixmap::fromImage(*imgObject);
-    scene->addPixmap(image);
-    scene->setSceneRect(image.rect());
-    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-    ui->graphicsView->setScene(scene);
+    if(image_is_loaded){
+        zoomVerdi = 1;
+        scene = new QGraphicsScene(this);
+        image = QPixmap::fromImage(*imgObject);
+        scene->addPixmap(image);
+        scene->setSceneRect(image.rect());
+        ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+        ui->graphicsView->setScene(scene);
+    }
 }
 
 
 void MainWindow::undo_command(){
-    event_listen->undo_last_command();
+    if(image_is_loaded){
+        event_listen->undo_last_command();
+    }
 }
 
 void MainWindow::redo_command(){
-    event_listen->redo_last_command();
+    if(image_is_loaded){
+        event_listen->redo_last_command();
+    }
 }
 
 
@@ -671,16 +682,20 @@ void MainWindow::on_scaleButton_clicked()
 
 void MainWindow::on_actionNext_triggered()
 {
-    if(pic_i < pic_count_in_dir -1){
-        set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
+    if(image_is_loaded){
+        if(pic_i < pic_count_in_dir -1){
+            set_image(pics_in_folder[++pic_i]); //oppdaterer bilde
+        }
     }
 }
 
 void MainWindow::on_actionPrevoius_triggered()
 {
-    if(pic_i > 0){
-        if(pic_i == pic_count_in_dir) pic_i--;
-        set_image(pics_in_folder[--pic_i]);
+    if(image_is_loaded){
+        if(pic_i > 0){
+            if(pic_i == pic_count_in_dir) pic_i--;
+            set_image(pics_in_folder[--pic_i]);
+        }
     }
 }
 
