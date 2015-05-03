@@ -110,16 +110,27 @@ I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `ima
 
 ## Om arbeidet, og utfordringene
 
-Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
-Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
-Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
+* Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
+* Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
+* Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
 
 
-## Mangler og bugs
+## Mangler, bugs og svakheter i design
 
 ### Mangler
 
-Opprinnelig ble det bestemt at programmet skulle støtte arkfaner, slik at hvert bilde man åpnet ble åpnet i en ny arkfane, og at hver arkfane hadde sin egen historikk, slik som dagens "en-bildes-løsning" har. `Controller` ville da hatt en viktigere rolle, med av alle `image_wrapper`-objektene, men d det ikke var tid til å finne ut hvordan arkfaner brukes ble det ikke ferdigstillt. Dette er dog et mindre prosjekt hvis man skulle ønske å gå videre med utviklingen. Arkitekturen har i vedlig stor grad tatt høyde for denne utvidelsen. 
+* Opprinnelig ble det bestemt at programmet skulle støtte arkfaner, slik at hvert bilde man åpnet ble åpnet i en ny arkfane, og at hver arkfane hadde sin egen historikk, slik som dagens "en-bildes-løsning" har. `Controller` ville da hatt en viktigere rolle, med av alle `image_wrapper`-objektene, men det ikke var tid til å finne ut hvordan arkfaner brukes ble det ikke ferdigstillt. Dette er dog et mindre prosjekt hvis man skulle ønske å gå videre med utviklingen. Arkitekturen har i vedlig stor grad tatt høyde for denne utvidelsen. 
+* Et annet viktig mål som var satt, men som åpenbart ville være vanskelig å få til var å tilpasse programmet slik at man kunne utviklet 3. parts bildebehandlingsfiltre, som plugins, og koblet dem inn i programmet dynamisk. Dette kunne man oppnådd ved ågi tilgang til de rette interface og header-filer, men som det nevnes mer om i punktet om svakheter i designet så var det andre utfordringer som var med på å stoppe denne funksjonaliteten. 
+
+### Bugs
+
+De aller fleste bugs er luket ut. Det ligger en liste med `Issues` i [git-repoet](https://github.com/CervecerosCodigo/CCIMP/issues) som lister kort de gjenstående bugs.
+
+### Svakheter i design
+
+* Om en tenker at komplekst design er en svakhet så kan dette være et reelt punkt. Det har vært ganske vanskelig i noen tilfeller å forholde seg til hvor det enkelte metodekall ender opp, og hvordan alt henger sammen. For et så lite program så kan det diskuteres om det kunne vært gjort på en enkelere og mer oversiktelig måte, men ved å ta de nødvendige steg for å holde abstraksjonen høy nok, så har også det gitt større fleksibilitet og fremtidig utvidbarhet.
+* Qt tilbyr Slots og Signals som gjør det lett å koble sammen events og triggere. Dette er likevel en fallgruve, da man må koble ferdigdefinerte signals til slots, og muligheten for å opprette gui-komponenter med tilhørende eventer og triggere ble redusert kraftig. Om man skulle implementert plugin-funksjonalitet av nye filtre så måtte også tilhørende GUI-komponenter kunne opprettes dynamisk. Hvordan det skulle vært gjort med bruk av slots og signals ble ikke klart og denne planen ble derfor ikke gjennomført. Alternativet hadde vært å bruke egendefinerte observer/event-patterns for alle slike "listen for events" i GUI, men tiden ble for knapp for det. Dette medførte at man endte opp med en Switch/Case i `Controller`, som nok ikke er særlig dynamsik, og tilsvarende enum `TOOLIDENT` som identifiserer hvert verktøy, og som switch/case switsjer på. Dette er som skulle vært unngått om man hadde fått begynt på nytt.
+* `MainWindow` er også veldig overfylt med metoder og slots. Alle set-metodene til knappene/verktøyene, samt alle "on_button_clicked"-metoder kunne vært flyttet ut i en egen klasse, ettersom dette strengt tatt ikke kommuniserer med mer enn tre metoder i `MainWindow`. Hadde gruppen hatt 2 dager til så hadde dette blit gjort. 
 
 
     
