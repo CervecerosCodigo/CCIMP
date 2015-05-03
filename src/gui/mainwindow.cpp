@@ -5,7 +5,6 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //QWidget::showMaximized();
 
     createConnections();
 
@@ -31,7 +30,6 @@ void MainWindow::createConnections(){
     connect(ui->actionRotateRight, SIGNAL(triggered()), this, SLOT(rotate_right()));
     connect(ui->actionZoom_In, SIGNAL(triggered()), this, SLOT(zoomIn()));
     connect(ui->actionZoom_Out, SIGNAL(triggered()), this, SLOT(zoomOut()));
-    //connect(ui->actionActual_size, SIGNAL(triggered()), this, SLOT(actualSize()));
     connect(ui->actionZoom_to_fit, SIGNAL(triggered()), this, SLOT(zoomToFit()));
     connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(undo_command()));
     connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(redo_command()));
@@ -166,7 +164,7 @@ void MainWindow::set_image(const QString &path)
 }
 
 /**Fellesmetode som kjøres fra set_updated_image og resize_gui-metoden.
- * Den en gjør er å updatere hele det grafiske interfacet.
+ * Den en gjør er å updatere hele det grafiske interfacet ved endring av bilde.
  * @brief MainWindow::update_gui_resize
  */
 void MainWindow::update_gui_resize(){
@@ -191,7 +189,6 @@ void MainWindow::update_gui() {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
-    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->setScene(scene);
 }
 
@@ -248,18 +245,17 @@ void MainWindow::set_fs_view()
     ui->treeView->expand(fs_index);
     ui->treeView->scrollTo(fs_index);
     ui->treeView->setCurrentIndex(fs_index);
-    //    ui->treeView->resizeColumnToContents(0);
-    ui->treeView->setColumnWidth(0, 400); //Bruker denne foreløpig ettersom automatisk resizing på raden over vil ikke fungere.
+    ui->treeView->setColumnWidth(0, 400);
 }
 
 
-
+// Viser metadata for bilde
 void MainWindow::show_stats(QImage *img){
     image_statistics stat;
     ui->textEdit->setText(stat.get_img_stat(*img));
 }
 
-
+// Roterer bilde til venstre
 void MainWindow::rotate_left() {
     if(image_is_loaded){
         event_listen->on_clicked_tool(rotateDialog.get_tool());
@@ -268,7 +264,7 @@ void MainWindow::rotate_left() {
     }
 }
 
-
+// Roterer bilde til høyre
 void MainWindow::rotate_right() {
     if(image_is_loaded){
         event_listen->on_clicked_tool(rotateDialog.get_tool());
@@ -277,20 +273,7 @@ void MainWindow::rotate_right() {
     }
 }
 
-/*
-void MainWindow::wheelEvent(QWheelEvent* event) {
-
-    if (event->orientation() == Qt::Vertical) {
-        if( (event->delta() * 220) > 0)
-            zoomIn();
-
-        else zoomOut();
-    }
-
-    //event->accept();
-}
-*/
-
+// Zoomer inn
 void MainWindow::zoomIn() {
 
     scene = new QGraphicsScene(this);
@@ -300,13 +283,12 @@ void MainWindow::zoomIn() {
         QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
         scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
         ui->graphicsView->setScene(scene);
-//        qDebug() << zoomVerdi;
     }else{
         ui->actionZoom_In->setDisabled(true);
     }
 }
 
-
+// Zoomer ut
 void MainWindow::zoomOut() {
 
     scene = new QGraphicsScene(this);
@@ -316,11 +298,11 @@ void MainWindow::zoomOut() {
         QSize size(image.width() * zoomVerdi, image.height() * zoomVerdi);
         scene->addPixmap(image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
         ui->graphicsView->setScene(scene);
-//        qDebug() << zoomVerdi;
     }else{
         ui->actionZoom_Out->setDisabled(true);
     }
 }
+
 
 void MainWindow::on_actionActual_size_triggered()
 {
@@ -333,9 +315,15 @@ void MainWindow::on_actionActual_size_triggered()
 }
 
 void MainWindow::zoomToFit() {
-    qDebug() << "zoomToFit() kjørt";
+
     zoomVerdi = 1;
-    update_gui();
+    scene = new QGraphicsScene(this);
+    image = QPixmap::fromImage(*imgObject);
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+    qDebug() << "zoomToFit() kjørt";
 }
 
 
@@ -447,6 +435,7 @@ callback_iface* MainWindow::get_callback_listener(){
     return this;
 }
 
+// set-metdode for brightness-tool
 void MainWindow::set_brightness_tool(image_tool *t)
 {
     brightnessDialog.set_tool(t);
@@ -456,6 +445,7 @@ void MainWindow::set_brightness_tool(image_tool *t)
     brightnessDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
+// set-metdode for contrast-tool
 void MainWindow::set_contrast_tool(image_tool *t)
 {
     contrastDialog.set_tool(t);
@@ -464,6 +454,7 @@ void MainWindow::set_contrast_tool(image_tool *t)
     contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
+// set-metdode for rotate-tool
 void MainWindow::set_rotate_tool(image_tool *t)
 {
     rotateDialog.set_tool(t);
@@ -472,6 +463,7 @@ void MainWindow::set_rotate_tool(image_tool *t)
     rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
+// set-metdode for blur-tool
 void MainWindow::set_blur_tool(image_tool *t) {
     blurDialog.set_tool(t);
     connect(&blurDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
@@ -480,6 +472,7 @@ void MainWindow::set_blur_tool(image_tool *t) {
     blurDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
+// set-metdode for color balance tool
 void MainWindow::set_color_balance_tool(image_tool *t)
 {
     colorBalanceDialog.set_tool(t);
@@ -489,6 +482,7 @@ void MainWindow::set_color_balance_tool(image_tool *t)
     colorBalanceDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
+// set-metdode for secure-tool / kryptering
 void MainWindow::set_secure_tool(image_tool *t)
 {
     encipherDialog.set_tool(t);
@@ -498,19 +492,20 @@ void MainWindow::set_secure_tool(image_tool *t)
     encipherDialog.set_encipher_toggle_on();
 }
 
-
+// set-metdode for auto gamma tool
 void MainWindow::set_auto_gamma_tool(image_tool *t)
 {
     autoGammaDialog.set_tool(t);
 }
 
-
+// set-metdode for auto level tool
 void MainWindow::set_auto_level_tool(image_tool *t)
 {
     autoLevelDialog.set_tool(t);
 }
 
 
+// set-metdode for sharpen tool
 void MainWindow::set_sharpen_tool(image_tool *t)
 {
     sharpnessDialog.set_tool(t);
@@ -521,6 +516,7 @@ void MainWindow::set_sharpen_tool(image_tool *t)
 
 }
 
+// set-metdode for scale tool
 void MainWindow::set_scale_tool(image_tool *t)
 {
     scaleDialog.set_tool(t);
@@ -594,7 +590,9 @@ void MainWindow::exception_in_image_processing(QString err_title, QString err_ms
 //End of exception handling
 
 
-
+/*
+ * Slot metoder
+ */
 
 void MainWindow::on_blurButton_clicked()
 {
