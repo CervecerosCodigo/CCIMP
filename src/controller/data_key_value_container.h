@@ -6,18 +6,16 @@
 #include <stdexcept>
 #include <deque>
 
-//using namespace std;
 
 template<class K, class V>
-/** This is a cool template class.
+/**This is a cool template class.
  * @brief The data_key_value_container class
  */
 class data_key_value_container {
 
 
 private:
-    //Får ikke ccimp_vector til å fungere me med alle generiske ting. Bruker en vanlig vektor foreløpig.
-//    std::vector<std::pair<K,V>> data_v;
+
     std::deque<std::pair<K,V>> data_d;
 
 public:
@@ -39,7 +37,6 @@ public:
 
 template<class K, class V>
 void data_key_value_container<K,V>::push(const K& key_el, const V& val_el){
-//    data_v.push_back(std::make_pair(key_el, val_el));
     data_d.push_back(std::make_pair(key_el, val_el));
 }
 
@@ -81,7 +78,7 @@ std::pair<K, V> data_key_value_container<K,V>::last() const
 
 
 template<class K, class V>
-/** Used mainly for local debugging
+/**Used mainly for local debugging
  * @brief data_key_value_container<K, V>::print_data
  */
 void data_key_value_container<K,V>::print_data(){

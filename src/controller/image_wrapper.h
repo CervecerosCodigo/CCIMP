@@ -20,9 +20,9 @@ class image_wrapper
     Magick::Image* img_ptr_current = NULL; //peker til objektet som vises i GUI
     Magick::Image* img_ptr_edit = NULL;    //peker til objektet som er under endring
 
-    image_tool* current_tool;
+    image_tool* current_tool;       //peker til det verktøyet som ble åpnet i MainWindow
 
-    bool image_is_orig;
+    bool image_is_orig;             //hjelper til med å vite om bildet img_ptr_current er i sin opprinnelige form
     callback_iface* callback;
 
     QImage* to_QImage(Magick::Image& img);  //konverterer til QImage
@@ -31,11 +31,11 @@ class image_wrapper
 public:
     image_wrapper();
     ~image_wrapper();
-    void set_Qimage(QImage& img, callback_iface* c);
+    void set_Qimage(QImage& img, callback_iface* c);    //QImage kommer fra MainWindow via Controller
 
-    void image_update();
-    void image_finished();
-    void image_canceled();
+    void image_update();    //Gjør endringer på bilde
+    void image_finished();  //oppdaterer pekerne "current" og "edit"
+    void image_canceled();  //ruller tilbake til "current" og skroter "edit"
 
     void undo_last_command();
     void redo_last_command();

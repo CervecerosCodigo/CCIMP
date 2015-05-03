@@ -28,7 +28,7 @@ class image_statistics
     int depth;
     int byte_count;
 
-    qint64 cache_key;   //hvert bilde har en cacheKey, som endres når bildet endres.
+
 
 public:
     image_statistics();

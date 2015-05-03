@@ -18,10 +18,12 @@ public:
     tool(controller_iface* cont, parameters* para, TOOLIDENT tool_ident);
     virtual ~tool();
 
-    inline parameters* get_para(){return get_param();}
+    error_listener* err_listener;
+
     void execute(Magick::Image& img) override; //image_tool
 
-    error_listener* err_listener;
+
+    inline parameters* get_para(){return get_param();}
 
     inline void set_error_listener(error_listener *e) override{
         err_listener = e;

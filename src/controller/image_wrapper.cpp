@@ -112,11 +112,11 @@ void image_wrapper::update_history(){
             delete t;
             image_is_orig = false;
         }
-
     }
 }
 
 
+//Konverterer et QImage til Magick::Image
 void image_wrapper::to_Image(QImage& qimage)
 {
 
@@ -138,15 +138,11 @@ void image_wrapper::to_Image(QImage& qimage)
         }
         img_ptr_current->syncPixels();
     }
-
-
 }
 
 
 QImage* image_wrapper::to_QImage(Magick::Image& image)
 {
-
-
     qimg_ptr_helper = new QImage(image.columns(), image.rows(), QImage::Format_RGB32);
     const Magick::PixelPacket *pixels;
     Magick::ColorRGB rgb;
@@ -159,7 +155,6 @@ QImage* image_wrapper::to_QImage(Magick::Image& image)
                                              , (int) (255 * rgb.blue())).rgb());
         }
     }
-
     return qimg_ptr_helper;
 }
 
