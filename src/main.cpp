@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
     controller p(*w); //controller
     controller_iface* control = &p;
-    build_tools* build = new build_tools{control};
+    build_tools{control};
     set_look_and_feel laf;
     laf.execute_fabulous_style();
     w->show();
@@ -27,6 +27,6 @@ int main(int argc, char **argv)
 
     delete w;
     delete control;
-    delete build;
+
     a.quit();
 }

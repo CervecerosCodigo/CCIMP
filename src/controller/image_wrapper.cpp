@@ -2,7 +2,7 @@
 
 image_wrapper::image_wrapper(QImage& img, callback_iface* c): qimg_org{img}, callback{c}
 {
-    img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
+    to_Image(qimg_org);     //convert image from qimage
     image_is_orig = true;
     undo_history.empty_vector();
     redo_history.empty_vector();
@@ -21,7 +21,7 @@ image_wrapper::~image_wrapper()
 void image_wrapper::set_Qimage(QImage &img, callback_iface *c){
     qimg_org = img;
     callback = c;
-    img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
+    to_Image(qimg_org);    //convert image from qimage
     image_is_orig = true;
     undo_history.empty_vector();
     redo_history.empty_vector();
@@ -31,7 +31,7 @@ void image_wrapper::set_Qimage(QImage &img, callback_iface *c){
 void image_wrapper::image_update(){
     img_ptr_edit = new Magick::Image(*img_ptr_current);
     current_tool->execute(*img_ptr_edit);                  //run selected tool on image
-    callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_edit));
+    callback->callback_image_edited(to_QImage(*img_ptr_edit));
 }
 
 
@@ -49,7 +49,7 @@ void image_wrapper::image_canceled(){
         return;
     //Hvis edit er forskjellig fra current skal man bare "undo" forskjellen, ikke ta ut fra vektor
     if(!img_ptr_edit->compare(*img_ptr_current)){
-        callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_current)); //sender bildet til gui
+        callback->callback_image_edited(to_QImage(*img_ptr_current)); //sender bildet til gui
         img_ptr_edit = new Magick::Image(*img_ptr_current);
         callback->callback_report_image_is_original();
 
@@ -66,7 +66,7 @@ void image_wrapper::undo_last_command(){
         redo_history+=*img_ptr_current;
 
         img_helper_obj = undo_history.get_last_and_remove();    //henter sist endret fra undo
-        callback->callback_image_edited(img_obj_converter::to_QImage(img_helper_obj)); //sender bildet til gui
+        callback->callback_image_edited(to_QImage(img_helper_obj)); //sender bildet til gui
         img_ptr_current = &img_helper_obj;
 
     //undo-vector er tom
@@ -74,8 +74,8 @@ void image_wrapper::undo_last_command(){
 
         //kan ikke være sikker på om rett image er satt. konvertere fra org Qimage og setter image på nytt i gui
         if(!image_is_orig){
-            img_ptr_current = img_obj_converter::to_Image(qimg_org);    //convert image from qimage
-            callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_current)); //sender bildet til gui
+            to_Image(qimg_org);    //convert image from qimage
+            callback->callback_image_edited(to_QImage(*img_ptr_current)); //sender bildet til gui
             callback->callback_report_image_is_original();
             image_is_orig = true;
         }
@@ -90,7 +90,7 @@ void image_wrapper::redo_last_command(){
         undo_history+=*img_ptr_current;
 
         img_helper_obj = redo_history.get_last_and_remove();    //henter sist endret fra redo
-        callback->callback_image_edited(img_obj_converter::to_QImage(img_helper_obj)); //sender bildet til gui
+        callback->callback_image_edited(to_QImage(img_helper_obj)); //sender bildet til gui
         img_ptr_current = &img_helper_obj;
     }
 }
@@ -118,4 +118,48 @@ void image_wrapper::update_history(){
     }
 }
 
+
+void image_wrapper::to_Image(QImage& qimage)
+{
+
+    img_ptr_current = new Magick::Image(Magick::Geometry(qimage.width(), qimage.height()), Magick::ColorRGB(0.5, 0.2, 0.3));
+
+    double scale = 1 / 256.0;
+    img_ptr_current->modifyImage();
+    Magick::PixelPacket *pixels;
+    Magick::ColorRGB mgc;
+    for (int y = 0; y < qimage.height(); y++) {
+        pixels = img_ptr_current->setPixels(0, y, img_ptr_current->columns(), 1);
+        for (int x = 0; x < qimage.width(); x++) {
+            QColor pix = qimage.pixel(x, y);
+
+            mgc.red(scale *pix.red());
+            mgc.green(scale *pix.green());
+            mgc.blue(scale *pix.blue());
+            *pixels++ = mgc;
+        }
+        img_ptr_current->syncPixels();
+    }
+
+
+}
+
+QImage* image_wrapper::to_QImage(Magick::Image& image)
+{
+
+
+    QImage *newQImage = new QImage(image.columns(), image.rows(), QImage::Format_RGB32);
+    const Magick::PixelPacket *pixels;
+    Magick::ColorRGB rgb;
+    for (int y = 0; y < newQImage->height(); y++) {
+        pixels = image.getConstPixels(0, y, newQImage->width(), 1);
+        for (int x = 0; x < newQImage->width(); x++) {
+            rgb = (*(pixels + x));
+            newQImage->setPixel(x, y, QColor((int) (255 * rgb.red())
+                                             , (int) (255 * rgb.green())
+                                             , (int) (255 * rgb.blue())).rgb());
+        }
+    }
+    return newQImage;
+}
 
