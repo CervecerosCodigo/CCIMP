@@ -29,8 +29,6 @@ void brightness_dialog::on_horizontalSlider_valueChanged(int value)
         param->set_slider_val(ui->horizontalSlider->value());
         emit slotChanged();
     }
-
-
 }
 
 void brightness_dialog::on_buttonBox_accepted()

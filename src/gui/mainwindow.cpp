@@ -191,7 +191,7 @@ void MainWindow::update_gui() {
         ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     }
 
-    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
+//    qDebug() << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->setScene(scene);
 }
 
@@ -524,7 +524,9 @@ void MainWindow::set_sharpen_tool(image_tool *t)
 void MainWindow::set_scale_tool(image_tool *t)
 {
     scaleDialog.set_tool(t);
-    connect(&scaleDialog, SIGNAL(signalAccepted()), this, SLOT(execute_value_changed()));
+    connect(&scaleDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
+    connect(&scaleDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&scaleDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
     scaleDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
@@ -697,6 +699,7 @@ void MainWindow::on_scaleButton_clicked()
 {
     if(image_is_loaded){
         event_listen->on_clicked_tool(scaleDialog.get_tool());
+        scaleDialog.set_normal_slider_position();
         scaleDialog.exec();
     }
 }
