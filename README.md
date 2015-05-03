@@ -47,9 +47,13 @@ Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Lin
 
 #### Generelt
 For å kompilere CCIMP fra kildekoder trenger du følgende verktøy. 
+
 1. GNU GCC C++ kompiltor. 
+
 2. [Qt5 utviklingsmiljø](https://www.qt.io/download-open-source/)
+
 3. ImageMagick++ bilbiotek.
+
 
 #### ImageMagick++
 Ettersom CCIMP er fynamisk linket med ImageMagick++ må den være installert på systemet ditt før kompilering. Kompilering av CCIMP ble med fremgang gjennomført på Ubuntu 14.10, Fedora 21 og MAC OSX Yosemite. Etter at ImageMagick++ bibliotek er installert kommer `qmake` å forsøke linke delte bilbiotek fra den søkvei som er definiert i [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) filen. Dersom du støtter på eventuelle problem med delte bilbiotek kontrollerer hvis CCIMP.pro er linket til riktig søkvei og versjon som stemmer overens ImageMagick++ installasjon på din maskin.
