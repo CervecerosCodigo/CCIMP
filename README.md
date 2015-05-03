@@ -17,8 +17,8 @@
 * [Mangler](#kap5)
 
 
-
-## Introduksjon <a id="kap1"></a>
+<a id="kap1"></a>
+## Introduksjon 
 
 ### Om sluttrapporten
 Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en type flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
@@ -37,7 +37,9 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
 * Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php). ImageMagick++ er en del av ImageMagick pakken som innholder terminalbaserte bildeediteringsverktøy. 
 
-## Installasjon <a id="kap2"></a>
+
+<a id="kap2"></a>
+## Installasjon 
 
 ### Binærer
 Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Linux og MAC OSX. Disse er tilgjengelige under [releases](https://github.com/CervecerosCodigo/CCIMP/releases).
@@ -48,11 +50,11 @@ Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Lin
 #### Generelt
 For å kompilere CCIMP fra kildekoder trenger du følgende verktøy. 
 
-1. GNU GCC C++ kompiltor. 
+**1. GNU GCC C++ kompiltor.**
 
-2. [Qt5 utviklingsmiljø](https://www.qt.io/download-open-source/)
+**2. [Qt5 utviklingsmiljø](https://www.qt.io/download-open-source/)**
 
-3. ImageMagick++ bilbiotek.
+**3. ImageMagick++ bilbiotek.**
 
 
 #### ImageMagick++
@@ -81,7 +83,8 @@ Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --wi
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
     
     
-## Arkitektur og design <a id="kap3"></a>
+<a id="kap3"></a>
+## Arkitektur og design 
 
 ### Hvorfor er designet som det er
 Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og for prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
@@ -141,14 +144,17 @@ I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `ima
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
 
 
-## Om arbeidet, og utfordringene <a id="kap4"></a>
+
+<a id="kap4"></a>
+## Om arbeidet, og utfordringene 
 
 * Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
 * Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
 * Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
 
 
-## Mangler, bugs og svakheter i design <a id="kap5"></a>
+<a id="kap5"></a>
+## Mangler, bugs og svakheter i design 
 
 ### Mangler
 
