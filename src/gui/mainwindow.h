@@ -115,7 +115,6 @@ private:
 
 
     //Setter opp bildevisning
-    void set_graphics_environment();
     void set_image(const QString &path);
     void resizeEvent ( QResizeEvent* e );
 

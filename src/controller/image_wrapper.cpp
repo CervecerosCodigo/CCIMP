@@ -7,8 +7,8 @@ image_wrapper::image_wrapper()
 
 image_wrapper::~image_wrapper()
 {
-//    if(img_ptr_current != nullptr)
-//        delete img_ptr_current;
+    if(img_ptr_current != nullptr)
+        delete img_ptr_current;
 //    if(img_ptr_edit != nullptr)
 //        delete img_ptr_edit;
 
@@ -140,7 +140,7 @@ void image_wrapper::to_Image(QImage& qimage)
     }
 }
 
-
+//Konverterer Magick::Image til QImage
 QImage* image_wrapper::to_QImage(Magick::Image& image)
 {
     qimg_ptr_helper = new QImage(image.columns(), image.rows(), QImage::Format_RGB32);

@@ -95,6 +95,7 @@ void MainWindow::save(){
 
 }
 
+//Hvis bildet er endret skal spørsmål om å lagre dukke opp
 bool MainWindow::user_want_to_save(){
     if(image_edited_not_saved){
         QMessageBox::StandardButton show_save_option;
@@ -111,6 +112,7 @@ bool MainWindow::user_want_to_save(){
     return false;
 }
 
+//Får beskjed fra image_wrapper om bildet er originalt eller ikke
 void MainWindow::callback_report_image_is_original(){
     image_edited_not_saved = false;
 }
@@ -122,12 +124,6 @@ void MainWindow::callback_report_image_is_original(){
 void MainWindow::load_file(const QString &fileName){
     set_image(fileName);
 }
-
-
-void MainWindow::set_graphics_environment(){
-
-}
-
 
 
 
@@ -698,7 +694,7 @@ void MainWindow::on_actionReload_triggered()
 
 
 void MainWindow::closeEvent(QCloseEvent *){
-    user_want_to_save();
+    user_want_to_save(); //Spør om bruker vil lagre
 }
 
 
