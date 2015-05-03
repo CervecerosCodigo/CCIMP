@@ -122,6 +122,7 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
         gui_mw.exception_in_image_processing(err_strings::scale_title, err_strings::scale_msg);
         break;
     case TOOLIDENT::COL:
+        //Ønsker ikke å vise noen feilmeldinger, bare returnere til "original-bildet"
         if(err_type == ERRORTYPE::IDENTICAL_IMAGES){
             canceled();
             return;

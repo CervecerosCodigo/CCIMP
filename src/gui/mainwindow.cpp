@@ -100,15 +100,12 @@ bool MainWindow::user_want_to_save(){
         QMessageBox::StandardButton show_save_option;
         show_save_option = QMessageBox::question(this, "Save?", "The image is not saved, do you want to save?", QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel);
         if(show_save_option == QMessageBox::Yes){
-            qDebug() << "Yes selected";
             save_as();
             return false;
         }else if(show_save_option == QMessageBox::No){
-            qDebug() << "No selected";
             image_edited_not_saved = false;
             return false;
         }
-        qDebug() << "Cancel selected";
         return true;
     }
     return false;

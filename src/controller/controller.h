@@ -19,14 +19,10 @@
 class controller : public controller_iface, public event_listener, public error_listener
 {
 
-
     MainWindow& gui_mw;
-    //ccimp_vector<image_tool*> tools;         //holds all the tools, set by register_tool(image_tool* t)
-    //ccimp_vector<image_wrapper> open_images; //holds all images, wrapped in a container
 
     image_wrapper current_image;           //current image
 
-    bool wrapper_initialized = false;
     callback_iface* callback;
 
 public:
