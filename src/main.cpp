@@ -3,7 +3,6 @@
 #include <QDebug>
 #include <Magick++.h>
 #include "controller/controller_iface.h"
-#include "test/test_lab.cpp"
 #include "img_tools/build_tools.h"
 #include "controller/controller.h"
 #include "lib/set_look_and_feel.h"
