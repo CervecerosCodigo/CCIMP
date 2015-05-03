@@ -10,9 +10,11 @@
 
 ## Innholdsfortegnelse
 
-[Introduksjon](#introduksjon)
-
-[Mangler](Mangler, bugs og svakheter i design)
+* [Introduksjon](#introduksjon)
+* [Installasjon](#installasjon)
+* [Arkitektur og design](#arkitektur og design)
+* [Om arbeidet, og utfordringene](#om arbeidet, og utfordringene)
+* [Mangler](#mangler, bugs og svakheter i design)
 
 
 
@@ -29,38 +31,50 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 ### Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
 * [Klassediagram](http://cerveceroscodigo.github.io/CCIMP/img/diagram_class.png)
+* [Dokumentasjon for kode (Doxygen)](http://cerveceroscodigo.github.io/CCIMP/doc/)
 
 ### Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
-* Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php)
+* Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php). ImageMagick++ er en del av ImageMagick pakken som innholder terminalbaserte bildeediteringsverktøy. 
 
 ## Installasjon
 
 ### Binærer
+Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Linux og MAC OSX. Disse er tilgjengelige under [releases](https://github.com/CervecerosCodigo/CCIMP/releases).
+
 
 ### Kompilering
 
-CCIMP krever følgende bilbiotek for å kompileres.
+#### Generelt
+For å kompilere CCIMP fra kildekoder trenger du følgende verktøy. 
+1. GNU GCC C++ kompiltor. 
+2. [Qt5 utviklingsmiljø](https://www.qt.io/download-open-source/)
+3. ImageMagick++ bilbiotek.
 
-1. **gnu gcc-c++**  Sørg for at gnu `libtool-ltdl-devel` (eller en liknende versjon av pakken) er tilgjengelig, den er nødvendig for å kompilere ImageMagick++.
-2. [**Qt5**](https://www.qt.io/download-open-source/)
-3. **ImageMagick++**
-  * Linux
-    * Det anbefales at biblioteket kompileres fra kilde hvilket vil gjøre den kompatibel med `CCIMP.pro` konfigurasjonen for qmake uavhengig av distribusjon. 
-    * Seineste versjon av ImageMagick++ er tilgjengelig [her.](http://www.imagemagick.org/download/ImageMagick.tar.gz)
-    * For at delte bibliotek skla gjøres tilgjengelige må konfigurasjonen kjøres med flagger `--enable-shared --with-modules` kompilering og installasjon må gjøres i følgende trinn:
-    
-      ```
-      1. ./configure --enable-shared --with-modules
-      2. make 
-      3. sudo make install 
-      4. sudo ldconfig /usr/local/lib
-      ```
- 
-  * MAC O$X
-    * Installer `ImageMagick` pakke via Mac Ports eller Homebrew. Sørg for at det følger med `development` pakker.   
-    * Sørg for at `macx` konfigurasjon i `CCIMP.pro` filen peker til riktig plass på platelagret.
+#### ImageMagick++
+Ettersom CCIMP er fynamisk linket med ImageMagick++ må den være installert på systemet ditt før kompilering. Kompilering av CCIMP ble med fremgang gjennomført på Ubuntu 14.10, Fedora 21 og MAC OSX Yosemite. Etter at ImageMagick++ bibliotek er installert kommer `qmake` å forsøke linke delte bilbiotek fra den søkvei som er definiert i [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) filen. Dersom du støtter på eventuelle problem med delte bilbiotek kontrollerer hvis CCIMP.pro er linket til riktig søkvei og versjon som stemmer overens ImageMagick++ installasjon på din maskin.
 
+##### Linux
+Hvis ImageMagick installeres via repo til din distrubisjon kan søkvei til bibliotekene være annerledes. Dersom du ønsker å bruke development pakker for ditt system (Fedora: `ImageMagick-c++-devel`, Ubuntu: `libmagick++-dev`) må du konfigurere om [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) slik at den overensstemmer med søkveien til bilbiotekene på ditt system. 
+
+Vi **anbefaler sterkt** at ImageMagick kompileres fra kildekode ettersom søkveien for installasjonen blir densamme for alle Linux system.
+**Viktig** Sørg for at [GNU libtool](http://www.gnu.org/software/libtool/) er tilgjengelig på ditt system før du kompilerer (Fedora: `libtool-ltdl-devel`, Ubuntu: `libltdl-dev`).
+
+Følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt system:
+
+```
+1. wget http://www.imagemagick.org/download/ImageMagick.tar.gz
+2. tar xfvz ./ImageMagick.tar.gz
+3. ./configure --enable-shared --with-modules
+4. make 
+5. sudo make install 
+6. sudo ldconfig /usr/local/lib
+```
+
+Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bilbiotek.
+
+##### MAC OSX
+[CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
     
     
 ## Arkitektur og design 
