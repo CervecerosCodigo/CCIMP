@@ -1,0 +1,7 @@
+<map id="MainWindow::set_rotate_tool" name="MainWindow::set_rotate_tool">
+<area shape="rect" id="node2" href="$classccimp__dialog.html#aeb1cb01c7dbf5002701110e8023f06e0" title="ccimp_dialog::set_tool" alt="" coords="244,5,396,32"/>
+<area shape="rect" id="node3" href="$class_main_window.html#a5bba6273f1e5e394979994d97191b329" title="MainWindow::execute\l_value_changed" alt="" coords="245,57,395,98"/>
+<area shape="rect" id="node5" href="$class_main_window.html#aec9bc1ae6040af9567cfa2687558527c" title="MainWindow::execute\l_acceptbtn_pressed" alt="" coords="245,122,395,163"/>
+<area shape="rect" id="node4" href="$classevent__listener.html#a133cf020fde8c10769da5cf891b6899a" title="event_listener::updating\l_image" alt="" coords="444,57,604,98"/>
+<area shape="rect" id="node6" href="$classevent__listener.html#a850cb9b4b6c9cda55c94565cb06d6aa0" title="event_listener::finished" alt="" coords="446,129,602,156"/>
+</map>

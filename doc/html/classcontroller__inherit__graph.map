@@ -1,0 +1,5 @@
+<map id="controller" name="controller">
+<area shape="rect" id="node2" href="$classcontroller__iface.html" title="controller_iface" alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node3" href="$classevent__listener.html" title="event_listener" alt="" coords="140,5,243,32"/>
+<area shape="rect" id="node4" href="$classerror__listener.html" title="error_listener" alt="" coords="267,5,364,32"/>
+</map>

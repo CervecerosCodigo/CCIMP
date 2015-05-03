@@ -1,0 +1,6 @@
+<map id="controller::on_clicked_tool" name="controller::on_clicked_tool">
+<area shape="rect" id="node2" href="$classimage__wrapper.html#a2c90589d14d27a703fbedba7d054ce09" title="image_wrapper::set\l_current_tool" alt="" coords="237,5,373,47"/>
+<area shape="rect" id="node3" href="$classimage__wrapper.html#a12ffa855c4faa01c216ae472805964d6" title="image_wrapper::update\l_history" alt="" coords="227,71,384,112"/>
+<area shape="rect" id="node4" href="$classccimp__vector.html#a81062cd7ba331ff983a46f054ff7708e" title="ccimp_vector::is_empty" alt="" coords="432,49,593,75"/>
+<area shape="rect" id="node5" href="$classccimp__vector.html#ac050f7d3ff678e5394a54aec4c135632" title="ccimp_vector::look\l_at_last" alt="" coords="447,100,579,141"/>
+</map>

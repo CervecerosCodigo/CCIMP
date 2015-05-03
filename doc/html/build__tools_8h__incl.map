@@ -1,0 +1,24 @@
+<map id="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/img_tools/build_tools.h" name="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/img_tools/build_tools.h">
+<area shape="rect" id="node2" href="$controller__iface_8h.html" title="controller/controller\l_iface.h" alt="" coords="1387,273,1519,315"/>
+<area shape="rect" id="node5" href="$parameters_8h.html" title="parameters/parameters.h" alt="" coords="521,437,687,464"/>
+<area shape="rect" id="node9" href="$using__colors_8h.html" title="parameters/using_colors.h" alt="" coords="85,363,259,389"/>
+<area shape="rect" id="node10" href="$using__coordinates_8h.html" title="parameters/using_coordinates.h" alt="" coords="145,191,351,218"/>
+<area shape="rect" id="node11" href="$using__slider_8h.html" title="parameters/using_slider.h" alt="" coords="669,191,840,218"/>
+<area shape="rect" id="node14" href="$tool_8h.html" title="img_tools/tool.h" alt="" coords="1016,191,1131,218"/>
+<area shape="rect" id="node15" href="$tool__blur_8h.html" title="tool_blur.h" alt="" coords="1239,109,1321,136"/>
+<area shape="rect" id="node16" href="$tool__crop_8h.html" title="tool_crop.h" alt="" coords="319,109,406,136"/>
+<area shape="rect" id="node18" href="$tool__brightness_8h.html" title="tool_brightness.h" alt="" coords="430,109,551,136"/>
+<area shape="rect" id="node19" href="$tool__contrast_8h.html" title="tool_contrast.h" alt="" coords="575,109,683,136"/>
+<area shape="rect" id="node20" href="$tool__rotate_8h.html" title="tool_rotate.h" alt="" coords="201,109,295,136"/>
+<area shape="rect" id="node21" href="$tool__color__balance_8h.html" title="tool_color_balance.h" alt="" coords="876,109,1017,136"/>
+<area shape="rect" id="node22" href="$tool__secure_8h.html" title="tool_secure.h" alt="" coords="1650,109,1750,136"/>
+<area shape="rect" id="node24" href="$tool__auto__gamma_8h.html" title="tool_auto_gamma.h" alt="" coords="1489,109,1625,136"/>
+<area shape="rect" id="node26" href="$tool__auto__level_8h.html" title="tool_auto_level.h" alt="" coords="1345,109,1465,136"/>
+<area shape="rect" id="node27" href="$tool__sharpness_8h.html" title="tool_sharpness.h" alt="" coords="1042,109,1163,136"/>
+<area shape="rect" id="node28" href="$tool__scale_8h.html" title="tool_scale.h" alt="" coords="759,109,851,136"/>
+<area shape="rect" id="node3" href="$image__tool_8h.html" title="img_tools/image_tool.h" alt="" coords="835,363,991,389"/>
+<area shape="rect" id="node8" href="$error__listener_8h.html" title="controller/error_listener.h" alt="" coords="712,437,877,464"/>
+<area shape="rect" id="node6" href="$lib_8h.html" title="lib.h" alt="" coords="830,512,877,539"/>
+<area shape="rect" id="node23" href="$using__text_8h.html" title="parameters/using_text.h" alt="" coords="1652,363,1815,389"/>
+<area shape="rect" id="node25" href="$using__no__parameters_8h.html" title="parameters/using_no\l_parameters.h" alt="" coords="1409,184,1551,225"/>
+</map>

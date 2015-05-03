@@ -1,0 +1,5 @@
+<map id="controller::canceled" name="controller::canceled">
+<area shape="rect" id="node2" href="$classimage__wrapper.html#a5b1a15826d18137b1cfc9a4a694e81ff" title="image_wrapper::image\l_canceled" alt="" coords="188,39,341,80"/>
+<area shape="rect" id="node3" href="$classcallback__iface.html#a5c1d79b5c99a6495519d2cb020e57be6" title="callback_iface::callback\l_image_edited" alt="" coords="393,5,555,47"/>
+<area shape="rect" id="node4" href="$classcallback__iface.html#a5ae87aca6045404650cc5ce117bfea15" title="callback_iface::callback\l_report_image_is_original" alt="" coords="389,71,559,112"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="callback_iface::callback_report_image_is_original" name="callback_iface::callback_report_image_is_original">
+<area shape="rect" id="node2" href="$classimage__wrapper.html#a5b1a15826d18137b1cfc9a4a694e81ff" title="image_wrapper::image\l_canceled" alt="" coords="223,5,376,47"/>
+<area shape="rect" id="node5" href="$classimage__wrapper.html#af49b94d0a1052edadba9a18942c77752" title="image_wrapper::undo\l_last_command" alt="" coords="226,71,373,112"/>
+<area shape="rect" id="node3" href="$classcontroller.html#a3adb4c2d392ab569a5baec7d6706aca8" title="controller::canceled" alt="" coords="426,13,561,39"/>
+<area shape="rect" id="node4" href="$classcontroller.html#a48490c68a53f69edcd5eb46d3df4a9e3" title="controller::on_exception\l_occured" alt="" coords="611,5,771,47"/>
+<area shape="rect" id="node6" href="$classcontroller.html#a83c44b67bb26247a0186a34bc937830e" title="controller::undo_last\l_command" alt="" coords="424,71,563,112"/>
+</map>

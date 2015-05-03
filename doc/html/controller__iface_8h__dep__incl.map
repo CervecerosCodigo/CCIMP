@@ -1,0 +1,34 @@
+<map id="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/controller/controller_iface.h" name="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/controller/controller_iface.h">
+<area shape="rect" id="node2" href="$controller_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/controller/controller.h" alt="" coords="5,465,240,521"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/main.cpp" alt="" coords="569,569,804,625"/>
+<area shape="rect" id="node5" href="$processing__interface_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/controller/processing\l_interface.cpp" alt="" coords="1816,109,2051,180"/>
+<area shape="rect" id="node6" href="$build__tools_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/build_tools.h" alt="" coords="1645,354,1880,410"/>
+<area shape="rect" id="node8" href="$tool_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool.h" alt="" coords="1557,117,1792,173"/>
+<area shape="rect" id="node3" href="$controller_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/controller/controller.cpp" alt="" coords="5,569,240,625"/>
+<area shape="rect" id="node7" href="$build__tools_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/build_tools.cpp" alt="" coords="1641,465,1884,521"/>
+<area shape="rect" id="node9" href="$tool__blur_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_blur.h" alt="" coords="2804,235,3039,291"/>
+<area shape="rect" id="node11" href="$tool__crop_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_crop.h" alt="" coords="288,235,523,291"/>
+<area shape="rect" id="node13" href="$tool__brightness_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_brightness.h" alt="" coords="547,235,802,291"/>
+<area shape="rect" id="node15" href="$tool__contrast_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_contrast.h" alt="" coords="877,235,1120,291"/>
+<area shape="rect" id="node17" href="$tool__rotate_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_rotate.h" alt="" coords="1144,235,1379,291"/>
+<area shape="rect" id="node19" href="$tool__color__balance_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_color\l_balance.h" alt="" coords="1403,228,1637,299"/>
+<area shape="rect" id="node21" href="$tool__secure_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_secure.h" alt="" coords="1712,235,1947,291"/>
+<area shape="rect" id="node23" href="$tool__auto__gamma_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_auto_gamma.h" alt="" coords="2250,235,2521,291"/>
+<area shape="rect" id="node27" href="$tool__auto__level_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_auto_level.h" alt="" coords="3063,235,3318,291"/>
+<area shape="rect" id="node29" href="$tool__sharpness_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_sharpness.h" alt="" coords="1971,235,2226,291"/>
+<area shape="rect" id="node31" href="$tool__scale_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_scale.h" alt="" coords="3343,235,3577,291"/>
+<area shape="rect" id="node33" href="$tool_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool.cpp" alt="" coords="2545,235,2780,291"/>
+<area shape="rect" id="node10" href="$tool__blur_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_blur.cpp" alt="" coords="2728,354,2963,410"/>
+<area shape="rect" id="node12" href="$tool__crop_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_crop.cpp" alt="" coords="288,354,523,410"/>
+<area shape="rect" id="node14" href="$tool__brightness_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_brightness.cpp" alt="" coords="547,354,816,410"/>
+<area shape="rect" id="node16" href="$tool__contrast_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_contrast.cpp" alt="" coords="840,354,1096,410"/>
+<area shape="rect" id="node18" href="$tool__rotate_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_rotate.cpp" alt="" coords="1120,354,1363,410"/>
+<area shape="rect" id="node20" href="$tool__color__balance_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_color\l_balance.cpp" alt="" coords="1387,347,1621,417"/>
+<area shape="rect" id="node22" href="$tool__secure_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_secure.cpp" alt="" coords="1904,354,2152,410"/>
+<area shape="rect" id="node24" href="$mainwindow_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/mainwindow.h" alt="" coords="3245,354,3480,410"/>
+<area shape="rect" id="node26" href="$tool__auto__gamma_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_auto\l_gamma.cpp" alt="" coords="2469,347,2704,417"/>
+<area shape="rect" id="node25" href="$mainwindow_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/mainwindow.cpp" alt="" coords="3245,465,3480,521"/>
+<area shape="rect" id="node28" href="$tool__auto__level_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_auto\l_level.cpp" alt="" coords="2987,347,3221,417"/>
+<area shape="rect" id="node30" href="$tool__sharpness_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_sharpness.cpp" alt="" coords="2176,354,2445,410"/>
+<area shape="rect" id="node32" href="$tool__scale_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_scale.cpp" alt="" coords="3504,354,3744,410"/>
+</map>

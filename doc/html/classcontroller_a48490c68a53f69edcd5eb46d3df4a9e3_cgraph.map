@@ -1,0 +1,7 @@
+<map id="controller::on_exception_occured" name="controller::on_exception_occured">
+<area shape="rect" id="node2" href="$class_main_window.html#a19435feec4b1c8e7da329febc47a3c05" title="MainWindow::exception_in_image_processing. " alt="" coords="213,5,375,47"/>
+<area shape="rect" id="node3" href="$classcontroller.html#a3adb4c2d392ab569a5baec7d6706aca8" title="controller::canceled" alt="" coords="227,71,361,98"/>
+<area shape="rect" id="node4" href="$classimage__wrapper.html#a5b1a15826d18137b1cfc9a4a694e81ff" title="image_wrapper::image\l_canceled" alt="" coords="423,64,576,105"/>
+<area shape="rect" id="node5" href="$classcallback__iface.html#a5c1d79b5c99a6495519d2cb020e57be6" title="callback_iface::callback\l_image_edited" alt="" coords="628,31,789,72"/>
+<area shape="rect" id="node6" href="$classcallback__iface.html#a5ae87aca6045404650cc5ce117bfea15" title="callback_iface::callback\l_report_image_is_original" alt="" coords="624,96,793,137"/>
+</map>

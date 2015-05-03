@@ -1,0 +1,7 @@
+<map id="MainWindow::set_secure_tool" name="MainWindow::set_secure_tool">
+<area shape="rect" id="node2" href="$classccimp__dialog.html#aeb1cb01c7dbf5002701110e8023f06e0" title="ccimp_dialog::set_tool" alt="" coords="251,5,403,32"/>
+<area shape="rect" id="node3" href="$class_main_window.html#a629cd22287b019be548d2f77ec6d342c" title="MainWindow::execute\l_change_and_accept" alt="" coords="251,57,402,98"/>
+<area shape="rect" id="node6" href="$classencipher__dialaog.html#a9ab8a9150763d932689c71fc0110fa21" title="encipher_dialaog::set\l_encipher_toggle_on" alt="" coords="254,122,399,163"/>
+<area shape="rect" id="node4" href="$classevent__listener.html#a133cf020fde8c10769da5cf891b6899a" title="event_listener::updating\l_image" alt="" coords="451,27,611,69"/>
+<area shape="rect" id="node5" href="$classevent__listener.html#a850cb9b4b6c9cda55c94565cb06d6aa0" title="event_listener::finished" alt="" coords="453,93,609,120"/>
+</map>

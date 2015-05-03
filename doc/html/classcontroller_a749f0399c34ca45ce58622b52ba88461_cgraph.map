@@ -1,0 +1,6 @@
+<map id="controller::redo_last_command" name="controller::redo_last_command">
+<area shape="rect" id="node2" href="$classimage__wrapper.html#a801ed0331c788877670cc7cdbd5d53a4" title="image_wrapper::redo\l_last_command" alt="" coords="189,57,332,98"/>
+<area shape="rect" id="node3" href="$classccimp__vector.html#a81062cd7ba331ff983a46f054ff7708e" title="ccimp_vector::is_empty" alt="" coords="380,5,541,32"/>
+<area shape="rect" id="node4" href="$classccimp__vector.html#af4998c284ee41a9e2b2106ca19b9adf9" title="ccimp_vector::get_last\l_and_remove" alt="" coords="383,57,538,98"/>
+<area shape="rect" id="node5" href="$classcallback__iface.html#a5c1d79b5c99a6495519d2cb020e57be6" title="callback_iface::callback\l_image_edited" alt="" coords="380,122,541,163"/>
+</map>

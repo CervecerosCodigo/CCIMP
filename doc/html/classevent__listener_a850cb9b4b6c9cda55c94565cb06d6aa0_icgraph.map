@@ -1,0 +1,13 @@
+<map id="event_listener::finished" name="event_listener::finished">
+<area shape="rect" id="node2" href="$class_main_window.html#aec9bc1ae6040af9567cfa2687558527c" title="MainWindow::execute\l_acceptbtn_pressed" alt="" coords="209,179,360,221"/>
+<area shape="rect" id="node11" href="$class_main_window.html#a629cd22287b019be548d2f77ec6d342c" title="MainWindow::execute\l_change_and_accept" alt="" coords="209,291,360,333"/>
+<area shape="rect" id="node3" href="$class_main_window.html#aa61b4925befdf326f3e9c8a075213e8f" title="MainWindow::set_brightness_tool" alt="" coords="408,5,627,32"/>
+<area shape="rect" id="node5" href="$class_main_window.html#ab3a64457f23e2da2f03f5f2725534c9c" title="MainWindow::set_contrast_tool" alt="" coords="415,56,620,83"/>
+<area shape="rect" id="node6" href="$class_main_window.html#a0180824012bd083e7e7697b54c1c474a" title="MainWindow::set_rotate_tool" alt="" coords="422,107,613,133"/>
+<area shape="rect" id="node7" href="$class_main_window.html#a5d2da8e416dfe7fe8a5ea7d7a086203b" title="MainWindow::set_blur_tool" alt="" coords="428,157,607,184"/>
+<area shape="rect" id="node8" href="$class_main_window.html#aefb5fcc5f435cc8e2cd2482ae969fcef" title="MainWindow::set_color\l_balance_tool" alt="" coords="438,209,597,250"/>
+<area shape="rect" id="node9" href="$class_main_window.html#ac1184c5f0b4f208ce74e4094310a5876" title="MainWindow::set_sharpen_tool" alt="" coords="415,275,619,301"/>
+<area shape="rect" id="node10" href="$class_main_window.html#a421c15140946017470d8faabb4e937c4" title="MainWindow::set_scale_tool" alt="" coords="423,325,612,352"/>
+<area shape="rect" id="node4" href="$classcontroller.html#a9ec9d3c08897d2d28b842b07ce04edd1" title="controller::register_tool" alt="" coords="675,187,829,213"/>
+<area shape="rect" id="node12" href="$class_main_window.html#a4dc7ee94f10350a4bd9e17fbbbed226a" title="MainWindow::set_secure_tool" alt="" coords="419,376,616,403"/>
+</map>

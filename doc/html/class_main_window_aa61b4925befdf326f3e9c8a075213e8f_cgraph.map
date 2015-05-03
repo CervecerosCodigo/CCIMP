@@ -1,0 +1,9 @@
+<map id="MainWindow::set_brightness_tool" name="MainWindow::set_brightness_tool">
+<area shape="rect" id="node2" href="$classccimp__dialog.html#aeb1cb01c7dbf5002701110e8023f06e0" title="ccimp_dialog::set_tool" alt="" coords="272,5,424,32"/>
+<area shape="rect" id="node3" href="$class_main_window.html#a5bba6273f1e5e394979994d97191b329" title="MainWindow::execute\l_value_changed" alt="" coords="273,57,423,98"/>
+<area shape="rect" id="node5" href="$class_main_window.html#aec9bc1ae6040af9567cfa2687558527c" title="MainWindow::execute\l_acceptbtn_pressed" alt="" coords="273,122,423,163"/>
+<area shape="rect" id="node7" href="$class_main_window.html#a83632862c8c731c38607296e0e407ef3" title="MainWindow::execute\l_cancelbtn_pressed" alt="" coords="273,187,423,229"/>
+<area shape="rect" id="node4" href="$classevent__listener.html#a133cf020fde8c10769da5cf891b6899a" title="event_listener::updating\l_image" alt="" coords="473,57,633,98"/>
+<area shape="rect" id="node6" href="$classevent__listener.html#a850cb9b4b6c9cda55c94565cb06d6aa0" title="event_listener::finished" alt="" coords="475,129,631,156"/>
+<area shape="rect" id="node8" href="$classevent__listener.html#adf411596b549c6b1c604f0661b32b2f7" title="event_listener::canceled" alt="" coords="472,195,635,221"/>
+</map>

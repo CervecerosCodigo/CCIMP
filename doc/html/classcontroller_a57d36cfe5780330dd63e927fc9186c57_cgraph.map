@@ -1,0 +1,5 @@
+<map id="controller::updating_image" name="controller::updating_image">
+<area shape="rect" id="node2" href="$classimage__wrapper.html#a968fd8a36133d680e80fe639d00186fe" title="image_wrapper::image\l_update" alt="" coords="185,27,339,69"/>
+<area shape="rect" id="node3" href="$classimage__tool.html#ac2e21535fd70a73b46247a347f91517e" title="image_tool::execute" alt="" coords="398,5,537,32"/>
+<area shape="rect" id="node4" href="$classcallback__iface.html#a5c1d79b5c99a6495519d2cb020e57be6" title="callback_iface::callback\l_image_edited" alt="" coords="387,57,548,98"/>
+</map>

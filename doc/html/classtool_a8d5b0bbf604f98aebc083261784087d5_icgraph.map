@@ -1,0 +1,11 @@
+<map id="tool::get_para" name="tool::get_para">
+<area shape="rect" id="node2" href="$classtool__blur.html#a1196af9d233e4f8d9e6b6cf4d2a28e7c" title="tool_blur::execute" alt="" coords="174,5,299,32"/>
+<area shape="rect" id="node3" href="$classtool__brightness.html#a931a1a9864f3c5580190be968344a4b7" title="tool_brightness::execute" alt="" coords="155,56,319,83"/>
+<area shape="rect" id="node4" href="$classtool__color__balance.html#a113019b5bc5f2d55e61d01dbb9d42b4f" title="tool_color_balance\l::execute" alt="" coords="171,107,302,149"/>
+<area shape="rect" id="node5" href="$classtool__contrast.html#afaba79316a961d29c33514f734d1705a" title="tool_contrast::execute" alt="" coords="161,173,312,200"/>
+<area shape="rect" id="node6" href="$classtool__crop.html#a453009a0b9aea8fd19665ff7bcbf8c53" title="tool_crop::execute" alt="" coords="172,224,301,251"/>
+<area shape="rect" id="node7" href="$classtool__rotate.html#a4f6756b6ee41a3e6162649e7e111fd89" title="tool_rotate::execute" alt="" coords="168,275,305,301"/>
+<area shape="rect" id="node8" href="$classtool__scale.html#a4b699b3c2223fd38f0d9558edd09746b" title="tool_scale::execute" alt="" coords="169,325,304,352"/>
+<area shape="rect" id="node9" href="$classtool__secure.html#a9a75f788184a18402686bb3118de4c98" title="tool_secure::execute" alt="" coords="165,376,308,403"/>
+<area shape="rect" id="node10" href="$classtool__sharpness.html#a832366496dba174c059b7717c31257cf" title="tool_sharpness::execute" alt="" coords="155,427,319,453"/>
+</map>

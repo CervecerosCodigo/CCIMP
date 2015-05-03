@@ -1,0 +1,9 @@
+<map id="MainWindow::execute_cancelbtn_pressed" name="MainWindow::execute_cancelbtn_pressed">
+<area shape="rect" id="node2" href="$class_main_window.html#aa61b4925befdf326f3e9c8a075213e8f" title="MainWindow::set_brightness_tool" alt="" coords="204,5,423,32"/>
+<area shape="rect" id="node4" href="$class_main_window.html#ab3a64457f23e2da2f03f5f2725534c9c" title="MainWindow::set_contrast_tool" alt="" coords="211,56,416,83"/>
+<area shape="rect" id="node5" href="$class_main_window.html#a5d2da8e416dfe7fe8a5ea7d7a086203b" title="MainWindow::set_blur_tool" alt="" coords="224,107,403,133"/>
+<area shape="rect" id="node6" href="$class_main_window.html#aefb5fcc5f435cc8e2cd2482ae969fcef" title="MainWindow::set_color\l_balance_tool" alt="" coords="234,158,393,199"/>
+<area shape="rect" id="node7" href="$class_main_window.html#ac1184c5f0b4f208ce74e4094310a5876" title="MainWindow::set_sharpen_tool" alt="" coords="211,224,415,251"/>
+<area shape="rect" id="node8" href="$class_main_window.html#a421c15140946017470d8faabb4e937c4" title="MainWindow::set_scale_tool" alt="" coords="219,275,408,301"/>
+<area shape="rect" id="node3" href="$classcontroller.html#a9ec9d3c08897d2d28b842b07ce04edd1" title="controller::register_tool" alt="" coords="471,136,625,163"/>
+</map>

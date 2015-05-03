@@ -1,0 +1,9 @@
+<map id="tool_crop::execute" name="tool_crop::execute">
+<area shape="rect" id="node2" href="$classtool.html#a8d5b0bbf604f98aebc083261784087d5" title="tool::get_para" alt="" coords="201,5,303,32"/>
+<area shape="rect" id="node4" href="$classusing__coordinates.html#a163d9072731004d22ba38d089ac6d9e9" title="using_coordinates::\lget_width" alt="" coords="185,57,319,98"/>
+<area shape="rect" id="node5" href="$classusing__coordinates.html#acfffe03d14be212a50172168b69aea67" title="using_coordinates::\lget_height" alt="" coords="185,122,319,163"/>
+<area shape="rect" id="node6" href="$classusing__coordinates.html#a7fd8ed0268203d2d186e7a6bfc4f1b7e" title="using_coordinates::\lget_x_axis" alt="" coords="185,187,319,229"/>
+<area shape="rect" id="node7" href="$classusing__coordinates.html#a93e2e9f6d2305e07400d0ebc8f97129c" title="using_coordinates::\lget_y_axis" alt="" coords="185,253,319,294"/>
+<area shape="rect" id="node8" href="$classerror__listener.html#a98b03f262b0fa15da3afda860a425058" title="error_listener::on\l_exception_occured" alt="" coords="183,318,321,359"/>
+<area shape="rect" id="node3" href="$classimage__tool.html#a2367c6df26e3a8b23b26edce205d6f4e" title="image_tool::get_param" alt="" coords="369,5,524,32"/>
+</map>

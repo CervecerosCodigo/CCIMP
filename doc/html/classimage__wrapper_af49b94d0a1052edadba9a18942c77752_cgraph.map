@@ -1,0 +1,6 @@
+<map id="image_wrapper::undo_last_command" name="image_wrapper::undo_last_command">
+<area shape="rect" id="node2" href="$classccimp__vector.html#a81062cd7ba331ff983a46f054ff7708e" title="ccimp_vector::is_empty" alt="" coords="204,5,365,32"/>
+<area shape="rect" id="node3" href="$classccimp__vector.html#af4998c284ee41a9e2b2106ca19b9adf9" title="ccimp_vector::get_last\l_and_remove" alt="" coords="207,57,362,98"/>
+<area shape="rect" id="node4" href="$classcallback__iface.html#a5c1d79b5c99a6495519d2cb020e57be6" title="callback_iface::callback\l_image_edited" alt="" coords="204,122,365,163"/>
+<area shape="rect" id="node5" href="$classcallback__iface.html#a5ae87aca6045404650cc5ce117bfea15" title="callback_iface::callback\l_report_image_is_original" alt="" coords="200,187,369,229"/>
+</map>

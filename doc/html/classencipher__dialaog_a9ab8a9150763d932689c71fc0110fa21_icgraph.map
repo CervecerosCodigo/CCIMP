@@ -1,0 +1,4 @@
+<map id="encipher_dialaog::set_encipher_toggle_on" name="encipher_dialaog::set_encipher_toggle_on">
+<area shape="rect" id="node2" href="$class_main_window.html#a4dc7ee94f10350a4bd9e17fbbbed226a" title="MainWindow::set_secure_tool" alt="" coords="199,13,396,39"/>
+<area shape="rect" id="node3" href="$classcontroller.html#a9ec9d3c08897d2d28b842b07ce04edd1" title="controller::register_tool" alt="" coords="444,13,599,39"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/controller/controller.h" name="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/controller/controller.h">
+<area shape="rect" id="node2" href="$controller__iface_8h.html" title="controller/controller\l_iface.h" alt="" coords="2863,109,2995,151"/>
+<area shape="rect" id="node6" href="$lib_8h.html" title="lib.h" alt="" coords="4790,452,4836,479"/>
+<area shape="rect" id="node8" href="$error__listener_8h.html" title="controller/error_listener.h" alt="" coords="4676,377,4841,404"/>
+<area shape="rect" id="node9" href="$event__listener_8h.html" title="controller/event_listener.h" alt="" coords="432,206,602,233"/>
+<area shape="rect" id="node11" href="$callback__iface_8h.html" title="callback_iface.h" alt="" coords="435,295,551,322"/>
+<area shape="rect" id="node13" href="$image__wrapper_8h.html" title="image_wrapper.h" alt="" coords="184,206,306,233"/>
+<area shape="rect" id="node16" href="$ccimp__vector_8h.html" title="ccimp_vector.h" alt="" coords="147,295,258,322"/>
+<area shape="rect" id="node19" href="$mainwindow_8h.html" title="gui/mainwindow.h" alt="" coords="2254,117,2380,143"/>
+<area shape="rect" id="node49" href="$err__strings_8h.html" title="lib/err_strings.h" alt="" coords="620,117,731,143"/>
+<area shape="rect" id="node3" href="$image__tool_8h.html" title="img_tools/image_tool.h" alt="" coords="3080,295,3236,322"/>
+<area shape="rect" id="node5" href="$parameters_8h.html" title="parameters/parameters.h" alt="" coords="3907,377,4074,404"/>
+<area shape="rect" id="node18" href="$using__slider_8h.html" title="parameters/using_slider.h" alt="" coords="3261,295,3432,322"/>
+<area shape="rect" id="node31" href="$image__statistics_8h.html" title="controller/image_statistics.h" alt="" coords="2094,206,2279,233"/>
+<area shape="rect" id="node34" href="$about__dialog_8h.html" title="gui/about_dialog.h" alt="" coords="1943,206,2070,233"/>
+<area shape="rect" id="node35" href="$crop__dialog_8h.html" title="gui/crop_dialog.h" alt="" coords="2354,206,2474,233"/>
+<area shape="rect" id="node36" href="$blur__dialog_8h.html" title="gui/blur_dialog.h" alt="" coords="3426,206,3542,233"/>
+<area shape="rect" id="node37" href="$contrast__dialog_8h.html" title="gui/contrast_dialog.h" alt="" coords="4698,206,4840,233"/>
+<area shape="rect" id="node38" href="$rotate__dialog_8h.html" title="gui/rotate_dialog.h" alt="" coords="3566,206,3694,233"/>
+<area shape="rect" id="node39" href="$color__balance__dialog_8h.html" title="gui/color_balance_dialog.h" alt="" coords="4319,206,4494,233"/>
+<area shape="rect" id="node40" href="$encipher__dialaog_8h.html" title="gui/encipher_dialaog.h" alt="" coords="4092,206,4243,233"/>
+<area shape="rect" id="node41" href="$sharpness__dialog_8h.html" title="gui/sharpness_dialog.h" alt="" coords="3196,206,3350,233"/>
+<area shape="rect" id="node42" href="$brightness__dialog_8h.html" title="gui/brightness_dialog.h" alt="" coords="4518,206,4673,233"/>
+<area shape="rect" id="node43" href="$auto__gamma__dialog_8h.html" title="gui/auto_gamma_dialog.h" alt="" coords="3718,206,3889,233"/>
+<area shape="rect" id="node44" href="$auto__level__dialog_8h.html" title="gui/auto_level_dialog.h" alt="" coords="3913,206,4068,233"/>
+<area shape="rect" id="node45" href="$scale__dialog_8h.html" title="gui/scale_dialog.h" alt="" coords="2499,206,2626,233"/>
+<area shape="rect" id="node46" href="$tool__auto__gamma_8h.html" title="img_tools/tool_auto\l_gamma.h" alt="" coords="2827,199,2962,240"/>
+<area shape="rect" id="node47" href="$tool__auto__level_8h.html" title="img_tools/tool_auto\l_level.h" alt="" coords="2986,199,3120,240"/>
+<area shape="rect" id="node48" href="$tool__scale_8h.html" title="img_tools/tool_scale.h" alt="" coords="2650,206,2802,233"/>
+<area shape="rect" id="node33" href="$data__key__value__container_8h.html" title="controller/data_key\l_value_container.h" alt="" coords="779,288,911,329"/>
+</map>

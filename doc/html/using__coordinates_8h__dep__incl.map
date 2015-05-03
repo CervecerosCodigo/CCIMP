@@ -1,0 +1,22 @@
+<map id="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/parameters/using_coordinates.h" name="/home/luke/v2015/EffektivKodeC_DAVE3605/Prosjektoppgave/CCIMP/src/parameters/using_coordinates.h">
+<area shape="rect" id="node2" href="$crop__dialog_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/crop_dialog.h" alt="" coords="264,131,499,187"/>
+<area shape="rect" id="node9" href="$rotate__dialog_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/rotate_dialog.h" alt="" coords="523,131,757,187"/>
+<area shape="rect" id="node11" href="$build__tools_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/build_tools.h" alt="" coords="1333,243,1568,299"/>
+<area shape="rect" id="node13" href="$tool__crop_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_crop.h" alt="" coords="788,131,1023,187"/>
+<area shape="rect" id="node15" href="$tool__brightness_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_brightness.h" alt="" coords="1047,131,1302,187"/>
+<area shape="rect" id="node17" href="$tool__contrast_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_contrast.h" alt="" coords="1377,131,1620,187"/>
+<area shape="rect" id="node19" href="$tool__rotate_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_rotate.h" alt="" coords="1644,131,1879,187"/>
+<area shape="rect" id="node21" href="$using__coordinates_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/parameters/using\l_coordinates.cpp" alt="" coords="1903,124,2137,195"/>
+<area shape="rect" id="node3" href="$crop__dialog_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/crop_dialog.cpp" alt="" coords="5,243,240,299"/>
+<area shape="rect" id="node4" href="$mainwindow_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/mainwindow.h" alt="" coords="264,243,499,299"/>
+<area shape="rect" id="node5" href="$controller_8h.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/controller/controller.h" alt="" coords="135,347,369,403"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/main.cpp" alt="" coords="548,451,783,507"/>
+<area shape="rect" id="node8" href="$mainwindow_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/mainwindow.cpp" alt="" coords="393,347,628,403"/>
+<area shape="rect" id="node6" href="$controller_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/controller/controller.cpp" alt="" coords="135,451,369,507"/>
+<area shape="rect" id="node10" href="$rotate__dialog_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/gui/rotate_dialog.cpp" alt="" coords="523,243,757,299"/>
+<area shape="rect" id="node12" href="$build__tools_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/build_tools.cpp" alt="" coords="1329,347,1572,403"/>
+<area shape="rect" id="node14" href="$tool__crop_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_crop.cpp" alt="" coords="781,243,1016,299"/>
+<area shape="rect" id="node16" href="$tool__brightness_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_brightness.cpp" alt="" coords="1040,243,1309,299"/>
+<area shape="rect" id="node18" href="$tool__contrast_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_contrast.cpp" alt="" coords="1592,243,1848,299"/>
+<area shape="rect" id="node20" href="$tool__rotate_8cpp.html" title="/home/luke/v2015/Effektiv\lKodeC_DAVE3605/Prosjektoppgave\l/CCIMP/src/img_tools/tool_rotate.cpp" alt="" coords="1872,243,2115,299"/>
+</map>

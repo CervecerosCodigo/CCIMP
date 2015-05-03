@@ -1,0 +1,14 @@
+<map id="image_tool::get_param" name="image_tool::get_param">
+<area shape="rect" id="node2" href="$classrotate__dialog.html#a46e4a88a40ca7db4ef10ff90d481bbf4" title="rotate_dialog::rotate_left" alt="" coords="208,107,371,133"/>
+<area shape="rect" id="node3" href="$classrotate__dialog.html#ae0ce3d4a7e5727bd0926632e975b1f5a" title="rotate_dialog::rotate\l_right" alt="" coords="221,158,358,199"/>
+<area shape="rect" id="node4" href="$classtool.html#a8d5b0bbf604f98aebc083261784087d5" title="tool::get_para" alt="" coords="239,224,340,251"/>
+<area shape="rect" id="node5" href="$classtool__blur.html#a1196af9d233e4f8d9e6b6cf4d2a28e7c" title="tool_blur::execute" alt="" coords="438,5,563,32"/>
+<area shape="rect" id="node6" href="$classtool__brightness.html#a931a1a9864f3c5580190be968344a4b7" title="tool_brightness::execute" alt="" coords="419,56,583,83"/>
+<area shape="rect" id="node7" href="$classtool__color__balance.html#a113019b5bc5f2d55e61d01dbb9d42b4f" title="tool_color_balance\l::execute" alt="" coords="435,107,566,149"/>
+<area shape="rect" id="node8" href="$classtool__contrast.html#afaba79316a961d29c33514f734d1705a" title="tool_contrast::execute" alt="" coords="425,173,576,200"/>
+<area shape="rect" id="node9" href="$classtool__crop.html#a453009a0b9aea8fd19665ff7bcbf8c53" title="tool_crop::execute" alt="" coords="436,224,565,251"/>
+<area shape="rect" id="node10" href="$classtool__rotate.html#a4f6756b6ee41a3e6162649e7e111fd89" title="tool_rotate::execute" alt="" coords="432,275,569,301"/>
+<area shape="rect" id="node11" href="$classtool__scale.html#a4b699b3c2223fd38f0d9558edd09746b" title="tool_scale::execute" alt="" coords="433,325,568,352"/>
+<area shape="rect" id="node12" href="$classtool__secure.html#a9a75f788184a18402686bb3118de4c98" title="tool_secure::execute" alt="" coords="429,376,572,403"/>
+<area shape="rect" id="node13" href="$classtool__sharpness.html#a832366496dba174c059b7717c31257cf" title="tool_sharpness::execute" alt="" coords="419,427,583,453"/>
+</map>

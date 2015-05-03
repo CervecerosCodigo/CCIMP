@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['red',['RED',['../lib_8h.html#a582dad59f883bddf5af0fc99320c6abe',1,'lib.h']]],
+  ['redo_5flast_5fcommand',['redo_last_command',['../classcontroller.html#a749f0399c34ca45ce58622b52ba88461',1,'controller::redo_last_command()'],['../classevent__listener.html#a8438749ce154f492d10ac70b08bbc628',1,'event_listener::redo_last_command()'],['../classimage__wrapper.html#a801ed0331c788877670cc7cdbd5d53a4',1,'image_wrapper::redo_last_command()']]],
+  ['register_5ftool',['register_tool',['../classcontroller.html#a9ec9d3c08897d2d28b842b07ce04edd1',1,'controller::register_tool()'],['../classcontroller__iface.html#a6177e01c4aec85ab94398c289bc28f27',1,'controller_iface::register_tool()']]],
+  ['remove',['remove',['../classccimp__vector.html#ab70caa73d94020d0b07faf3df43315dc',1,'ccimp_vector']]],
+  ['remove_5fback',['remove_back',['../classccimp__vector.html#aeb78f93d2eeeb915c9f2314bb3ca1cc8',1,'ccimp_vector']]],
+  ['remove_5ffront',['remove_front',['../classccimp__vector.html#a095404f0cb1d7ab9c69ff9a8ae5b8e4c',1,'ccimp_vector']]],
+  ['resetting_5fvalues',['resetting_values',['../classccimp__dialog.html#afb2b1291502a9e686e583da407b00300',1,'ccimp_dialog']]],
+  ['resize',['RESIZE',['../lib_8h.html#a2cc4c0a9d37017913eda435d20cee3a7af33118f5fff8a9038bda49d7b5f027da',1,'lib.h']]],
+  ['rotate',['ROTATE',['../lib_8h.html#a2cc4c0a9d37017913eda435d20cee3a7a3dcfe0046eb5876e287dbf0914819b16',1,'lib.h']]],
+  ['rotate_5fdialog',['rotate_dialog',['../classrotate__dialog.html',1,'rotate_dialog'],['../classrotate__dialog.html#a849ba02a635ec06ed5edda5b5bac60c7',1,'rotate_dialog::rotate_dialog()']]],
+  ['rotate_5fdialog_2ecpp',['rotate_dialog.cpp',['../rotate__dialog_8cpp.html',1,'']]],
+  ['rotate_5fdialog_2eh',['rotate_dialog.h',['../rotate__dialog_8h.html',1,'']]],
+  ['rotate_5fleft',['rotate_left',['../classrotate__dialog.html#a46e4a88a40ca7db4ef10ff90d481bbf4',1,'rotate_dialog']]],
+  ['rotate_5fmsg',['rotate_msg',['../namespaceerr__strings.html#a6f065e772c2ca13a43f232f11dd076d6',1,'err_strings']]],
+  ['rotate_5fright',['rotate_right',['../classrotate__dialog.html#ae0ce3d4a7e5727bd0926632e975b1f5a',1,'rotate_dialog']]],
+  ['rotate_5ftitle',['rotate_title',['../namespaceerr__strings.html#afb11b7a09deeab2094b9fc66f25638b7',1,'err_strings']]]
+];
