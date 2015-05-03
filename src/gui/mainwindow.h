@@ -34,7 +34,7 @@
 #include "gui/auto_gamma_dialog.h"
 #include "gui/auto_level_dialog.h"
 #include "gui/scale_dialog.h"
-#include "img_tools/img_obj_converter.h"
+
 #include "img_tools/image_tool.h"
 #include "img_tools/tool_auto_gamma.h"
 #include "img_tools/tool_auto_level.h"
