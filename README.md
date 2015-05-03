@@ -54,6 +54,7 @@ For å kompilere CCIMP fra kildekoder trenger du følgende verktøy.
 1. **GNU GCC C++** kompilator.
 2. [**Qt 5** utviklingsmiljø](https://www.qt.io/download-open-source/) med Qt Creator.
 3. **ImageMagick++** bilbiotek.
+4. Dersom su skal kompilere i virtuell masking trenger du development pakke for OpenGL (påkrevd siden Qt5). På Ubuntu/Debian trenger du å kjøre `sudo apt-get install libgl1-mesa-dev`. 
 
 Hvis du har installert alle nødvendige pakker og avhengigheter åpnes prosjektet i Qt Creator fra `CCIMP.pro` filen. 
 
