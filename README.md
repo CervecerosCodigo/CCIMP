@@ -11,10 +11,10 @@
 ## Innholdsfortegnelse
 
 * [Introduksjon](#kap1)
-* [Installasjon](#installasjon)
-* [Arkitektur og design](#arkitektur)
-* [Om arbeidet, og utfordringene](#(om arbeidet, og utfordringene))
-* [Mangler](#[mangler, bugs og svakheter i design])
+* [Installasjon](#kap2)
+* [Arkitektur og design](#kap3)
+* [Om arbeidet, og utfordringene](#kap4)
+* [Mangler](#kap5)
 
 
 
@@ -37,7 +37,7 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
 * Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php). ImageMagick++ er en del av ImageMagick pakken som innholder terminalbaserte bildeediteringsverktøy. 
 
-## Installasjon
+## Installasjon <a id="kap2"></a>
 
 ### Binærer
 Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Linux og MAC OSX. Disse er tilgjengelige under [releases](https://github.com/CervecerosCodigo/CCIMP/releases).
@@ -77,7 +77,7 @@ Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --wi
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
     
     
-## Arkitektur og design 
+## Arkitektur og design <a id="kap3"></a>
 
 ### Hvorfor er designet som det er
 Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og for prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
@@ -137,14 +137,14 @@ I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `ima
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
 
 
-## Om arbeidet, og utfordringene
+## Om arbeidet, og utfordringene <a id="kap4"></a>
 
 * Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
 * Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
 * Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
 
 
-## Mangler, bugs og svakheter i design
+## Mangler, bugs og svakheter i design <a id="kap5"></a>
 
 ### Mangler
 
