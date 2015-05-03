@@ -9,8 +9,6 @@ void tool_scale::execute(Magick::Image &img)
     height_initial = img.rows();
 
     width_new = (param->get_slider_val()*0.01)*width_initial;
-    //qDebug() << "width_initial" << width_initial;
-    //qDebug() << "width_new" << width_new;
 
     try{
 

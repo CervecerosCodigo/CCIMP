@@ -7,8 +7,6 @@
 
 class using_slider : public parameters
 {
-
-//    SLIDERVAL slider_val;
     std::vector<SLIDERVAL> slider_val;
     int slidercount;
 

@@ -28,8 +28,6 @@ public:
     inline WIDTH get_width(){return width;}
     inline HEIGHT get_height(){return height;}
     inline ANGLE get_angle(){return angle;}
-
-   // parameters* get_param() override;
 };
 
 #endif // USING_COORDINATES_H

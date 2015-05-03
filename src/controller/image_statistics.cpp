@@ -41,9 +41,7 @@ QString image_statistics::get_img_stat(const QImage &img)
                "</td><td></td></tr>";
 
     while(stats_container.size()>0){
-//        pair<QString, QString> tmp_par = stats_container.last();
         pair<QString, QString> tmp_par = stats_container.first();
-//        stats_container.pop();
         stats_container.pop_first();
         img_stat += "<tr><td><b>"+
                 tmp_par.first +

@@ -22,10 +22,8 @@ public:
     void execute(Magick::Image& img) override; //image_tool
 
     error_listener* err_listener;
-    //bool is_error_listener_set = false;
 
     inline void set_error_listener(error_listener *e) override{
-        //is_error_listener_set = true;
         err_listener = e;
     }
 

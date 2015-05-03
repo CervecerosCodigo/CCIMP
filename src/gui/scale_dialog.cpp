@@ -6,12 +6,6 @@ scale_dialog::scale_dialog(QWidget *parent) :
     ui(new Ui::scale_dialog)
 {
     ui->setupUi(this);
-//    this->setWindowTitle("Scale");
-
-//    ui->horizontalSlider->setMinimum(0);
-//    ui->horizontalSlider->setMaximum(100);
-//    ui->horizontalSlider->setSingleStep(5);
-//    ui->horizontalSlider->setTickInterval(10);
 
     ui->horizontalSlider->setTracking(false);
 
@@ -20,8 +14,6 @@ scale_dialog::scale_dialog(QWidget *parent) :
      * Det blir en nullpointer av ukjente årsaker. Har derfor lagd en
      * setter for de verdiene som settes fra main window
      */
-    //ui->horizontalSlider->setSliderPosition(100);
-    //ui->horizontalSlider->setValue(100);
 
     this->setFixedSize(this->size());
 

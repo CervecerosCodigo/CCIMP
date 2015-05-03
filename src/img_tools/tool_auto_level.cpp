@@ -2,6 +2,5 @@
 
 void tool_auto_level::execute(Magick::Image &img) {
     img.autoLevel();
-    qDebug() << "Autolevel har kjørt";
 }
 

@@ -12,6 +12,6 @@ tool::~tool()
 
 
 void tool::execute(Magick::Image& img){
-    //std::cout << "Kjører execute" << std::endl;
+
 }
 
