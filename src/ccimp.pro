@@ -21,7 +21,6 @@ SOURCES += main.cpp\
     parameters/using_slider.cpp \
     gui/crop_dialog.cpp \
     gui/brightness_dialog.cpp \
-    img_tools/img_obj_converter.cpp \
     img_tools/tool_crop.cpp \
     controller/controller.cpp \
     img_tools/build_tools.cpp \
@@ -64,7 +63,6 @@ HEADERS  += gui/mainwindow.h \
     lib.h \
     gui/crop_dialog.h \
     gui/brightness_dialog.h \
-    img_tools/img_obj_converter.h \
     img_tools/tool_crop.h \
     controller/controller.h \
     controller/controller_iface.h \

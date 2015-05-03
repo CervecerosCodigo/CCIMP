@@ -7,8 +7,6 @@
 
 class using_slider : public parameters
 {
-
-//    SLIDERVAL slider_val;
     std::vector<SLIDERVAL> slider_val;
     int slidercount;
 
@@ -19,7 +17,7 @@ public:
 
     inline void set_slider_val(int s){      //When using one slider
         slider_val[0] = s;
-        qDebug() << Q_FUNC_INFO << s;
+
     }
 
     //when using multiple sliders

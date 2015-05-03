@@ -10,8 +10,8 @@ tool::~tool()
     delete control;
 }
 
-
+//dummy. brukes ikke, overloades av subklassene
 void tool::execute(Magick::Image& img){
-    //std::cout << "Kjører execute" << std::endl;
+
 }
 

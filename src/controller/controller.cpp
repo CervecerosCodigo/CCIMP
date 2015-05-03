@@ -66,42 +66,41 @@ void controller::register_tool(image_tool* t){
 //Lytter på "nytt bilde" i GUI oppretter en wrapper for det
 void controller::on_new_image(QImage& img){
 
-    if(!wrapper_initialized){
-        current_image = new image_wrapper(img, callback);
-        wrapper_initialized = true;
-    }else{
-        current_image->set_Qimage(img, callback);
-    }
+
+       // current_image = new image_wrapper(img, callback);
+
+        current_image.set_Qimage(img, callback);
+
 }
 
 //Registers the tool that was click in GUI
 void controller::on_clicked_tool(image_tool* t){
 
-    current_image->set_current_tool(t);
-    current_image->update_history();    //Kaller wrapper sin "historieorganisator"
+    current_image.set_current_tool(t);
+    current_image.update_history();    //Kaller wrapper sin "historieorganisator"
 }
 
 void controller::updating_image(){
-    current_image->image_update();
+    current_image.image_update();
 }
 
 void controller::finished(){
-    current_image->image_finished();
+    current_image.image_finished();
 }
 
 void controller::canceled(){
-    current_image->image_canceled();
+    current_image.image_canceled();
 }
 
 
 //Lytter på "undo-knappen" i GUI
 void controller::undo_last_command(){
-    current_image->undo_last_command();
+    current_image.undo_last_command();
 }
 
 //Lytter på "redo_knappen" i GUI
 void controller::redo_last_command(){
-    current_image->redo_last_command();
+    current_image.redo_last_command();
 }
 
 //Lytter på en exception fra gui
@@ -123,6 +122,7 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
         gui_mw.exception_in_image_processing(err_strings::scale_title, err_strings::scale_msg);
         break;
     case TOOLIDENT::COL:
+        //Ønsker ikke å vise noen feilmeldinger, bare returnere til "original-bildet"
         if(err_type == ERRORTYPE::IDENTICAL_IMAGES){
             canceled();
             return;
@@ -140,6 +140,12 @@ void controller::on_exception_occured(TOOLIDENT t_type, ERRORTYPE err_type)
         gui_mw.exception_in_image_processing(err_strings::rotate_title, err_strings::rotate_msg);
         break;
     case TOOLIDENT::SECURE:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
+        break;
+    case TOOLIDENT::AUTOGAMMA:
+        gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
+        break;
+    case TOOLIDENT::AUTOLEVEL:
         gui_mw.exception_in_image_processing(err_strings::encrypt_msg, err_strings::encrypt_msg);
         break;
     }

@@ -10,15 +10,16 @@
 
 ## Innholdsfortegnelse
 
-* [Introduksjon](#introduksjon)
-* [Installasjon](#installasjon)
-* [Arkitektur og design](#arkitektur og design)
-* [Om arbeidet, og utfordringene](#om arbeidet, og utfordringene)
-* [Mangler](#mangler, bugs og svakheter i design)
+* [Introduksjon](#kap1)
+* [Installasjon](#kap2)
+* [Arkitektur og design](#kap3)
+* [Om arbeidet, og utfordringene](#kap4)
+* [Mangler](#kap5)
+* [Screenshots](#kap6)
 
 
-
-## Introduksjon
+<a id="kap1"></a>
+## Introduksjon 
 
 ### Om sluttrapporten
 Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en type flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
@@ -31,13 +32,15 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 ### Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
 * [Klassediagram](http://cerveceroscodigo.github.io/CCIMP/img/diagram_class.png)
-* [Dokumentasjon for kode (Doxygen)](http://cerveceroscodigo.github.io/CCIMP/doc/)
+* [Dokumentasjon for kildekode](http://cerveceroscodigo.github.io/CCIMP/doc/)
 
 ### Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
 * Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php). ImageMagick++ er en del av ImageMagick pakken som innholder terminalbaserte bildeediteringsverktøy. 
 
-## Installasjon
+
+<a id="kap2"></a>
+## Installasjon 
 
 ### Binærer
 Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Linux og MAC OSX. Disse er tilgjengelige under [releases](https://github.com/CervecerosCodigo/CCIMP/releases).
@@ -47,36 +50,57 @@ Det finnes ferdige binærer kompilert for x86_64 arkitekur tilgjengelige for Lin
 
 #### Generelt
 For å kompilere CCIMP fra kildekoder trenger du følgende verktøy. 
-1. GNU GCC C++ kompiltor. 
-2. [Qt5 utviklingsmiljø](https://www.qt.io/download-open-source/)
-3. ImageMagick++ bilbiotek.
 
-#### ImageMagick++
-Ettersom CCIMP er fynamisk linket med ImageMagick++ må den være installert på systemet ditt før kompilering. Kompilering av CCIMP ble med fremgang gjennomført på Ubuntu 14.10, Fedora 21 og MAC OSX Yosemite. Etter at ImageMagick++ bibliotek er installert kommer `qmake` å forsøke linke delte bilbiotek fra den søkvei som er definiert i [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) filen. Dersom du støtter på eventuelle problem med delte bilbiotek kontrollerer hvis CCIMP.pro er linket til riktig søkvei og versjon som stemmer overens ImageMagick++ installasjon på din maskin.
+1. **GNU GCC C++** kompilator.
+2. [**Qt 5** utviklingsmiljø](https://www.qt.io/download-open-source/) med Qt Creator.
+3. **ImageMagick++** bilbiotek.
+
+Hvis du har installert alle nødvendige pakker og avhengigheter åpnes prosjektet i Qt Creator fra `CCIMP.pro` filen. 
+
+#### ImageMagick
+Ettersom CCIMP er dynamisk linket med ImageMagick++ må den være installert på systemet ditt før kompilering. Kompilering av CCIMP ble med fremgang gjennomført på Ubuntu 14.10, Fedora 21 og MAC OSX Yosemite. Etter at ImageMagick++ bibliotek er installert kommer `qmake` å forsøke linke delte bilbiotek fra den søkvei som er definiert i [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) filen. Dersom du støtter på eventuelle problem med delte bilbiotek kontrollerer hvis CCIMP.pro er linket til riktig søkvei og versjon som stemmer overens ImageMagick++ installasjon på din maskin.
 
 ##### Linux
 Hvis ImageMagick installeres via repo til din distrubisjon kan søkvei til bibliotekene være annerledes. Dersom du ønsker å bruke development pakker for ditt system (Fedora: `ImageMagick-c++-devel`, Ubuntu: `libmagick++-dev`) må du konfigurere om [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) slik at den overensstemmer med søkveien til bilbiotekene på ditt system. 
 
 Vi **anbefaler sterkt** at ImageMagick kompileres fra kildekode ettersom søkveien for installasjonen blir densamme for alle Linux system.
-**Viktig** Sørg for at [GNU libtool](http://www.gnu.org/software/libtool/) er tilgjengelig på ditt system før du kompilerer (Fedora: `libtool-ltdl-devel`, Ubuntu: `libltdl-dev`).
 
-Følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt system:
+
+Før kompilering
+
+I tillegg til `GNU GCC C++` kommer du også å behøve [`GNU libtool`](http://www.gnu.org/software/libtool/), den installerer du enklest gjennom repository for din distribusjon. Dette gjør enklest på følgende måte:
+
+Ubuntu/Debian
+```
+$ sudo apt-get update
+$ sudo apt-get install libltdl-dev
+```
+
+Fedora
+```
+# yum install libtool-ltdl-devel
+```
+
+Deretter følg følgende tilnærmingsmåte for å sette opp ImageMagick på ditt system:
 
 ```
 1. wget http://www.imagemagick.org/download/ImageMagick.tar.gz
 2. tar xfvz ./ImageMagick.tar.gz
-3. ./configure --enable-shared --with-modules
-4. make 
-5. sudo make install 
-6. sudo ldconfig /usr/local/lib
+3. cd ImageMagick/
+4. ./configure --enable-shared --with-modules
+5. make 
+6. sudo make install 
+7. sudo ldconfig /usr/local/lib
 ```
 
-Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bilbiotek.
+Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --with-modules` ettersom automake vil da sette opp kompilering og installasjon av delte `*.so` bibliotek.
 
 ##### MAC OSX
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
+
     
     
+<a id="kap3"></a>
 ## Arkitektur og design 
 
 ### Hvorfor er designet som det er
@@ -137,14 +161,17 @@ I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `ima
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
 
 
-## Om arbeidet, og utfordringene
+
+<a id="kap4"></a>
+## Om arbeidet, og utfordringene 
 
 * Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
 * Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
 * Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
 
 
-## Mangler, bugs og svakheter i design
+<a id="kap5"></a>
+## Mangler, bugs og svakheter i design 
 
 ### Mangler
 
@@ -161,5 +188,20 @@ De aller fleste bugs er luket ut. Det ligger en liste med `Issues` i [git-repoet
 * Qt tilbyr Slots og Signals som gjør det lett å koble sammen events og triggere. Dette er likevel en fallgruve, da man må koble ferdigdefinerte signals til slots, og muligheten for å opprette gui-komponenter med tilhørende eventer og triggere ble redusert kraftig. Om man skulle implementert plugin-funksjonalitet av nye filtre så måtte også tilhørende GUI-komponenter kunne opprettes dynamisk. Hvordan det skulle vært gjort med bruk av slots og signals ble ikke klart og denne planen ble derfor ikke gjennomført. Alternativet hadde vært å bruke egendefinerte observer/event-patterns for alle slike "listen for events" i GUI, men tiden ble for knapp for det. Dette medførte at man endte opp med en Switch/Case i `Controller`, som nok ikke er særlig dynamsik, og tilsvarende enum `TOOLIDENT` som identifiserer hvert verktøy, og som switch/case switsjer på. Dette er som skulle vært unngått om man hadde fått begynt på nytt.
 * `MainWindow` er også veldig overfylt med metoder og slots. Alle set-metodene til knappene/verktøyene, samt alle "on_button_clicked"-metoder kunne vært flyttet ut i en egen klasse, ettersom dette strengt tatt ikke kommuniserer med mer enn tre metoder i `MainWindow`. Hadde gruppen hatt 2 dager til så hadde dette blit gjort. 
 
+<a id="kap6"></a>
+## Screenshots
+![scr1](http://cerveceroscodigo.github.io/CCIMP/img/scr1.png)
+*Fig 1. Hovedvindu med bilde åpent*
 
-    
+![scr2](http://cerveceroscodigo.github.io/CCIMP/img/scr2.png)
+*Fig 2. Editering av lysstyrke*
+
+![scr3](http://cerveceroscodigo.github.io/CCIMP/img/scr3.png)
+*Fig 3. Endring av rotasjon*
+
+![scr4](http://cerveceroscodigo.github.io/CCIMP/img/scr4.png)
+*Fig 4. Kryptering av bilde. Pixler blir arrangert i tilfeldig rekkefølge som kan gjenopprettes kun med gyldig passord.*
+
+![scr5](http://cerveceroscodigo.github.io/CCIMP/img/scr5.png)
+*Fig 5. Endring av fargebalanse*
+
