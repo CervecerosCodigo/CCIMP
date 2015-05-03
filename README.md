@@ -15,6 +15,7 @@
 * [Arkitektur og design](#kap3)
 * [Om arbeidet, og utfordringene](#kap4)
 * [Mangler](#kap5)
+* [Screenshots](#kap6)
 
 
 <a id="kap1"></a>
@@ -187,5 +188,20 @@ De aller fleste bugs er luket ut. Det ligger en liste med `Issues` i [git-repoet
 * Qt tilbyr Slots og Signals som gjør det lett å koble sammen events og triggere. Dette er likevel en fallgruve, da man må koble ferdigdefinerte signals til slots, og muligheten for å opprette gui-komponenter med tilhørende eventer og triggere ble redusert kraftig. Om man skulle implementert plugin-funksjonalitet av nye filtre så måtte også tilhørende GUI-komponenter kunne opprettes dynamisk. Hvordan det skulle vært gjort med bruk av slots og signals ble ikke klart og denne planen ble derfor ikke gjennomført. Alternativet hadde vært å bruke egendefinerte observer/event-patterns for alle slike "listen for events" i GUI, men tiden ble for knapp for det. Dette medførte at man endte opp med en Switch/Case i `Controller`, som nok ikke er særlig dynamsik, og tilsvarende enum `TOOLIDENT` som identifiserer hvert verktøy, og som switch/case switsjer på. Dette er som skulle vært unngått om man hadde fått begynt på nytt.
 * `MainWindow` er også veldig overfylt med metoder og slots. Alle set-metodene til knappene/verktøyene, samt alle "on_button_clicked"-metoder kunne vært flyttet ut i en egen klasse, ettersom dette strengt tatt ikke kommuniserer med mer enn tre metoder i `MainWindow`. Hadde gruppen hatt 2 dager til så hadde dette blit gjort. 
 
+<a id="kap6"></a>
+## Screenshots
+![scr1](http://cerveceroscodigo.github.io/CCIMP/img/scr1.png)
+*Fig 1. Hovedvindu med bilde åpent*
 
-    
+![scr2](http://cerveceroscodigo.github.io/CCIMP/img/scr2.png)
+*Fig 2. Editering av lysstyrke*
+
+![scr3](http://cerveceroscodigo.github.io/CCIMP/img/scr3.png)
+*Fig 3. Endring av rotasjon*
+
+![scr4](http://cerveceroscodigo.github.io/CCIMP/img/scr4.png)
+*Fig 4. Kryptering av bilde. Pixler blir arrangert i tilfeldig rekkefølge som kan gjenopprettes kun med gyldig passord.*
+
+![scr5](http://cerveceroscodigo.github.io/CCIMP/img/scr5.png)
+*Fig 5. Endring av fargebalanse*
+
