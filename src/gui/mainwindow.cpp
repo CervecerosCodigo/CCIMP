@@ -689,6 +689,7 @@ void MainWindow::on_autoGammaButton_clicked()
 void MainWindow::on_autoLevelButton_clicked()
 {
     if(image_is_loaded){
+        QMessageBox::information(this, "Auto Levels", "<html>Dear user of CCIMP<br>This tool works only with very dark or bright images.</html>");
         event_listen->on_clicked_tool(autoLevelDialog.get_tool());
         event_listen->updating_image();
         event_listen->finished();
