@@ -37,6 +37,8 @@ void image_wrapper::image_update(){
 
 //Trykket OK i tool dialog. setter begge pekerne likt og
 void image_wrapper::image_finished(){
+    if(img_ptr_edit == nullptr)
+        return;
     img_ptr_current = new Magick::Image(*img_ptr_edit);
 }
 
@@ -49,15 +51,13 @@ void image_wrapper::image_canceled(){
     if(!img_ptr_edit->compare(*img_ptr_current)){
         callback->callback_image_edited(img_obj_converter::to_QImage(*img_ptr_current)); //sender bildet til gui
         img_ptr_edit = new Magick::Image(*img_ptr_current);
+        callback->callback_report_image_is_original();
 
     }
 }
 
 
 void image_wrapper::undo_last_command(){
-    //Bare hvis callback != null og det finnes noe i undo-vector
-    if(callback == nullptr)
-        return;
 
     //undo-vector er ikke tom
     if(!undo_history.is_empty()){
@@ -84,8 +84,6 @@ void image_wrapper::undo_last_command(){
 
 
 void image_wrapper::redo_last_command(){
-    if(callback == nullptr)
-        return;
 
     if(!redo_history.is_empty()){
 

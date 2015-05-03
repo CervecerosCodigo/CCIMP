@@ -33,7 +33,7 @@
 #include "img_tools/img_obj_converter.h"
 #include <QSignalMapper>
 #include "img_tools/image_tool.h"
-#include "controller/callback_error_iface.h"
+//#include "controller/callback_error_iface.h"
 #include <QDirIterator>
 #include "img_tools/tool_auto_gamma.h"
 #include "img_tools/tool_auto_level.h"
@@ -43,13 +43,13 @@
 #include "gui/scale_dialog.h"
 
 
-using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
+//using namespace Magick; //TODO@: Husk å slette denne å fikse før innlevering
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public callback_iface, public callback_error_iface
+class MainWindow : public QMainWindow, public callback_iface
 {
     Q_OBJECT
 
@@ -93,7 +93,7 @@ public:
     void set_image();
     void callback_image_edited(QImage* img) override;
     void callback_report_image_is_original() override;
-    void exception_in_image_processing(QString err_title, QString err_msg) override;
+    void exception_in_image_processing(QString err_title, QString err_msg);
     callback_iface* get_callback_listener() override;
 private:
     Ui::MainWindow *ui;

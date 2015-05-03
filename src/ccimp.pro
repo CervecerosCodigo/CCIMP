@@ -89,7 +89,6 @@ HEADERS  += gui/mainwindow.h \
     gui/about_dialog.h \
     gui/encipher_dialaog.h \
     controller/error_listener.h \
-    controller/callback_error_iface.h \
     lib/err_strings.h \
     parameters/using_text.h \
     img_tools/tool_secure.h \
