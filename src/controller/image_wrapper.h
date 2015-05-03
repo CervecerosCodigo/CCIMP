@@ -18,7 +18,7 @@ class image_wrapper
     QImage& qimg_org;       //orginalobjektet, unikt for hver wrapper
     Magick::Image img_helper_obj;   //brukes i undo/redo ifm vectorene
     Magick::Image* img_ptr_current; //peker til objektet som vises i GUI
-    Magick::Image* img_ptr_edit;    //peker til objektet som er under endring
+    Magick::Image* img_ptr_edit = NULL;    //peker til objektet som er under endring
 
     image_tool* current_tool;
 
