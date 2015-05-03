@@ -10,11 +10,11 @@
 # Sluttrapport
 
 ## Om sluttrapporten
-Det brukes ikke mye tid på å forklare alle aspektene ved programmet, men heller å forklare hvorfor programmet er implementert slik det er gjort, og hva som er spesielt med arkitekturen.
+Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en slags flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
 
 ## Hva er vektlagt
 Muligheter for "evig" utvidelse av funksjonalitet og høyere kompleksitet har vært viktig. Det har ikke vært viktig å "komme i mål", ettersom det ville være vanskelig å beregne. Samtidig skal alt som er implementert fungere.
-For å få uttelling for kompleksitet og omfang har det også programmet blitt implementert på en slik måte som legger til rette for lav kobling mellom klasser og høy kohesjon. Programmer er derfor sydd sammen ved hjelp av lyttere (observer-pattern) og event-drevne metoder som "fyrer" i gang metoder i andre deler av programmet i det en metoden eksekveres i feks MainWindow. Mer om dette i kommentarene til diagrammene lenger ned.
+For å få uttelling for kompleksitet og omfang har også programmet blitt implementert på en slik måte som legger til rette for lav kobling mellom klasser og høy kohesjon. Programmer er derfor sydd sammen ved hjelp av lyttere (observer-pattern) og event-drevne metoder som "fyrer" i gang metoder i andre deler av programmet i det en metoden eksekveres i feks MainWindow. Mer om dette i kommentarene til diagrammene lenger ned.
 
 
 ## Viktige linker
@@ -22,7 +22,7 @@ For å få uttelling for kompleksitet og omfang har det også programmet blitt i
 
 ## Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
-* Til noen bildebehandlingsprosesser bruker [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php)
+* Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php)
 
 ## Kompilering
 CCIMP krever følgende bilbiotek for å kompileres.
@@ -51,7 +51,7 @@ CCIMP krever følgende bilbiotek for å kompileres.
 ## Arkitektur og design 
 
 ### Hvorfor er designet som det er
-Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
+Som nevnt i introduksjonen så er utgangspunktet for prosjektet at det skal gi uttelling for avansert arkitektur og for prosjektets omfang. Helt konkret betyr det at det er veldig lav kobling mellom lagene i programmet, og at all kommunikasjon skjer via observer-interface og callback-interface.
 Det er laget tre diagrammer som hver for seg skal illustrere hvordan den ulike kommunikasjonen skjer. 
 
 
@@ -106,4 +106,20 @@ I det man klikker på et verktøy i `MainWindow` og man sender den aktuelle `ima
 
 
 ![Håndtering av historikk](http://cerveceroscodigo.github.io/CCIMP/img/diagram_history_redo_undo.png)
+
+
+## Om arbeidet, og utfordringene
+
+Det utpekte seg flere utfordringer underveis og som tok mye tid. Spesielt i begynnelsen. Man skal lære seg Qt og hvordan man benytter seg av de ulike modulene det medfører. Det gjaldt spesielt hvordan Qt og Qwidgets sammen med Slots og Signals ikke egner seg så godt til arv og generiske fremgangsmåter.
+Videre har det vært utfordrende å finne ut om det skulle brukes 3. parts programvare eller ikke. I utgangspunktet skulle programmet lages i noe mindre skala, men med forsøk på egne filter-algoritmer, men da ingen i gruppen visste noe som helst om hvordan å løper gjennom pixler og behandle dem så ble det forsøkt med først ett eksternt bibliotek, som ikke førte frem, og så med det andre, som er i bruk.
+Arkitekturen av programmet var også gjenstand for mye tenking og eksperimentering. Kravet til gruppen var at det skulle være modulerbart og ta høyde for historikk. Det ble gjort flere forsøk på å komme frem til et design før det nåværende designet ble akseptert.
+
+
+## Mangler og bugs
+
+### Mangler
+
+Opprinnelig ble det bestemt at programmet skulle støtte arkfaner, slik at hvert bilde man åpnet ble åpnet i en ny arkfane, og at hver arkfane hadde sin egen historikk, slik som dagens "en-bildes-løsning" har. `Controller` ville da hatt en viktigere rolle, med av alle `image_wrapper`-objektene, men d det ikke var tid til å finne ut hvordan arkfaner brukes ble det ikke ferdigstillt. Dette er dog et mindre prosjekt hvis man skulle ønske å gå videre med utviklingen. Arkitekturen har i vedlig stor grad tatt høyde for denne utvidelsen. 
+
+
     
