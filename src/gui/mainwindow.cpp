@@ -425,6 +425,7 @@ void MainWindow::set_contrast_tool(image_tool *t)
     contrastDialog.set_tool(t);
     connect(&contrastDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
     connect(&contrastDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+    connect(&contrastDialog, SIGNAL(signalCanceled()), this, SLOT(execute_cancelbtn_pressed()));
     contrastDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 
@@ -434,6 +435,7 @@ void MainWindow::set_rotate_tool(image_tool *t)
     rotateDialog.set_tool(t);
     connect(&rotateDialog, SIGNAL(signalValueChanged()), this, SLOT(execute_value_changed()));
     connect(&rotateDialog, SIGNAL(signalAccepted()), this, SLOT(execute_acceptbtn_pressed()));
+
     rotateDialog.setWindowFlags(Qt::WindowStaysOnTopHint);
 }
 

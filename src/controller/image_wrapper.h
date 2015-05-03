@@ -14,10 +14,10 @@ class image_wrapper
 {
     ccimp_vector<Magick::Image> undo_history;   //holds previous version
     ccimp_vector<Magick::Image> redo_history;   //holds newer versions, in case of previous undo
-
-    QImage& qimg_org;       //orginalobjektet, unikt for hver wrapper
+    QImage* qimg_ptr_helper;    //hjelpe-peker.
+    QImage* qimg_ptr_org;       //orginalobjektet, unikt for hver wrapper
     Magick::Image img_helper_obj;   //brukes i undo/redo ifm vectorene
-    Magick::Image* img_ptr_current; //peker til objektet som vises i GUI
+    Magick::Image* img_ptr_current = NULL; //peker til objektet som vises i GUI
     Magick::Image* img_ptr_edit = NULL;    //peker til objektet som er under endring
 
     image_tool* current_tool;
@@ -29,7 +29,7 @@ class image_wrapper
     void to_Image(QImage& qimage);          //konverterer til Image
 
 public:
-    image_wrapper(QImage& img, callback_iface* c);
+    image_wrapper();
     ~image_wrapper();
     void set_Qimage(QImage& img, callback_iface* c);
 
