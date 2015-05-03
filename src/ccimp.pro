@@ -18,9 +18,7 @@ SOURCES += main.cpp\
     img_tools/tool_blur.cpp \
     controller/image_wrapper.cpp \
     controller/image_statistics.cpp \
-    test/test_lab.cpp \
     parameters/using_slider.cpp \
-    test/crop_test.cpp \
     gui/crop_dialog.cpp \
     gui/brightness_dialog.cpp \
     img_tools/img_obj_converter.cpp \
@@ -64,7 +62,6 @@ HEADERS  += gui/mainwindow.h \
     controller/data_key_value_container.h\
     parameters/parameters.h \
     lib.h \
-    test/crop_test.h \
     gui/crop_dialog.h \
     gui/brightness_dialog.h \
     img_tools/img_obj_converter.h \
