@@ -54,6 +54,7 @@ For å kompilere CCIMP fra kildekoder trenger du følgende verktøy.
 2. [**Qt 5** utviklingsmiljø](https://www.qt.io/download-open-source/) med Qt Creator.
 3. **ImageMagick++** bilbiotek.
 
+Hvis du har installert alle nødvendige pakker og avhengigheter åpnes prosjektet i Qt Creator fra `CCIMP.pro` filen. 
 
 #### ImageMagick
 Ettersom CCIMP er dynamisk linket med ImageMagick++ må den være installert på systemet ditt før kompilering. Kompilering av CCIMP ble med fremgang gjennomført på Ubuntu 14.10, Fedora 21 og MAC OSX Yosemite. Etter at ImageMagick++ bibliotek er installert kommer `qmake` å forsøke linke delte bilbiotek fra den søkvei som er definiert i [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) filen. Dersom du støtter på eventuelle problem med delte bilbiotek kontrollerer hvis CCIMP.pro er linket til riktig søkvei og versjon som stemmer overens ImageMagick++ installasjon på din maskin.
@@ -95,8 +96,6 @@ Det er ytterst viktig at konfigurering kjøres med flagger `--enable-shared --wi
 ##### MAC OSX
 [CCIMP.pro](https://github.com/CervecerosCodigo/CCIMP/blob/master/src/ccimp.pro) er konfigurert for [Mac Port versjon](https://www.macports.org/ports.php?by=name&substr=ImageMagick) som innholder development bilbiotek.
 
-
-Etter at alt er installert, start Qt Creator og åpne prosjektet gjennom at åpne `CCIMP.pro` filen.
     
     
 <a id="kap3"></a>
