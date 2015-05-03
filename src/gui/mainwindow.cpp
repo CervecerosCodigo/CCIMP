@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //Setter opp en tree view
     set_fs_view();
 
-    //setter opp grafiske komponenter.
-    set_graphics_environment();
+
+
 
     //Zoom verdier
     zoomVerdi = 1;

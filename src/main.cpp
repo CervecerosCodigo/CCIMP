@@ -17,7 +17,8 @@ int main(int argc, char **argv)
     build_tools{control};
     set_look_and_feel laf;
     laf.execute_fabulous_style();
-    w->show();
+    w->showMaximized();
+//    w->show();
 
 
 
