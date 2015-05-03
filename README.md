@@ -64,8 +64,7 @@ Hvis ImageMagick installeres via repo til din distrubisjon kan søkvei til bibli
 
 Vi **anbefaler sterkt** at ImageMagick kompileres fra kildekode ettersom søkveien for installasjonen blir densamme for alle Linux system.
 
-__Før kompilering__
-
+Før kompilering
 I tillegg til `GNU GCC C++` kommer du også å behøve [`GNU libtool`](http://www.gnu.org/software/libtool/), den installerer du enklest gjennom repository for din distribusjon. Dette gjør enklest på følgende måte:
 
 Ubuntu/Debian
