@@ -3,8 +3,8 @@
 
 ### Gruppemedlemmer
 * [Espen Zaal](https://github.com/lurer) - s198579
-* [Lukas Larsed](https://github.com/ldlarsed) - s198599
-* [Petter Lysne](https://github.com/petlys) - s198569
+* [Lukas Larsed](https://github.com/ldlarsed) - s198569
+* [Petter Lysne](https://github.com/petlys) - s198599
 
 # Sluttrapport
 
