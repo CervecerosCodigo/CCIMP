@@ -6,26 +6,39 @@
 * [Lukas Larsed](https://github.com/ldlarsed) - s198599
 * [Petter Lysne](https://github.com/petlys) - s198569
 
-
 # Sluttrapport
 
-## Om sluttrapporten
+## Innholdsfortegnelse
+
+[Introduksjon] (Introduksjon)
+[Mangler] (Mangler, bugs og svakheter i design)
+
+
+
+## Introduksjon
+
+### Om sluttrapporten
 Sluttrapporten forsøker å gi oversikt over strukturen av programmet ved hjelp av en type flytdiagrammer, som forklarer hvordan kommunikasjonen fungerer mellom de ulike lagene i programmet. Det kommer også noen punkter om hvordan arbeidet har gått, hvilke utfordringer det har vært jobbet mest med, samt en egen vurdering av prosjektet og hva som kunne vært gjort annerledes.
 
-## Hva er vektlagt
+### Hva er vektlagt
 Muligheter for "evig" utvidelse av funksjonalitet og høyere kompleksitet har vært viktig. Det har ikke vært viktig å "komme i mål", ettersom det ville være vanskelig å beregne. Samtidig skal alt som er implementert fungere.
 For å få uttelling for kompleksitet og omfang har også programmet blitt implementert på en slik måte som legger til rette for lav kobling mellom klasser og høy kohesjon. Programmer er derfor sydd sammen ved hjelp av lyttere (observer-pattern) og event-drevne metoder som "fyrer" i gang metoder i andre deler av programmet i det en metoden eksekveres i feks MainWindow. Mer om dette i kommentarene til diagrammene lenger ned.
 
 
-## Viktige linker
+### Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
 * [Klassediagram](http://cerveceroscodigo.github.io/CCIMP/img/diagram_class.png)
 
-## Eksterne resurser
+### Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
 * Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php)
 
-## Kompilering
+## Installasjon
+
+### Binærer
+
+### Kompilering
+
 CCIMP krever følgende bilbiotek for å kompileres.
 
 1. **gnu gcc-c++**  Sørg for at gnu `libtool-ltdl-devel` (eller en liknende versjon av pakken) er tilgjengelig, den er nødvendig for å kompilere ImageMagick++.
