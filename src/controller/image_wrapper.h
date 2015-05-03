@@ -7,7 +7,7 @@
 #include "ccimp_vector.h"
 #include <img_tools/image_tool.h>
 #include "Magick++.h"
-#include "img_tools/img_obj_converter.h"
+#include <QColor>
 #include "callback_iface.h"
 #include "parameters/using_slider.h"
 class image_wrapper

@@ -10,7 +10,7 @@ controller::controller(MainWindow& mw):gui_mw{mw}
 controller::~controller()
 {
     //if(current_image != nullptr)
-        //delete current_image;
+        delete current_image;
     //delete callback;
 }
 
