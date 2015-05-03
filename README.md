@@ -20,6 +20,7 @@ For å få uttelling for kompleksitet og omfang har også programmet blitt imple
 ## Viktige linker
 * [prosjektbeskrivelse.md](prosjektbeskrivelse.md)
 * [Klassediagram](http://cerveceroscodigo.github.io/CCIMP/img/diagram_class.png)
+
 ## Eksterne resurser
 * Programikoner er hentet fra [Oxygen Icons prosjekt](https://github.com/pasnox/oxygen-icons-png)
 * Biblioteket brukt for bildebehandling [ImageMagick++ rammeverk](http://www.imagemagick.org/script/magick++.php)
