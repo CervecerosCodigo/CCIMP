@@ -8,9 +8,9 @@
 #include <iostream>
 
 
-class tool : image_tool
+class tool : public image_tool
 {
-    //TOOLIDENT tool_identifier;
+
     controller_iface* control;
 
 public:
@@ -22,10 +22,10 @@ public:
     void execute(Magick::Image& img) override; //image_tool
 
     error_listener* err_listener;
-    bool is_error_listener_set = false;
+    //bool is_error_listener_set = false;
 
     inline void set_error_listener(error_listener *e) override{
-        is_error_listener_set = true;
+        //is_error_listener_set = true;
         err_listener = e;
     }
 

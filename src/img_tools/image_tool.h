@@ -20,8 +20,6 @@ public:
     inline parameters* get_param(){return param;}
     inline TOOLIDENT get_tool_identifier(){return tool_identifier;}
 
-public:
-
     virtual void set_error_listener(error_listener *e)=0;
 };
 
