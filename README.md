@@ -2,9 +2,9 @@
 **Cerveceros Codigo Image Manipulation Program** - Prosjektoppgave C++ HiOA 2015
 
 ### Gruppemedlemmer
-* [Espen Zaal](https://github.com/lurer) - s198579
+* [Espen Zaal](https://github.com/lurer) - s198599
 * [Lukas Larsed](https://github.com/ldlarsed) - s198569
-* [Petter Lysne](https://github.com/petlys) - s198599
+* [Petter Lysne](https://github.com/petlys) - s198579
 
 # Sluttrapport
 
